@@ -188,6 +188,10 @@ td b{font-weight:700}
 .none{font-size:12.5px;color:var(--ink3);align-self:center;line-height:1.3}
 .simout tr.sec th{text-align:left;padding-top:12px;color:var(--ink);font-size:14px;border-bottom:1px solid var(--rule)}
 
+.tile.edge-warn{border-color:var(--amber);background:var(--amber-bg)}
+.e-warn{color:var(--amber)}
+.pill.warn{color:var(--amber);border-color:var(--amber);background:var(--amber-bg)}
+
 </style>
 </head>
 <body>
@@ -273,11 +277,11 @@ const E = (function () {
     if (i === 1 && j === 1) return 1 - rho;
     return 1;
   }
-  function scoreGrid(lh, la, rho) {
-    const ph = pmf(lh, G - 1), pa = pmf(la, G - 1), g = new Float64Array(CELLS);
+  function scoreGrid(lh, la, rho, d) {
+    const ph = pmf(lh, G - 1), pa = pmf(la, G - 1), g = new Float64Array(CELLS), dd = d == null ? 1 : d;   // dd lifts every drawn scoreline
     let s = 0;
     for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) {
-      const v = ph[i] * pa[j] * Math.max(tau(i, j, lh, la, rho), 0);
+      const v = ph[i] * pa[j] * Math.max(tau(i, j, lh, la, rho), 0) * (i === j ? dd : 1);
       g[i * G + j] = v; s += v;
     }
     for (let k = 0; k < CELLS; k++) g[k] /= s;
@@ -326,11 +330,11 @@ const E = (function () {
 
   // ---------- ratings ----------
   function fit(rows, opt) {
-    opt = Object.assign({ halfLife: 300, ridge: 3, shotBlend: 0.35, asOf: null }, opt || {});
+    opt = Object.assign({ halfLife: 300, ridge: 2, shotBlend: 0.5, squeeze: 0.55, stretch: 1.3, asOf: null }, opt || {});
     let asOf = opt.asOf;
     if (asOf == null) { asOf = 0; for (const r of rows) if (r.date > asOf) asOf = r.date; asOf += DAY; }
     const used = rows.filter(r => r.date < asOf);
-    const model = { teams: {}, mu: 0, h: 0, rho: -0.05, shots: { n: 0, fitted: false }, opt, asOf, nRows: used.length };
+    const model = { teams: {}, mu: 0, h: 0, rho: -0.05, shots: { n: 0, fitted: false }, opt, asOf, nRows: used.length, prior: opt.prior || null };
     if (used.length < 10) return model;
     const sm = fitShots(used); model.shots = sm;
     const beta = sm.fitted ? clamp(opt.shotBlend, 0, 1) : 0;
@@ -350,6 +354,8 @@ const E = (function () {
     for (let t = 0; t < T; t++) { homeOf.push([]); awayOf.push([]); }
     for (let m = 0; m < N; m++) { homeOf[H[m]].push(m); awayOf[A[m]].push(m); }
     const att = new Float64Array(T), def = new Float64Array(T), lam = Math.max(opt.ridge, 0.01);
+    const pA = new Float64Array(T), pD = new Float64Array(T);                     // prior means (0 = league average)
+    if (opt.prior) names.forEach((n, t) => { pA[t] = (opt.prior.att && opt.prior.att[n]) || 0; pD[t] = (opt.prior.def && opt.prior.def[n]) || 0; att[t] = pA[t]; def[t] = pD[t]; });
     let sy = 0, sw = 0;
     for (let m = 0; m < N; m++) { sy += W[m] * (YH[m] + YA[m]); sw += 2 * W[m]; }
     let mu = Math.log(Math.max(sy / sw, 0.1)), h = 0.2;
@@ -363,11 +369,11 @@ const E = (function () {
       iters = it + 1;
       let maxd = 0;
       for (let t = 0; t < T; t++) {
-        let g = -lam * att[t], Hs = lam;
+        let g = -lam * (att[t] - pA[t]), Hs = lam;
         for (const m of homeOf[t]) { const e = W[m] * Math.exp(mu + h + att[t] - def[A[m]]); g += W[m] * YH[m] - e; Hs += e; }
         for (const m of awayOf[t]) { const e = W[m] * Math.exp(mu + att[t] - def[H[m]]); g += W[m] * YA[m] - e; Hs += e; }
         const d1 = g / Hs; att[t] += d1;
-        g = -lam * def[t]; Hs = lam;
+        g = -lam * (def[t] - pD[t]); Hs = lam;
         for (const m of homeOf[t]) { const e = W[m] * Math.exp(mu + att[A[m]] - def[t]); g += e - W[m] * YA[m]; Hs += e; }
         for (const m of awayOf[t]) { const e = W[m] * Math.exp(mu + h + att[H[m]] - def[t]); g += e - W[m] * YH[m]; Hs += e; }
         const d2 = g / Hs; def[t] += d2;
@@ -405,12 +411,17 @@ const E = (function () {
     return model;
   }
   function lambdas(model, home, away) {
-    const th = model.teams[home], ta = model.teams[away];
-    return {
-      lh: Math.exp(model.mu + model.h + (th ? th.att : 0) - (ta ? ta.def : 0)),
-      la: Math.exp(model.mu + (ta ? ta.att : 0) - (th ? th.def : 0)),
-      known: !!(th && ta)
-    };
+    const th = model.teams[home], ta = model.teams[away], pr = model.prior || {};
+    const pa = n => (pr.att && pr.att[n]) || 0, pd = n => (pr.def && pr.def[n]) || 0;
+    const ah = th ? th.att : pa(home), dh = th ? th.def : pd(home), aa = ta ? ta.att : pa(away), da = ta ? ta.def : pd(away);
+    let lh = Math.exp(model.mu + model.h + ah - da), la = Math.exp(model.mu + aa - dh);
+    const c = model.opt && model.opt.squeeze != null ? model.opt.squeeze : 1, s = model.opt && model.opt.stretch != null ? model.opt.stretch : 1;
+    if (c !== 1 || s !== 1) {
+      // totals were too extreme and the strong-vs-weak gap too flat in testing on 820 real matches; fix each on its own
+      const T0 = Math.exp(model.mu) * (Math.exp(model.h) + 1), T = lh + la, T2 = T0 + c * (T - T0), r = Math.pow(lh / la, s);
+      lh = T2 * r / (1 + r); la = T2 / (1 + r);
+    }
+    return { lh, la, known: !!(th && ta) };
   }
 
   // ---------- Sportsbet prices -> bettable legs ----------
@@ -470,6 +481,13 @@ const E = (function () {
     }
     return legs;
   }
+  // Taking the margin off proportionally overrates long shots. Over 820 real matches a power of about 1.15 predicted results best.
+  const FAIR_K = 1.15;
+  function fairProbs(odds, k) {
+    k = k == null ? FAIR_K : k;
+    const w = odds.map(o => Math.pow(1 / o, k)), s = w.reduce((t, x) => t + x, 0);
+    return w.map(x => x / s);
+  }
   const GROUP_SIZE = { h2h: 3, btts: 2, dc: 3 };
   function annotate(legs, grid) {
     for (const l of legs) {
@@ -482,14 +500,35 @@ const E = (function () {
     for (const g in groups) {
       const L = groups[g], want = g.indexOf('ou:') === 0 ? 2 : GROUP_SIZE[g];
       if (!want || L.length !== want) continue;
+      if (g === 'h2h') { const f = fairProbs(L.map(l => l.price)); L.forEach((l, i) => { l.mkt = f[i]; }); continue; }
       let tot = 0; for (const l of L) tot += 1 / l.price;
       const target = g === 'dc' ? 2 : 1;
       for (const l of L) l.mkt = (1 / l.price) / tot * target;
     }
   }
-  function analyseGame(model, game) {
+  const VALUE_MIN = 0.025, VALUE_MAX = 0.12;
+  // fair chance of over 2.5 goals from Sportsbet's own totals (or a reference book when Sportsbet has none)
+  function over25(game) {
+    const alt = game.extras && game.extras.sportsbet && game.extras.sportsbet.alternate_totals && game.extras.sportsbet.alternate_totals.outcomes;
+    let o = null, u = null;
+    if (alt) alt.forEach(x => { if (x.point === 2.5) { if (/^over$/i.test(x.name)) o = x.price; else if (/^under$/i.test(x.name)) u = x.price; } });
+    if (!o || !u) for (const key of ['playup', 'tabtouch']) {
+      const b = game.books && game.books[key];
+      if (b && b.totals) { b.totals.forEach(t => { if (t.line === 2.5) { if (t.side === 'over') o = t.price; else if (t.side === 'under') u = t.price; } }); if (o && u) break; o = u = null; }
+    }
+    return o && u ? (1 / o) / (1 / o + 1 / u) : null;
+  }
+  function analyseGame(model, game, trust) {
+    trust = trust == null ? 1 : trust;                       // share of the answer that comes from our ratings
     const lam = lambdas(model, game.home, game.away);
-    const grid = scoreGrid(lam.lh, lam.la, model.rho);
+    let lh = lam.lh, la = lam.la, dd = 1, implied = null;
+    const sb = game.books && game.books.sportsbet;
+    if (trust < 1 && sb && sb.h2h && sb.h2h.home && sb.h2h.draw && sb.h2h.away) {
+      implied = impliedLambdas(fairProbs([sb.h2h.home, sb.h2h.draw, sb.h2h.away]), over25(game), model.rho);
+      lh = Math.pow(lam.lh, trust) * Math.pow(implied.lh, 1 - trust); la = Math.pow(lam.la, trust) * Math.pow(implied.la, 1 - trust);
+      dd = Math.pow(implied.d, 1 - trust);
+    }
+    const grid = scoreGrid(lh, la, model.rho, dd);
     const legs = buildLegs(game); annotate(legs, grid);
     let ph = 0, pd = 0, pa = 0;
     for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) { const v = grid[i * G + j]; if (i > j) ph += v; else if (i === j) pd += v; else pa += v; }
@@ -509,10 +548,11 @@ const E = (function () {
       if (L.length !== want) return;
       const likeliest = L.reduce((a, b) => (b.p > a.p ? b : a)), best = L.reduce((a, b) => (b.edge > a.edge ? b : a));
       likeliest.isLikeliest = true;
-      if (best.edge >= 0.025) best.isValue = true;
-      picks.push({ group: grp, label, likeliest, best, value: best.edge >= 0.025 ? best : null });
+      const isVal = best.edge >= VALUE_MIN && best.edge <= VALUE_MAX;      // a bigger gap is usually our error, not Sportsbet's
+      if (isVal) best.isValue = true;
+      picks.push({ group: grp, label, likeliest, best, value: isVal ? best : null });
     });
-    return { game, lam, grid, legs, picks, p1x2: { home: ph, draw: pd, away: pa }, mkt, conf };
+    return { game, lam: { lh, la, known: lam.known, modelLh: lam.lh, modelLa: lam.la, implied }, grid, legs, picks, p1x2: { home: ph, draw: pd, away: pa }, mkt, conf };
   }
 
   // ---------- multis ----------
@@ -683,7 +723,7 @@ const E = (function () {
   // Each round is replayed using only matches played before that round started. Bets are priced at the
   // market's closing odds (football-data average), which stands in for Sportsbet. Flat $1 per bet here.
   function paperTrade(rows, opt, seasons, cfg) {
-    cfg = Object.assign({ rounds: 1, minEdge: 0.025, skipLow: true, multiLegs: 4, multiMinP: 0.45 }, cfg || {});
+    cfg = Object.assign({ rounds: 1, minEdge: 0.025, maxEdge: 0.12, trust: 1, skipLow: true, multiLegs: 4, multiMinP: 0.45 }, cfg || {});
     const want = Array.isArray(seasons) ? seasons : [seasons];
     const cur = rows.filter(r => want.indexOf(r.season) >= 0 && r.odds && r.odds.avg_home && r.odds.avg_draw && r.odds.avg_away);
     if (!cur.length) return null;
@@ -703,15 +743,21 @@ const E = (function () {
       let n = 0;
       for (const r of cur) {
         if (r.date < start || r.date > end) continue;
-        const l = lambdas(model, r.home, r.away), g = scoreGrid(l.lh, l.la, model.rho);
+        const l = lambdas(model, r.home, r.away); let lh = l.lh, la = l.la, dd = 1;
+        if (cfg.trust < 1 && r.odds.avg_over25 && r.odds.avg_under25) {
+          const io = 1 / r.odds.avg_over25 + 1 / r.odds.avg_under25;
+          const im = impliedLambdas(fairProbs([r.odds.avg_home, r.odds.avg_draw, r.odds.avg_away]), (1 / r.odds.avg_over25) / io, model.rho);
+          lh = Math.pow(l.lh, cfg.trust) * Math.pow(im.lh, 1 - cfg.trust); la = Math.pow(l.la, cfg.trust) * Math.pow(im.la, 1 - cfg.trust); dd = Math.pow(im.d, 1 - cfg.trust);
+        }
+        const g = scoreGrid(lh, la, model.rho, dd);
         let ph = 0, pd = 0, pa = 0, po = 0;
         for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) { const v = g[i * G + j]; if (i > j) ph += v; else if (i === j) pd += v; else pa += v; if (i + j > 2) po += v; }
         const th = model.teams[r.home], ta = model.teams[r.away];
         const low = Math.min(th ? th.recent : 0, ta ? ta.recent : 0) < 12;
         const o = r.odds, res = r.hg > r.ag ? 'H' : r.hg === r.ag ? 'D' : 'A';
         const p3 = { H: ph, D: pd, A: pa }, o3 = { H: o.avg_home, D: o.avg_draw, A: o.avg_away };
-        const inv = 1 / o3.H + 1 / o3.D + 1 / o3.A;
-        ['H', 'D', 'A'].forEach(k => cal.push({ p: p3[k], m: (1 / o3[k]) / inv, hit: res === k }));
+        const fm = fairProbs([o3.H, o3.D, o3.A]);
+        ['H', 'D', 'A'].forEach((k, i) => cal.push({ p: p3[k], m: fm[i], hit: res === k }));
         const likeliest = ['H', 'D', 'A'].reduce((a, b) => (p3[b] > p3[a] ? b : a)), fav = ['H', 'D', 'A'].reduce((a, b) => (o3[b] < o3[a] ? b : a));
         const legs = ['H', 'D', 'A'].map(k => ({ market: 'Result', sel: k === 'H' ? r.home + ' to win' : k === 'D' ? 'Draw' : r.away + ' to win', p: p3[k], price: o3[k], won: res === k }));
         if (o.avg_over25 && o.avg_under25) {
@@ -719,12 +765,12 @@ const E = (function () {
           legs.push({ market: '2.5 goals', sel: 'Under 2.5 goals', p: 1 - po, price: o.avg_under25, won: r.hg + r.ag < 3 });
         }
         legs.forEach(x => { x.edge = x.p * x.price - 1; });
-        const m = { date: r.date, home: r.home, away: r.away, hg: r.hg, ag: r.ag, low, likeliest, fav, res, likelyRight: likeliest === res, favRight: fav === res, legs, label: r.home + ' v ' + r.away, expGoals: l.lh + l.la, goals: r.hg + r.ag };
+        const m = { date: r.date, home: r.home, away: r.away, hg: r.hg, ag: r.ag, low, likeliest, fav, res, likelyRight: likeliest === res, favRight: fav === res, legs, label: r.home + ' v ' + r.away, expGoals: lh + la, goals: r.hg + r.ag };
         matches.push(m); n++;
         ['Result', '2.5 goals'].forEach(mk => {
           const L = legs.filter(x => x.market === mk); if (!L.length) return;
           const best = L.reduce((a, b) => (b.edge > a.edge ? b : a));
-          if (best.edge >= cfg.minEdge && !(cfg.skipLow && low)) bets.push({ date: r.date, match: m.label, score: r.hg + '-' + r.ag, market: mk, sel: best.sel, price: best.price, p: best.p, edge: best.edge, won: best.won, profit: best.won ? best.price - 1 : -1 });
+          if (best.edge >= cfg.minEdge && best.edge <= cfg.maxEdge && !(cfg.skipLow && low)) bets.push({ date: r.date, match: m.label, score: r.hg + '-' + r.ag, market: mk, sel: best.sel, price: best.price, p: best.p, edge: best.edge, won: best.won, profit: best.won ? best.price - 1 : -1 });
         });
         if (!low) roundLegs.push({ match: m.label, legs });
       }
@@ -761,9 +807,45 @@ const E = (function () {
     return out;
   }
 
-  return { G, CELLS, tokens, nameScore, resolveOne, resolveTwo, scoreGrid, mask, dot, prepRows, fitShots, fit, lambdas,
+
+  // ---------- the score grid implied by the market's own prices ----------
+  // Finds the two expected-goals numbers whose grid reproduces the (margin-free) result and over/under 2.5 prices.
+  function impliedLambdas(m3, pOver, rho) {
+    rho = rho == null ? -0.03 : rho;
+    const err = v => {
+      const g = scoreGrid(Math.exp(v[0]), Math.exp(v[1]), rho, Math.exp(v[2])); let ph = 0, pd = 0, pa = 0, po = 0;
+      for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) { const x = g[i * G + j]; if (i > j) ph += x; else if (i === j) pd += x; else pa += x; if (i + j > 2) po += x; }
+      let s = Math.pow(ph - m3[0], 2) + Math.pow(pd - m3[1], 2) + Math.pow(pa - m3[2], 2);
+      if (pOver != null) s += Math.pow(po - pOver, 2);
+      return s + 1e-6 * v[2] * v[2];                      // a whisper of pull towards "no draw adjustment"
+    };
+    let x = [Math.log(1.4), Math.log(1.1), 0], best = err(x), step = 0.4;
+    const dirs = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [1, 1, 0], [-1, -1, 0], [1, -1, 0], [-1, 1, 0], [0, 0, 1], [0, 0, -1], [1, 0, 1], [-1, 0, -1], [0, 1, 1], [0, -1, -1]];
+    for (let it = 0; it < 300 && step > 1e-4; it++) {
+      let moved = false;
+      for (const d of dirs) { const y = [x[0] + d[0] * step, x[1] + d[1] * step, x[2] + d[2] * step], e2 = err(y); if (e2 < best) { best = e2; x = y; moved = true; break; } }
+      if (!moved) step /= 2;
+    }
+    return { lh: Math.exp(x[0]), la: Math.exp(x[1]), d: Math.exp(x[2]), err: best };
+  }
+
+
+  // what a flat $1 on every result in each price band has returned, at the market's closing odds
+  function priceBands(rows) {
+    const bands = [[1, 1.5], [1.5, 2], [2, 3], [3, 5], [5, 10], [10, 999]].map(b => ({ lo: b[0], hi: b[1], n: 0, won: 0, ret: 0, priced: 0 }));
+    let matches = 0;
+    for (const r of rows) {
+      const o = r.odds; if (!o || !o.avg_home || !o.avg_draw || !o.avg_away) continue;
+      matches++;
+      const od = [o.avg_home, o.avg_draw, o.avg_away], res = r.hg > r.ag ? 0 : r.hg === r.ag ? 1 : 2;
+      od.forEach((p, k) => { const b = bands.find(x => p >= x.lo && p < x.hi); if (!b) return; b.n++; b.priced += 1 / p; if (res === k) { b.won++; b.ret += p; } });
+    }
+    return { matches, bands: bands.map(b => ({ lo: b.lo, hi: b.hi, n: b.n, winRate: b.n ? b.won / b.n : 0, pricedFor: b.n ? b.priced / b.n : 0, roi: b.n ? (b.ret - b.n) / b.n : 0 })) };
+  }
+
+  return { priceBands, VALUE_MIN, VALUE_MAX, FAIR_K, fairProbs, over25, G, CELLS, tokens, nameScore, resolveOne, resolveTwo, scoreGrid, mask, dot, prepRows, fitShots, fit, lambdas,
     buildLegs, annotate, analyseGame, evalSlip, suggestSlip, eligibleLegs, rng32, cdfOf, pick, simGame, summariseSim, moe,
-    simSlip, simYears, currentTable, seasonSetup, seasonRun, seasonSummary, backtest, paperTrade, calibration };
+    simSlip, simYears, currentTable, seasonSetup, seasonRun, seasonSummary, backtest, paperTrade, calibration, impliedLambdas };
 })();
 // ==== ENGINE END
 
@@ -782,7 +864,7 @@ const E = (function () {
   const pct = (x, d) => (x * 100).toFixed(d || 0) + '%';
   const price = x => Number(x).toFixed(2);
   const sgn = (x, d) => { const v = Math.abs(x * 100).toFixed(d || 0); return (Number(v) === 0 ? '' : x >= 0 ? '+' : MINUS) + v + '%'; };
-  const edgeCls = e => (e >= 0.025 ? 'pos' : e <= -0.15 ? 'neg' : 'flat');
+  const edgeCls = e => (e > E.VALUE_MAX ? 'warn' : e >= E.VALUE_MIN ? 'pos' : e <= -0.15 ? 'neg' : 'flat');
   const money = (x, d) => (x < 0 ? MINUS : '') + '$' + Math.abs(x).toFixed(d == null ? 2 : d);
   const fmtN = n => Number(n).toLocaleString('en-AU');
   const nowMs = () => { const p = new URLSearchParams(location.search).get('now'); const t = p ? Date.parse(p) : NaN; return isNaN(t) ? Date.now() : t; };
@@ -794,8 +876,8 @@ const E = (function () {
     raw: { results: null, history: null, odds: null, meta: null },
     rows: [], model: null, an: {}, games: [], unpriced: 0, legByKey: {},
     slip: store.get('slip', []), sims: store.get('sims', 20000), stake: store.get('stake', 2), quoted: '',
-    set: Object.assign({ halfLife: 300, ridge: 3, shotBlend: 35 }, store.get('set', {})),
-    vf: { market: 'All', min: 0, low: false, long: false, limit: 30 }, sug: { k: 4, min: 0.45 },
+    set: Object.assign({ halfLife: 300, ridge: 2, shotBlend: 50, trust: 25 }, store.get('set2', {})),
+    vf: { market: 'All', min: 0, low: false, long: false, cap: true, limit: 30 }, sug: { k: 4, min: 0.45 },
     pt: { scope: 'r1', min: 0.025, skipLow: true, res: null }, tab: 'games', dirty: new Set(TABS), season: null, seasonBusy: false, backtest: null, simPay: null, simOut: '', yearsOut: ''
   };
 
@@ -850,7 +932,7 @@ const E = (function () {
       if (!(k > now - 2 * 3600e3)) continue;
       const priced = g.books && g.books.sportsbet && g.books.sportsbet.h2h && g.books.sportsbet.h2h.home;
       if (!priced) { S.unpriced++; continue; }
-      const an = E.analyseGame(S.model, g); S.an[g.id] = an; S.games.push(an);
+      const an = E.analyseGame(S.model, g, S.set.trust / 100); S.an[g.id] = an; S.games.push(an);
     }
     S.games.sort((a, b) => Date.parse(a.game.kickoff_utc) - Date.parse(b.game.kickoff_utc));
     S.legByKey = {}; S.games.forEach(an => an.legs.forEach(l => { S.legByKey[l.key] = l; }));
@@ -905,7 +987,7 @@ const E = (function () {
     const on = S.slip.indexOf(l.key) >= 0, ec = edgeCls(l.edge);
     const cls = 'tile edge-' + ec + (on ? ' on' : '') + (l.ref ? ' ref' : '');
     const lines = '<span class="t-meta">Model <b>' + pct(l.p) + '</b></span>' + (l.mkt != null ? '<span class="t-meta">Sportsbet <b>' + pct(l.mkt) + '</b></span>' : '') +
-      '<span class="t-meta">Value <b class="e e-' + ec + '">' + sgn(l.edge) + '</b></span>' + (l.ref ? '<span class="t-meta">Reference price from ' + esc(l.book) + '</span>' : '');
+      '<span class="t-meta" title="' + (ec === 'warn' ? 'A gap this big is usually our error, not Sportsbet\u2019s' : 'What a $1 bet is worth on average if the chance is right') + '">Value <b class="e e-' + ec + '">' + sgn(l.edge) + '</b></span>' + (l.ref ? '<span class="t-meta">Reference price from ' + esc(l.book) + '</span>' : '');
     const tags = (l.isLikeliest ? '<em class="tag lk">Likeliest</em>' : '') + (l.isValue ? '<em class="tag vl">Best value</em>' : '');
     const inner = '<span class="t-sel">' + esc(label || l.sel) + '</span><span class="t-price">' + price(l.price) + '</span>' + lines + (tags ? '<span class="t-tags">' + tags + '</span>' : '');
     return l.ref ? '<div class="' + cls + '">' + inner + '</div>'
@@ -966,7 +1048,7 @@ const E = (function () {
       el.innerHTML = '<h2>Next games</h2><div class="note">No upcoming games have Sportsbet prices yet.' + (S.unpriced ? ' ' + S.unpriced + ' games are waiting on prices.' : '') + ' Run the Fetch Serie A data workflow closer to kickoff.</div>'; return;
     }
     let html = '<h2>Next games</h2><p class="lede">Every price is Sportsbet\u2019s. Under it: the model\u2019s chance, Sportsbet\u2019s own chance, and the value. <b>Likeliest</b> is the outcome with the highest chance. <b>Best value</b> is where the price beats the model\u2019s chance by 3% or more. They are often different bets. Tap any price to put it in your multi.</p>' +
-      '<details class="how"><summary>How to read this</summary><p>The Model bar is what the ratings say. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. The favourite (the likeliest winner) usually pays the least, so it is rarely the best value. Torino can be the likeliest winner while Parma\u2019s bigger price is the better bet for the risk. Value is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
+      '<details class="how"><summary>How to read this</summary><p>The Model bar blends our ratings (' + S.set.trust + '%) with a score grid built from Sportsbet\u2019s own result and goals prices (' + (100 - S.set.trust) + '%), so it is a fair price you can compare with every other price. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. The favourite (the likeliest winner) usually pays the least, so it is rarely the best value. Torino can be the likeliest winner while Parma\u2019s bigger price is the better bet for the risk. Value is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
     let day = '';
     S.games.forEach(an => { const d = dayKey(an.game.kickoff_utc); if (d !== day) { day = d; html += '<h3 class="day">' + esc(d) + '</h3>'; } html += card(an); });
     if (S.unpriced) html += '<p class="small">' + S.unpriced + ' more games have no Sportsbet price yet. They show up here once Sportsbet posts them.</p>';
@@ -1010,23 +1092,38 @@ const E = (function () {
     const el = $('#p-value'), all = Object.keys(S.legByKey).map(k => S.legByKey[k]).filter(l => !l.ref);
     if (!all.length) { el.innerHTML = '<h2>Value</h2><div class="note">No priced games yet.</div>'; return; }
     const el2 = E.eligibleLegs(all);
-    const best = el2.filter(l => l.p >= 0.30 && l.conf !== 'Low').sort((a, b) => b.edge - a.edge).slice(0, 8);
+    const best = el2.filter(l => l.p >= 0.30 && l.conf !== 'Low' && l.edge >= E.VALUE_MIN && l.edge <= E.VALUE_MAX).sort((a, b) => b.edge - a.edge).slice(0, 8);
     const traps = el2.filter(l => l.price <= 3.5).sort((a, b) => a.edge - b.edge).slice(0, 8);
     const markets = ['All'].concat(Array.from(new Set(all.map(l => l.market))));
-    el.innerHTML = '<h2>Value</h2><p class="lede">Every Sportsbet price on the page, ranked by what the model thinks it is worth. Treat a big edge with suspicion: it is more often something the model cannot see than a bargain.</p>' +
+    const pb = E.priceBands(S.rows), bandName = b => (b.hi > 900 ? 'Over ' + b.lo.toFixed(2) : b.lo.toFixed(2) + ' to ' + b.hi.toFixed(2));
+    const nOf = L => L.reduce((t, b) => t + b.n, 0), wavg = L => L.reduce((t, b) => t + b.roi * b.n, 0) / Math.max(1, nOf(L));
+    const short = pb.bands.filter(b => b.hi <= 2 && b.n), long = pb.bands.filter(b => b.lo >= 5 && b.n);
+    let verdict;
+    if (nOf(short) >= 30 && nOf(long) >= 30) {
+      const sR = wavg(short), lR = wavg(long);
+      verdict = sR > lR + 0.02
+        ? 'The shorter the price, the cheaper the bet. Results priced under 2.00 have returned ' + sgn(sR, 1) + ' per $1 and results priced 5.00 or more ' + sgn(lR, 0) + '. Bookmakers take much more margin out of long shots, so for a straight result bet the favourites and short prices are the cheapest way to play.'
+        : 'In this data short and long prices have cost about the same: under 2.00 returned ' + sgn(sR, 1) + ' per $1 and 5.00 or more ' + sgn(lR, 0) + '.';
+    } else verdict = 'There are too few matches in the shortest or longest price bands to compare them yet.';
+    const costCard = pb.matches ? '<div class="card"><h3>What a $1 bet has cost, by price</h3><p class="small">A flat $1 on every result in each price band, across ' + fmtN(pb.matches) + ' past matches at the bookmakers\u2019 average closing odds.</p>' +
+      '<div class="scroll"><table><thead><tr><th>Price</th><th>Bets</th><th>Won</th><th>Priced for</th><th>Return</th></tr></thead><tbody>' +
+      pb.bands.filter(b => b.n).map(b => '<tr><td>' + bandName(b) + '</td><td>' + fmtN(b.n) + (b.n < 30 ? '*' : '') + '</td><td>' + pct(b.winRate, 1) + '</td><td>' + pct(b.pricedFor, 1) + '</td><td><b>' + sgn(b.roi, 1) + '</b></td></tr>').join('') + '</tbody></table></div>' +
+      (pb.bands.some(b => b.n && b.n < 30) ? '<p class="small">* Fewer than 30 bets, so treat that row as noise.</p>' : '') + '<p>' + verdict + '</p></div>' : '';
+    el.innerHTML = '<h2>Value</h2><p class="lede">Every Sportsbet price on the page, ranked by what the model thinks it is worth. Treat a big edge with suspicion: it is more often something the model cannot see than a bargain.</p>' + costCard +
       '<div class="vgrid"><div class="card"><h3>Best value</h3><p class="small">Chance of 30% or more, enough data behind it.</p>' + (best.length ? best.map(vrow).join('') : '<p class="small">Nothing clears the bar right now.</p>') + '</div>' +
       '<div class="card"><h3>Ones to avoid</h3><p class="small">Short prices that look tempting but pay least for the risk.</p>' + traps.map(vrow).join('') + '</div></div>' +
       '<h3 style="margin-top:20px">All prices</h3><div class="row"><label class="field">Market<select id="vf-market">' + markets.map(m => '<option' + (m === S.vf.market ? ' selected' : '') + '>' + esc(m) + '</option>').join('') + '</select></label>' +
       '<label class="field">Model chance<select id="vf-min">' + [[0, 'Any'], [0.25, '25% or more'], [0.4, '40% or more'], [0.55, '55% or more'], [0.7, '70% or more']].map(o => '<option value="' + o[0] + '"' + (o[0] === S.vf.min ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
       '<label class="field" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="vf-low"' + (S.vf.low ? ' checked' : '') + ' style="min-width:0"> Hide low confidence</label>' +
-      '<label class="field" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="vf-long"' + (S.vf.long ? ' checked' : '') + ' style="min-width:0"> Include long shots (price over 12)</label></div><p class="small">Sorted by edge. Correct scores are hidden unless you pick them, because Sportsbet\u2019s margin there is huge and the biggest edges are mostly price caps. A big edge on a goals line usually means the model and Sportsbet disagree about how many goals to expect.</p><div id="vtable"></div>';
+      '<label class="field" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="vf-cap"' + (S.vf.cap ? ' checked' : '') + ' style="min-width:0"> Hide gaps over 12% (usually our error)</label>' +
+      '<label class="field" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="vf-long"' + (S.vf.long ? ' checked' : '') + ' style="min-width:0"> Include long shots (price over 12)</label></div><p class="small">Sorted by value. Correct scores are hidden unless you pick them, because Sportsbet\u2019s margin there is huge and the biggest edges are mostly price caps. A big edge on a goals line usually means the model and Sportsbet disagree about how many goals to expect.</p><div id="vtable"></div>';
     renderVTable();
   }
   function renderVTable() {
     const all = Object.keys(S.legByKey).map(k => S.legByKey[k]).filter(l => !l.ref && l.price >= 1.02);
     const cs = S.vf.market === 'Correct score';
     let list = all.filter(l => (S.vf.market === 'All' ? l.market !== 'Correct score' : l.market === S.vf.market) && !(l.market === 'Total goals' && l.line > 5.5) &&
-      (S.vf.long || cs || l.price <= 12) && l.p >= S.vf.min && !(S.vf.low && l.conf === 'Low')).sort((a, b) => b.edge - a.edge);
+      (S.vf.long || cs || l.price <= 12) && !(S.vf.cap && l.edge > E.VALUE_MAX) && l.p >= S.vf.min && !(S.vf.low && l.conf === 'Low')).sort((a, b) => b.edge - a.edge);
     const total = list.length; list = list.slice(0, S.vf.limit);
     $('#vtable').innerHTML = (list.length ? list.map(vrow).join('') : '<p class="small">Nothing matches those filters.</p>') +
       (total > list.length ? '<p style="margin-top:10px"><button type="button" class="btn alt" data-act="vmore">Show more (' + (total - list.length) + ' left)</button></p>' : '');
@@ -1123,7 +1220,10 @@ const E = (function () {
     el.innerHTML = '<h2>Model</h2><p class="lede">How the ratings are built, and how good they are.</p>' +
       '<div class="card"><h3>Settings</h3>' + sl('s-hl', 'Recency, in days until a match counts half', 60, 720, 30, S.set.halfLife, 'Lower reacts faster to recent form. Higher trusts last season more.') +
       sl('s-rg', 'Pull towards average', 0, 12, 0.5, S.set.ridge, 'Higher stops one hot or cold run from swinging a rating, which matters most early in the season.') +
+      sl('s-tr', 'Trust in our ratings, per cent', 0, 100, 5, S.set.trust, 'The rest comes from Sportsbet\u2019s own result and goals prices, which are used to price everything else (both score, double chance, correct score, other goal lines). In testing on 820 matches the market beat our ratings, so a low setting is the safe one. At 0 the page prices from Sportsbet alone.') +
       sl('s-sb', 'Weight on shots, per cent', 0, 100, 5, S.set.shotBlend, shots ? 'Blends a shots-based expected goals measure with real goals, since goals are lucky.' : 'Shots are not in your data yet. Update the fetcher and run it to switch this on.', !shots) + '</div>' +
+      '<div class="card"><h3>What the tests found</h3><p class="small">Every round of the last two seasons and this one (820 matches) was predicted using only earlier results, then compared with the market\u2019s closing odds.</p>' +
+      '<p>On results, our ratings alone trail the market, and no blend ever beat the market itself, so the model is a decent copy rather than a rival. On goals it matches the market after two fixes: squeezing total goals towards the league average, and stretching the gap between strong and weak sides. Edges over about 12% lost money in every test, so they are flagged as likely errors rather than bargains. The grid built from Sportsbet\u2019s own prices predicted both-teams-to-score, goal lines and exact scores better than our ratings did.</p></div>' +
       '<div class="card"><h3>Is it any good?</h3><p class="small">Replays this season one matchday at a time using only what was known beforehand, and scores the model against the market\u2019s closing odds. Lower is better.</p><div class="row"><button type="button" class="btn" data-act="backtest">Run the scorecard</button></div><div id="bt" aria-live="polite">' + btHtml() + '</div></div>' +
       '<div class="card"><h3>Look back: what would we have bet?</h3><p class="small">Goes back to a past round and uses only what was known before it started. It makes the Best value bets, then settles them against the real scores. Prices are the market\u2019s closing odds (football-data\u2019s bookmaker average), standing in for Sportsbet.</p>' +
       '<div class="row"><label class="field">Look back<select id="pt-rounds">' + ptScopes().map(o => '<option value="' + o[0] + '"' + (o[0] === S.pt.scope ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
@@ -1233,7 +1333,7 @@ const E = (function () {
         if (!picks.length) { S.simOut = ''; S.yearsOut = ''; return alert('Nothing fits that style right now. Try Balanced or Spicy.'); }
         S.slip = picks.map(l => l.key); store.set('slip', S.slip); S.simOut = ''; S.yearsOut = ''; S.simPay = null; S.dirty.add('multi'); S.dirty.add('games'); S.dirty.add('value'); updateSlipUI(true); return renderMulti(); }
       case 'season': return runSeason();
-      case 'paper': { t.disabled = true; t.textContent = 'Running'; return setTimeout(() => { const pc = ptConfig(); S.pt.res = E.paperTrade(S.rows, fitOpts(false), pc.seasons, { rounds: pc.rounds, minEdge: S.pt.min, skipLow: S.pt.skipLow }) || 'none'; $('#pt').innerHTML = ptHtml(); t.disabled = false; t.textContent = 'Run it again'; }, 30); }
+      case 'paper': { t.disabled = true; t.textContent = 'Running'; return setTimeout(() => { const pc = ptConfig(); S.pt.res = E.paperTrade(S.rows, fitOpts(false), pc.seasons, { rounds: pc.rounds, minEdge: S.pt.min, trust: S.set.trust / 100, skipLow: S.pt.skipLow }) || 'none'; $('#pt').innerHTML = ptHtml(); t.disabled = false; t.textContent = 'Run it again'; }, 30); }
       case 'backtest': { t.disabled = true; t.textContent = 'Running'; return setTimeout(() => { S.backtest = E.backtest(S.rows, fitOpts(false), 'cur') || 'none'; $('#bt').innerHTML = btHtml(); t.disabled = false; t.textContent = 'Run the scorecard again'; }, 30); }
     }
   });
@@ -1243,6 +1343,7 @@ const E = (function () {
     if (id === 'vf-market') { S.vf.market = e.target.value; S.vf.limit = 30; renderVTable(); }
     else if (id === 'vf-min') { S.vf.min = Number(e.target.value); S.vf.limit = 30; renderVTable(); }
     else if (id === 'vf-low') { S.vf.low = e.target.checked; S.vf.limit = 30; renderVTable(); }
+    else if (id === 'vf-cap') { S.vf.cap = e.target.checked; S.vf.limit = 30; renderVTable(); }
     else if (id === 'vf-long') { S.vf.long = e.target.checked; S.vf.limit = 30; renderVTable(); }
     else if (id === 'pt-rounds') S.pt.scope = e.target.value;
     else if (id === 'pt-min') S.pt.min = Number(e.target.value);
@@ -1251,12 +1352,12 @@ const E = (function () {
     else if (id === 'sg-min') S.sug.min = Number(e.target.value);
     else if (id === 'stake') { S.stake = e.target.value; store.set('stake', S.stake); }
     else if (id === 'quoted') { S.quoted = e.target.value; S.simOut = ''; S.yearsOut = ''; S.simPay = null; renderMulti(); }
-    else if (id === 's-hl' || id === 's-rg' || id === 's-sb') {
-      S.set = { halfLife: Number($('#s-hl').value), ridge: Number($('#s-rg').value), shotBlend: Number($('#s-sb').value) }; store.set('set', S.set);
+    else if (id === 's-hl' || id === 's-rg' || id === 's-sb' || id === 's-tr') {
+      S.set = { halfLife: Number($('#s-hl').value), ridge: Number($('#s-rg').value), shotBlend: Number($('#s-sb').value), trust: Number($('#s-tr').value) }; store.set('set2', S.set);
       refit(); showTabRefresh();
     } else if (id === 'pickfiles') loadFiles(e.target.files);
   });
-  document.addEventListener('input', e => { const id = e.target.id; if (id === 's-hl' || id === 's-rg' || id === 's-sb') $('#' + id + '-v').textContent = e.target.value; });
+  document.addEventListener('input', e => { const id = e.target.id; if (id === 's-hl' || id === 's-rg' || id === 's-sb' || id === 's-tr') $('#' + id + '-v').textContent = e.target.value; });
   $('#slipchip').addEventListener('click', () => showTab('multi'));
   async function loadFiles(files) {
     for (const f of Array.from(files)) {
