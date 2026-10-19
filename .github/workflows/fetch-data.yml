@@ -30,6 +30,7 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           SEASON_CODE: "2627"
           FETCH_EXTRAS: "${{ github.event.schedule == '30 22 * * 4' || inputs.extras == true }}"
+          HISTORY_SEASONS: "5"
         run: python scripts/fetch_data.py
 
       - name: Save data to the repo
