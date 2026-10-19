@@ -27,13 +27,26 @@ GitHub runs a script that grabs Serie A results and Sportsbet odds and saves the
 - **Team names don't match:** most are matched automatically ("AC Milan" becomes "Milan"). Anything left over is listed under `unknown_team_names` in `meta.json`. Add it to `team_names.json` under the right league, like `"Name from odds site": "Name in results"`, then rerun.
 - **Runs stopped happening:** GitHub can pause schedules on quiet repos. Press **Run workflow** to wake it up.
 
+## The page (Multilab)
+
+`index.html` is the Multilab page: games with fair odds against Sportsbet, a value board, the multi builder, a season outlook, and the model's scorecard. It reads the JSON files in `data/serie-a/`.
+
+To publish it (free, two minutes):
+1. Put `index.html` at the top level of the repo, next to `README.md`, not inside a folder.
+2. Go to **Settings, Pages**. Under **Build and deployment**, set **Source** to **Deploy from a branch**, choose branch **main** and folder **/ (root)**, and save.
+3. After a minute or two your page is live. **Settings, Pages** shows the exact address; it should look like `https://kilrcola.github.io/MULTILAB/`.
+
+The page reads the data straight from the repo, so it shows the newest fetch even if Pages has not rebuilt. If you open `index.html` from your computer instead, the browser blocks it from reading files; the page then offers a **Choose files** button so you can load `results.json` and `odds.json` by hand.
+
+After updating `fetch_data.py`, run **Fetch Serie A data** once. That adds the previous seasons (`history.json`) and shots data, which switches on the shots setting and gives the ratings much more to work with. Past seasons are only downloaded once, and cost no Odds API credits.
+
 ## Credits
 
 The free Odds API plan gives 500 credits **per month** and resets on the 1st. Each extra market costs about 1 credit per game, so one extras run is roughly 70 to 140 credits depending on how many games Sportsbet has priced. One extras run a week fits the free plan; two a week won't. The script stops fetching extras when 10 credits are left, and `meta.json` shows what's remaining.
 
 ## What's in `odds.json`
 
-One entry per game: `books` holds each bookmaker's head-to-head and totals prices (Sportsbet, plus PlayUp and TABtouch as reference prices for totals), and `extras.sportsbet` holds the extra markets. `meta.json` has an `extras` section showing, for each market, how many games had prices. Markets that error or come back empty show as blue notes on the run.
+One entry per game, with `home` and `away` (our names) and `home_api` and `away_api` (the odds site's own names): `books` holds each bookmaker's head-to-head and totals prices (Sportsbet, plus PlayUp and TABtouch as reference prices for totals), and `extras.sportsbet` holds the extra markets. `meta.json` has an `extras` section showing, for each market, how many games had prices. Markets that error or come back empty show as blue notes on the run.
 
 ## Bookmaker check (run once, or whenever you add a league)
 
