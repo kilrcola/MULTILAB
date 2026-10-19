@@ -6,7 +6,11 @@
     "FC Internazionale Milano": "Inter"
   },
   "premier-league": {
-    "_note": "Fill in after the first run if meta.json flags names."
+    "_note": "Only names the script can't match by itself. Left: odds site name. Right: results name (football-data).",
+    "Manchester United": "Man United",
+    "Manchester City": "Man City",
+    "Wolverhampton Wanderers": "Wolves",
+    "Nottingham Forest": "Nott'm Forest"
   },
   "la-liga": {
     "_note": "Fill in after the first run if meta.json flags names."
