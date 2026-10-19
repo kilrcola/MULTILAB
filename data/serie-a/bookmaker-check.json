@@ -1,0 +1,126 @@
+{
+ "checked_at_utc": "2026-10-19T04:18:35+00:00",
+ "sport": "soccer_italy_serie_a",
+ "region": "au",
+ "errors": [],
+ "games_in_feed": 22,
+ "standard_markets_by_bookmaker": {
+  "betr_au": {
+   "title": "Betr",
+   "games_with_h2h": 17,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "sportsbet": {
+   "title": "SportsBet",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "betfair_ex_au": {
+   "title": "Betfair",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "tab": {
+   "title": "TAB",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "pointsbetau": {
+   "title": "PointsBet (AU)",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "tabtouch": {
+   "title": "TABtouch",
+   "games_with_h2h": 12,
+   "games_with_totals": 12,
+   "totals_lines": [
+    2.5,
+    3.5
+   ]
+  },
+  "unibet": {
+   "title": "Unibet",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "playup": {
+   "title": "PlayUp",
+   "games_with_h2h": 20,
+   "games_with_totals": 20,
+   "totals_lines": [
+    2.5,
+    3.5
+   ]
+  },
+  "neds": {
+   "title": "Neds",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "ladbrokes_au": {
+   "title": "Ladbrokes",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "betright": {
+   "title": "Bet Right",
+   "games_with_h2h": 12,
+   "games_with_totals": 0,
+   "totals_lines": []
+  },
+  "picklebet_au": {
+   "title": "Picklebet (AU)",
+   "games_with_h2h": 22,
+   "games_with_totals": 0,
+   "totals_lines": []
+  }
+ },
+ "sportsbet_in_feed": true,
+ "extra_markets_test": {
+  "game": "Monza v Cagliari",
+  "kickoff_utc": "2026-10-19T16:30:00Z",
+  "markets": {
+   "btts": {
+    "bookmakers": [
+     "sportsbet",
+     "betfair_ex_au",
+     "tab",
+     "pointsbetau",
+     "tabtouch",
+     "unibet"
+    ]
+   },
+   "double_chance": {
+    "bookmakers": [
+     "sportsbet",
+     "betfair_ex_au",
+     "tab",
+     "pointsbetau",
+     "tabtouch",
+     "unibet"
+    ]
+   },
+   "draw_no_bet": {
+    "bookmakers": [
+     "sportsbet",
+     "betfair_ex_au",
+     "tab",
+     "pointsbetau",
+     "tabtouch",
+     "unibet"
+    ]
+   }
+  }
+ },
+ "credits_remaining": "493",
+ "credits_used_this_month": "7"
+}
