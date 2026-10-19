@@ -19,8 +19,21 @@ Twice a week (Tue and Fri, 9am Adelaide), GitHub runs a script that grabs Serie 
 
 - **Red cross on the push step:** go to **Settings → Actions → General → Workflow permissions**, choose **Read and write permissions**, and save.
 - **Odds failed:** open `meta.json` to see the error. Usually the secret name is misspelt, or you've used up the month's free credits. Each run costs only a couple.
-- **Team names don't match:** `meta.json` lists any `unknown_team_names`. Add each one to `team_names.json` like `"Name from odds site": "Name in results"`, then rerun.
+- **Yellow warning on a run:** the script found something to check, usually a team name it couldn't match. Click the run to read it, or open `meta.json` and look for `needs_attention`.
+- **Team names don't match:** most are matched automatically ("AC Milan" becomes "Milan"). Anything left over is listed under `unknown_team_names` in `meta.json`. Add it to `team_names.json` under the right league, like `"Name from odds site": "Name in results"`, then rerun.
 - **Runs stopped happening:** GitHub can pause schedules on quiet repos. Press **Run workflow** to wake it up.
+
+## Adding another league (checklist)
+
+1. In `scripts/fetch_data.py`, add the league to `ENABLED_LEAGUES` near the top. The options are `premier-league`, `la-liga`, `bundesliga` and `ligue-1`.
+2. Press **Run workflow** in the Actions tab.
+3. **Check names before trusting any odds.** Open `data/<league>/meta.json` and look at:
+   - `unknown_team_names`: add each one to that league's section of `team_names.json`.
+   - `auto_matched_names`: quickly confirm every pairing is right.
+   - `name_problems`: this flags things like 19 teams found when 20 were expected.
+4. Rerun until there are no yellow warnings and `needs_attention` is `false`.
+
+Each extra league uses a couple more free Odds API credits per run.
 
 ## Each season
 
