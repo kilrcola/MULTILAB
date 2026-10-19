@@ -1,0 +1,1063 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Multilab: Serie A fair odds and multis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ecf0ed; --card:#f8faf8; --ink:#13212c; --ink2:#46565f; --ink3:#586871; --rule:#c9d3cd; --grid:rgba(19,33,44,.05);
+  --verde:#0f6b33; --verde-bg:#d9eee1; --rosso:#b92f27; --rosso-bg:#f6dcd9; --azzurro:#245fa8; --amber:#8a5d00; --amber-bg:#f3e6c4;
+  --seg-h:#245fa8; --seg-d:#586871; --seg-a:#13212c; --seg-t:#fff;
+  --display:'Barlow Condensed','Arial Narrow','Roboto Condensed',system-ui,sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --paper:#0e181f; --card:#142029; --ink:#e7efeb; --ink2:#a9b8c0; --ink3:#8394a0; --rule:#2a3b46; --grid:rgba(231,239,235,.045);
+  --verde:#4fc47f; --verde-bg:#12351f; --rosso:#f0766d; --rosso-bg:#3a1c1a; --azzurro:#78adf0; --amber:#e3b44f; --amber-bg:#372c10;
+  --seg-h:#78adf0; --seg-d:#8394a0; --seg-a:#e7efeb; --seg-t:#0e181f;
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:400 16px/1.45 var(--body);background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;min-height:100vh}
+button,select,input{font:inherit;color:inherit}
+input[type=range]{accent-color:var(--ink)}
+input[type=checkbox]{accent-color:var(--ink)}
+h1,h2,h3,h4,p{margin:0}
+:focus-visible{outline:3px solid var(--azzurro);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 14px}
+
+/* chrome */
+.tabsbar{position:sticky;top:0;z-index:30;background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 18px;padding:calc(10px + env(safe-area-inset-top)) 14px 8px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.wordmark{font:700 30px/1 var(--display);letter-spacing:.01em}
+.league{font:600 15px/1 var(--display);padding:3px 7px;border:1.5px solid var(--ink);border-radius:3px}
+.fresh{font-size:13px;color:var(--ink3)}
+.fresh.old{color:var(--amber);font-weight:600}
+.sims{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink2)}
+.seg-btns{display:flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden}
+.seg-btns button{border:0;background:transparent;padding:4px 9px;cursor:pointer;font-weight:600;font-size:13px}
+.seg-btns button+button{border-left:1.5px solid var(--ink)}
+.seg-btns button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:0 0 auto;border:0;background:transparent;padding:10px 11px 8px;cursor:pointer;font:600 20px/1 var(--display);color:var(--ink2);border-bottom:4px solid transparent}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink)}
+.badge-n[hidden]{display:none}
+.badge-n{display:inline-block;min-width:20px;padding:1px 6px;margin-left:6px;border-radius:10px;background:var(--ink);color:var(--paper);font:600 13px/1.4 var(--body);text-align:center}
+
+main{padding:16px 0 120px}
+.panel[hidden]{display:none}
+h2{font:700 30px/1.05 var(--display);margin:6px 0 8px}
+h3{font:700 22px/1.1 var(--display);margin:0 0 6px}
+h4{font:600 14px/1.2 var(--body);color:var(--ink2);margin:0 0 6px}
+.lede{color:var(--ink2);max-width:62ch;margin-bottom:12px}
+.small{font-size:13px;color:var(--ink3)}
+.how{margin:0 0 6px;font-size:14px;color:var(--ink2)}
+.how summary{cursor:pointer;font-weight:600;color:var(--ink)}
+.how p{margin-top:6px;max-width:66ch}
+.day{font:700 20px/1 var(--display);margin:22px 0 4px;color:var(--ink2)}
+.note{border-left:4px solid var(--amber);background:var(--amber-bg);padding:9px 12px;margin:10px 0;font-size:14px;border-radius:0 4px 4px 0}
+.note.bad{border-color:var(--rosso);background:var(--rosso-bg)}
+
+/* game card */
+.game{background:var(--card);border:1px solid var(--rule);border-radius:6px;margin:12px 0;padding:14px 14px 12px}
+.gh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 14px}
+.teams{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 10px;font:700 32px/1.05 var(--display)}
+.vs{font:500 18px var(--display);color:var(--ink3)}
+.when{font-size:14px;color:var(--ink2);font-weight:500}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.badge{font-size:12.5px;font-weight:600;padding:2px 8px;border-radius:3px;border:1.5px solid var(--rule);color:var(--ink2)}
+.badge.conf-high{border-color:var(--verde);color:var(--verde)}
+.badge.conf-medium{border-color:var(--amber);color:var(--amber)}
+.badge.conf-low{border-color:var(--rosso);color:var(--rosso)}
+.badge.warn{background:var(--amber-bg);border-color:var(--amber);color:var(--amber)}
+.bars{margin:10px 0 2px;display:grid;gap:5px}
+.barrow{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:8px}
+.bar-l{font-size:13px;font-weight:600;color:var(--ink2)}
+.bar{display:flex;height:28px;border-radius:3px;overflow:hidden;border:1px solid var(--rule)}
+.seg{display:flex;align-items:center;justify-content:center;font:600 15px/1 var(--display);color:var(--seg-t);min-width:0;overflow:hidden;white-space:nowrap}
+.seg.h{background:var(--seg-h)} .seg.d{background:var(--seg-d)} .seg.a{background:var(--seg-a)}
+.key{display:flex;flex-wrap:wrap;gap:3px 14px;margin:5px 0 0 80px;font-size:12.5px;color:var(--ink2)}
+.key i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.xg{margin:8px 0 2px;font-size:14px;color:var(--ink2)}
+.xg b{font:700 20px var(--display);color:var(--ink)}
+.grp{margin-top:12px}
+.tiles{display:grid;gap:8px;grid-template-columns:repeat(3,1fr)}
+.tiles.t2{grid-template-columns:repeat(2,1fr)}
+.tiles.t4{grid-template-columns:repeat(2,1fr)}
+@media (min-width:640px){.tiles.t4{grid-template-columns:repeat(4,1fr)}}
+.tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:82px;padding:8px 10px;text-align:left;
+  background:var(--paper);border:1.5px solid var(--rule);border-radius:5px;cursor:pointer;transition:transform .12s}
+.tile:active{transform:scale(.98)}
+.tile.ref{cursor:default;border-style:dashed;opacity:.85}
+.t-sel{font-size:13px;color:var(--ink2);line-height:1.15;overflow-wrap:anywhere;padding-right:4px}
+.t-price{font:700 28px/1 var(--display)}
+.t-meta{font-size:12.5px;color:var(--ink2);line-height:1.25}
+.e{font-weight:700}
+.e-pos{color:var(--verde)} .e-neg{color:var(--rosso)} .e-flat{color:var(--ink2)}
+.tile.edge-pos{background:var(--verde-bg);border-color:var(--verde)}
+.tile.edge-neg{border-color:var(--rosso)}
+.tile.on{outline:3px solid var(--ink);outline-offset:1px}
+.tile.on::after{content:'In slip';position:absolute;top:6px;right:8px;font-size:11.5px;font-weight:700;color:var(--ink)}
+details.more{margin-top:12px;border-top:1px solid var(--rule);padding-top:8px}
+details.more>summary{cursor:pointer;font-weight:600;font-size:14px;padding:4px 0}
+.simbox{margin-top:12px;border-top:1px solid var(--rule);padding-top:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start}
+.simout{flex:1 1 280px;font-size:14px;color:var(--ink2)}
+.simout b{color:var(--ink)}
+.simout table{margin-top:4px}
+
+/* controls */
+.btn{border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:4px;font-weight:600;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink)}
+.btn[disabled]{opacity:.5;cursor:wait}
+.field{display:flex;flex-direction:column;gap:3px;font-size:13px;color:var(--ink2)}
+.field input,.field select{padding:7px 9px;border:1.5px solid var(--rule);border-radius:4px;background:var(--card);min-width:110px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:10px 0}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:14px;margin:12px 0}
+
+/* tables and lists */
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{font-weight:600;color:var(--ink2);text-align:right;padding:6px 8px;border-bottom:2px solid var(--ink);font-size:13px;white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+.scroll{overflow-x:auto}
+td b{font-weight:700}
+.vgrid{display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:820px){.vgrid{grid-template-columns:1fr 1fr}}
+.vrow{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:4px 12px;width:100%;text-align:left;padding:9px 6px;background:transparent;border:0;border-bottom:1px solid var(--rule);cursor:pointer}
+.vrow.on{background:var(--paper);box-shadow:inset 4px 0 0 var(--ink)}
+.v-main b{display:block;font-weight:600}
+.v-main small{display:block;font-size:12.5px;color:var(--ink3);line-height:1.25}
+.v-num{font:700 20px var(--display);text-align:right;min-width:48px}
+.v-num small{display:block;font:500 11.5px var(--body);color:var(--ink3)}
+.pill{font:700 17px var(--display);padding:2px 8px;border-radius:3px;border:1.5px solid var(--rule);min-width:56px;text-align:center}
+.pill.pos{color:var(--verde);border-color:var(--verde);background:var(--verde-bg)}
+.pill.neg{color:var(--rosso);border-color:var(--rosso)}
+
+/* multi */
+.legrow{display:grid;grid-template-columns:1fr auto auto auto;gap:4px 12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--rule)}
+.legrow .rm{border:1.5px solid var(--rule);background:transparent;border-radius:4px;width:34px;height:34px;cursor:pointer;font-size:18px;line-height:1}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0}
+@media (min-width:640px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{border-left:4px solid var(--ink);padding:2px 0 2px 10px}
+.stat b{display:block;font:700 30px/1 var(--display)}
+.stat span{font-size:13px;color:var(--ink2)}
+.stat.pos{border-color:var(--verde)} .stat.neg{border-color:var(--rosso)}
+.verdict{font-size:17px;max-width:62ch;margin:6px 0 10px}
+.prog{height:8px;background:var(--rule);border-radius:4px;overflow:hidden;margin:8px 0}
+.prog>i{display:block;height:100%;width:0;background:var(--ink)}
+.range{width:100%}
+.slide{margin:10px 0;display:grid;gap:2px}
+.slide label{display:flex;justify-content:space-between;font-weight:600;font-size:14px}
+.slide small{color:var(--ink3);font-size:12.5px}
+
+/* slip chip */
+.slipchip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;border:2px solid var(--ink);background:var(--ink);color:var(--paper);
+  padding:11px 20px;border-radius:30px;font:600 17px var(--display);letter-spacing:.01em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28)}
+.slipchip[hidden]{display:none}
+.slipchip.bump{animation:bump .25s}
+@keyframes bump{50%{transform:translateX(-50%) scale(1.07)}}
+.foot{max-width:980px;margin:0 auto;padding:0 14px 90px;font-size:12.5px;color:var(--ink3)}
+.loading{padding:60px 0;text-align:center;color:var(--ink2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+@media (max-width:560px){.hide-s{display:none}}
+@media (max-width:430px){.tabs button{padding:10px 8px 8px;font-size:18px}.wordmark{font-size:27px}}
+@media (max-width:430px){th,td{padding-left:5px;padding-right:5px}}
+
+</style>
+</head>
+<body>
+<header class="top-outer">
+  <div class="wrap top">
+      <div class="brand"><span class="wordmark">Multilab</span><span class="league">Serie A</span></div>
+      <div class="fresh" id="fresh" aria-live="polite">Loading data</div>
+      <div class="sims" role="group" aria-label="Simulations per run">
+        <span>Simulations per run</span>
+        <div class="seg-btns" id="simbtns">
+          <button type="button" data-sims="10000">10k</button><button type="button" data-sims="20000">20k</button><button type="button" data-sims="50000">50k</button><button type="button" data-sims="100000">100k</button>
+        </div>
+      </div>
+  </div>
+</header>
+<div class="tabsbar"><div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" data-tab="games">Games</button>
+      <button type="button" role="tab" data-tab="value">Value</button>
+      <button type="button" role="tab" data-tab="multi">Multi<span class="badge-n" id="slipn" hidden>0</span></button>
+      <button type="button" role="tab" data-tab="season">Season</button>
+      <button type="button" role="tab" data-tab="model">Model</button>
+    </nav>
+</div></div>
+<main class="wrap">
+  <div id="status"></div>
+  <section class="panel" id="p-games" role="tabpanel" hidden></section>
+  <section class="panel" id="p-value" role="tabpanel" hidden></section>
+  <section class="panel" id="p-multi" role="tabpanel" hidden></section>
+  <section class="panel" id="p-season" role="tabpanel" hidden></section>
+  <section class="panel" id="p-model" role="tabpanel" hidden></section>
+</main>
+<button type="button" class="slipchip" id="slipchip" hidden></button>
+<p class="foot">Multilab turns past results into estimated chances. They are estimates, not tips, and Sportsbet's prices already include their margin. Bet small and only what you can afford to lose. If it stops being fun, Gambling Help Online is on 1800 858 858.</p>
+
+<script>
+// ==== ENGINE START
+const E = (function () {
+  'use strict';
+  const DAY = 86400000, G = 11, CELLS = 121;
+  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+
+  // ---------- team names (odds sites spell clubs differently) ----------
+  const FILLER = new Set(['ac', 'acf', 'as', 'ss', 'ssc', 'us', 'fc', 'cfc', 'bc', 'afc', 'sc', 'cf', 'calcio', 'club', 'football']);
+  const ALIAS = { 'inter milan': 'inter', 'internazionale': 'inter', 'fc internazionale milano': 'inter', 'internazionale milano': 'inter' };
+  const tokens = s => (String(s).toLowerCase().match(/[a-z]+|\d+/g) || []).filter(w => !FILLER.has(w) && !/^\d+$/.test(w));
+  const canon = s => { const k = String(s).trim().toLowerCase(); return ALIAS[k] || k; };
+  function nameScore(a, b) {
+    a = canon(a); b = canon(b);
+    if (a === b) return 4;
+    const ta = tokens(a), tb = tokens(b);
+    if (!ta.length || !tb.length) return 0;
+    if (ta.join(' ') === tb.join(' ')) return 3;
+    const sa = new Set(ta), sb = new Set(tb);
+    const inter = ta.filter(x => sb.has(x)).length;
+    if (inter && (ta.every(x => sb.has(x)) || tb.every(x => sa.has(x)))) return 1 + 0.5 * inter / Math.max(ta.length, tb.length);
+    return 0;
+  }
+  function sideScore(name, game, side) {
+    let s = nameScore(name, game[side]);
+    const api = game[side + '_api'];
+    if (api) s = Math.max(s, nameScore(name, api));
+    return s;
+  }
+  function resolveOne(name, game) {
+    const h = sideScore(name, game, 'home'), a = sideScore(name, game, 'away');
+    if (h === a) return null;
+    return h > a ? 'home' : 'away';
+  }
+  function resolveTwo(n1, n2, game) {
+    const s1 = sideScore(n1, game, 'home') + sideScore(n2, game, 'away');
+    const s2 = sideScore(n1, game, 'away') + sideScore(n2, game, 'home');
+    if (s1 === s2) return null;
+    return s1 > s2 ? ['home', 'away'] : ['away', 'home'];
+  }
+
+  // ---------- score grid (Poisson with the Dixon-Coles low-score fix) ----------
+  function pmf(l, n) { const p = new Float64Array(n + 1); p[0] = Math.exp(-l); for (let k = 1; k <= n; k++) p[k] = p[k - 1] * l / k; return p; }
+  function tau(i, j, lh, la, rho) {
+    if (i === 0 && j === 0) return 1 - lh * la * rho;
+    if (i === 0 && j === 1) return 1 + lh * rho;
+    if (i === 1 && j === 0) return 1 + la * rho;
+    if (i === 1 && j === 1) return 1 - rho;
+    return 1;
+  }
+  function scoreGrid(lh, la, rho) {
+    const ph = pmf(lh, G - 1), pa = pmf(la, G - 1), g = new Float64Array(CELLS);
+    let s = 0;
+    for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) {
+      const v = ph[i] * pa[j] * Math.max(tau(i, j, lh, la, rho), 0);
+      g[i * G + j] = v; s += v;
+    }
+    for (let k = 0; k < CELLS; k++) g[k] /= s;
+    return g;
+  }
+  const mask = pred => { const m = new Uint8Array(CELLS); for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) if (pred(i, j)) m[i * G + j] = 1; return m; };
+  const dot = (m, grid) => { let s = 0; for (let k = 0; k < CELLS; k++) if (m[k]) s += grid[k]; return s; };
+
+  // ---------- data ----------
+  function parseDate(d) {
+    if (typeof d === 'number') return d;
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(d || ''));
+    return m ? Date.UTC(+m[1], +m[2] - 1, +m[3], 12) : null;
+  }
+  const nn = v => (v === undefined || v === null ? null : v);
+  function prepRows(sets) {
+    const rows = [];
+    for (const set of sets) for (const m of (set.matches || [])) {
+      const date = parseDate(m.date);
+      if (date == null || m.hg == null || m.ag == null) continue;
+      rows.push({ date, season: set.season, home: m.home, away: m.away, hg: m.hg, ag: m.ag,
+        hs: nn(m.hs), as: nn(m['as']), hst: nn(m.hst), ast: nn(m.ast), odds: m.closing_odds || null });
+    }
+    rows.sort((a, b) => a.date - b.date);
+    return rows;
+  }
+
+  // shots -> expected goals stand-in. Centred regression: goals vary with shots on target and other shots
+  // around their averages, so the proxy keeps the real average goals and only uses what shots tell us.
+  function fitShots(rows) {
+    let n = 0, sg = 0, ss = 0, so = 0, sss = 0, soo = 0, sso = 0, sgs = 0, sgo = 0;
+    const add = (g, hst, hs) => {
+      if (hst == null || hs == null) return;
+      const s = hst, o = Math.max(hs - hst, 0);
+      n++; sg += g; ss += s; so += o; sss += s * s; soo += o * o; sso += s * o; sgs += g * s; sgo += g * o;
+    };
+    for (const r of rows) { add(r.hg, r.hst, r.hs); add(r.ag, r.ast, r.as); }
+    if (n < 100) return { n: 0, fitted: false };
+    const gm = sg / n, sm = ss / n, om = so / n;
+    const Sss = sss - ss * ss / n, Soo = soo - so * so / n, Sso = sso - ss * so / n, Sgs = sgs - sg * ss / n, Sgo = sgo - sg * so / n;
+    const det = Sss * Soo - Sso * Sso;
+    if (Math.abs(det) < 1e-9) return { n: 0, fitted: false };
+    return { a: clamp((Sgs * Soo - Sgo * Sso) / det, 0.05, 0.6), b: clamp((Sss * Sgo - Sso * Sgs) / det, 0, 0.1), gm, sm, om, n, fitted: true };
+  }
+  const shotProxy = (sh, hst, hs) => Math.max(0, sh.gm + sh.a * (hst - sh.sm) + sh.b * (Math.max(hs - hst, 0) - sh.om));
+
+  // ---------- ratings ----------
+  function fit(rows, opt) {
+    opt = Object.assign({ halfLife: 300, ridge: 3, shotBlend: 0.35, asOf: null }, opt || {});
+    let asOf = opt.asOf;
+    if (asOf == null) { asOf = 0; for (const r of rows) if (r.date > asOf) asOf = r.date; asOf += DAY; }
+    const used = rows.filter(r => r.date < asOf);
+    const model = { teams: {}, mu: 0, h: 0, rho: -0.05, shots: { n: 0, fitted: false }, opt, asOf, nRows: used.length };
+    if (used.length < 10) return model;
+    const sm = fitShots(used); model.shots = sm;
+    const beta = sm.fitted ? clamp(opt.shotBlend, 0, 1) : 0;
+    const idx = new Map(), names = [];
+    const ti = n => { let i = idx.get(n); if (i === undefined) { i = names.length; idx.set(n, i); names.push(n); } return i; };
+    const N = used.length;
+    const H = new Int32Array(N), A = new Int32Array(N), W = new Float64Array(N), YH = new Float64Array(N), YA = new Float64Array(N);
+    const hl = Math.max(opt.halfLife, 1) * DAY;
+    used.forEach((r, m) => {
+      H[m] = ti(r.home); A[m] = ti(r.away);
+      W[m] = Math.pow(0.5, (asOf - r.date) / hl);
+      const ph = (beta > 0 && r.hst != null && r.hs != null) ? shotProxy(sm, r.hst, r.hs) : r.hg;
+      const pa = (beta > 0 && r.ast != null && r.as != null) ? shotProxy(sm, r.ast, r.as) : r.ag;
+      YH[m] = (1 - beta) * r.hg + beta * ph; YA[m] = (1 - beta) * r.ag + beta * pa;
+    });
+    const T = names.length, homeOf = [], awayOf = [];
+    for (let t = 0; t < T; t++) { homeOf.push([]); awayOf.push([]); }
+    for (let m = 0; m < N; m++) { homeOf[H[m]].push(m); awayOf[A[m]].push(m); }
+    const att = new Float64Array(T), def = new Float64Array(T), lam = Math.max(opt.ridge, 0.01);
+    let sy = 0, sw = 0;
+    for (let m = 0; m < N; m++) { sy += W[m] * (YH[m] + YA[m]); sw += 2 * W[m]; }
+    let mu = Math.log(Math.max(sy / sw, 0.1)), h = 0.2;
+    const init = opt.init;                      // warm start: begin from an earlier fit (much faster)
+    if (init && init.teams && isFinite(init.mu)) {
+      mu = init.mu; h = init.h;
+      names.forEach((n, t) => { const q = init.teams[n]; if (q) { att[t] = q.att; def[t] = q.def; } });
+    }
+    let iters = 0;
+    for (let it = 0; it < 400; it++) {
+      iters = it + 1;
+      let maxd = 0;
+      for (let t = 0; t < T; t++) {
+        let g = -lam * att[t], Hs = lam;
+        for (const m of homeOf[t]) { const e = W[m] * Math.exp(mu + h + att[t] - def[A[m]]); g += W[m] * YH[m] - e; Hs += e; }
+        for (const m of awayOf[t]) { const e = W[m] * Math.exp(mu + att[t] - def[H[m]]); g += W[m] * YA[m] - e; Hs += e; }
+        const d1 = g / Hs; att[t] += d1;
+        g = -lam * def[t]; Hs = lam;
+        for (const m of homeOf[t]) { const e = W[m] * Math.exp(mu + att[A[m]] - def[t]); g += e - W[m] * YA[m]; Hs += e; }
+        for (const m of awayOf[t]) { const e = W[m] * Math.exp(mu + h + att[H[m]] - def[t]); g += e - W[m] * YH[m]; Hs += e; }
+        const d2 = g / Hs; def[t] += d2;
+        maxd = Math.max(maxd, Math.abs(d1), Math.abs(d2));
+      }
+      let syAll = 0, seAll = 0, syH = 0, seH = 0;
+      for (let m = 0; m < N; m++) {
+        const eH = W[m] * Math.exp(mu + h + att[H[m]] - def[A[m]]), eA = W[m] * Math.exp(mu + att[A[m]] - def[H[m]]);
+        syAll += W[m] * (YH[m] + YA[m]); seAll += eH + eA; syH += W[m] * YH[m]; seH += eH;
+      }
+      const dm = Math.log(syAll / seAll); mu += dm;
+      const dh = Math.log(syH / seH) - dm; h += dh;      // keeps mu and h from fighting each other
+      maxd = Math.max(maxd, Math.abs(dm), Math.abs(dh));
+      if (maxd < 2e-5) break;
+    }
+    // low-score correction strength (rho) by grid search on actual goals
+    const low = [];
+    for (let m = 0; m < N; m++) if (used[m].hg <= 1 && used[m].ag <= 1) {
+      low.push([used[m].hg, used[m].ag, Math.exp(mu + h + att[H[m]] - def[A[m]]), Math.exp(mu + att[A[m]] - def[H[m]]), W[m]]);
+    }
+    let bestRho = -0.05, bestLL = -Infinity;
+    if (low.length >= 30) {
+      for (let k = 0; k <= 90; k++) {
+        const rho = -0.3 + k * 0.005; let ll = 0, ok = true;
+        for (const [i, j, lh, la, w] of low) { const t = tau(i, j, lh, la, rho); if (t <= 0.02) { ok = false; break; } ll += w * Math.log(t); }
+        if (ok && ll > bestLL) { bestLL = ll; bestRho = rho; }
+      }
+    }
+    model.iters = iters; model.mu = mu; model.h = h; model.rho = Math.round(bestRho * 1000) / 1000;
+    const eff = new Float64Array(T), cnt = new Int32Array(T);
+    for (let m = 0; m < N; m++) { eff[H[m]] += W[m]; eff[A[m]] += W[m]; cnt[H[m]]++; cnt[A[m]]++; }
+    names.forEach((n, t) => { model.teams[n] = { att: att[t], def: def[t], eff: eff[t], n: cnt[t] }; });
+    return model;
+  }
+  function lambdas(model, home, away) {
+    const th = model.teams[home], ta = model.teams[away];
+    return {
+      lh: Math.exp(model.mu + model.h + (th ? th.att : 0) - (ta ? ta.def : 0)),
+      la: Math.exp(model.mu + (ta ? ta.att : 0) - (th ? th.def : 0)),
+      known: !!(th && ta)
+    };
+  }
+
+  // ---------- Sportsbet prices -> bettable legs ----------
+  function buildLegs(game) {
+    const legs = [], gid = game.id;
+    const sb = (game.books && game.books.sportsbet) || null;
+    const ex = (game.extras && game.extras.sportsbet) || {};
+    const push = o => { o.gid = gid; o.key = gid + '|' + o.group + '|' + o.sel; o.kind = o.kind || 'win'; o.void = o.void || null; legs.push(o); };
+    if (sb && sb.h2h && sb.h2h.home && sb.h2h.draw && sb.h2h.away) {
+      push({ market: 'Match result', group: 'h2h', sel: game.home, price: sb.h2h.home, win: mask((h, a) => h > a) });
+      push({ market: 'Match result', group: 'h2h', sel: 'Draw', price: sb.h2h.draw, win: mask((h, a) => h === a) });
+      push({ market: 'Match result', group: 'h2h', sel: game.away, price: sb.h2h.away, win: mask((h, a) => h < a) });
+    }
+    const btts = ex.btts && ex.btts.outcomes;
+    if (btts) for (const o of btts) {
+      const yes = /^yes$/i.test(o.name), no = /^no$/i.test(o.name);
+      if (yes || no) push({ market: 'Both teams to score', group: 'btts', sel: yes ? 'Yes' : 'No', price: o.price, win: mask((h, a) => (h > 0 && a > 0) === yes) });
+    }
+    const dc = ex.double_chance && ex.double_chance.outcomes;
+    if (dc) for (const o of dc) {
+      const parts = String(o.name).split(/\s+or\s+/i).map(s => s.trim());
+      if (parts.length !== 2) continue;
+      const di = parts.findIndex(p => /^draw$/i.test(p));
+      if (di >= 0) {
+        const side = resolveOne(parts[1 - di], game); if (!side) continue;
+        push({ market: 'Double chance', group: 'dc', sel: game[side] + ' or draw', price: o.price, win: mask(side === 'home' ? (h, a) => h >= a : (h, a) => a >= h) });
+      } else push({ market: 'Double chance', group: 'dc', sel: game.home + ' or ' + game.away, price: o.price, win: mask((h, a) => h !== a) });
+    }
+    const dnb = ex.draw_no_bet && ex.draw_no_bet.outcomes;
+    if (dnb) for (const o of dnb) {
+      const side = resolveOne(o.name, game); if (!side) continue;
+      push({ market: 'Draw no bet', group: 'dnb', sel: game[side], price: o.price, kind: 'dnb',
+        win: mask(side === 'home' ? (h, a) => h > a : (h, a) => a > h), void: mask((h, a) => h === a) });
+    }
+    const addTotal = (o, ref, book) => {
+      const over = /^over$/i.test(o.name), under = /^under$/i.test(o.name);
+      const line = o.point != null ? o.point : o.line;
+      if ((!over && !under) || line == null) return;
+      push({ market: 'Total goals', group: 'ou:' + line, line, sel: (over ? 'Over ' : 'Under ') + line, price: o.price, ref: !!ref, book,
+        win: mask((h, a) => over ? h + a > line : h + a < line) });
+    };
+    const alt = ex.alternate_totals && ex.alternate_totals.outcomes;
+    if (alt && alt.length) alt.forEach(o => addTotal(o, false));
+    else for (const key of ['playup', 'tabtouch']) {
+      const b = game.books && game.books[key];
+      if (b && b.totals && b.totals.length) { b.totals.forEach(t => addTotal({ name: t.side, line: t.line, price: t.price }, true, b.title || key)); break; }
+    }
+    const cs = ex.correct_score && ex.correct_score.outcomes;
+    if (cs) for (const o of cs) {
+      const parts = String(o.name).split('|'); if (parts.length !== 2) continue;
+      const p = parts.map(s => { const i = s.lastIndexOf(':'); return i < 0 ? null : { team: s.slice(0, i).trim(), g: parseInt(s.slice(i + 1), 10) }; });
+      if (!p[0] || !p[1] || isNaN(p[0].g) || isNaN(p[1].g)) continue;
+      const ord = resolveTwo(p[0].team, p[1].team, game); if (!ord) continue;
+      const goals = {}; goals[ord[0]] = p[0].g; goals[ord[1]] = p[1].g;
+      if (goals.home >= G || goals.away >= G) continue;
+      push({ market: 'Correct score', group: 'cs', sel: goals.home + '-' + goals.away, price: o.price, win: mask((h, a) => h === goals.home && a === goals.away) });
+    }
+    return legs;
+  }
+  const GROUP_SIZE = { h2h: 3, btts: 2, dnb: 2, dc: 3 };
+  function annotate(legs, grid) {
+    for (const l of legs) {
+      l.p = dot(l.win, grid); l.pv = l.void ? dot(l.void, grid) : 0;
+      l.edge = l.p * l.price + l.pv - 1;
+      l.fair = l.p > 0 ? (1 - l.pv) / l.p : Infinity;
+    }
+    const groups = {};
+    for (const l of legs) (groups[l.group] = groups[l.group] || []).push(l);
+    for (const g in groups) {
+      const L = groups[g], want = g.indexOf('ou:') === 0 ? 2 : GROUP_SIZE[g];
+      if (!want || L.length !== want) continue;
+      let tot = 0; for (const l of L) tot += 1 / l.price;
+      const target = g === 'dc' ? 2 : 1;
+      for (const l of L) l.mkt = (1 / l.price) / tot * target;
+    }
+  }
+  function analyseGame(model, game) {
+    const lam = lambdas(model, game.home, game.away);
+    const grid = scoreGrid(lam.lh, lam.la, model.rho);
+    const legs = buildLegs(game); annotate(legs, grid);
+    let ph = 0, pd = 0, pa = 0;
+    for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) { const v = grid[i * G + j]; if (i > j) ph += v; else if (i === j) pd += v; else pa += v; }
+    const h2h = legs.filter(l => l.group === 'h2h');
+    const mkt = h2h.length === 3 && h2h[0].mkt != null ? { home: h2h[0].mkt, draw: h2h[1].mkt, away: h2h[2].mkt } : null;
+    const th = model.teams[game.home], ta = model.teams[game.away];
+    const eff = Math.min(th ? th.eff : 0, ta ? ta.eff : 0);
+    const level = eff >= 14 ? 'High' : eff >= 7 ? 'Medium' : 'Low';
+    const disagree = mkt ? Math.max(Math.abs(ph - mkt.home), Math.abs(pd - mkt.draw), Math.abs(pa - mkt.away)) : 0;
+    const conf = { level, eff, disagree, flag: disagree > 0.08, known: lam.known };
+    legs.forEach(l => { l.conf = level; l.flag = conf.flag; });
+    return { game, lam, grid, legs, p1x2: { home: ph, draw: pd, away: pa }, mkt, conf };
+  }
+
+  // ---------- multis ----------
+  function evalSlip(legs, grids, quoted) {
+    const by = {};
+    for (const l of legs) (by[l.gid] = by[l.gid] || []).push(l);
+    const hasDnb = legs.some(l => l.kind === 'dnb');
+    let pAll = 1, ex = 1, noVoid = 1, odds = 1, sameGame = false;
+    for (const gid in by) {
+      const L = by[gid], grid = grids[gid];
+      if (L.length > 1) sameGame = true;
+      let pw = 0, e = 0, pv = 0;
+      for (let k = 0; k < CELLS; k++) {
+        const p = grid[k]; if (!p) continue;
+        let mult = 1, win = true, anyVoid = false;
+        for (const l of L) {
+          if (l.void && l.void[k]) anyVoid = true;
+          if (l.win[k]) mult *= l.price;
+          else if (l.void && l.void[k]) win = false;
+          else { mult = 0; win = false; break; }
+        }
+        e += p * mult; if (win) pw += p;
+        if (anyVoid) pv += p;
+      }
+      pAll *= pw; ex *= e; noVoid *= (1 - pv);
+      for (const l of L) odds *= l.price;
+    }
+    const useQuoted = quoted > 1 && !hasDnb;
+    if (useQuoted) { odds = quoted; ex = quoted * pAll; }
+    return { pAll, odds, ev: ex - 1, fair: hasDnb || pAll <= 0 ? null : 1 / pAll, pAnyVoid: 1 - noVoid, sameGame, hasDnb, usedQuoted: useQuoted, nLegs: legs.length };
+  }
+  const eligibleLegs = all => all.filter(l => !l.ref && l.market !== 'Correct score' && l.price >= 1.12);
+  function suggestSlip(all, k, minProb) {
+    const best = {};
+    for (const l of eligibleLegs(all)) {
+      if (l.p < minProb || l.conf === 'Low') continue;
+      const c = best[l.gid]; if (!c || l.edge > c.edge) best[l.gid] = l;
+    }
+    return Object.keys(best).map(g => best[g]).sort((a, b) => b.edge - a.edge).slice(0, k);
+  }
+
+  // ---------- simulation ----------
+  function rng32(seed) {
+    let a = seed >>> 0;
+    return function () { a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  function cdfOf(grid) { const c = new Float64Array(CELLS); let s = 0; for (let k = 0; k < CELLS; k++) { s += grid[k]; c[k] = s; } c[CELLS - 1] = 1; return c; }
+  function pick(c, u) { let lo = 0, hi = CELLS - 1; while (lo < hi) { const mid = (lo + hi) >> 1; if (c[mid] < u) lo = mid + 1; else hi = mid; } return lo; }
+  function simGame(grid, n, rnd) { const c = cdfOf(grid), counts = new Uint32Array(CELLS); for (let s = 0; s < n; s++) counts[pick(c, rnd())]++; return counts; }
+  function summariseSim(counts, n) {
+    let h = 0, d = 0, a = 0, btts = 0, o25 = 0, goals = 0; const list = [];
+    for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) {
+      const c = counts[i * G + j]; if (!c) continue;
+      if (i > j) h += c; else if (i === j) d += c; else a += c;
+      if (i > 0 && j > 0) btts += c; if (i + j > 2) o25 += c; goals += c * (i + j);
+      list.push({ score: i + '-' + j, count: c });
+    }
+    list.sort((x, y) => y.count - x.count);
+    return { n, home: h / n, draw: d / n, away: a / n, btts: btts / n, over25: o25 / n, avgGoals: goals / n, top: list.slice(0, 6).map(x => ({ score: x.score, p: x.count / n })) };
+  }
+  const moe = (p, n) => 1.96 * Math.sqrt(Math.max(p * (1 - p), 1e-9) / n);   // 95% sampling range
+  function simSlip(legs, grids, n, rnd, quoted) {
+    const by = {}; for (const l of legs) (by[l.gid] = by[l.gid] || []).push(l);
+    const gids = Object.keys(by), cdfs = gids.map(g => cdfOf(grids[g]));
+    const useQuoted = quoted > 1 && !legs.some(l => l.kind === 'dnb');
+    const pay = new Float32Array(n); let wins = 0, sum = 0;
+    for (let s = 0; s < n; s++) {
+      let mult = 1;
+      for (let gi = 0; gi < gids.length && mult > 0; gi++) {
+        const k = pick(cdfs[gi], rnd());
+        for (const l of by[gids[gi]]) { if (l.win[k]) mult *= l.price; else if (l.void && l.void[k]) { /* refunded */ } else { mult = 0; break; } }
+      }
+      const p = useQuoted && mult > 0 ? quoted : mult;
+      pay[s] = p; sum += p; if (p > 1.0000001) wins++;
+    }
+    return { n, wins, hitRate: wins / n, meanPayout: sum / n, pay };
+  }
+  function simYears(pay, stake, weeks, years, rnd) {
+    const n = pay.length, res = new Float64Array(years); let anyWin = 0, profit = 0, sum = 0;
+    for (let y = 0; y < years; y++) {
+      let t = 0, w = 0;
+      for (let k = 0; k < weeks; k++) { const p = pay[(rnd() * n) | 0]; t += p; if (p > 1.0000001) w++; }
+      const pr = (t - weeks) * stake; res[y] = pr; sum += pr; if (pr > 0) profit++; if (w > 0) anyWin++;
+    }
+    res.sort();
+    const q = f => res[Math.min(years - 1, Math.floor(f * years))];
+    return { years, weeks, pProfit: profit / years, pAnyWin: anyWin / years, mean: sum / years, p5: q(0.05), p50: q(0.5), p95: q(0.95) };
+  }
+
+  // ---------- season ----------
+  function currentTable(results, extra) {
+    const t = {}, row = n => t[n] || (t[n] = { p: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, pts: 0 });
+    for (const m of results) {
+      const h = row(m.home), a = row(m.away);
+      h.p++; a.p++; h.gf += m.hg; h.ga += m.ag; a.gf += m.ag; a.ga += m.hg;
+      if (m.hg > m.ag) { h.w++; a.l++; h.pts += 3; } else if (m.hg < m.ag) { a.w++; h.l++; a.pts += 3; } else { h.d++; a.d++; h.pts++; a.pts++; }
+    }
+    (extra || []).forEach(row);
+    return t;
+  }
+  function seasonSetup(model, results, extra) {
+    const table = currentTable(results, extra), names = Object.keys(table), T = names.length, idx = {};
+    names.forEach((n, i) => { idx[n] = i; });
+    const played = new Set(results.map(m => m.home + '|' + m.away)), fixtures = [];
+    for (const h of names) for (const a of names) if (h !== a && !played.has(h + '|' + a)) {
+      const l = lambdas(model, h, a);
+      fixtures.push({ h: idx[h], a: idx[a], cdf: cdfOf(scoreGrid(l.lh, l.la, model.rho)) });
+    }
+    const pts0 = new Int32Array(T), gd0 = new Int32Array(T), gf0 = new Int32Array(T);
+    names.forEach((n, i) => { pts0[i] = table[n].pts; gd0[i] = table[n].gf - table[n].ga; gf0[i] = table[n].gf; });
+    return { names, T, table, fixtures, pts0, gd0, gf0, pos: new Uint32Array(T * T), sumPts: new Float64Array(T), done: 0 };
+  }
+  function seasonRun(st, count, rnd) {
+    const T = st.T, pts = new Int32Array(T), gd = new Int32Array(T), gf = new Int32Array(T), key = new Float64Array(T), order = new Int32Array(T);
+    for (let s = 0; s < count; s++) {
+      pts.set(st.pts0); gd.set(st.gd0); gf.set(st.gf0);
+      for (const f of st.fixtures) {
+        const k = pick(f.cdf, rnd()), hg = (k / G) | 0, ag = k % G;
+        gf[f.h] += hg; gf[f.a] += ag; gd[f.h] += hg - ag; gd[f.a] += ag - hg;
+        if (hg > ag) pts[f.h] += 3; else if (hg < ag) pts[f.a] += 3; else { pts[f.h]++; pts[f.a]++; }
+      }
+      for (let t = 0; t < T; t++) { key[t] = pts[t] * 1e6 + (gd[t] + 300) * 1e3 + gf[t] + rnd() * 0.5; order[t] = t; }
+      for (let i = 1; i < T; i++) { const o = order[i], kv = key[o]; let j = i - 1; while (j >= 0 && key[order[j]] < kv) { order[j + 1] = order[j]; j--; } order[j + 1] = o; }
+      for (let r = 0; r < T; r++) st.pos[order[r] * T + r]++;
+      for (let t = 0; t < T; t++) st.sumPts[t] += pts[t];
+    }
+    st.done += count;
+  }
+  function seasonSummary(st) {
+    const T = st.T, n = st.done || 1, out = [];
+    for (let t = 0; t < T; t++) {
+      let avgRank = 0, top4 = 0, top6 = 0, rel = 0;
+      for (let r = 0; r < T; r++) { const c = st.pos[t * T + r] / n; avgRank += c * (r + 1); if (r < 4) top4 += c; if (r < 6) top6 += c; if (r >= T - 3) rel += c; }
+      const row = st.table[st.names[t]];
+      out.push({ team: st.names[t], played: row.p, pts: row.pts, gd: row.gf - row.ga, avgPts: st.sumPts[t] / n, avgRank, title: st.pos[t * T] / n, top4, top6, rel });
+    }
+    return out.sort((a, b) => a.avgRank - b.avgRank);
+  }
+
+  // ---------- honest scorecard: model vs closing market, walk-forward ----------
+  function backtest(rows, opt, season) {
+    const cur = rows.filter(r => r.season === season && r.odds && r.odds.avg_home && r.odds.avg_draw && r.odds.avg_away);
+    const dates = Array.from(new Set(cur.map(r => r.date))).sort((a, b) => a - b);
+    let n = 0, llM = 0, llK = 0, brM = 0, brK = 0, better = 0, prev = null;
+    for (const d of dates) {
+      const model = fit(rows, Object.assign({}, opt, { asOf: d, init: prev }));
+      if (model.nRows >= 60) prev = model;
+      if (model.nRows < 60) continue;
+      for (const r of cur) if (r.date === d) {
+        const l = lambdas(model, r.home, r.away), g = scoreGrid(l.lh, l.la, model.rho);
+        let ph = 0, pd = 0, pa = 0;
+        for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) { const v = g[i * G + j]; if (i > j) ph += v; else if (i === j) pd += v; else pa += v; }
+        const ih = 1 / r.odds.avg_home, id = 1 / r.odds.avg_draw, ia = 1 / r.odds.avg_away, s = ih + id + ia;
+        const m = [ih / s, id / s, ia / s], p = [ph, pd, pa];
+        const o = r.hg > r.ag ? 0 : r.hg === r.ag ? 1 : 2;
+        const a1 = -Math.log(Math.max(p[o], 1e-9)), a2 = -Math.log(m[o]);
+        llM += a1; llK += a2;
+        brM += p.reduce((t, x, i) => t + Math.pow(x - (i === o ? 1 : 0), 2), 0);
+        brK += m.reduce((t, x, i) => t + Math.pow(x - (i === o ? 1 : 0), 2), 0);
+        if (a1 < a2) better++; n++;
+      }
+    }
+    return n ? { n, llModel: llM / n, llMarket: llK / n, brierModel: brM / n, brierMarket: brK / n, betterShare: better / n } : null;
+  }
+
+  return { G, CELLS, tokens, nameScore, resolveOne, resolveTwo, scoreGrid, mask, dot, prepRows, fitShots, fit, lambdas,
+    buildLegs, annotate, analyseGame, evalSlip, suggestSlip, eligibleLegs, rng32, cdfOf, pick, simGame, summariseSim, moe,
+    simSlip, simYears, currentTable, seasonSetup, seasonRun, seasonSummary, backtest };
+})();
+// ==== ENGINE END
+
+</script>
+<script>
+(function () {
+  'use strict';
+  const $ = (s, el) => (el || document).querySelector(s);
+  const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem('multilab.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem('multilab.' + k, JSON.stringify(v)); } catch (e) { /* private mode: fine */ } }
+  };
+  const MINUS = '\u2212';
+  const pct = (x, d) => (x * 100).toFixed(d || 0) + '%';
+  const price = x => Number(x).toFixed(2);
+  const sgn = (x, d) => { const v = Math.abs(x * 100).toFixed(d || 0); return (Number(v) === 0 ? '' : x >= 0 ? '+' : MINUS) + v + '%'; };
+  const edgeCls = e => (e >= 0.03 ? 'pos' : e <= -0.10 ? 'neg' : 'flat');
+  const money = (x, d) => (x < 0 ? MINUS : '') + '$' + Math.abs(x).toFixed(d == null ? 2 : d);
+  const fmtN = n => Number(n).toLocaleString('en-AU');
+  const nowMs = () => { const p = new URLSearchParams(location.search).get('now'); const t = p ? Date.parse(p) : NaN; return isNaN(t) ? Date.now() : t; };
+  const kick = iso => new Date(iso).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
+  const dayKey = iso => new Date(iso).toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' });
+  const TABS = ['games', 'value', 'multi', 'season', 'model'];
+
+  const S = {
+    raw: { results: null, history: null, odds: null, meta: null },
+    rows: [], model: null, an: {}, games: [], unpriced: 0, legByKey: {},
+    slip: store.get('slip', []), sims: store.get('sims', 20000), stake: store.get('stake', 2), quoted: '',
+    set: Object.assign({ halfLife: 300, ridge: 3, shotBlend: 35 }, store.get('set', {})),
+    vf: { market: 'All', min: 0, low: false, long: false, limit: 30 }, sug: { k: 4, min: 0.45 },
+    tab: 'games', dirty: new Set(TABS), season: null, seasonBusy: false, backtest: null, simPay: null, simOut: '', yearsOut: ''
+  };
+
+  // ---------- loading ----------
+  function bases() {
+    const host = location.hostname, parts = location.pathname.split('/').filter(Boolean), rel = 'data/serie-a/';
+    if (/\.github\.io$/.test(host)) return ['https://raw.githubusercontent.com/' + host.split('.')[0] + '/' + (parts[0] || 'MULTILAB') + '/main/data/serie-a/', rel];
+    return [rel];
+  }
+  async function getJson(name) {
+    let last;
+    for (const base of bases()) {
+      try {
+        const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 8000);
+        const r = await fetch(base + name + '.json?t=' + Math.floor(Date.now() / 60000), { signal: ctl.signal, cache: 'no-store' });
+        clearTimeout(t);
+        if (!r.ok) throw new Error(name + '.json: HTTP ' + r.status);
+        return await r.json();
+      } catch (e) { last = e; }
+    }
+    throw last;
+  }
+  function showError(msg) {
+    $('#fresh').textContent = 'No data';
+    $('#status').innerHTML = '<div class="note bad"><b>Could not load the data.</b> ' + esc(msg) + '<br>If you opened this file from your computer, the browser blocks it from reading other files. Open it from your GitHub Pages address, or choose the files by hand below.</div>' +
+      '<div class="row"><label class="field">Choose results.json and odds.json (history.json and meta.json help too)<input type="file" id="pickfiles" multiple accept=".json"></label></div>';
+  }
+  async function boot() {
+    try {
+      const [results, odds] = await Promise.all([getJson('results'), getJson('odds')]);
+      S.raw.results = results; S.raw.odds = odds;
+      S.raw.history = await getJson('history').catch(() => null);
+      S.raw.meta = await getJson('meta').catch(() => null);
+    } catch (e) { showError(String((e && e.message) || e)); return; }
+    start();
+  }
+  function start() {
+    $('#status').innerHTML = '';
+    const sets = [{ season: 'cur', matches: S.raw.results }];
+    if (S.raw.history) Object.keys(S.raw.history).forEach(k => sets.push({ season: k, matches: S.raw.history[k] }));
+    S.rows = E.prepRows(sets);
+    S.model = E.fit(S.rows, fitOpts(false));
+    analyseAll();
+    const h = (location.hash || '').slice(1); if (TABS.indexOf(h) >= 0) S.tab = h;
+    renderFresh(); updateSimBtns(); showTab(S.tab); updateSlipUI(false);
+  }
+  const fitOpts = warm => ({ halfLife: S.set.halfLife, ridge: S.set.ridge, shotBlend: S.set.shotBlend / 100, init: warm ? S.model : null });
+  function analyseAll() {
+    S.an = {}; S.games = []; S.unpriced = 0; const now = nowMs();
+    for (const g of S.raw.odds) {
+      const k = Date.parse(g.kickoff_utc);
+      if (!(k > now - 2 * 3600e3)) continue;
+      const priced = g.books && g.books.sportsbet && g.books.sportsbet.h2h && g.books.sportsbet.h2h.home;
+      if (!priced) { S.unpriced++; continue; }
+      const an = E.analyseGame(S.model, g); S.an[g.id] = an; S.games.push(an);
+    }
+    S.games.sort((a, b) => Date.parse(a.game.kickoff_utc) - Date.parse(b.game.kickoff_utc));
+    S.legByKey = {}; S.games.forEach(an => an.legs.forEach(l => { S.legByKey[l.key] = l; }));
+    S.slip = S.slip.filter(k => S.legByKey[k]);
+    S.season = null; S.backtest = null; S.simPay = null; S.simOut = ''; S.yearsOut = '';
+    S.dirty = new Set(TABS);
+  }
+  function refit() {
+    S.model = E.fit(S.rows, fitOpts(true)); analyseAll(); updateSlipUI(false); renderFresh();
+  }
+
+  // ---------- chrome ----------
+  function renderFresh() {
+    const el = $('#fresh'), m = S.raw.meta; let txt = 'Data loaded', old = false;
+    if (m && m.fetched_at_utc) {
+      const hrs = (nowMs() - Date.parse(m.fetched_at_utc)) / 3600e3;
+      txt = 'Prices fetched ' + (hrs < 1 ? 'under an hour' : hrs < 48 ? Math.round(hrs) + ' hours' : Math.round(hrs / 24) + ' days') + ' ago';
+      old = hrs > 96; if (old) txt += '. Run the fetch workflow.';
+    }
+    el.textContent = txt; el.classList.toggle('old', old);
+  }
+  function updateSimBtns() { $$('#simbtns button').forEach(b => b.setAttribute('aria-pressed', String(Number(b.dataset.sims) === S.sims))); }
+  function showTab(t) {
+    S.tab = t;
+    $$('.tabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === t)));
+    TABS.forEach(n => { $('#p-' + n).hidden = n !== t; });
+    if (S.dirty.has(t)) { S.dirty.delete(t); ({ games: renderGames, value: renderValue, multi: renderMulti, season: renderSeason, model: renderModel })[t](); }
+    updateSlipUI(false);
+  }
+  function updateSlipUI(bump) {
+    const n = S.slip.length, badge = $('#slipn'), chip = $('#slipchip');
+    badge.hidden = !n; badge.textContent = n;
+    if (!n || S.tab === 'multi') { chip.hidden = true; return; }
+    const legs = S.slip.map(k => S.legByKey[k]).filter(Boolean);
+    const odds = legs.reduce((t, l) => t * l.price, 1);
+    chip.textContent = 'Slip: ' + n + (n > 1 ? ' legs' : ' leg') + ', pays ' + (odds < 100 ? odds.toFixed(2) : odds.toFixed(0)) + 'x';
+    chip.hidden = false;
+    if (bump) { chip.classList.remove('bump'); void chip.offsetWidth; chip.classList.add('bump'); }
+  }
+  function toggleLeg(key) {
+    const i = S.slip.indexOf(key);
+    if (i >= 0) S.slip.splice(i, 1); else S.slip.push(key);
+    store.set('slip', S.slip);
+    S.simPay = null; S.simOut = ''; S.yearsOut = '';
+    $$('[data-leg]').forEach(n => { if (n.getAttribute('data-leg') === key) { n.classList.toggle('on', i < 0); n.setAttribute('aria-pressed', String(i < 0)); } });
+    S.dirty.add('multi'); updateSlipUI(i < 0);
+    if (S.tab === 'multi') renderMulti();
+  }
+
+  // ---------- games ----------
+  function tile(l, label) {
+    const on = S.slip.indexOf(l.key) >= 0, ec = edgeCls(l.edge);
+    const cls = 'tile edge-' + ec + (on ? ' on' : '') + (l.ref ? ' ref' : '');
+    const meta = pct(l.p) + ' model <b class="e e-' + ec + '">' + sgn(l.edge) + '</b>' + (l.ref ? '<br>Reference price from ' + esc(l.book) : '');
+    const inner = '<span class="t-sel">' + esc(label || l.sel) + '</span><span class="t-price">' + price(l.price) + '</span><span class="t-meta">' + meta + '</span>';
+    return l.ref ? '<div class="' + cls + '">' + inner + '</div>'
+      : '<button type="button" class="' + cls + '" data-leg="' + esc(l.key) + '" aria-pressed="' + on + '">' + inner + '</button>';
+  }
+  function bars(an) {
+    const g = an.game;
+    const seg = (p, c, nm) => '<span class="seg ' + c + '" style="flex:' + Math.max(p, 0.001) + '" title="' + esc(nm) + ' ' + pct(p) + '">' + (p >= 0.08 ? pct(p) : '') + '</span>';
+    const row = (name, v) => v ? '<div class="barrow"><span class="bar-l">' + name + '</span><div class="bar" role="img" aria-label="' + name + ': ' + esc(g.home) + ' ' + pct(v.home) + ', draw ' + pct(v.draw) + ', ' + esc(g.away) + ' ' + pct(v.away) + '">' +
+      seg(v.home, 'h', g.home) + seg(v.draw, 'd', 'Draw') + seg(v.away, 'a', g.away) + '</div></div>' : '';
+    return '<div class="bars">' + row('Model', an.p1x2) + row('Sportsbet', an.mkt) + '</div>' +
+      '<div class="key"><span><i style="background:var(--seg-h)"></i>' + esc(g.home) + '</span><span><i style="background:var(--seg-d)"></i>Draw</span><span><i style="background:var(--seg-a)"></i>' + esc(g.away) + '</span></div>';
+  }
+  function card(an) {
+    const g = an.game, c = an.conf, by = grp => an.legs.filter(l => l.group === grp), one = (grp, sel) => an.legs.find(l => l.group === grp && l.sel === sel);
+    let badges = '<span class="badge conf-' + c.level.toLowerCase() + '" title="How much recent data sits behind both teams\u2019 ratings">' + c.level + ' confidence</span>';
+    if (c.flag) badges += '<span class="badge warn" title="The model and Sportsbet differ by ' + pct(c.disagree) + ' points on the result">Model and Sportsbet disagree: check team news</span>';
+    if (!c.known) badges += '<span class="badge warn">A team has no rating yet</span>';
+    let html = '<article class="game" id="game-' + esc(g.id) + '"><header class="gh"><div class="teams"><span>' + esc(g.home) + '</span><span class="vs">v</span><span>' + esc(g.away) + '</span></div><div class="when">' + esc(kick(g.kickoff_utc)) + '</div></header>' +
+      '<div class="badges">' + badges + '</div>' + bars(an) +
+      '<p class="xg">Expected goals <b>' + an.lam.lh.toFixed(2) + '</b> to <b>' + an.lam.la.toFixed(2) + '</b></p>';
+    const h2h = by('h2h');
+    if (h2h.length) html += '<div class="grp"><h4>Match result</h4><div class="tiles">' + h2h.map(l => tile(l)).join('') + '</div></div>';
+    const goals = [];
+    const by25 = sel => an.legs.find(l => l.group === 'ou:2.5' && l.sel === sel);
+    const gy = one('btts', 'Yes'), gn = one('btts', 'No'), o25 = by25('Over 2.5'), u25 = by25('Under 2.5');
+    if (gy) goals.push(tile(gy, 'Both score: yes')); if (gn) goals.push(tile(gn, 'Both score: no'));
+    if (o25) goals.push(tile(o25, 'Over 2.5 goals')); if (u25) goals.push(tile(u25, 'Under 2.5 goals'));
+    if (goals.length) html += '<div class="grp"><h4>Goals</h4><div class="tiles t4">' + goals.join('') + '</div></div>';
+    const dc = by('dc');
+    if (dc.length) html += '<div class="grp"><h4>Double chance</h4><div class="tiles">' + dc.map(l => tile(l)).join('') + '</div></div>';
+    let more = '';
+    const dnb = by('dnb');
+    if (dnb.length) more += '<div class="grp"><h4>Draw no bet (stake back on a draw)</h4><div class="tiles t2">' + dnb.map(l => tile(l)).join('') + '</div></div>';
+    const lines = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5], tot = [];
+    lines.forEach(L => { const o = an.legs.find(l => l.group === 'ou:' + L && /^Over/.test(l.sel)), u = an.legs.find(l => l.group === 'ou:' + L && /^Under/.test(l.sel)); if (o && u) { tot.push(tile(o)); tot.push(tile(u)); } });
+    if (tot.length) more += '<div class="grp"><h4>Total goals, every line</h4><div class="tiles t4">' + tot.join('') + '</div></div>';
+    const cs = by('cs').slice().sort((a, b) => b.p - a.p).slice(0, 9);
+    if (cs.length) more += '<div class="grp"><h4>Most likely correct scores (home first). Sportsbet\u2019s margin here is huge.</h4><div class="tiles">' + cs.map(l => tile(l, l.sel)).join('') + '</div></div>';
+    if (more) html += '<details class="more"><summary>More markets</summary>' + more + '</details>';
+    html += '<div class="simbox"><button type="button" class="btn alt" data-act="sim-game" data-gid="' + esc(g.id) + '">Simulate this game (' + fmtN(S.sims) + ' runs)</button><div class="simout" id="sim-' + esc(g.id) + '" aria-live="polite"></div></div></article>';
+    return html;
+  }
+  function renderGames() {
+    const el = $('#p-games');
+    if (!S.games.length) {
+      el.innerHTML = '<h2>Next games</h2><div class="note">No upcoming games have Sportsbet prices yet.' + (S.unpriced ? ' ' + S.unpriced + ' games are waiting on prices.' : '') + ' Run the Fetch Serie A data workflow closer to kickoff.</div>'; return;
+    }
+    let html = '<h2>Next games</h2><p class="lede">Every price is Sportsbet\u2019s, with Multilab\u2019s chance and the gap under it. Green means the model thinks it pays better than it should, red means worse. Tap a price to put it in your multi.</p>' +
+      '<details class="how"><summary>How to read this</summary><p>The Model bar is what the ratings say. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. Edge is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
+    let day = '';
+    S.games.forEach(an => { const d = dayKey(an.game.kickoff_utc); if (d !== day) { day = d; html += '<h3 class="day">' + esc(d) + '</h3>'; } html += card(an); });
+    if (S.unpriced) html += '<p class="small">' + S.unpriced + ' more games have no Sportsbet price yet. They show up here once Sportsbet posts them.</p>';
+    el.innerHTML = html;
+  }
+  function simGame(gid) {
+    const an = S.an[gid], n = S.sims, rnd = E.rng32((Date.now() + gid.length * 7919) >>> 0);
+    const s = E.summariseSim(E.simGame(an.grid, n, rnd), n), g = an.game, ex = an.p1x2;
+    const row = (nm, p, exact) => '<tr><td>' + esc(nm) + '</td><td><b>' + pct(p, 1) + '</b></td><td>' + pct(E.moe(p, n) , 1).replace('%', '') + '</td><td>' + pct(exact, 1) + '</td></tr>';
+    const bt = an.legs.find(l => l.group === 'btts' && l.sel === 'Yes'), o25 = an.legs.find(l => l.group === 'ou:2.5' && l.sel === 'Over 2.5');
+    let t = '<b>' + fmtN(n) + ' simulated games</b><div class="scroll"><table><thead><tr><th></th><th>Simulated</th><th>Noise (±pts)</th><th>Exact</th></tr></thead><tbody>' +
+      row(g.home + ' win', s.home, ex.home) + row('Draw', s.draw, ex.draw) + row(g.away + ' win', s.away, ex.away) +
+      (bt ? row('Both teams score', s.btts, bt.p) : '') + (o25 ? row('Over 2.5 goals', s.over25, o25.p) : '') + '</tbody></table></div>' +
+      '<p>Most common scores: ' + s.top.map(x => '<b>' + x.score + '</b> (' + pct(x.p, 1) + ')').join(', ') + '. Average ' + s.avgGoals.toFixed(2) + ' goals.</p>' +
+      '<p class="small">Noise is the 95% range from sampling alone. The exact column is worked out directly from the model, so extra runs only pull the simulation closer to it.</p>';
+    $('#sim-' + gid).innerHTML = t;
+  }
+
+  // ---------- value ----------
+  function legLabel(l) {
+    switch (l.market) {
+      case 'Match result': return l.sel === 'Draw' ? 'Draw' : l.sel + ' to win';
+      case 'Both teams to score': return 'Both teams score: ' + l.sel.toLowerCase();
+      case 'Total goals': return l.sel + ' goals';
+      case 'Correct score': return 'Correct score ' + l.sel;
+      case 'Draw no bet': return l.sel + ' (draw no bet)';
+      default: return l.sel;
+    }
+  }
+  function legMeta(l) { const an = S.an[l.gid], g = an.game; return esc(g.home) + ' v ' + esc(g.away) + ', ' + esc(new Date(g.kickoff_utc).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' })) + (l.conf === 'Low' ? ', low confidence' : '') + (l.flag ? ', check team news' : ''); }
+  function vrow(l) {
+    const on = S.slip.indexOf(l.key) >= 0, ec = edgeCls(l.edge);
+    return '<button type="button" class="vrow' + (on ? ' on' : '') + '" data-leg="' + esc(l.key) + '" aria-pressed="' + on + '"><span class="v-main"><b>' + esc(legLabel(l)) + '</b><small>' + legMeta(l) + '</small></span>' +
+      '<span class="v-num">' + price(l.price) + '<small>price</small></span><span class="v-num">' + pct(l.p) + '<small>model</small></span><span class="pill ' + ec + '">' + sgn(l.edge) + '</span></button>';
+  }
+  function renderValue() {
+    const el = $('#p-value'), all = Object.keys(S.legByKey).map(k => S.legByKey[k]).filter(l => !l.ref);
+    if (!all.length) { el.innerHTML = '<h2>Value</h2><div class="note">No priced games yet.</div>'; return; }
+    const el2 = E.eligibleLegs(all);
+    const best = el2.filter(l => l.p >= 0.30 && l.conf !== 'Low').sort((a, b) => b.edge - a.edge).slice(0, 8);
+    const traps = el2.filter(l => l.price <= 3.5).sort((a, b) => a.edge - b.edge).slice(0, 8);
+    const markets = ['All'].concat(Array.from(new Set(all.map(l => l.market))));
+    el.innerHTML = '<h2>Value</h2><p class="lede">Every Sportsbet price on the page, ranked by what the model thinks it is worth. Treat a big edge with suspicion: it is more often something the model cannot see than a bargain.</p>' +
+      '<div class="vgrid"><div class="card"><h3>Best value</h3><p class="small">Chance of 30% or more, enough data behind it.</p>' + (best.length ? best.map(vrow).join('') : '<p class="small">Nothing clears the bar right now.</p>') + '</div>' +
+      '<div class="card"><h3>Ones to avoid</h3><p class="small">Short prices that look tempting but pay least for the risk.</p>' + traps.map(vrow).join('') + '</div></div>' +
+      '<h3 style="margin-top:20px">All prices</h3><div class="row"><label class="field">Market<select id="vf-market">' + markets.map(m => '<option' + (m === S.vf.market ? ' selected' : '') + '>' + esc(m) + '</option>').join('') + '</select></label>' +
+      '<label class="field">Model chance<select id="vf-min">' + [[0, 'Any'], [0.25, '25% or more'], [0.4, '40% or more'], [0.55, '55% or more'], [0.7, '70% or more']].map(o => '<option value="' + o[0] + '"' + (o[0] === S.vf.min ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
+      '<label class="field" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="vf-low"' + (S.vf.low ? ' checked' : '') + ' style="min-width:0"> Hide low confidence</label>' +
+      '<label class="field" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="vf-long"' + (S.vf.long ? ' checked' : '') + ' style="min-width:0"> Include long shots (price over 12)</label></div><p class="small">Sorted by edge. Correct scores are hidden unless you pick them, because Sportsbet\u2019s margin there is huge and the biggest edges are mostly price caps. A big edge on a goals line usually means the model and Sportsbet disagree about how many goals to expect.</p><div id="vtable"></div>';
+    renderVTable();
+  }
+  function renderVTable() {
+    const all = Object.keys(S.legByKey).map(k => S.legByKey[k]).filter(l => !l.ref && l.price >= 1.02);
+    const cs = S.vf.market === 'Correct score';
+    let list = all.filter(l => (S.vf.market === 'All' ? l.market !== 'Correct score' : l.market === S.vf.market) && !(l.market === 'Total goals' && l.line > 5.5) &&
+      (S.vf.long || cs || l.price <= 12) && l.p >= S.vf.min && !(S.vf.low && l.conf === 'Low')).sort((a, b) => b.edge - a.edge);
+    const total = list.length; list = list.slice(0, S.vf.limit);
+    $('#vtable').innerHTML = (list.length ? list.map(vrow).join('') : '<p class="small">Nothing matches those filters.</p>') +
+      (total > list.length ? '<p style="margin-top:10px"><button type="button" class="btn alt" data-act="vmore">Show more (' + (total - list.length) + ' left)</button></p>' : '');
+  }
+
+  // ---------- multi ----------
+  function slipInfo() {
+    const legs = S.slip.map(k => S.legByKey[k]).filter(Boolean); if (!legs.length) return null;
+    const grids = {}; legs.forEach(l => { grids[l.gid] = S.an[l.gid].grid; });
+    const q = parseFloat(S.quoted);
+    return { legs, grids, q: q > 1 ? q : null, res: E.evalSlip(legs, grids, q > 1 ? q : null) };
+  }
+  function renderMulti() {
+    const el = $('#p-multi'), info = slipInfo();
+    let html = '<h2>Your multi</h2>';
+    if (!info) html += '<p class="lede">Tap any price on the Games or Value tab to add it. Or let Multilab pick a starting point.</p>';
+    else {
+      const r = info.res;
+      html += info.legs.map(l => { const g = S.an[l.gid].game, ec = edgeCls(l.edge);
+        return '<div class="legrow"><div class="v-main"><b>' + esc(legLabel(l)) + '</b><small>' + legMeta(l) + '</small></div><span class="v-num">' + price(l.price) + '<small>price</small></span><span class="pill ' + ec + '">' + sgn(l.edge) + '</span>' +
+          '<button type="button" class="rm" data-rm="' + esc(l.key) + '" aria-label="Remove ' + esc(legLabel(l)) + '">\u00d7</button></div>'; }).join('');
+      const oneIn = r.pAll > 0 ? Math.round(1 / r.pAll) : null, ret = 1 + r.ev, cls = r.ev >= 0 ? 'pos' : r.ev <= -0.15 ? 'neg' : '';
+      html += '<div class="stats"><div class="stat"><b>' + (r.odds < 100 ? r.odds.toFixed(2) : r.odds.toFixed(0)) + 'x</b><span>' + (r.usedQuoted ? 'Sportsbet price you entered' : 'Prices multiplied') + '</span></div>' +
+        '<div class="stat"><b>' + (r.pAll < 0.1 ? pct(r.pAll, 1) : pct(r.pAll)) + '</b><span>Model chance to win' + (oneIn ? ', about 1 in ' + oneIn : '') + '</span></div>' +
+        '<div class="stat"><b>' + (r.fair ? r.fair.toFixed(2) + 'x' : 'n/a') + '</b><span>Fair price</span></div>' +
+        '<div class="stat ' + cls + '"><b>' + money(ret) + '</b><span>Back per $1, on average</span></div></div>';
+      html += '<p class="verdict">If the model is right, this wins about ' + pct(r.pAll, r.pAll < 0.1 ? 1 : 0) + ' of the time. At ' + r.odds.toFixed(2) + 'x that returns about ' + money(ret) + ' for every $1, ' +
+        (r.ev >= 0 ? 'which is a fair or better price.' : 'so it costs about ' + Math.round(-r.ev * 100) + ' cents of every dollar.') + '</p>';
+      if (r.sameGame) html += '<div class="note">Some legs are from the same game. Multilab prices those together properly (they are not independent), but Sportsbet prices same-game combos its own way. Type the price shown on your Sportsbet slip below to compare like with like.</div>';
+      if (r.hasDnb) html += '<div class="note">Draw no bet legs are refunded on a draw, so a single fair price does not exist. The average return above already counts the refund.</div>';
+      const low = info.legs.filter(l => l.conf === 'Low').length, flag = info.legs.filter(l => l.flag).length;
+      if (low) html += '<div class="note">' + low + ' leg' + (low > 1 ? 's come' : ' comes') + ' from games where a team has little recent data. Treat the numbers loosely.</div>';
+      if (flag) html += '<div class="note">' + flag + ' leg' + (flag > 1 ? 's' : '') + ' where the model and Sportsbet disagree a lot. Check team news before betting.</div>';
+      html += '<div class="row"><label class="field">Stake ($)<input type="number" id="stake" min="0.5" step="0.5" value="' + esc(S.stake) + '"></label>' +
+        '<label class="field">Price on your Sportsbet slip (optional)<input type="number" id="quoted" min="1.01" step="0.01" placeholder="e.g. 6.40" value="' + esc(S.quoted) + '"></label></div>' +
+        '<div class="row"><button type="button" class="btn" data-act="sim-slip">Simulate it (' + fmtN(S.sims) + ' runs)</button><button type="button" class="btn alt" data-act="replay">Replay a year of weekly bets</button><button type="button" class="btn alt" data-act="clear">Clear slip</button></div>' +
+        '<div class="card" id="slipsim" aria-live="polite"' + (S.simOut || S.yearsOut ? '' : ' hidden') + '>' + S.simOut + S.yearsOut + '</div>';
+    }
+    html += '<div class="card"><h3>Suggest a multi</h3><p class="small">Picks the best-value leg from different games, skipping low-confidence games and correct scores.</p><div class="row">' +
+      '<label class="field">Legs<select id="sg-k">' + [2, 3, 4, 5, 6].map(n => '<option' + (n === S.sug.k ? ' selected' : '') + '>' + n + '</option>').join('') + '</select></label>' +
+      '<label class="field">Style<select id="sg-min">' + [[0.6, 'Safer, 60% or more per leg'], [0.45, 'Balanced, 45% or more'], [0.3, 'Spicy, 30% or more']].map(o => '<option value="' + o[0] + '"' + (o[0] === S.sug.min ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
+      '<button type="button" class="btn" data-act="suggest">Suggest a multi</button></div></div>';
+    el.innerHTML = html;
+  }
+  function simSlip() {
+    const info = slipInfo(); if (!info) return;
+    const n = S.sims, rnd = E.rng32((Date.now() >>> 0) ^ 0x9e3779b9), s = E.simSlip(info.legs, info.grids, n, rnd, info.q), r = info.res;
+    S.simPay = s.pay;
+    S.simOut = '<h3>Simulation</h3><p><b>' + fmtN(n) + ' simulated tickets.</b> Won <b>' + fmtN(s.wins) + '</b> (' + pct(s.hitRate, 2) + ', give or take ' + (E.moe(s.hitRate, n) * 100).toFixed(2) + ' points). Average return <b>' + money(s.meanPayout) + '</b> per $1.</p>' +
+      '<p class="small">Exact figures from the model: ' + pct(r.pAll, 2) + ' to win, ' + money(1 + r.ev) + ' back per $1. More runs close the gap between simulated and exact; they do not make the model any more right.</p>';
+    S.yearsOut = ''; renderMulti();
+  }
+  function replay() {
+    if (!S.simPay) simSlipQuiet();
+    const stake = Math.max(0.5, parseFloat(S.stake) || 2), years = Math.min(S.sims, 20000), rnd = E.rng32((Date.now() >>> 0) ^ 0x51ed270b), y = E.simYears(S.simPay, stake, 52, years, rnd);
+    S.yearsOut = '<h3>A year of weekly bets</h3><p>Putting ' + money(stake) + ' on this multi every week for 52 weeks, replayed ' + fmtN(years) + ' times:</p><p>You finish the year ahead in <b>' + pct(y.pProfit) + '</b> of them. You land at least one win in <b>' + pct(y.pAnyWin) + '</b>. The middle outcome is <b>' + money(y.p50, 0) + '</b>; the unluckiest 1 in 20 years ends at <b>' + money(y.p5, 0) + '</b> and the luckiest 1 in 20 at <b>' + money(y.p95, 0) + '</b>.</p>';
+    renderMulti();
+  }
+  function simSlipQuiet() { const info = slipInfo(); S.simPay = E.simSlip(info.legs, info.grids, S.sims, E.rng32((Date.now() >>> 0) ^ 0x2545f491), info.q).pay; }
+
+  // ---------- season ----------
+  function teamNames() { const s = new Set(); S.raw.results.forEach(m => { s.add(m.home); s.add(m.away); }); S.raw.odds.forEach(g => { s.add(g.home); s.add(g.away); }); return Array.from(s); }
+  function renderSeason() {
+    const el = $('#p-season');
+    let html = '<h2>Season outlook</h2><p class="lede">Plays out every game still to come, thousands of times, and counts where each team finishes. We do not need the fixture list: the remaining games are every home and away pairing that has not been played yet.</p>' +
+      '<div class="row"><button type="button" class="btn" data-act="season"' + (S.seasonBusy ? ' disabled' : '') + '>Simulate the rest of the season (' + fmtN(S.sims) + ' runs)</button></div><div class="prog" id="sprog" hidden><i></i></div>';
+    if (S.season) {
+      const rows = S.season;
+      html += '<div class="scroll"><table><thead><tr><th>Team</th><th class="hide-s">Played</th><th class="hide-s">Pts now</th><th>Avg pts</th><th>Title</th><th>Top 4</th><th class="hide-s">Top 6</th><th>Relegated</th></tr></thead><tbody>' +
+        rows.map(r => '<tr><td><b>' + esc(r.team) + '</b></td><td class="hide-s">' + r.played + '</td><td class="hide-s">' + r.pts + '</td><td>' + r.avgPts.toFixed(1) + '</td><td>' + fp(r.title) + '</td><td>' + fp(r.top4) + '</td><td class="hide-s">' + fp(r.top6) + '</td><td>' + fp(r.rel) + '</td></tr>').join('') +
+        '</tbody></table></div><p class="small" style="margin-top:8px">Ties are split on goal difference, then goals scored (the real rule looks at head-to-head first). Relegated means bottom three. Early in the season, ratings are loose, so these percentages are wide guesses.</p>';
+    }
+    el.innerHTML = html;
+  }
+  const fp = p => p < 0.0005 ? '<span class="small">0%</span>' : p < 0.01 ? '<1%' : pct(p, p < 0.1 ? 1 : 0);
+  function runSeason() {
+    if (S.seasonBusy) return; S.seasonBusy = true; S.season = null; renderSeason();
+    const n = S.sims, st = E.seasonSetup(S.model, S.raw.results, teamNames()), rnd = E.rng32(Date.now() >>> 0), chunk = Math.max(400, Math.floor(n / 25));
+    const prog = $('#sprog'); prog.hidden = false;
+    (function step() {
+      E.seasonRun(st, Math.min(chunk, n - st.done), rnd);
+      $('#sprog i').style.width = (st.done / n * 100) + '%';
+      if (st.done < n) setTimeout(step, 0);
+      else { S.seasonBusy = false; S.season = E.seasonSummary(st); renderSeason(); }
+    })();
+  }
+
+  // ---------- model ----------
+  function renderModel() {
+    const el = $('#p-model'), m = S.model, teams = teamNames().filter(t => m.teams[t]);
+    const rows = teams.map(t => { const x = m.teams[t], gf = Math.exp(m.mu + x.att), ga = Math.exp(m.mu - x.def); return { t, gf, ga, net: gf - ga, eff: x.eff }; }).sort((a, b) => b.net - a.net);
+    const nCur = S.raw.results.length, hist = S.raw.history ? Object.keys(S.raw.history) : [], nHist = hist.reduce((t, k) => t + S.raw.history[k].length, 0), shots = m.shots && m.shots.fitted;
+    const sl = (id, label, min, max, step, val, hint, dis) => '<div class="slide"><label for="' + id + '"><span>' + label + '</span><span id="' + id + '-v">' + val + '</span></label><input class="range" type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + val + '"' + (dis ? ' disabled' : '') + '><small>' + hint + '</small></div>';
+    el.innerHTML = '<h2>Model</h2><p class="lede">How the ratings are built, and how good they are.</p>' +
+      '<div class="card"><h3>Settings</h3>' + sl('s-hl', 'Recency, in days until a match counts half', 60, 720, 30, S.set.halfLife, 'Lower reacts faster to recent form. Higher trusts last season more.') +
+      sl('s-rg', 'Pull towards average', 0, 12, 0.5, S.set.ridge, 'Higher stops one hot or cold run from swinging a rating, which matters most early in the season.') +
+      sl('s-sb', 'Weight on shots, per cent', 0, 100, 5, S.set.shotBlend, shots ? 'Blends a shots-based expected goals measure with real goals, since goals are lucky.' : 'Shots are not in your data yet. Update the fetcher and run it to switch this on.', !shots) + '</div>' +
+      '<div class="card"><h3>Is it any good?</h3><p class="small">Replays this season one matchday at a time using only what was known beforehand, and scores the model against the market\u2019s closing odds. Lower is better.</p><div class="row"><button type="button" class="btn" data-act="backtest">Run the scorecard</button></div><div id="bt" aria-live="polite">' + btHtml() + '</div></div>' +
+      '<div class="card"><h3>Team ratings</h3><p class="small">Goals per game against an average side on a neutral pitch.</p><div class="scroll"><table><thead><tr><th>Team</th><th>Scores</th><th>Concedes</th><th>Net</th><th>Data</th></tr></thead><tbody>' +
+      rows.map(r => '<tr><td><b>' + esc(r.t) + '</b></td><td>' + r.gf.toFixed(2) + '</td><td>' + r.ga.toFixed(2) + '</td><td>' + (r.net >= 0 ? '+' : MINUS) + Math.abs(r.net).toFixed(2) + '</td><td>' + (r.eff >= 14 ? 'Plenty' : r.eff >= 7 ? 'Some' : 'Thin') + '</td></tr>').join('') + '</tbody></table></div></div>' +
+      '<div class="card"><h3>Data in use</h3><p>' + nCur + ' matches this season' + (hist.length ? ', plus ' + fmtN(nHist) + ' from ' + hist.length + ' earlier season' + (hist.length > 1 ? 's' : '') + ' (' + hist.map(h => h.slice(0, 2) + '/' + h.slice(2)).join(', ') + ')' : ', and no earlier seasons yet (run the updated fetcher to add them)') + '.</p>' +
+      '<p>Home advantage is worth about ' + ((Math.exp(m.h) - 1) * 100).toFixed(0) + '% more goals. The low-score correction (rho) is ' + (m.rho < 0 ? MINUS : '') + Math.abs(m.rho).toFixed(3) + (m.rho < -0.02 ? ', so 0-0 and 1-1 get a small lift.' : '.') + (shots ? ' Shots data is on.' : ' Shots data is not in use.') + '</p></div>';
+  }
+  function btHtml() {
+    const b = S.backtest; if (!b) return '';
+    if (b === 'none') return '<p>Not enough matches with closing odds to score yet.</p>';
+    const d = b.llModel - b.llMarket;
+    return '<p style="margin-top:10px"><b>' + b.n + ' matches.</b> Model <b>' + b.llModel.toFixed(3) + '</b>, market <b>' + b.llMarket.toFixed(3) + '</b> (log loss on the result). ' +
+      (d <= 0.002 ? 'The model is keeping up with the market, which is hard to do.' : d < 0.03 ? 'The market is slightly sharper, which is normal.' : 'The market is clearly sharper so far, so be careful about trusting big edges.') +
+      ' The model scored better than the market on ' + pct(b.betterShare) + ' of games.</p><p class="small">The market sees injuries and lineups. The model does not, yet. With only a few matchdays this is a rough guide.</p>';
+  }
+
+  // ---------- events ----------
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-leg],[data-act],[data-tab],[data-sims],[data-rm]'); if (!t) return;
+    if (t.dataset.leg) return toggleLeg(t.dataset.leg);
+    if (t.dataset.rm) return toggleLeg(t.dataset.rm);
+    if (t.dataset.tab) return showTab(t.dataset.tab);
+    if (t.dataset.sims) { S.sims = Number(t.dataset.sims); store.set('sims', S.sims); updateSimBtns(); S.dirty = new Set(TABS); S.dirty.delete(S.tab); S.simOut = ''; S.yearsOut = ''; showTabRefresh(); return; }
+    switch (t.dataset.act) {
+      case 'sim-game': return simGame(t.dataset.gid);
+      case 'vmore': S.vf.limit += 30; return renderVTable();
+      case 'sim-slip': return simSlip();
+      case 'replay': return replay();
+      case 'clear': S.slip = []; store.set('slip', S.slip); S.simOut = ''; S.yearsOut = ''; $$('[data-leg]').forEach(n => { n.classList.remove('on'); n.setAttribute('aria-pressed', 'false'); }); S.dirty.add('multi'); updateSlipUI(false); return renderMulti();
+      case 'suggest': { const picks = E.suggestSlip(Object.keys(S.legByKey).map(k => S.legByKey[k]), S.sug.k, S.sug.min);
+        if (!picks.length) { S.simOut = ''; S.yearsOut = ''; return alert('Nothing fits that style right now. Try Balanced or Spicy.'); }
+        S.slip = picks.map(l => l.key); store.set('slip', S.slip); S.simOut = ''; S.yearsOut = ''; S.simPay = null; S.dirty.add('multi'); S.dirty.add('games'); S.dirty.add('value'); updateSlipUI(true); return renderMulti(); }
+      case 'season': return runSeason();
+      case 'backtest': { t.disabled = true; t.textContent = 'Running'; return setTimeout(() => { S.backtest = E.backtest(S.rows, fitOpts(false), 'cur') || 'none'; $('#bt').innerHTML = btHtml(); t.disabled = false; t.textContent = 'Run the scorecard again'; }, 30); }
+    }
+  });
+  function showTabRefresh() { const t = S.tab; S.dirty.add(t); showTab(t); }
+  document.addEventListener('change', e => {
+    const id = e.target.id;
+    if (id === 'vf-market') { S.vf.market = e.target.value; S.vf.limit = 30; renderVTable(); }
+    else if (id === 'vf-min') { S.vf.min = Number(e.target.value); S.vf.limit = 30; renderVTable(); }
+    else if (id === 'vf-low') { S.vf.low = e.target.checked; S.vf.limit = 30; renderVTable(); }
+    else if (id === 'vf-long') { S.vf.long = e.target.checked; S.vf.limit = 30; renderVTable(); }
+    else if (id === 'sg-k') S.sug.k = Number(e.target.value);
+    else if (id === 'sg-min') S.sug.min = Number(e.target.value);
+    else if (id === 'stake') { S.stake = e.target.value; store.set('stake', S.stake); }
+    else if (id === 'quoted') { S.quoted = e.target.value; S.simOut = ''; S.yearsOut = ''; S.simPay = null; renderMulti(); }
+    else if (id === 's-hl' || id === 's-rg' || id === 's-sb') {
+      S.set = { halfLife: Number($('#s-hl').value), ridge: Number($('#s-rg').value), shotBlend: Number($('#s-sb').value) }; store.set('set', S.set);
+      refit(); showTabRefresh();
+    } else if (id === 'pickfiles') loadFiles(e.target.files);
+  });
+  document.addEventListener('input', e => { const id = e.target.id; if (id === 's-hl' || id === 's-rg' || id === 's-sb') $('#' + id + '-v').textContent = e.target.value; });
+  $('#slipchip').addEventListener('click', () => showTab('multi'));
+  async function loadFiles(files) {
+    for (const f of Array.from(files)) {
+      try { const j = JSON.parse(await f.text()), n = f.name.toLowerCase(); if (n.indexOf('result') >= 0) S.raw.results = j; else if (n.indexOf('odds') >= 0) S.raw.odds = j; else if (n.indexOf('hist') >= 0) S.raw.history = j; else if (n.indexOf('meta') >= 0) S.raw.meta = j; } catch (err) { showError(f.name + ' is not valid JSON'); return; }
+    }
+    if (S.raw.results && S.raw.odds) start();
+  }
+  window.__multilab = { S, E };   // handy for debugging in the browser console
+  boot();
+})();
+
+</script>
+</body>
+</html>
