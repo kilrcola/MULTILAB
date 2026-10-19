@@ -1,0 +1,204 @@
+[
+ {
+  "kickoff_utc": "2026-10-19T16:30:00Z",
+  "home": "Monza",
+  "away": "Cagliari",
+  "h2h": {
+   "away": 3.05,
+   "home": 2.45,
+   "draw": 3.1
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-19T18:45:00Z",
+  "home": "Parma",
+  "away": "Torino",
+  "h2h": {
+   "home": 3.25,
+   "away": 2.4,
+   "draw": 3.0
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-23T18:45:00Z",
+  "home": "Torino",
+  "away": "Monza",
+  "h2h": {
+   "away": 3.5,
+   "home": 2.05,
+   "draw": 3.5
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-24T13:00:00Z",
+  "home": "Cagliari",
+  "away": "Bologna",
+  "h2h": {
+   "away": 2.35,
+   "home": 3.1,
+   "draw": 3.2
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-24T13:00:00Z",
+  "home": "Como",
+  "away": "Sassuolo",
+  "h2h": {
+   "home": 1.42,
+   "away": 6.5,
+   "draw": 4.9
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-24T16:00:00Z",
+  "home": "Napoli",
+  "away": "Roma",
+  "h2h": {
+   "away": 2.35,
+   "home": 2.85,
+   "draw": 3.5
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-24T18:45:00Z",
+  "home": "Lazio",
+  "away": "Parma",
+  "h2h": {
+   "home": 1.49,
+   "away": 6.75,
+   "draw": 4.25
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-25T11:30:00Z",
+  "home": "Inter",
+  "away": "Fiorentina",
+  "h2h": {
+   "away": 7.75,
+   "home": 1.35,
+   "draw": 5.6
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-25T14:00:00Z",
+  "home": "Atalanta",
+  "away": "Frosinone",
+  "h2h": {
+   "home": 1.76,
+   "away": 4.0,
+   "draw": 4.3
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-25T14:00:00Z",
+  "home": "Genoa",
+  "away": "Venezia",
+  "h2h": {
+   "home": 2.05,
+   "away": 3.5,
+   "draw": 3.5
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-25T17:00:00Z",
+  "home": "Lecce",
+  "away": "Juventus",
+  "h2h": {
+   "away": 1.42,
+   "home": 7.75,
+   "draw": 4.5
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-25T19:45:00Z",
+  "home": "Udinese",
+  "away": "Milan",
+  "h2h": {
+   "away": 1.68,
+   "home": 4.9,
+   "draw": 3.9
+  },
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-27T17:30:00Z",
+  "home": "Sassuolo",
+  "away": "Lazio",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-27T19:45:00Z",
+  "home": "Roma",
+  "away": "Cagliari",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-27T19:45:00Z",
+  "home": "Torino",
+  "away": "Como",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-28T17:30:00Z",
+  "home": "Milan",
+  "away": "Bologna",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-28T17:30:00Z",
+  "home": "Venezia",
+  "away": "Inter",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-28T17:30:00Z",
+  "home": "Parma",
+  "away": "Udinese",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-28T19:45:00Z",
+  "home": "Genoa",
+  "away": "Juventus",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-28T19:45:00Z",
+  "home": "Monza",
+  "away": "Napoli",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-29T17:30:00Z",
+  "home": "Frosinone",
+  "away": "Lecce",
+  "h2h": {},
+  "totals": []
+ },
+ {
+  "kickoff_utc": "2026-10-29T19:45:00Z",
+  "home": "Fiorentina",
+  "away": "Atalanta",
+  "h2h": {},
+  "totals": []
+ }
+]

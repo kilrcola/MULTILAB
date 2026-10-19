@@ -1,0 +1,23 @@
+{
+ "fetched_at_utc": "2026-10-19T04:06:42+00:00",
+ "season": "2627",
+ "sources": {
+  "results": {
+   "ok": true,
+   "matches": 60
+  },
+  "odds": {
+   "ok": true,
+   "games": 22,
+   "api_credits_left": "498"
+  }
+ },
+ "name_problems": [],
+ "unknown_team_names": [],
+ "auto_matched_names": {
+  "AS Roma": "Roma",
+  "Atalanta BC": "Atalanta",
+  "AC Milan": "Milan"
+ },
+ "needs_attention": false
+}
