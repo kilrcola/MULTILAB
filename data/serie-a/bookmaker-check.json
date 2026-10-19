@@ -1,5 +1,5 @@
 {
- "checked_at_utc": "2026-10-19T04:18:35+00:00",
+ "checked_at_utc": "2026-10-19T10:21:16+00:00",
  "sport": "soccer_italy_serie_a",
  "region": "au",
  "errors": [],
@@ -31,14 +31,14 @@
   },
   "pointsbetau": {
    "title": "PointsBet (AU)",
-   "games_with_h2h": 12,
+   "games_with_h2h": 22,
    "games_with_totals": 0,
    "totals_lines": []
   },
   "tabtouch": {
    "title": "TABtouch",
-   "games_with_h2h": 12,
-   "games_with_totals": 12,
+   "games_with_h2h": 22,
+   "games_with_totals": 22,
    "totals_lines": [
     2.5,
     3.5
@@ -46,7 +46,7 @@
   },
   "unibet": {
    "title": "Unibet",
-   "games_with_h2h": 12,
+   "games_with_h2h": 22,
    "games_with_totals": 0,
    "totals_lines": []
   },
@@ -121,6 +121,6 @@
    }
   }
  },
- "credits_remaining": "493",
- "credits_used_this_month": "7"
+ "credits_remaining": "364",
+ "credits_used_this_month": "136"
 }
