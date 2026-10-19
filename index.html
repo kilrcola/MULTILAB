@@ -488,8 +488,8 @@ const E = (function () {
     }
     return legs;
   }
-  // Taking the margin off proportionally overrates long shots. Over 820 real matches a power of about 1.15 predicted results best.
-  const FAIR_K = 1.15;
+  // Taking the margin off proportionally overrates long shots. Serie A wanted about 1.16 and the Premier League about 1.0, so 1.1 is the compromise tested on both.
+  const FAIR_K = 1.1;
   function fairProbs(odds, k) {
     k = k == null ? FAIR_K : k;
     const w = odds.map(o => Math.pow(1 / o, k)), s = w.reduce((t, x) => t + x, 0);
@@ -884,7 +884,7 @@ const E = (function () {
     lg: {}, order: [], on: store.get('on', null), cur: store.get('cur', null),
     an: {}, games: [], legByKey: {},
     slip: store.get('slip', []), sims: store.get('sims', 20000), stake: store.get('stake', 2), quoted: '',
-    set: Object.assign({ halfLife: 300, ridge: 2, shotBlend: 50, trust: 25 }, store.get('set2', {})),
+    set: Object.assign({ halfLife: 300, ridge: 2, shotBlend: 50, trust: 100 }, store.get('set3', {})),
     vf: { market: 'All', min: 0, low: false, long: false, cap: true, limit: 30 }, sug: { k: 4, min: 0.45 },
     pt: { scope: 'r1', min: 0.025, skipLow: true, res: null }, tab: 'games', dirty: new Set(TABS), season: null, seasonBusy: false, backtest: null, simPay: null, simOut: '', yearsOut: ''
   };
@@ -1104,7 +1104,7 @@ const E = (function () {
       el.innerHTML = '<h2>Next games</h2><div class="note">No upcoming games have Sportsbet prices yet.' + (unp ? ' ' + unp + ' games are waiting on prices.' : '') + ' Run the Fetch Serie A data workflow closer to kickoff.</div>'; return;
     }
     let html = '<h2>Next games</h2><p class="lede">Every price is Sportsbet\u2019s. Under it: the model\u2019s chance, Sportsbet\u2019s own chance, and the value. <b>Likeliest</b> is the outcome with the highest chance. <b>Best value</b> is where the price beats the model\u2019s chance by 3% or more. They are often different bets. Tap any price to put it in your multi.</p>' +
-      '<details class="how"><summary>How to read this</summary><p>The Model bar blends our ratings (' + S.set.trust + '%) with a score grid built from Sportsbet\u2019s own result and goals prices (' + (100 - S.set.trust) + '%), so it is a fair price you can compare with every other price. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. The favourite (the likeliest winner) usually pays the least, so it is rarely the best value. Torino can be the likeliest winner while Parma\u2019s bigger price is the better bet for the risk. Value is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
+      '<details class="how"><summary>How to read this</summary><p>The Model bar ' + (S.set.trust >= 100 ? 'is what our ratings say' : 'blends our ratings (' + S.set.trust + '%) with a score grid built from Sportsbet\u2019s own result and goals prices (' + (100 - S.set.trust) + '%)') + '. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. The favourite (the likeliest winner) usually pays the least, so it is rarely the best value. Torino can be the likeliest winner while Parma\u2019s bigger price is the better bet for the risk. Value is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
     let day = '';
     games.forEach(an => { const d = dayKey(an.game.kickoff_utc); if (d !== day) { day = d; html += '<h3 class="day">' + esc(d) + '</h3>'; } html += card(an); });
     if (unp) html += '<p class="small">' + unp + ' more games have no Sportsbet price yet. They show up here once Sportsbet posts them.</p>';
@@ -1276,10 +1276,10 @@ const E = (function () {
     el.innerHTML = '<h2>Model</h2>' + leagueBar() + '<p class="lede">How the ratings are built, and how good they are' + (S.order.length > 1 ? ' for ' + esc(S.lg[S.cur].name) : '') + '. The settings apply to every league.</p>' +
       '<div class="card"><h3>Settings</h3>' + sl('s-hl', 'Recency, in days until a match counts half', 60, 720, 30, S.set.halfLife, 'Lower reacts faster to recent form. Higher trusts last season more.') +
       sl('s-rg', 'Pull towards average', 0, 12, 0.5, S.set.ridge, 'Higher stops one hot or cold run from swinging a rating, which matters most early in the season.') +
-      sl('s-tr', 'Trust in our ratings, per cent', 0, 100, 5, S.set.trust, 'The rest comes from Sportsbet\u2019s own result and goals prices, which are used to price everything else (both score, double chance, correct score, other goal lines). In testing on 820 matches the market beat our ratings, so a low setting is the safe one. At 0 the page prices from Sportsbet alone.') +
+      sl('s-tr', 'Trust in our ratings, per cent', 0, 100, 5, S.set.trust, 'At 100 every chance comes from our ratings, and that setting had the best record for flagging value in testing (about break-even across 1,242 bets). Lower settings mix in a grid built from Sportsbet\u2019s own result and goals prices. That predicts both teams to score, goal lines and correct scores better, but the value flags it produces lost money in testing, because a gap measured against the same prices means something different. At 0 the page prices everything from Sportsbet alone and flags almost nothing.') +
       sl('s-sb', 'Weight on shots, per cent', 0, 100, 5, S.set.shotBlend, shots ? 'Blends a shots-based expected goals measure with real goals, since goals are lucky.' : 'Shots are not in your data yet. Update the fetcher and run it to switch this on.', !shots) + '</div>' +
-      '<div class="card"><h3>What the tests found</h3><p class="small">Every round of the last two seasons and this one (820 matches) was predicted using only earlier results, then compared with the market\u2019s closing odds.</p>' +
-      '<p>On results, our ratings alone trail the market, and no blend ever beat the market itself, so the model is a decent copy rather than a rival. On goals it matches the market after two fixes: squeezing total goals towards the league average, and stretching the gap between strong and weak sides. Edges over about 12% lost money in every test, so they are flagged as likely errors rather than bargains. The grid built from Sportsbet\u2019s own prices predicted both-teams-to-score, goal lines and exact scores better than our ratings did.</p></div>' +
+      '<div class="card"><h3>What the tests found</h3><p class="small">Every round of the recent seasons (820 Serie A matches and 1,200 Premier League matches) was predicted using only earlier results, then compared with the market\u2019s closing odds.</p>' +
+      '<p>On results, our ratings alone trail the market in both leagues, and no blend ever beat the market itself, so the model is a decent copy rather than a rival. Stretching the gap between strong and weak sides helped in both leagues. Squeezing total goals helped in Serie A only. Gaps of 3% to 12% against the price came out about break-even over 1,242 bets. Gaps over 12% lost money in both leagues, which is why they show in amber as likely errors instead of bargains. Flagging from a price blended with Sportsbet\u2019s own did worse. The favourites-are-cheap pattern is strong in Serie A and weak in the Premier League, where only the long shots (5.00 and over) are clearly expensive.</p></div>' +
       '<div class="card"><h3>Is it any good?</h3><p class="small">Replays this season one matchday at a time using only what was known beforehand, and scores the model against the market\u2019s closing odds. Lower is better.</p><div class="row"><button type="button" class="btn" data-act="backtest">Run the scorecard</button></div><div id="bt" aria-live="polite">' + btHtml() + '</div></div>' +
       '<div class="card"><h3>Look back: what would we have bet?</h3><p class="small">Goes back to a past round and uses only what was known before it started. It makes the Best value bets, then settles them against the real scores. Prices are the market\u2019s closing odds (football-data\u2019s bookmaker average), standing in for Sportsbet.</p>' +
       '<div class="row"><label class="field">Look back<select id="pt-rounds">' + ptScopes().map(o => '<option value="' + o[0] + '"' + (o[0] === S.pt.scope ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
@@ -1411,7 +1411,7 @@ const E = (function () {
     else if (id === 'stake') { S.stake = e.target.value; store.set('stake', S.stake); }
     else if (id === 'quoted') { S.quoted = e.target.value; S.simOut = ''; S.yearsOut = ''; S.simPay = null; renderMulti(); }
     else if (id === 's-hl' || id === 's-rg' || id === 's-sb' || id === 's-tr') {
-      S.set = { halfLife: Number($('#s-hl').value), ridge: Number($('#s-rg').value), shotBlend: Number($('#s-sb').value), trust: Number($('#s-tr').value) }; store.set('set2', S.set);
+      S.set = { halfLife: Number($('#s-hl').value), ridge: Number($('#s-rg').value), shotBlend: Number($('#s-sb').value), trust: Number($('#s-tr').value) }; store.set('set3', S.set);
       refit(); showTabRefresh();
     } else if (id === 'pickfiles') loadFiles(e.target.files);
   });
