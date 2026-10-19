@@ -4,8 +4,16 @@ MULTILAB data fetcher.
 
 For each league switched on below, it writes:
   data/<league>/results.json  - every result this season + closing market odds
-  data/<league>/odds.json     - upcoming matches with Sportsbet odds
-  data/<league>/meta.json     - when it ran, what worked, and any name problems
+  data/<league>/odds.json     - upcoming games: prices per bookmaker + extra markets
+  data/<league>/meta.json     - when it ran, what worked, name problems, extra-market coverage
+
+odds.json layout (one entry per game):
+  id, kickoff_utc, home, away,
+  books:  { "sportsbet": {"h2h": {...}, "totals": [...]}, "playup": {...}, ... }
+  extras: { "sportsbet": { "btts": {...}, "double_chance": {...}, ... } }
+
+Extra markets (BTTS, double chance, ...) cost credits per game, so they only run
+when FETCH_EXTRAS=true, and only for upcoming games Sportsbet has already priced.
 
 Team names are matched automatically where possible ("AC Milan" -> "Milan").
 Anything it can't match safely is flagged in meta.json AND as a yellow warning
@@ -20,10 +28,9 @@ import os
 import re
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 # ---- Switch leagues on here --------------------------------------------------
-# Each league costs a couple of Odds API credits per run.
 ENABLED_LEAGUES = ["serie-a"]
 # e.g. ENABLED_LEAGUES = ["serie-a", "premier-league", "la-liga", "bundesliga", "ligue-1"]
 
@@ -37,13 +44,31 @@ LEAGUES = {
 
 SEASON_CODE = os.environ.get("SEASON_CODE", "2627")   # 2026/27. Change each August.
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-BOOKMAKER = os.environ.get("BOOKMAKER", "sportsbet")
+
+# Bookmakers asked for in the standard call (up to 10 count as one region).
+# Sportsbet is the one you bet with. PlayUp and TABtouch were the only AU books
+# returning over/under goals in the 19 Oct 2026 bookmaker check, so they act as
+# reference prices for totals.
+BOOKMAKERS = os.environ.get("BOOKMAKERS", "sportsbet,playup,tabtouch")
+PRIMARY = os.environ.get("PRIMARY_BOOKMAKER", "sportsbet")
+
+
+def env_flag(name, default="false"):
+    return os.environ.get(name, default).strip().lower() in ("1", "true", "yes")
+
+
+# ---- Extra markets (one request per game per market, ~1 credit each) ---------
+FETCH_EXTRAS = env_flag("FETCH_EXTRAS")
+EXTRA_MARKETS = ["btts", "double_chance", "draw_no_bet", "alternate_totals",
+                 "team_totals", "correct_score", "alternate_spreads"]
+EXTRAS_WITHIN_DAYS = int(os.environ.get("EXTRAS_WITHIN_DAYS", "7"))
+STOP_EXTRAS_AT_CREDITS = int(os.environ.get("STOP_EXTRAS_AT_CREDITS", "10"))  # keeps a small reserve
 
 RESULTS_URL = "https://www.football-data.co.uk/mmz4281/{season}/{code}.csv"
-ODDS_URL = (
-    "https://api.the-odds-api.com/v4/sports/{sport}/odds/"
-    "?apiKey={key}&bookmakers={book}&markets=h2h,totals&oddsFormat=decimal"
-)
+ODDS_URL = ("https://api.the-odds-api.com/v4/sports/{sport}/odds/"
+            "?apiKey={key}&bookmakers={books}&markets=h2h,totals&oddsFormat=decimal")
+EVENT_ODDS_URL = ("https://api.the-odds-api.com/v4/sports/{sport}/events/{event}/odds"
+                  "?apiKey={key}&bookmakers={book}&markets={market}&oddsFormat=decimal")
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
@@ -107,7 +132,7 @@ def load_name_map(league):
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "multilab/1.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
-        return resp.read(), dict(resp.headers)
+        return resp.read(), {k.lower(): v for k, v in resp.headers.items()}
 
 
 def num(value):
@@ -115,6 +140,13 @@ def num(value):
         return float(value)
     except (TypeError, ValueError):
         return None
+
+
+def to_int(value, default=None):
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return default
 
 
 def save(league, filename, data):
@@ -125,11 +157,14 @@ def save(league, filename, data):
 
 
 def warn(title, message):
-    # Shows as a yellow warning on the GitHub Actions run summary
-    print(f"::warning title={title}::{message}")
+    print(f"::warning title={title}::{message}")      # yellow warning on the run
 
 
-# ---- Sources -----------------------------------------------------------------
+def notice(title, message):
+    print(f"::notice title={title}::{message}")       # blue note on the run
+
+
+# ---- Results -----------------------------------------------------------------
 def parse_results_csv(text):
     matches = []
     for row in csv.DictReader(io.StringIO(text)):
@@ -161,33 +196,112 @@ def fetch_results(cfg):
     return parse_results_csv(text)
 
 
+# ---- Odds --------------------------------------------------------------------
 def parse_odds(events, match):
-    out = []
+    games = []
     for ev in events:
-        game = {"kickoff_utc": ev.get("commence_time"),
+        game = {"id": ev.get("id"), "kickoff_utc": ev.get("commence_time"),
                 "home": match(ev["home_team"]), "away": match(ev["away_team"]),
-                "h2h": {}, "totals": []}
+                "books": {}, "extras": {}}
         for book in ev.get("bookmakers", []):
+            entry = game["books"].setdefault(
+                book["key"], {"title": book.get("title", book["key"]), "h2h": {}, "totals": []})
             for market in book.get("markets", []):
                 if market["key"] == "h2h":
                     for o in market["outcomes"]:
                         side = ("home" if o["name"] == ev["home_team"]
                                 else "away" if o["name"] == ev["away_team"] else "draw")
-                        game["h2h"][side] = o["price"]
+                        entry["h2h"][side] = o["price"]
                 elif market["key"] == "totals":
                     for o in market["outcomes"]:
-                        game["totals"].append({"side": o["name"].lower(),
-                                               "line": o.get("point"), "price": o["price"]})
-        out.append(game)
-    return out
+                        entry["totals"].append({"side": o["name"].lower(),
+                                                "line": o.get("point"), "price": o["price"]})
+        games.append(game)
+    return games
 
 
 def fetch_odds(cfg, match):
     if not ODDS_API_KEY:
         raise RuntimeError("ODDS_API_KEY secret is not set")
-    raw, headers = get(ODDS_URL.format(sport=cfg["odds"], key=ODDS_API_KEY, book=BOOKMAKER))
-    remaining = headers.get("x-requests-remaining") or headers.get("X-Requests-Remaining")
-    return parse_odds(json.loads(raw), match), remaining
+    raw, headers = get(ODDS_URL.format(sport=cfg["odds"], key=ODDS_API_KEY, books=BOOKMAKERS))
+    return parse_odds(json.loads(raw), match), to_int(headers.get("x-requests-remaining"))
+
+
+# ---- Extra markets -----------------------------------------------------------
+def kickoff(game):
+    try:
+        return datetime.fromisoformat(game["kickoff_utc"].replace("Z", "+00:00"))
+    except (AttributeError, KeyError, ValueError):
+        return None
+
+
+def eligible_for_extras(games, now):
+    """Upcoming games (within the window) that the primary bookmaker has already priced."""
+    horizon = now + timedelta(days=EXTRAS_WITHIN_DAYS)
+    out = []
+    for g in games:
+        k = kickoff(g)
+        if k and now < k <= horizon and g["books"].get(PRIMARY, {}).get("h2h"):
+            out.append(g)
+    return out
+
+
+def clean_outcome(o):
+    out = {"name": o.get("name"), "price": o.get("price")}
+    for extra in ("point", "description"):
+        if o.get(extra) is not None:
+            out[extra] = o[extra]
+    return out
+
+
+def fetch_extras(cfg, games, remaining, now=None):
+    """Adds game['extras'][PRIMARY][market] for each eligible game.
+    A market that errors is skipped for the rest of the run (no paying twice to find out)."""
+    now = now or datetime.now(timezone.utc)
+    todo = eligible_for_extras(games, now)
+    report = {m: {"games_tried": 0, "games_with_data": 0, "error": None} for m in EXTRA_MARKETS}
+    stopped = None
+
+    for game in todo:
+        for market in EXTRA_MARKETS:
+            if stopped:
+                break
+            if report[market]["error"]:
+                continue
+            if remaining is not None and remaining <= STOP_EXTRAS_AT_CREDITS:
+                stopped = f"stopped early: only {remaining} credits left"
+                break
+            url = EVENT_ODDS_URL.format(sport=cfg["odds"], event=game["id"],
+                                        key=ODDS_API_KEY, book=PRIMARY, market=market)
+            try:
+                raw, headers = get(url)
+                data = json.loads(raw)
+            except urllib.error.HTTPError as e:
+                body = e.read().decode("utf-8", "replace")[:200]
+                report[market]["error"] = f"HTTP {e.code}: {body}"
+                if e.code in (401, 429):              # out of credits or rate limited
+                    stopped = f"stopped early: {report[market]['error']}"
+                continue
+            except (urllib.error.URLError, OSError, ValueError) as e:
+                report[market]["error"] = str(e)
+                continue
+
+            remaining = to_int(headers.get("x-requests-remaining"), remaining)
+            report[market]["games_tried"] += 1
+            for book in data.get("bookmakers", []):
+                if book.get("key") != PRIMARY:
+                    continue
+                for m in book.get("markets", []):
+                    if m.get("key") == market and m.get("outcomes"):
+                        game["extras"].setdefault(PRIMARY, {})[market] = {
+                            "last_update": m.get("last_update"),
+                            "outcomes": [clean_outcome(o) for o in m["outcomes"]],
+                        }
+                        report[market]["games_with_data"] += 1
+        if stopped:
+            break
+
+    return {"games_considered": len(todo), "stopped": stopped, "markets": report}, remaining
 
 
 # ---- Checks ------------------------------------------------------------------
@@ -222,9 +336,20 @@ def run_league(league):
     known = {m["home"] for m in results} | {m["away"] for m in results}
     matcher = NameMatcher(load_name_map(league), known)
     try:
-        odds, remaining = fetch_odds(cfg, matcher)
-        save(league, "odds.json", odds)
-        meta["sources"]["odds"] = {"ok": True, "games": len(odds), "api_credits_left": remaining}
+        games, remaining = fetch_odds(cfg, matcher)
+        priced = sum(1 for g in games if g["books"].get(PRIMARY, {}).get("h2h"))
+        meta["sources"]["odds"] = {"ok": True, "games": len(games),
+                                   f"priced_by_{PRIMARY}": priced}
+        if FETCH_EXTRAS:
+            try:
+                meta["extras"], remaining = fetch_extras(cfg, games, remaining)
+            except Exception as e:    # extras are a bonus: never let them break the core odds
+                meta["extras"] = {"error": f"{type(e).__name__}: {e}"}
+                warn(f"{league} extras", meta["extras"]["error"])
+        else:
+            meta["extras"] = {"skipped": "FETCH_EXTRAS is off for this run"}
+        save(league, "odds.json", games)
+        meta["sources"]["odds"]["api_credits_left"] = remaining
     except (urllib.error.URLError, OSError, ValueError, KeyError, RuntimeError) as e:
         meta["sources"]["odds"] = {"ok": False, "error": str(e)}
         warn(f"{league} odds", str(e))
@@ -242,6 +367,19 @@ def run_league(league):
         print(f"  {src}: {'OK' if info['ok'] else 'FAILED - ' + info['error']}")
     for odds_name, result_name in sorted(matcher.auto.items()):
         print(f"  auto-matched: {odds_name} -> {result_name}")
+
+    extras = meta.get("extras", {})
+    if "markets" in extras:
+        print(f"  extra markets ({extras['games_considered']} upcoming games):")
+        for market, r in extras["markets"].items():
+            summary = r["error"] or f"{r['games_with_data']}/{r['games_tried']} games had prices"
+            print(f"    {market}: {summary}")
+            if r["error"] or (r["games_tried"] and not r["games_with_data"]):
+                notice(f"{league} {market}", f"no {PRIMARY} prices: {summary}")
+        if extras["stopped"]:
+            warn(f"{league} extras", extras["stopped"])
+    elif "skipped" in extras:
+        print("  extra markets: skipped this run")
 
 
 def main():
