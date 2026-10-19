@@ -1,9 +1,9 @@
-name: Fetch Serie A data
+name: Fetch football data
 
 on:
   schedule:
     # Times are UTC. 22:30 UTC Mon/Thu = 9:00am Tue/Fri in Adelaide (daylight time).
-    - cron: "30 22 * * 1"   # Tuesday: results + standard odds (about 2 credits)
+    - cron: "30 22 * * 1"   # Tuesday: results + standard odds (about 2 credits a league)
     - cron: "30 22 * * 4"   # Friday: also fetches extra markets (BTTS, double chance...)
   workflow_dispatch:         # "Run workflow" button in the Actions tab
     inputs:
@@ -11,6 +11,14 @@ on:
         description: "Also fetch extra markets (BTTS, double chance, etc). Uses more credits."
         type: boolean
         default: true
+      leagues:
+        description: "Which leagues to fetch. Only applies to a manual run; the Tuesday and Friday runs fetch every enabled league."
+        type: choice
+        options:
+          - all
+          - serie-a
+          - premier-league
+        default: all
 
 permissions:
   contents: write
@@ -31,6 +39,7 @@ jobs:
           SEASON_CODE: "2627"
           FETCH_EXTRAS: "${{ github.event.schedule == '30 22 * * 4' || inputs.extras == true }}"
           HISTORY_SEASONS: "5"
+          LEAGUES: "${{ inputs.leagues || 'all' }}"
         run: python scripts/fetch_data.py
 
       - name: Save data to the repo
