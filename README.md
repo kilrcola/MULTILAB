@@ -36,7 +36,7 @@ data/leagues.json           the list of leagues the page shows, written by the f
 
 **A club's name doesn't match:** open that league's `meta.json` (for example `data/premier-league/meta.json`). `unknown_team_names` lists them. Add each one to `scripts/team_names.json` under that league, as `"name the odds site uses": "name in results"`, then run it again.
 
-**Adding a league:** add it to `ENABLED_LEAGUES` at the top of `fetch_data.py`, add its name to the "Leagues to fetch" list in `fetch-data.yml` if you want to run it on its own, then run it and check that league's `meta.json` before you trust anything. The page picks the new league up by itself from `data/leagues.json`. The settings (the goal squeeze, the stretch and the trust slider) were tuned on Serie A, so check them on the new league's data before relying on the defaults.
+**Adding a league:** add it to `ENABLED_LEAGUES` at the top of `fetch_data.py`, add its name to the "Leagues to fetch" list in `fetch-data.yml` if you want to run it on its own, then run it and check that league's `meta.json` before you trust anything. The page picks the new league up by itself from `data/leagues.json`. The settings (the goal squeeze, the stretch and the trust slider) were tuned on Serie A and checked on the Premier League, where they held up. A different league can behave differently (the Premier League needs less goal squeezing and has a weaker favourites-are-cheap pattern), so check a new league's data before relying on the defaults.
 
 ## When something looks wrong
 
