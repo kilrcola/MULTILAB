@@ -36,14 +36,15 @@ ENABLED_LEAGUES = ["serie-a", "premier-league"]
 # e.g. ENABLED_LEAGUES = ["serie-a", "premier-league", "la-liga", "bundesliga", "ligue-1"]
 
 LEAGUES = {
-    "serie-a":        {"csv": "I1",  "odds": "soccer_italy_serie_a",       "teams": 20},
-    "premier-league": {"csv": "E0",  "odds": "soccer_epl",                 "teams": 20},
-    "la-liga":        {"csv": "SP1", "odds": "soccer_spain_la_liga",       "teams": 20},
-    "bundesliga":     {"csv": "D1",  "odds": "soccer_germany_bundesliga",  "teams": 18},
-    "ligue-1":        {"csv": "F1",  "odds": "soccer_france_ligue_one",    "teams": 18},
+    "serie-a":        {"name": "Serie A",        "csv": "I1",  "odds": "soccer_italy_serie_a",       "teams": 20},
+    "premier-league": {"name": "Premier League", "csv": "E0",  "odds": "soccer_epl",                 "teams": 20},
+    "la-liga":        {"name": "La Liga",        "csv": "SP1", "odds": "soccer_spain_la_liga",       "teams": 20},
+    "bundesliga":     {"name": "Bundesliga",     "csv": "D1",  "odds": "soccer_germany_bundesliga",  "teams": 18},
+    "ligue-1":        {"name": "Ligue 1",        "csv": "F1",  "odds": "soccer_france_ligue_one",    "teams": 18},
 }
 
 SEASON_CODE = os.environ.get("SEASON_CODE", "2627")   # 2026/27. Change each August.
+ONLY_LEAGUES = os.environ.get("LEAGUES", "all").strip().lower()   # "all" or e.g. "serie-a" or "serie-a,premier-league"
 HISTORY_SEASONS = int(os.environ.get("HISTORY_SEASONS", "3"))   # how many past seasons the page uses as priors
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
 
@@ -441,10 +442,28 @@ def run_league(league):
         print("  extra markets: skipped this run")
 
 
+def write_league_list():
+    """data/leagues.json tells the page which leagues exist, so adding one needs no page edit."""
+    out = [{"id": l, "name": LEAGUES[l]["name"]} for l in ENABLED_LEAGUES if l in LEAGUES]
+    os.makedirs(os.path.join(REPO_ROOT, "data"), exist_ok=True)
+    with open(os.path.join(REPO_ROOT, "data", "leagues.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=1)
+
+
+def wanted(league):
+    if ONLY_LEAGUES in ("", "all"):
+        return True
+    return league in [x.strip() for x in ONLY_LEAGUES.split(",")]
+
+
 def main():
+    write_league_list()
     for league in ENABLED_LEAGUES:
         if league not in LEAGUES:
             warn("Config", f"unknown league '{league}' in ENABLED_LEAGUES")
+            continue
+        if not wanted(league):
+            print(f"[{league}] skipped (this run fetches: {ONLY_LEAGUES})")
             continue
         run_league(league)
 
