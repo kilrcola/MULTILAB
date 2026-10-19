@@ -32,7 +32,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 # ---- Switch leagues on here --------------------------------------------------
-ENABLED_LEAGUES = ["serie-a"]
+ENABLED_LEAGUES = ["serie-a", "premier-league"]
 # e.g. ENABLED_LEAGUES = ["serie-a", "premier-league", "la-liga", "bundesliga", "ligue-1"]
 
 LEAGUES = {
