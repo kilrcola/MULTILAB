@@ -1,16 +1,20 @@
 {
-  "Inter Milan": "Inter",
-  "AC Milan": "Milan",
-  "AS Roma": "Roma",
-  "SS Lazio": "Lazio",
-  "SSC Napoli": "Napoli",
-  "Atalanta BC": "Atalanta",
-  "Hellas Verona FC": "Verona",
-  "Hellas Verona": "Verona",
-  "Juventus FC": "Juventus",
-  "ACF Fiorentina": "Fiorentina",
-  "Bologna FC": "Bologna",
-  "Torino FC": "Torino",
-  "Genoa CFC": "Genoa",
-  "Udinese Calcio": "Udinese"
+  "serie-a": {
+    "_note": "Only names the script can't match by itself. Left: odds site name. Right: results name.",
+    "Inter Milan": "Inter",
+    "Internazionale": "Inter",
+    "FC Internazionale Milano": "Inter"
+  },
+  "premier-league": {
+    "_note": "Fill in after the first run if meta.json flags names."
+  },
+  "la-liga": {
+    "_note": "Fill in after the first run if meta.json flags names."
+  },
+  "bundesliga": {
+    "_note": "Fill in after the first run if meta.json flags names."
+  },
+  "ligue-1": {
+    "_note": "Fill in after the first run if meta.json flags names."
+  }
 }
