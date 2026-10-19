@@ -4,6 +4,8 @@
   "kickoff_utc": "2026-10-19T16:30:00Z",
   "home": "Monza",
   "away": "Cagliari",
+  "home_api": "Monza",
+  "away_api": "Cagliari",
   "books": {
    "sportsbet": {
     "title": "SportsBet",
@@ -45,12 +47,12 @@
      {
       "side": "over",
       "line": 2.5,
-      "price": 2.02
+      "price": 2.05
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.75
+      "price": 1.72
      }
     ]
    }
@@ -58,7 +60,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -71,7 +73,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Cagliari or Draw",
@@ -88,7 +90,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Cagliari",
@@ -101,7 +103,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:05Z",
+     "last_update": "2026-10-19T05:16:08Z",
      "outcomes": [
       {
        "name": "Over",
@@ -186,7 +188,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:05Z",
+     "last_update": "2026-10-19T05:16:08Z",
      "outcomes": [
       {
        "name": "Monza:1|Cagliari:0",
@@ -510,6 +512,8 @@
   "kickoff_utc": "2026-10-19T18:45:00Z",
   "home": "Parma",
   "away": "Torino",
+  "home_api": "Parma",
+  "away_api": "Torino",
   "books": {
    "sportsbet": {
     "title": "SportsBet",
@@ -543,8 +547,8 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 3.0,
-     "away": 2.4,
+     "home": 3.15,
+     "away": 2.3,
      "draw": 3.0
     },
     "totals": [
@@ -564,7 +568,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -577,7 +581,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Parma or Draw",
@@ -594,7 +598,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Parma",
@@ -607,7 +611,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:43Z",
+     "last_update": "2026-10-19T05:15:59Z",
      "outcomes": [
       {
        "name": "Over",
@@ -692,7 +696,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:43Z",
+     "last_update": "2026-10-19T05:15:59Z",
      "outcomes": [
       {
        "name": "Parma:1|Torino:0",
@@ -1016,6 +1020,8 @@
   "kickoff_utc": "2026-10-23T18:45:00Z",
   "home": "Torino",
   "away": "Monza",
+  "home_api": "Torino",
+  "away_api": "Monza",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -1070,7 +1076,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -1083,7 +1089,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Monza or Draw",
@@ -1100,7 +1106,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Monza",
@@ -1113,7 +1119,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:51Z",
+     "last_update": "2026-10-19T05:15:58Z",
      "outcomes": [
       {
        "name": "Over",
@@ -1198,7 +1204,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:51Z",
+     "last_update": "2026-10-19T05:15:58Z",
      "outcomes": [
       {
        "name": "Torino:1|Monza:0",
@@ -1522,6 +1528,8 @@
   "kickoff_utc": "2026-10-24T13:00:00Z",
   "home": "Cagliari",
   "away": "Bologna",
+  "home_api": "Cagliari",
+  "away_api": "Bologna",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -1576,7 +1584,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -1589,7 +1597,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Bologna or Draw",
@@ -1606,7 +1614,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Bologna",
@@ -1619,7 +1627,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:26Z",
+     "last_update": "2026-10-19T05:16:19Z",
      "outcomes": [
       {
        "name": "Over",
@@ -1704,7 +1712,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:26Z",
+     "last_update": "2026-10-19T05:16:19Z",
      "outcomes": [
       {
        "name": "Cagliari:1|Bologna:0",
@@ -2028,6 +2036,8 @@
   "kickoff_utc": "2026-10-24T13:00:00Z",
   "home": "Como",
   "away": "Sassuolo",
+  "home_api": "Como",
+  "away_api": "Sassuolo",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -2082,7 +2092,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -2095,7 +2105,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Como or Draw",
@@ -2112,7 +2122,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Como",
@@ -2125,7 +2135,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:37:56Z",
+     "last_update": "2026-10-19T05:15:42Z",
      "outcomes": [
       {
        "name": "Over",
@@ -2210,7 +2220,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:37:56Z",
+     "last_update": "2026-10-19T05:15:42Z",
      "outcomes": [
       {
        "name": "Como:1|Sassuolo:0",
@@ -2534,6 +2544,8 @@
   "kickoff_utc": "2026-10-24T16:00:00Z",
   "home": "Napoli",
   "away": "Roma",
+  "home_api": "Napoli",
+  "away_api": "AS Roma",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -2588,7 +2600,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -2601,7 +2613,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "AS Roma or Draw",
@@ -2618,7 +2630,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:30Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "AS Roma",
@@ -2631,7 +2643,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:41Z",
+     "last_update": "2026-10-19T05:16:28Z",
      "outcomes": [
       {
        "name": "Over",
@@ -2716,7 +2728,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:41Z",
+     "last_update": "2026-10-19T05:16:28Z",
      "outcomes": [
       {
        "name": "Napoli:1|AS Roma:0",
@@ -3040,6 +3052,8 @@
   "kickoff_utc": "2026-10-24T18:45:00Z",
   "home": "Lazio",
   "away": "Parma",
+  "home_api": "Lazio",
+  "away_api": "Parma",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -3094,7 +3108,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -3107,7 +3121,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Lazio or Draw",
@@ -3124,7 +3138,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Lazio",
@@ -3137,7 +3151,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:18Z",
+     "last_update": "2026-10-19T05:16:19Z",
      "outcomes": [
       {
        "name": "Over",
@@ -3222,7 +3236,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:18Z",
+     "last_update": "2026-10-19T05:16:19Z",
      "outcomes": [
       {
        "name": "Lazio:1|Parma:0",
@@ -3546,6 +3560,8 @@
   "kickoff_utc": "2026-10-25T11:30:00Z",
   "home": "Inter",
   "away": "Fiorentina",
+  "home_api": "Inter Milan",
+  "away_api": "Fiorentina",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -3600,7 +3616,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -3613,7 +3629,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Fiorentina or Draw",
@@ -3630,7 +3646,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Fiorentina",
@@ -3643,7 +3659,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:11Z",
+     "last_update": "2026-10-19T05:16:12Z",
      "outcomes": [
       {
        "name": "Over",
@@ -3728,7 +3744,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:11Z",
+     "last_update": "2026-10-19T05:16:12Z",
      "outcomes": [
       {
        "name": "Inter Milan:1|Fiorentina:0",
@@ -4052,6 +4068,8 @@
   "kickoff_utc": "2026-10-25T14:00:00Z",
   "home": "Atalanta",
   "away": "Frosinone",
+  "home_api": "Atalanta BC",
+  "away_api": "Frosinone",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -4106,7 +4124,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -4119,7 +4137,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Atalanta BC or Draw",
@@ -4136,7 +4154,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Atalanta BC",
@@ -4149,7 +4167,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:51Z",
+     "last_update": "2026-10-19T05:16:39Z",
      "outcomes": [
       {
        "name": "Over",
@@ -4234,7 +4252,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:51Z",
+     "last_update": "2026-10-19T05:16:39Z",
      "outcomes": [
       {
        "name": "Atalanta BC:1|Frosinone:0",
@@ -4558,6 +4576,8 @@
   "kickoff_utc": "2026-10-25T14:00:00Z",
   "home": "Genoa",
   "away": "Venezia",
+  "home_api": "Genoa",
+  "away_api": "Venezia",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -4612,7 +4632,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -4625,7 +4645,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Genoa or Draw",
@@ -4642,7 +4662,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Genoa",
@@ -4655,7 +4675,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:37:12Z",
+     "last_update": "2026-10-19T05:14:28Z",
      "outcomes": [
       {
        "name": "Over",
@@ -4740,7 +4760,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:37:12Z",
+     "last_update": "2026-10-19T05:14:28Z",
      "outcomes": [
       {
        "name": "Genoa:1|Venezia:0",
@@ -5064,6 +5084,8 @@
   "kickoff_utc": "2026-10-25T17:00:00Z",
   "home": "Lecce",
   "away": "Juventus",
+  "home_api": "Lecce",
+  "away_api": "Juventus",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -5118,7 +5140,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -5131,7 +5153,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Juventus or Draw",
@@ -5148,7 +5170,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Juventus",
@@ -5161,7 +5183,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:38:43Z",
+     "last_update": "2026-10-19T05:16:06Z",
      "outcomes": [
       {
        "name": "Over",
@@ -5246,7 +5268,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:38:43Z",
+     "last_update": "2026-10-19T05:16:06Z",
      "outcomes": [
       {
        "name": "Lecce:1|Juventus:0",
@@ -5570,6 +5592,8 @@
   "kickoff_utc": "2026-10-25T19:45:00Z",
   "home": "Udinese",
   "away": "Milan",
+  "home_api": "Udinese",
+  "away_api": "AC Milan",
   "books": {
    "tabtouch": {
     "title": "TABtouch",
@@ -5624,7 +5648,7 @@
   "extras": {
    "sportsbet": {
     "btts": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "Yes",
@@ -5637,7 +5661,7 @@
      ]
     },
     "double_chance": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "AC Milan or Draw",
@@ -5654,7 +5678,7 @@
      ]
     },
     "draw_no_bet": {
-     "last_update": "2026-10-19T04:38:31Z",
+     "last_update": "2026-10-19T05:15:49Z",
      "outcomes": [
       {
        "name": "AC Milan",
@@ -5667,7 +5691,7 @@
      ]
     },
     "alternate_totals": {
-     "last_update": "2026-10-19T04:39:15Z",
+     "last_update": "2026-10-19T05:15:58Z",
      "outcomes": [
       {
        "name": "Over",
@@ -5752,7 +5776,7 @@
      ]
     },
     "correct_score": {
-     "last_update": "2026-10-19T04:39:15Z",
+     "last_update": "2026-10-19T05:15:58Z",
      "outcomes": [
       {
        "name": "Udinese:1|AC Milan:0",
@@ -6076,6 +6100,8 @@
   "kickoff_utc": "2026-10-27T17:30:00Z",
   "home": "Sassuolo",
   "away": "Lazio",
+  "home_api": "Sassuolo",
+  "away_api": "Lazio",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6105,6 +6131,8 @@
   "kickoff_utc": "2026-10-27T19:45:00Z",
   "home": "Roma",
   "away": "Cagliari",
+  "home_api": "AS Roma",
+  "away_api": "Cagliari",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6134,6 +6162,8 @@
   "kickoff_utc": "2026-10-27T19:45:00Z",
   "home": "Torino",
   "away": "Como",
+  "home_api": "Torino",
+  "away_api": "Como",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6163,6 +6193,8 @@
   "kickoff_utc": "2026-10-28T17:30:00Z",
   "home": "Milan",
   "away": "Bologna",
+  "home_api": "AC Milan",
+  "away_api": "Bologna",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6192,6 +6224,8 @@
   "kickoff_utc": "2026-10-28T17:30:00Z",
   "home": "Venezia",
   "away": "Inter",
+  "home_api": "Venezia",
+  "away_api": "Inter Milan",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6221,6 +6255,8 @@
   "kickoff_utc": "2026-10-28T17:30:00Z",
   "home": "Parma",
   "away": "Udinese",
+  "home_api": "Parma",
+  "away_api": "Udinese",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6250,6 +6286,8 @@
   "kickoff_utc": "2026-10-28T19:45:00Z",
   "home": "Genoa",
   "away": "Juventus",
+  "home_api": "Genoa",
+  "away_api": "Juventus",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6279,6 +6317,8 @@
   "kickoff_utc": "2026-10-28T19:45:00Z",
   "home": "Monza",
   "away": "Napoli",
+  "home_api": "Monza",
+  "away_api": "Napoli",
   "books": {
    "playup": {
     "title": "PlayUp",
@@ -6308,6 +6348,8 @@
   "kickoff_utc": "2026-10-29T17:30:00Z",
   "home": "Frosinone",
   "away": "Lecce",
+  "home_api": "Frosinone",
+  "away_api": "Lecce",
   "books": {},
   "extras": {}
  },
@@ -6316,6 +6358,8 @@
   "kickoff_utc": "2026-10-29T19:45:00Z",
   "home": "Fiorentina",
   "away": "Atalanta",
+  "home_api": "Fiorentina",
+  "away_api": "Atalanta BC",
   "books": {},
   "extras": {}
  }
