@@ -3,12 +3,13 @@
 MULTILAB data fetcher.
 
 For each league switched on below, it writes:
-  data/<league>/results.json  - every result this season + closing market odds
+  data/<league>/results.json  - every result this season + closing market odds + shots, corners, cards
+  data/<league>/history.json  - the previous seasons (default 3), same fields; completed seasons are fetched once
   data/<league>/odds.json     - upcoming games: prices per bookmaker + extra markets
   data/<league>/meta.json     - when it ran, what worked, name problems, extra-market coverage
 
 odds.json layout (one entry per game):
-  id, kickoff_utc, home, away,
+  id, kickoff_utc, home, away (our names), home_api, away_api (the odds site's own names),
   books:  { "sportsbet": {"h2h": {...}, "totals": [...]}, "playup": {...}, ... }
   extras: { "sportsbet": { "btts": {...}, "double_chance": {...}, ... } }
 
@@ -43,6 +44,7 @@ LEAGUES = {
 }
 
 SEASON_CODE = os.environ.get("SEASON_CODE", "2627")   # 2026/27. Change each August.
+HISTORY_SEASONS = int(os.environ.get("HISTORY_SEASONS", "3"))   # how many past seasons the page uses as priors
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
 
 # Bookmakers asked for in the standard call (up to 10 count as one region).
@@ -165,35 +167,84 @@ def notice(title, message):
 
 
 # ---- Results -----------------------------------------------------------------
+def int_or_none(v):
+    try:
+        return int(float(v))
+    except (TypeError, ValueError):
+        return None
+
+
+def parse_date(d):
+    for fmt in ("%d/%m/%Y", "%d/%m/%y"):
+        try:
+            return datetime.strptime(d, fmt).date().isoformat()
+        except ValueError:
+            pass
+    return d
+
+
+# football-data.co.uk column -> short key in our JSON
+STAT_COLUMNS = {"hs": "HS", "as": "AS", "hst": "HST", "ast": "AST", "hc": "HC", "ac": "AC",
+                "hy": "HY", "ay": "AY", "hr": "HR", "ar": "AR"}
+
+
 def parse_results_csv(text):
     matches = []
     for row in csv.DictReader(io.StringIO(text)):
         if not row.get("HomeTeam") or row.get("FTHG") in (None, ""):
             continue
-        d = row.get("Date", "")
-        try:
-            day = datetime.strptime(d, "%d/%m/%Y").date().isoformat()
-        except ValueError:
-            day = d
         closing = {k: num(row.get(c)) for k, c in ODDS_COLUMNS.items() if num(row.get(c))}
-        matches.append({
-            "date": day,
+        m = {
+            "date": parse_date(row.get("Date", "")),
             "home": row["HomeTeam"].strip(), "away": row["AwayTeam"].strip(),
             "hg": int(row["FTHG"]), "ag": int(row["FTAG"]),
-            "ht_hg": int(row["HTHG"]) if row.get("HTHG") else None,
-            "ht_ag": int(row["HTAG"]) if row.get("HTAG") else None,
-            "closing_odds": closing,
-        })
+            "ht_hg": int_or_none(row.get("HTHG")), "ht_ag": int_or_none(row.get("HTAG")),
+        }
+        for key, col in STAT_COLUMNS.items():
+            m[key] = int_or_none(row.get(col))
+        m["closing_odds"] = closing
+        matches.append(m)
     return matches
 
 
-def fetch_results(cfg):
-    raw, _ = get(RESULTS_URL.format(season=SEASON_CODE, code=cfg["csv"]))
+def prev_season(code, back=1):
+    a, b = int(code[:2]), int(code[2:])
+    return f"{(a - back) % 100:02d}{(b - back) % 100:02d}"
+
+
+def fetch_results(cfg, season=None):
+    raw, _ = get(RESULTS_URL.format(season=season or SEASON_CODE, code=cfg["csv"]))
     try:
         text = raw.decode("utf-8-sig")
     except UnicodeDecodeError:
         text = raw.decode("latin-1")
     return parse_results_csv(text)
+
+
+def load_json(league, filename, default):
+    try:
+        with open(os.path.join(REPO_ROOT, "data", league, filename), encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return default
+
+
+def fetch_history(league, cfg):
+    """Past seasons for ratings priors. A finished season never changes, so it is fetched once."""
+    history = load_json(league, "history.json", {})
+    wanted = [prev_season(SEASON_CODE, k) for k in range(1, HISTORY_SEASONS + 1)]
+    history = {k: v for k, v in history.items() if k in wanted}
+    errors = {}
+    for code in wanted:
+        if code in history:
+            continue
+        try:
+            history[code] = fetch_results(cfg, code)
+        except (urllib.error.URLError, OSError, ValueError, KeyError) as e:
+            errors[code] = str(e)
+    save(league, "history.json", history)
+    return {"ok": bool(history), "seasons": sorted(history), "missing": sorted(errors),
+            "errors": errors, "matches": sum(len(v) for v in history.values())}
 
 
 # ---- Odds --------------------------------------------------------------------
@@ -202,6 +253,7 @@ def parse_odds(events, match):
     for ev in events:
         game = {"id": ev.get("id"), "kickoff_utc": ev.get("commence_time"),
                 "home": match(ev["home_team"]), "away": match(ev["away_team"]),
+                "home_api": ev["home_team"], "away_api": ev["away_team"],
                 "books": {}, "extras": {}}
         for book in ev.get("bookmakers", []):
             entry = game["books"].setdefault(
@@ -333,6 +385,13 @@ def run_league(league):
         meta["sources"]["results"] = {"ok": False, "error": str(e)}
         warn(f"{league} results", str(e))
 
+    hist = fetch_history(league, cfg)
+    meta["sources"]["history"] = hist
+    if not hist["ok"]:
+        warn(f"{league} history", "no past seasons available: " + "; ".join(f"{k}: {v}" for k, v in hist["errors"].items()))
+    elif hist["missing"]:
+        notice(f"{league} history", "could not fetch seasons " + ", ".join(hist["missing"]) + " (the page works without them)")
+
     known = {m["home"] for m in results} | {m["away"] for m in results}
     matcher = NameMatcher(load_name_map(league), known)
     try:
@@ -364,7 +423,7 @@ def run_league(league):
     status = "NEEDS ATTENTION" if meta["needs_attention"] else "OK"
     print(f"[{league}] {status}")
     for src, info in meta["sources"].items():
-        print(f"  {src}: {'OK' if info['ok'] else 'FAILED - ' + info['error']}")
+        print(f"  {src}: {'OK' if info['ok'] else 'FAILED - ' + str(info.get('error', info.get('errors')))}")
     for odds_name, result_name in sorted(matcher.auto.items()):
         print(f"  auto-matched: {odds_name} -> {result_name}")
 
