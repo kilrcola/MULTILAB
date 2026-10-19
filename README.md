@@ -23,6 +23,14 @@ Twice a week (Tue and Fri, 9am Adelaide), GitHub runs a script that grabs Serie 
 - **Team names don't match:** most are matched automatically ("AC Milan" becomes "Milan"). Anything left over is listed under `unknown_team_names` in `meta.json`. Add it to `team_names.json` under the right league, like `"Name from odds site": "Name in results"`, then rerun.
 - **Runs stopped happening:** GitHub can pause schedules on quiet repos. Press **Run workflow** to wake it up.
 
+## Bookmaker check (run once, or whenever you add a league)
+
+Finds out which Australian bookmakers actually return over/under goals, BTTS and double chance through the API.
+
+1. Add two files: `.github/workflows/check-bookmakers.yml` and `scripts/check_bookmakers.py`.
+2. **Actions** tab → **Check bookmaker markets** → **Run workflow**.
+3. Open `data/serie-a/bookmaker-check.json` (or read the table in the run log). It costs about 5 credits.
+
 ## Adding another league (checklist)
 
 1. In `scripts/fetch_data.py`, add the league to `ENABLED_LEAGUES` near the top. The options are `premier-league`, `la-liga`, `bundesliga` and `ligue-1`.
