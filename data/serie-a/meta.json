@@ -1,10 +1,10 @@
 {
- "fetched_at_utc": "2026-10-19T10:21:28+00:00",
+ "fetched_at_utc": "2026-10-19T11:10:18+00:00",
  "season": "2627",
  "sources": {
   "results": {
-   "ok": true,
-   "matches": 60
+   "ok": false,
+   "error": "The read operation timed out"
   },
   "history": {
    "ok": true,
@@ -23,7 +23,7 @@
    "ok": true,
    "games": 22,
    "priced_by_sportsbet": 12,
-   "api_credits_left": 302
+   "api_credits_left": 240
   }
  },
  "extras": {
@@ -69,10 +69,6 @@
  },
  "name_problems": [],
  "unknown_team_names": [],
- "auto_matched_names": {
-  "AS Roma": "Roma",
-  "Atalanta BC": "Atalanta",
-  "AC Milan": "Milan"
- },
- "needs_attention": false
+ "auto_matched_names": {},
+ "needs_attention": true
 }
