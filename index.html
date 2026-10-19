@@ -93,17 +93,16 @@ h4{font:600 14px/1.2 var(--body);color:var(--ink2);margin:0 0 6px}
 .tiles.t2{grid-template-columns:repeat(2,1fr)}
 .tiles.t4{grid-template-columns:repeat(2,1fr)}
 @media (min-width:640px){.tiles.t4{grid-template-columns:repeat(4,1fr)}}
-.tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:82px;padding:8px 10px;text-align:left;
+.tile{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:104px;padding:8px 10px;text-align:left;
   background:var(--paper);border:1.5px solid var(--rule);border-radius:5px;cursor:pointer;transition:transform .12s}
 .tile:active{transform:scale(.98)}
 .tile.ref{cursor:default;border-style:dashed;opacity:.85}
 .t-sel{font-size:13px;color:var(--ink2);line-height:1.15;overflow-wrap:anywhere;padding-right:4px}
 .t-price{font:700 28px/1 var(--display)}
-.t-meta{font-size:12.5px;color:var(--ink2);line-height:1.25}
+.t-meta{font-size:12px;color:var(--ink2);line-height:1.25}
 .e{font-weight:700}
 .e-pos{color:var(--verde)} .e-neg{color:var(--rosso)} .e-flat{color:var(--ink2)}
 .tile.edge-pos{background:var(--verde-bg);border-color:var(--verde)}
-.tile.edge-neg{border-color:var(--rosso)}
 .tile.on{outline:3px solid var(--ink);outline-offset:1px}
 .tile.on::after{content:'In slip';position:absolute;top:6px;right:8px;font-size:11.5px;font-weight:700;color:var(--ink)}
 details.more{margin-top:12px;border-top:1px solid var(--rule);padding-top:8px}
@@ -171,6 +170,23 @@ td b{font-weight:700}
 @media (max-width:560px){.hide-s{display:none}}
 @media (max-width:430px){.tabs button{padding:10px 8px 8px;font-size:18px}.wordmark{font-size:27px}}
 @media (max-width:430px){th,td{padding-left:5px;padding-right:5px}}
+
+.t-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;padding-top:5px}
+.tag{font-style:normal;font-size:11px;font-weight:700;padding:1px 6px;border-radius:3px;line-height:1.5}
+.tag.lk{background:var(--ink);color:var(--paper)}
+.tag.vl{background:var(--verde);color:var(--paper)}
+.glance{margin:12px 0 4px;border:1px solid var(--rule);border-radius:5px;overflow:hidden}
+.g-row{display:grid;grid-template-columns:70px 1fr 1fr;gap:8px;align-items:stretch;padding:7px 8px;border-top:1px solid var(--rule)}
+.g-row:first-child{border-top:0;background:var(--paper);font-size:12.5px;font-weight:600;color:var(--ink2)}
+.g-m{font-size:13px;font-weight:600;color:var(--ink2);align-self:center}
+.gbtn{display:block;width:100%;text-align:left;border:1.5px solid var(--rule);background:var(--paper);border-radius:4px;padding:5px 7px;cursor:pointer}
+.gbtn b{display:block;font-weight:600;font-size:14px;line-height:1.2}
+.gbtn small{display:block;font-size:12px;color:var(--ink2);line-height:1.25}
+.gbtn.lk{border-color:var(--ink)}
+.gbtn.vl{border-color:var(--verde);background:var(--verde-bg)}
+.gbtn.on{outline:3px solid var(--ink);outline-offset:1px}
+.none{font-size:12.5px;color:var(--ink3);align-self:center;line-height:1.3}
+.simout tr.sec th{text-align:left;padding-top:12px;color:var(--ink);font-size:14px;border-bottom:1px solid var(--rule)}
 
 </style>
 </head>
@@ -383,7 +399,9 @@ const E = (function () {
     model.iters = iters; model.mu = mu; model.h = h; model.rho = Math.round(bestRho * 1000) / 1000;
     const eff = new Float64Array(T), cnt = new Int32Array(T);
     for (let m = 0; m < N; m++) { eff[H[m]] += W[m]; eff[A[m]] += W[m]; cnt[H[m]]++; cnt[A[m]]++; }
-    names.forEach((n, t) => { model.teams[n] = { att: att[t], def: def[t], eff: eff[t], n: cnt[t] }; });
+    const recent = new Int32Array(T), cutoff = asOf - 365 * DAY;
+    for (let m = 0; m < N; m++) if (used[m].date >= cutoff) { recent[H[m]]++; recent[A[m]]++; }
+    names.forEach((n, t) => { model.teams[n] = { att: att[t], def: def[t], eff: eff[t], n: cnt[t], recent: recent[t] }; });
     return model;
   }
   function lambdas(model, home, away) {
@@ -452,7 +470,7 @@ const E = (function () {
     }
     return legs;
   }
-  const GROUP_SIZE = { h2h: 3, btts: 2, dnb: 2, dc: 3 };
+  const GROUP_SIZE = { h2h: 3, btts: 2, dc: 3 };
   function annotate(legs, grid) {
     for (const l of legs) {
       l.p = dot(l.win, grid); l.pv = l.void ? dot(l.void, grid) : 0;
@@ -479,11 +497,22 @@ const E = (function () {
     const mkt = h2h.length === 3 && h2h[0].mkt != null ? { home: h2h[0].mkt, draw: h2h[1].mkt, away: h2h[2].mkt } : null;
     const th = model.teams[game.home], ta = model.teams[game.away];
     const eff = Math.min(th ? th.eff : 0, ta ? ta.eff : 0);
-    const level = eff >= 14 ? 'High' : eff >= 7 ? 'Medium' : 'Low';
+    const recent = Math.min(th ? th.recent : 0, ta ? ta.recent : 0);      // matches in the last 12 months
+    const level = recent >= 25 ? 'High' : recent >= 12 ? 'Medium' : 'Low';
     const disagree = mkt ? Math.max(Math.abs(ph - mkt.home), Math.abs(pd - mkt.draw), Math.abs(pa - mkt.away)) : 0;
-    const conf = { level, eff, disagree, flag: disagree > 0.08, known: lam.known };
+    const conf = { level, eff, recent, disagree, flag: disagree > 0.08, known: lam.known };
     legs.forEach(l => { l.conf = level; l.flag = conf.flag; });
-    return { game, lam, grid, legs, p1x2: { home: ph, draw: pd, away: pa }, mkt, conf };
+    // per market: the outcome most likely to happen, and the one whose price beats the model's chance the most
+    const picks = [];
+    [['h2h', 'Result', 3], ['btts', 'Both score', 2], ['ou:2.5', '2.5 goals', 2], ['dc', 'Double chance', 3]].forEach(([grp, label, want]) => {
+      const L = legs.filter(l => l.group === grp && !l.ref);
+      if (L.length !== want) return;
+      const likeliest = L.reduce((a, b) => (b.p > a.p ? b : a)), best = L.reduce((a, b) => (b.edge > a.edge ? b : a));
+      likeliest.isLikeliest = true;
+      if (best.edge >= 0.025) best.isValue = true;
+      picks.push({ group: grp, label, likeliest, best, value: best.edge >= 0.025 ? best : null });
+    });
+    return { game, lam, grid, legs, picks, p1x2: { home: ph, draw: pd, away: pa }, mkt, conf };
   }
 
   // ---------- multis ----------
@@ -534,15 +563,15 @@ const E = (function () {
   function pick(c, u) { let lo = 0, hi = CELLS - 1; while (lo < hi) { const mid = (lo + hi) >> 1; if (c[mid] < u) lo = mid + 1; else hi = mid; } return lo; }
   function simGame(grid, n, rnd) { const c = cdfOf(grid), counts = new Uint32Array(CELLS); for (let s = 0; s < n; s++) counts[pick(c, rnd())]++; return counts; }
   function summariseSim(counts, n) {
-    let h = 0, d = 0, a = 0, btts = 0, o25 = 0, goals = 0; const list = [];
+    let h = 0, d = 0, a = 0, btts = 0, o25 = 0, o15 = 0, o35 = 0, csH = 0, csA = 0, goals = 0; const list = [];
     for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) {
       const c = counts[i * G + j]; if (!c) continue;
       if (i > j) h += c; else if (i === j) d += c; else a += c;
-      if (i > 0 && j > 0) btts += c; if (i + j > 2) o25 += c; goals += c * (i + j);
+      if (i > 0 && j > 0) btts += c; if (i + j > 1) o15 += c; if (i + j > 2) o25 += c; if (i + j > 3) o35 += c; if (j === 0) csH += c; if (i === 0) csA += c; goals += c * (i + j);
       list.push({ score: i + '-' + j, count: c });
     }
     list.sort((x, y) => y.count - x.count);
-    return { n, home: h / n, draw: d / n, away: a / n, btts: btts / n, over25: o25 / n, avgGoals: goals / n, top: list.slice(0, 6).map(x => ({ score: x.score, p: x.count / n })) };
+    return { n, home: h / n, draw: d / n, away: a / n, btts: btts / n, bttsNo: 1 - btts / n, over15: o15 / n, over25: o25 / n, under25: 1 - o25 / n, over35: o35 / n, csHome: csH / n, csAway: csA / n, avgGoals: goals / n, top: list.slice(0, 6).map(x => ({ score: x.score, p: x.count / n })) };
   }
   const moe = (p, n) => 1.96 * Math.sqrt(Math.max(p * (1 - p), 1e-9) / n);   // 95% sampling range
   function simSlip(legs, grids, n, rnd, quoted) {
@@ -670,12 +699,12 @@ const E = (function () {
   const pct = (x, d) => (x * 100).toFixed(d || 0) + '%';
   const price = x => Number(x).toFixed(2);
   const sgn = (x, d) => { const v = Math.abs(x * 100).toFixed(d || 0); return (Number(v) === 0 ? '' : x >= 0 ? '+' : MINUS) + v + '%'; };
-  const edgeCls = e => (e >= 0.03 ? 'pos' : e <= -0.10 ? 'neg' : 'flat');
+  const edgeCls = e => (e >= 0.025 ? 'pos' : e <= -0.15 ? 'neg' : 'flat');
   const money = (x, d) => (x < 0 ? MINUS : '') + '$' + Math.abs(x).toFixed(d == null ? 2 : d);
   const fmtN = n => Number(n).toLocaleString('en-AU');
   const nowMs = () => { const p = new URLSearchParams(location.search).get('now'); const t = p ? Date.parse(p) : NaN; return isNaN(t) ? Date.now() : t; };
-  const kick = iso => new Date(iso).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' });
-  const dayKey = iso => new Date(iso).toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' });
+  const kick = iso => new Date(iso).toLocaleString('en-AU', { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', hour12: true });
+  const dayKey = iso => new Date(iso).toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' });
   const TABS = ['games', 'value', 'multi', 'season', 'model'];
 
   const S = {
@@ -792,10 +821,22 @@ const E = (function () {
   function tile(l, label) {
     const on = S.slip.indexOf(l.key) >= 0, ec = edgeCls(l.edge);
     const cls = 'tile edge-' + ec + (on ? ' on' : '') + (l.ref ? ' ref' : '');
-    const meta = pct(l.p) + ' model <b class="e e-' + ec + '">' + sgn(l.edge) + '</b>' + (l.ref ? '<br>Reference price from ' + esc(l.book) : '');
-    const inner = '<span class="t-sel">' + esc(label || l.sel) + '</span><span class="t-price">' + price(l.price) + '</span><span class="t-meta">' + meta + '</span>';
+    const lines = '<span class="t-meta">Model <b>' + pct(l.p) + '</b></span>' + (l.mkt != null ? '<span class="t-meta">Sportsbet <b>' + pct(l.mkt) + '</b></span>' : '') +
+      '<span class="t-meta">Value <b class="e e-' + ec + '">' + sgn(l.edge) + '</b></span>' + (l.ref ? '<span class="t-meta">Reference price from ' + esc(l.book) + '</span>' : '');
+    const tags = (l.isLikeliest ? '<em class="tag lk">Likeliest</em>' : '') + (l.isValue ? '<em class="tag vl">Best value</em>' : '');
+    const inner = '<span class="t-sel">' + esc(label || l.sel) + '</span><span class="t-price">' + price(l.price) + '</span>' + lines + (tags ? '<span class="t-tags">' + tags + '</span>' : '');
     return l.ref ? '<div class="' + cls + '">' + inner + '</div>'
       : '<button type="button" class="' + cls + '" data-leg="' + esc(l.key) + '" aria-pressed="' + on + '">' + inner + '</button>';
+  }
+  function glance(an) {
+    if (!an.picks.length) return '';
+    const btn = (l, cls, sub) => { const on = S.slip.indexOf(l.key) >= 0; return '<button type="button" class="gbtn ' + cls + (on ? ' on' : '') + '" data-leg="' + esc(l.key) + '" aria-pressed="' + on + '"><b>' + esc(legLabel(l)) + '</b><small>' + sub + '</small></button>'; };
+    let h = '<div class="glance"><div class="g-row"><span>Market</span><span title="The outcome with the highest chance">Likeliest</span><span title="Where the model\u2019s chance beats Sportsbet\u2019s price the most">Best value</span></div>';
+    an.picks.forEach(p => {
+      h += '<div class="g-row"><span class="g-m">' + esc(p.label) + '</span>' + btn(p.likeliest, 'lk', pct(p.likeliest.p) + ' chance, pays ' + price(p.likeliest.price)) +
+        (p.value ? btn(p.value, 'vl', 'pays ' + price(p.value.price) + ', value ' + sgn(p.value.edge)) : '<span class="none">No value. Closest: ' + esc(legLabel(p.best)) + ', ' + sgn(p.best.edge) + '</span>') + '</div>';
+    });
+    return h + '</div>';
   }
   function bars(an) {
     const g = an.game;
@@ -813,6 +854,7 @@ const E = (function () {
     let html = '<article class="game" id="game-' + esc(g.id) + '"><header class="gh"><div class="teams"><span>' + esc(g.home) + '</span><span class="vs">v</span><span>' + esc(g.away) + '</span></div><div class="when">' + esc(kick(g.kickoff_utc)) + '</div></header>' +
       '<div class="badges">' + badges + '</div>' + bars(an) +
       '<p class="xg">Expected goals <b>' + an.lam.lh.toFixed(2) + '</b> to <b>' + an.lam.la.toFixed(2) + '</b></p>';
+    html += glance(an);
     const h2h = by('h2h');
     if (h2h.length) html += '<div class="grp"><h4>Match result</h4><div class="tiles">' + h2h.map(l => tile(l)).join('') + '</div></div>';
     const goals = [];
@@ -840,8 +882,8 @@ const E = (function () {
     if (!S.games.length) {
       el.innerHTML = '<h2>Next games</h2><div class="note">No upcoming games have Sportsbet prices yet.' + (S.unpriced ? ' ' + S.unpriced + ' games are waiting on prices.' : '') + ' Run the Fetch Serie A data workflow closer to kickoff.</div>'; return;
     }
-    let html = '<h2>Next games</h2><p class="lede">Every price is Sportsbet\u2019s, with Multilab\u2019s chance and the gap under it. Green means the model thinks it pays better than it should, red means worse. Tap a price to put it in your multi.</p>' +
-      '<details class="how"><summary>How to read this</summary><p>The Model bar is what the ratings say. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. Edge is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
+    let html = '<h2>Next games</h2><p class="lede">Every price is Sportsbet\u2019s. Under it: the model\u2019s chance, Sportsbet\u2019s own chance, and the value. <b>Likeliest</b> is the outcome with the highest chance. <b>Best value</b> is where the price beats the model\u2019s chance by 3% or more. They are often different bets. Tap any price to put it in your multi.</p>' +
+      '<details class="how"><summary>How to read this</summary><p>The Model bar is what the ratings say. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. The favourite (the likeliest winner) usually pays the least, so it is rarely the best value. Torino can be the likeliest winner while Parma\u2019s bigger price is the better bet for the risk. Value is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
     let day = '';
     S.games.forEach(an => { const d = dayKey(an.game.kickoff_utc); if (d !== day) { day = d; html += '<h3 class="day">' + esc(d) + '</h3>'; } html += card(an); });
     if (S.unpriced) html += '<p class="small">' + S.unpriced + ' more games have no Sportsbet price yet. They show up here once Sportsbet posts them.</p>';
@@ -850,14 +892,18 @@ const E = (function () {
   function simGame(gid) {
     const an = S.an[gid], n = S.sims, rnd = E.rng32((Date.now() + gid.length * 7919) >>> 0);
     const s = E.summariseSim(E.simGame(an.grid, n, rnd), n), g = an.game, ex = an.p1x2;
-    const row = (nm, p, exact) => '<tr><td>' + esc(nm) + '</td><td><b>' + pct(p, 1) + '</b></td><td>' + pct(E.moe(p, n) , 1).replace('%', '') + '</td><td>' + pct(exact, 1) + '</td></tr>';
-    const bt = an.legs.find(l => l.group === 'btts' && l.sel === 'Yes'), o25 = an.legs.find(l => l.group === 'ou:2.5' && l.sel === 'Over 2.5');
-    let t = '<b>' + fmtN(n) + ' simulated games</b><div class="scroll"><table><thead><tr><th></th><th>Simulated</th><th>Noise (±pts)</th><th>Exact</th></tr></thead><tbody>' +
-      row(g.home + ' win', s.home, ex.home) + row('Draw', s.draw, ex.draw) + row(g.away + ' win', s.away, ex.away) +
-      (bt ? row('Both teams score', s.btts, bt.p) : '') + (o25 ? row('Over 2.5 goals', s.over25, o25.p) : '') + '</tbody></table></div>' +
+    const X = f => E.dot(E.mask(f), an.grid);
+    const sections = [
+      ['Result', [[g.home + ' win', s.home, ex.home], ['Draw', s.draw, ex.draw], [g.away + ' win', s.away, ex.away]]],
+      ['Both teams score', [['Yes', s.btts, X((h, a) => h > 0 && a > 0)], ['No', s.bttsNo, X((h, a) => h === 0 || a === 0)]]],
+      ['Other likely outcomes', [['Over 1.5 goals', s.over15, X((h, a) => h + a > 1)], ['Over 2.5 goals', s.over25, X((h, a) => h + a > 2)], ['Under 2.5 goals', s.under25, X((h, a) => h + a < 3)],
+        ['Over 3.5 goals', s.over35, X((h, a) => h + a > 3)], [g.home + ' clean sheet', s.csHome, X((h, a) => a === 0)], [g.away + ' clean sheet', s.csAway, X((h, a) => h === 0)]]]
+    ];
+    const body = sections.map(sec => '<tr class="sec"><th colspan="4">' + sec[0] + '</th></tr>' +
+      sec[1].slice().sort((p, q) => q[1] - p[1]).map((r, i) => '<tr><td>' + (i === 0 ? '<b>' + esc(r[0]) + '</b>' : esc(r[0])) + '</td><td><b>' + pct(r[1], 1) + '</b></td><td>' + (E.moe(r[1], n) * 100).toFixed(1) + '</td><td>' + pct(r[2], 1) + '</td></tr>').join('')).join('');
+    $('#sim-' + gid).innerHTML = '<b>' + fmtN(n) + ' simulated games</b>, highest chance first<div class="scroll"><table><thead><tr><th></th><th>Simulated</th><th>Noise (\u00b1pts)</th><th>Exact</th></tr></thead><tbody>' + body + '</tbody></table></div>' +
       '<p>Most common scores: ' + s.top.map(x => '<b>' + x.score + '</b> (' + pct(x.p, 1) + ')').join(', ') + '. Average ' + s.avgGoals.toFixed(2) + ' goals.</p>' +
       '<p class="small">Noise is the 95% range from sampling alone. The exact column is worked out directly from the model, so extra runs only pull the simulation closer to it.</p>';
-    $('#sim-' + gid).innerHTML = t;
   }
 
   // ---------- value ----------
@@ -871,7 +917,7 @@ const E = (function () {
       default: return l.sel;
     }
   }
-  function legMeta(l) { const an = S.an[l.gid], g = an.game; return esc(g.home) + ' v ' + esc(g.away) + ', ' + esc(new Date(g.kickoff_utc).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' })) + (l.conf === 'Low' ? ', low confidence' : '') + (l.flag ? ', check team news' : ''); }
+  function legMeta(l) { const an = S.an[l.gid], g = an.game; return esc(g.home) + ' v ' + esc(g.away) + ', ' + esc(new Date(g.kickoff_utc).toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' })) + (l.conf === 'Low' ? ', low confidence' : '') + (l.flag ? ', check team news' : ''); }
   function vrow(l) {
     const on = S.slip.indexOf(l.key) >= 0, ec = edgeCls(l.edge);
     return '<button type="button" class="vrow' + (on ? ' on' : '') + '" data-leg="' + esc(l.key) + '" aria-pressed="' + on + '"><span class="v-main"><b>' + esc(legLabel(l)) + '</b><small>' + legMeta(l) + '</small></span>' +
@@ -988,7 +1034,7 @@ const E = (function () {
   // ---------- model ----------
   function renderModel() {
     const el = $('#p-model'), m = S.model, teams = teamNames().filter(t => m.teams[t]);
-    const rows = teams.map(t => { const x = m.teams[t], gf = Math.exp(m.mu + x.att), ga = Math.exp(m.mu - x.def); return { t, gf, ga, net: gf - ga, eff: x.eff }; }).sort((a, b) => b.net - a.net);
+    const rows = teams.map(t => { const x = m.teams[t], gf = Math.exp(m.mu + x.att), ga = Math.exp(m.mu - x.def); return { t, gf, ga, net: gf - ga, recent: x.recent }; }).sort((a, b) => b.net - a.net);
     const nCur = S.raw.results.length, hist = S.raw.history ? Object.keys(S.raw.history) : [], nHist = hist.reduce((t, k) => t + S.raw.history[k].length, 0), shots = m.shots && m.shots.fitted;
     const sl = (id, label, min, max, step, val, hint, dis) => '<div class="slide"><label for="' + id + '"><span>' + label + '</span><span id="' + id + '-v">' + val + '</span></label><input class="range" type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + val + '"' + (dis ? ' disabled' : '') + '><small>' + hint + '</small></div>';
     el.innerHTML = '<h2>Model</h2><p class="lede">How the ratings are built, and how good they are.</p>' +
@@ -996,8 +1042,8 @@ const E = (function () {
       sl('s-rg', 'Pull towards average', 0, 12, 0.5, S.set.ridge, 'Higher stops one hot or cold run from swinging a rating, which matters most early in the season.') +
       sl('s-sb', 'Weight on shots, per cent', 0, 100, 5, S.set.shotBlend, shots ? 'Blends a shots-based expected goals measure with real goals, since goals are lucky.' : 'Shots are not in your data yet. Update the fetcher and run it to switch this on.', !shots) + '</div>' +
       '<div class="card"><h3>Is it any good?</h3><p class="small">Replays this season one matchday at a time using only what was known beforehand, and scores the model against the market\u2019s closing odds. Lower is better.</p><div class="row"><button type="button" class="btn" data-act="backtest">Run the scorecard</button></div><div id="bt" aria-live="polite">' + btHtml() + '</div></div>' +
-      '<div class="card"><h3>Team ratings</h3><p class="small">Goals per game against an average side on a neutral pitch.</p><div class="scroll"><table><thead><tr><th>Team</th><th>Scores</th><th>Concedes</th><th>Net</th><th>Data</th></tr></thead><tbody>' +
-      rows.map(r => '<tr><td><b>' + esc(r.t) + '</b></td><td>' + r.gf.toFixed(2) + '</td><td>' + r.ga.toFixed(2) + '</td><td>' + (r.net >= 0 ? '+' : MINUS) + Math.abs(r.net).toFixed(2) + '</td><td>' + (r.eff >= 14 ? 'Plenty' : r.eff >= 7 ? 'Some' : 'Thin') + '</td></tr>').join('') + '</tbody></table></div></div>' +
+      '<div class="card"><h3>Team ratings</h3><p class="small">Goals per game against an average side on a neutral pitch.</p><div class="scroll"><table><thead><tr><th>Team</th><th>Scores</th><th>Concedes</th><th>Net</th><th>Last 12 months</th></tr></thead><tbody>' +
+      rows.map(r => '<tr><td><b>' + esc(r.t) + '</b></td><td>' + r.gf.toFixed(2) + '</td><td>' + r.ga.toFixed(2) + '</td><td>' + (r.net >= 0 ? '+' : MINUS) + Math.abs(r.net).toFixed(2) + '</td><td>' + r.recent + ' matches' + '</td></tr>').join('') + '</tbody></table></div></div>' +
       '<div class="card"><h3>Data in use</h3><p>' + nCur + ' matches this season' + (hist.length ? ', plus ' + fmtN(nHist) + ' from ' + hist.length + ' earlier season' + (hist.length > 1 ? 's' : '') + ' (' + hist.map(h => h.slice(0, 2) + '/' + h.slice(2)).join(', ') + ')' : ', and no earlier seasons yet (run the updated fetcher to add them)') + '.</p>' +
       '<p>Home advantage is worth about ' + ((Math.exp(m.h) - 1) * 100).toFixed(0) + '% more goals. The low-score correction (rho) is ' + (m.rho < 0 ? MINUS : '') + Math.abs(m.rho).toFixed(3) + (m.rho < -0.02 ? ', so 0-0 and 1-1 get a small lift.' : '.') + (shots ? ' Shots data is on.' : ' Shots data is not in use.') + '</p></div>';
   }
