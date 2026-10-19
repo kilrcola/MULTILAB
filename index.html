@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>Multilab: Serie A fair odds and multis</title>
+<title>Multilab: football fair odds and multis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -192,12 +192,19 @@ td b{font-weight:700}
 .e-warn{color:var(--amber)}
 .pill.warn{color:var(--amber);border-color:var(--amber);background:var(--amber-bg)}
 
+.lchips{display:flex;flex-wrap:wrap;gap:6px}
+.lchip{font:600 15px/1 var(--display);padding:5px 9px;border:1.5px solid var(--ink);border-radius:3px;background:transparent;color:var(--ink);cursor:pointer}
+.lchip[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.lchip[disabled]{cursor:default}
+.lbar{margin:2px 0 10px}
+.lg-badge{border-color:var(--ink);color:var(--ink)}
+
 </style>
 </head>
 <body>
 <header class="top-outer">
   <div class="wrap top">
-      <div class="brand"><span class="wordmark">Multilab</span><span class="league">Serie A</span></div>
+      <div class="brand"><span class="wordmark">Multilab</span><div class="lchips" id="lchips" role="group" aria-label="Leagues shown"></div></div>
       <div class="fresh" id="fresh" aria-live="polite">Loading data</div>
       <div class="sims" role="group" aria-label="Simulations per run">
         <span>Simulations per run</span>
@@ -872,24 +879,31 @@ const E = (function () {
   const dayKey = iso => new Date(iso).toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' });
   const TABS = ['games', 'value', 'multi', 'season', 'model'];
 
+  let LEAGUES = [{ id: 'serie-a', name: 'Serie A' }, { id: 'premier-league', name: 'Premier League' }];   // data/leagues.json replaces this when it exists
   const S = {
-    raw: { results: null, history: null, odds: null, meta: null },
-    rows: [], model: null, an: {}, games: [], unpriced: 0, legByKey: {},
+    lg: {}, order: [], on: store.get('on', null), cur: store.get('cur', null),
+    an: {}, games: [], legByKey: {},
     slip: store.get('slip', []), sims: store.get('sims', 20000), stake: store.get('stake', 2), quoted: '',
     set: Object.assign({ halfLife: 300, ridge: 2, shotBlend: 50, trust: 25 }, store.get('set2', {})),
     vf: { market: 'All', min: 0, low: false, long: false, cap: true, limit: 30 }, sug: { k: 4, min: 0.45 },
     pt: { scope: 'r1', min: 0.025, skipLow: true, res: null }, tab: 'games', dirty: new Set(TABS), season: null, seasonBusy: false, backtest: null, simPay: null, simOut: '', yearsOut: ''
   };
 
+  // the league-by-league screens read these as if there were only one league: the one picked with S.cur
+  ['raw', 'rows', 'model'].forEach(k => Object.defineProperty(S, k, {
+    get() { const l = S.lg[S.cur]; return l ? l[k] : (k === 'rows' ? [] : null); },
+    set(v) { if (S.lg[S.cur]) S.lg[S.cur][k] = v; }
+  }));
+
   // ---------- loading ----------
-  function bases() {
-    const host = location.hostname, parts = location.pathname.split('/').filter(Boolean), rel = 'data/serie-a/';
-    if (/\.github\.io$/.test(host)) return ['https://raw.githubusercontent.com/' + host.split('.')[0] + '/' + (parts[0] || 'MULTILAB') + '/main/data/serie-a/', rel];
+  function bases(lid) {
+    const host = location.hostname, parts = location.pathname.split('/').filter(Boolean), rel = 'data/' + (lid ? lid + '/' : '');
+    if (/\.github\.io$/.test(host)) return ['https://raw.githubusercontent.com/' + host.split('.')[0] + '/' + (parts[0] || 'MULTILAB') + '/main/' + rel, rel];
     return [rel];
   }
-  async function getJson(name) {
+  async function getJson(lid, name) {
     let last;
-    for (const base of bases()) {
+    for (const base of bases(lid)) {
       try {
         const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), 8000);
         const r = await fetch(base + name + '.json?t=' + Math.floor(Date.now() / 60000), { signal: ctl.signal, cache: 'no-store' });
@@ -903,52 +917,93 @@ const E = (function () {
   function showError(msg) {
     $('#fresh').textContent = 'No data';
     $('#status').innerHTML = '<div class="note bad"><b>Could not load the data.</b> ' + esc(msg) + '<br>If you opened this file from your computer, the browser blocks it from reading other files. Open it from your GitHub Pages address, or choose the files by hand below.</div>' +
-      '<div class="row"><label class="field">Choose results.json and odds.json (history.json and meta.json help too)<input type="file" id="pickfiles" multiple accept=".json"></label></div>';
+      '<div class="row"><label class="field">League<select id="pickleague">' + LEAGUES.map(l => '<option value="' + l.id + '">' + esc(l.name) + '</option>').join('') + '</select></label><label class="field">Choose results.json and odds.json (history.json and meta.json help too)<input type="file" id="pickfiles" multiple accept=".json"></label></div>';
+  }
+  async function loadLeague(l) {
+    const [results, odds] = await Promise.all([getJson(l.id, 'results'), getJson(l.id, 'odds')]);
+    const history = await getJson(l.id, 'history').catch(() => null), meta = await getJson(l.id, 'meta').catch(() => null);
+    return { id: l.id, name: l.name, raw: { results, odds, history, meta }, rows: [], model: null, unpriced: 0 };
   }
   async function boot() {
-    try {
-      const [results, odds] = await Promise.all([getJson('results'), getJson('odds')]);
-      S.raw.results = results; S.raw.odds = odds;
-      S.raw.history = await getJson('history').catch(() => null);
-      S.raw.meta = await getJson('meta').catch(() => null);
-    } catch (e) { showError(String((e && e.message) || e)); return; }
+    const list = await getJson('', 'leagues').catch(() => null);
+    if (Array.isArray(list) && list.length) LEAGUES = list.filter(x => x && x.id && x.name);
+    const got = await Promise.all(LEAGUES.map(l => loadLeague(l).catch(e => ({ err: e, id: l.id }))));
+    got.forEach(g => { if (!g.err) { S.lg[g.id] = g; S.order.push(g.id); } });
+    if (!S.order.length) { showError(String((got[0] && got[0].err && got[0].err.message) || 'No league data found')); return; }
     start();
+  }
+  function prepLeague(lg) {
+    const sets = [{ season: 'cur', matches: lg.raw.results }];
+    if (lg.raw.history) Object.keys(lg.raw.history).forEach(k => sets.push({ season: k, matches: lg.raw.history[k] }));
+    lg.rows = E.prepRows(sets);
+    lg.model = E.fit(lg.rows, fitOpts(false, lg));
   }
   function start() {
     $('#status').innerHTML = '';
-    const sets = [{ season: 'cur', matches: S.raw.results }];
-    if (S.raw.history) Object.keys(S.raw.history).forEach(k => sets.push({ season: k, matches: S.raw.history[k] }));
-    S.rows = E.prepRows(sets);
-    S.model = E.fit(S.rows, fitOpts(false));
+    S.order.forEach(id => prepLeague(S.lg[id]));
+    S.on = (S.on || S.order).filter(id => S.lg[id]); if (!S.on.length) S.on = S.order.slice();
+    if (!S.cur || !S.lg[S.cur] || S.on.indexOf(S.cur) < 0) S.cur = S.on[0];
     analyseAll();
     const h = (location.hash || '').slice(1); if (TABS.indexOf(h) >= 0) S.tab = h;
-    renderFresh(); updateSimBtns(); showTab(S.tab); updateSlipUI(false);
+    renderFresh(); renderChips(); updateSimBtns(); showTab(S.tab); updateSlipUI(false);
   }
-  const fitOpts = warm => ({ halfLife: S.set.halfLife, ridge: S.set.ridge, shotBlend: S.set.shotBlend / 100, init: warm ? S.model : null });
+  const fitOpts = (warm, lg) => { lg = lg || S.lg[S.cur]; return { halfLife: S.set.halfLife, ridge: S.set.ridge, shotBlend: S.set.shotBlend / 100, init: warm && lg ? lg.model : null }; };
   function analyseAll() {
-    S.an = {}; S.games = []; S.unpriced = 0; const now = nowMs();
-    for (const g of S.raw.odds) {
-      const k = Date.parse(g.kickoff_utc);
-      if (!(k > now - 2 * 3600e3)) continue;
-      const priced = g.books && g.books.sportsbet && g.books.sportsbet.h2h && g.books.sportsbet.h2h.home;
-      if (!priced) { S.unpriced++; continue; }
-      const an = E.analyseGame(S.model, g, S.set.trust / 100); S.an[g.id] = an; S.games.push(an);
+    S.an = {}; S.games = []; const now = nowMs();
+    for (const id of S.order) {
+      const lg = S.lg[id]; lg.unpriced = 0;
+      for (const g0 of lg.raw.odds) {
+        const k = Date.parse(g0.kickoff_utc);
+        if (!(k > now - 2 * 3600e3)) continue;
+        const priced = g0.books && g0.books.sportsbet && g0.books.sportsbet.h2h && g0.books.sportsbet.h2h.home;
+        if (!priced) { lg.unpriced++; continue; }
+        const g = Object.assign({}, g0, { id: id + '_' + g0.id });          // one namespace for every league
+        const an = E.analyseGame(lg.model, g, S.set.trust / 100); an.league = id; an.legs.forEach(l => { l.league = id; });
+        S.an[g.id] = an; S.games.push(an);
+      }
     }
     S.games.sort((a, b) => Date.parse(a.game.kickoff_utc) - Date.parse(b.game.kickoff_utc));
     S.legByKey = {}; S.games.forEach(an => an.legs.forEach(l => { S.legByKey[l.key] = l; }));
     S.slip = S.slip.filter(k => S.legByKey[k]);
-    S.season = null; S.backtest = null; S.pt.res = null; S.simPay = null; S.simOut = ''; S.yearsOut = '';
+    resetLeagueResults(); S.simPay = null; S.simOut = ''; S.yearsOut = '';
     S.dirty = new Set(TABS);
   }
+  const resetLeagueResults = () => { S.season = null; S.backtest = null; S.pt.res = null; };
+  const visible = an => S.on.indexOf(an.league) >= 0;
+  const visibleGames = () => S.games.filter(visible);
+  const visibleLegs = () => Object.keys(S.legByKey).map(k => S.legByKey[k]).filter(l => S.on.indexOf(l.league) >= 0);
+  const unpricedVisible = () => S.on.reduce((t, id) => t + (S.lg[id] ? S.lg[id].unpriced : 0), 0);
+  const onRows = () => S.on.reduce((r, id) => r.concat(S.lg[id].rows), []);
   function refit() {
-    S.model = E.fit(S.rows, fitOpts(true)); analyseAll(); updateSlipUI(false); renderFresh();
+    S.order.forEach(id => { const lg = S.lg[id]; lg.model = E.fit(lg.rows, fitOpts(true, lg)); });
+    analyseAll(); updateSlipUI(false); renderFresh();
+  }
+  function renderChips() {
+    const el = $('#lchips'); if (!el) return;
+    el.innerHTML = S.order.map(id => '<button type="button" class="lchip" data-league="' + id + '" aria-pressed="' + (S.on.indexOf(id) >= 0) + '"' + (S.order.length < 2 ? ' disabled' : '') + '>' + esc(S.lg[id].name) + '</button>').join('');
+  }
+  function toggleLeague(id) {
+    const i = S.on.indexOf(id);
+    if (i >= 0) { if (S.on.length === 1) return; S.on.splice(i, 1); } else S.on.push(id);
+    S.on = S.order.filter(x => S.on.indexOf(x) >= 0); store.set('on', S.on);
+    if (S.on.indexOf(S.cur) < 0) { S.cur = S.on[0]; store.set('cur', S.cur); resetLeagueResults(); }
+    renderChips(); S.dirty = new Set(TABS); showTabRefresh();
+  }
+  function pickLeague(id) {
+    if (!S.lg[id] || id === S.cur) return;
+    S.cur = id; store.set('cur', id); resetLeagueResults(); S.dirty.add('season'); S.dirty.add('model'); showTabRefresh();
+  }
+  function leagueBar() {
+    if (S.on.length < 2) return '';
+    return '<div class="seg-btns lbar" role="group" aria-label="League">' + S.on.map(id => '<button type="button" data-cur="' + id + '" aria-pressed="' + (id === S.cur) + '">' + esc(S.lg[id].name) + '</button>').join('') + '</div>';
   }
 
   // ---------- chrome ----------
   function renderFresh() {
-    const el = $('#fresh'), m = S.raw.meta; let txt = 'Data loaded', old = false;
-    if (m && m.fetched_at_utc) {
-      const hrs = (nowMs() - Date.parse(m.fetched_at_utc)) / 3600e3;
+    const el = $('#fresh'); let txt = 'Data loaded', old = false;
+    const times = S.order.map(id => S.lg[id].raw.meta && S.lg[id].raw.meta.fetched_at_utc).filter(Boolean).map(t => Date.parse(t));
+    if (times.length) {
+      const hrs = (nowMs() - Math.min.apply(null, times)) / 3600e3;
       txt = 'Prices fetched ' + (hrs < 1 ? 'under an hour' : hrs < 48 ? Math.round(hrs) + ' hours' : Math.round(hrs / 24) + ' days') + ' ago';
       old = hrs > 96; if (old) txt += '. Run the fetch workflow.';
     }
@@ -1013,7 +1068,7 @@ const E = (function () {
   }
   function card(an) {
     const g = an.game, c = an.conf, by = grp => an.legs.filter(l => l.group === grp), one = (grp, sel) => an.legs.find(l => l.group === grp && l.sel === sel);
-    let badges = '<span class="badge conf-' + c.level.toLowerCase() + '" title="How much recent data sits behind both teams\u2019 ratings">' + c.level + ' confidence</span>';
+    let badges = (S.on.length > 1 ? '<span class="badge lg-badge">' + esc(S.lg[an.league].name) + '</span>' : '') + '<span class="badge conf-' + c.level.toLowerCase() + '" title="How much recent data sits behind both teams\u2019 ratings">' + c.level + ' confidence</span>';
     if (c.flag) badges += '<span class="badge warn" title="The model and Sportsbet differ by ' + pct(c.disagree) + ' points on the result">Model and Sportsbet disagree: check team news</span>';
     if (!c.known) badges += '<span class="badge warn">A team has no rating yet</span>';
     let html = '<article class="game" id="game-' + esc(g.id) + '"><header class="gh"><div class="teams"><span>' + esc(g.home) + '</span><span class="vs">v</span><span>' + esc(g.away) + '</span></div><div class="when">' + esc(kick(g.kickoff_utc)) + '</div></header>' +
@@ -1044,14 +1099,15 @@ const E = (function () {
   }
   function renderGames() {
     const el = $('#p-games');
-    if (!S.games.length) {
-      el.innerHTML = '<h2>Next games</h2><div class="note">No upcoming games have Sportsbet prices yet.' + (S.unpriced ? ' ' + S.unpriced + ' games are waiting on prices.' : '') + ' Run the Fetch Serie A data workflow closer to kickoff.</div>'; return;
+    const games = visibleGames(), unp = unpricedVisible();
+    if (!games.length) {
+      el.innerHTML = '<h2>Next games</h2><div class="note">No upcoming games have Sportsbet prices yet.' + (unp ? ' ' + unp + ' games are waiting on prices.' : '') + ' Run the Fetch Serie A data workflow closer to kickoff.</div>'; return;
     }
     let html = '<h2>Next games</h2><p class="lede">Every price is Sportsbet\u2019s. Under it: the model\u2019s chance, Sportsbet\u2019s own chance, and the value. <b>Likeliest</b> is the outcome with the highest chance. <b>Best value</b> is where the price beats the model\u2019s chance by 3% or more. They are often different bets. Tap any price to put it in your multi.</p>' +
       '<details class="how"><summary>How to read this</summary><p>The Model bar blends our ratings (' + S.set.trust + '%) with a score grid built from Sportsbet\u2019s own result and goals prices (' + (100 - S.set.trust) + '%), so it is a fair price you can compare with every other price. The Sportsbet bar is their prices with the margin taken out, so the two bars are directly comparable. The favourite (the likeliest winner) usually pays the least, so it is rarely the best value. Torino can be the likeliest winner while Parma\u2019s bigger price is the better bet for the risk. Value is what a $1 bet is worth on average if the model is right: +5% means it returns about $1.05, and −6% is roughly what a bookmaker\u2019s margin costs you. Large gaps are more often a model blind spot (injuries, rotation, lineup news) than a bargain, so check the team news before trusting one.</p></details>';
     let day = '';
-    S.games.forEach(an => { const d = dayKey(an.game.kickoff_utc); if (d !== day) { day = d; html += '<h3 class="day">' + esc(d) + '</h3>'; } html += card(an); });
-    if (S.unpriced) html += '<p class="small">' + S.unpriced + ' more games have no Sportsbet price yet. They show up here once Sportsbet posts them.</p>';
+    games.forEach(an => { const d = dayKey(an.game.kickoff_utc); if (d !== day) { day = d; html += '<h3 class="day">' + esc(d) + '</h3>'; } html += card(an); });
+    if (unp) html += '<p class="small">' + unp + ' more games have no Sportsbet price yet. They show up here once Sportsbet posts them.</p>';
     el.innerHTML = html;
   }
   function simGame(gid) {
@@ -1089,13 +1145,13 @@ const E = (function () {
       '<span class="v-num">' + price(l.price) + '<small>price</small></span><span class="v-num">' + pct(l.p) + '<small>model</small></span><span class="pill ' + ec + '">' + sgn(l.edge) + '</span></button>';
   }
   function renderValue() {
-    const el = $('#p-value'), all = Object.keys(S.legByKey).map(k => S.legByKey[k]).filter(l => !l.ref);
+    const el = $('#p-value'), all = visibleLegs().filter(l => !l.ref);
     if (!all.length) { el.innerHTML = '<h2>Value</h2><div class="note">No priced games yet.</div>'; return; }
     const el2 = E.eligibleLegs(all);
     const best = el2.filter(l => l.p >= 0.30 && l.conf !== 'Low' && l.edge >= E.VALUE_MIN && l.edge <= E.VALUE_MAX).sort((a, b) => b.edge - a.edge).slice(0, 8);
     const traps = el2.filter(l => l.price <= 3.5).sort((a, b) => a.edge - b.edge).slice(0, 8);
     const markets = ['All'].concat(Array.from(new Set(all.map(l => l.market))));
-    const pb = E.priceBands(S.rows), bandName = b => (b.hi > 900 ? 'Over ' + b.lo.toFixed(2) : b.lo.toFixed(2) + ' to ' + b.hi.toFixed(2));
+    const pb = E.priceBands(onRows()), bandName = b => (b.hi > 900 ? 'Over ' + b.lo.toFixed(2) : b.lo.toFixed(2) + ' to ' + b.hi.toFixed(2));
     const nOf = L => L.reduce((t, b) => t + b.n, 0), wavg = L => L.reduce((t, b) => t + b.roi * b.n, 0) / Math.max(1, nOf(L));
     const short = pb.bands.filter(b => b.hi <= 2 && b.n), long = pb.bands.filter(b => b.lo >= 5 && b.n);
     let verdict;
@@ -1120,7 +1176,7 @@ const E = (function () {
     renderVTable();
   }
   function renderVTable() {
-    const all = Object.keys(S.legByKey).map(k => S.legByKey[k]).filter(l => !l.ref && l.price >= 1.02);
+    const all = visibleLegs().filter(l => !l.ref && l.price >= 1.02);
     const cs = S.vf.market === 'Correct score';
     let list = all.filter(l => (S.vf.market === 'All' ? l.market !== 'Correct score' : l.market === S.vf.market) && !(l.market === 'Total goals' && l.line > 5.5) &&
       (S.vf.long || cs || l.price <= 12) && !(S.vf.cap && l.edge > E.VALUE_MAX) && l.p >= S.vf.min && !(S.vf.low && l.conf === 'Low')).sort((a, b) => b.edge - a.edge);
@@ -1188,7 +1244,7 @@ const E = (function () {
   function teamNames() { const s = new Set(); S.raw.results.forEach(m => { s.add(m.home); s.add(m.away); }); S.raw.odds.forEach(g => { s.add(g.home); s.add(g.away); }); return Array.from(s); }
   function renderSeason() {
     const el = $('#p-season');
-    let html = '<h2>Season outlook</h2><p class="lede">Plays out every game still to come, thousands of times, and counts where each team finishes. We do not need the fixture list: the remaining games are every home and away pairing that has not been played yet.</p>' +
+    let html = '<h2>Season outlook</h2>' + leagueBar() + '<p class="lede">Plays out every game still to come, thousands of times, and counts where each team finishes. We do not need the fixture list: the remaining games are every home and away pairing that has not been played yet.</p>' +
       '<div class="row"><button type="button" class="btn" data-act="season"' + (S.seasonBusy ? ' disabled' : '') + '>Simulate the rest of the season (' + fmtN(S.sims) + ' runs)</button></div><div class="prog" id="sprog" hidden><i></i></div>';
     if (S.season) {
       const rows = S.season;
@@ -1217,7 +1273,7 @@ const E = (function () {
     const rows = teams.map(t => { const x = m.teams[t], gf = Math.exp(m.mu + x.att), ga = Math.exp(m.mu - x.def); return { t, gf, ga, net: gf - ga, recent: x.recent }; }).sort((a, b) => b.net - a.net);
     const nCur = S.raw.results.length, hist = S.raw.history ? Object.keys(S.raw.history) : [], nHist = hist.reduce((t, k) => t + S.raw.history[k].length, 0), shots = m.shots && m.shots.fitted;
     const sl = (id, label, min, max, step, val, hint, dis) => '<div class="slide"><label for="' + id + '"><span>' + label + '</span><span id="' + id + '-v">' + val + '</span></label><input class="range" type="range" id="' + id + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + val + '"' + (dis ? ' disabled' : '') + '><small>' + hint + '</small></div>';
-    el.innerHTML = '<h2>Model</h2><p class="lede">How the ratings are built, and how good they are.</p>' +
+    el.innerHTML = '<h2>Model</h2>' + leagueBar() + '<p class="lede">How the ratings are built, and how good they are' + (S.order.length > 1 ? ' for ' + esc(S.lg[S.cur].name) : '') + '. The settings apply to every league.</p>' +
       '<div class="card"><h3>Settings</h3>' + sl('s-hl', 'Recency, in days until a match counts half', 60, 720, 30, S.set.halfLife, 'Lower reacts faster to recent form. Higher trusts last season more.') +
       sl('s-rg', 'Pull towards average', 0, 12, 0.5, S.set.ridge, 'Higher stops one hot or cold run from swinging a rating, which matters most early in the season.') +
       sl('s-tr', 'Trust in our ratings, per cent', 0, 100, 5, S.set.trust, 'The rest comes from Sportsbet\u2019s own result and goals prices, which are used to price everything else (both score, double chance, correct score, other goal lines). In testing on 820 matches the market beat our ratings, so a low setting is the safe one. At 0 the page prices from Sportsbet alone.') +
@@ -1318,9 +1374,11 @@ const E = (function () {
 
   // ---------- events ----------
   document.addEventListener('click', e => {
-    const t = e.target.closest('[data-leg],[data-act],[data-tab],[data-sims],[data-rm]'); if (!t) return;
+    const t = e.target.closest('[data-leg],[data-act],[data-tab],[data-sims],[data-rm],[data-league],[data-cur]'); if (!t) return;
     if (t.dataset.leg) return toggleLeg(t.dataset.leg);
     if (t.dataset.rm) return toggleLeg(t.dataset.rm);
+    if (t.dataset.league) return toggleLeague(t.dataset.league);
+    if (t.dataset.cur) return pickLeague(t.dataset.cur);
     if (t.dataset.tab) return showTab(t.dataset.tab);
     if (t.dataset.sims) { S.sims = Number(t.dataset.sims); store.set('sims', S.sims); updateSimBtns(); S.dirty = new Set(TABS); S.dirty.delete(S.tab); S.simOut = ''; S.yearsOut = ''; showTabRefresh(); return; }
     switch (t.dataset.act) {
@@ -1329,7 +1387,7 @@ const E = (function () {
       case 'sim-slip': return simSlip();
       case 'replay': return replay();
       case 'clear': S.slip = []; store.set('slip', S.slip); S.simOut = ''; S.yearsOut = ''; $$('[data-leg]').forEach(n => { n.classList.remove('on'); n.setAttribute('aria-pressed', 'false'); }); S.dirty.add('multi'); updateSlipUI(false); return renderMulti();
-      case 'suggest': { const picks = E.suggestSlip(Object.keys(S.legByKey).map(k => S.legByKey[k]), S.sug.k, S.sug.min);
+      case 'suggest': { const picks = E.suggestSlip(visibleLegs(), S.sug.k, S.sug.min);
         if (!picks.length) { S.simOut = ''; S.yearsOut = ''; return alert('Nothing fits that style right now. Try Balanced or Spicy.'); }
         S.slip = picks.map(l => l.key); store.set('slip', S.slip); S.simOut = ''; S.yearsOut = ''; S.simPay = null; S.dirty.add('multi'); S.dirty.add('games'); S.dirty.add('value'); updateSlipUI(true); return renderMulti(); }
       case 'season': return runSeason();
@@ -1360,10 +1418,16 @@ const E = (function () {
   document.addEventListener('input', e => { const id = e.target.id; if (id === 's-hl' || id === 's-rg' || id === 's-sb' || id === 's-tr') $('#' + id + '-v').textContent = e.target.value; });
   $('#slipchip').addEventListener('click', () => showTab('multi'));
   async function loadFiles(files) {
+    const sel = $('#pickleague'), lid = sel ? sel.value : LEAGUES[0].id, raw = { results: null, odds: null, history: null, meta: null };
     for (const f of Array.from(files)) {
-      try { const j = JSON.parse(await f.text()), n = f.name.toLowerCase(); if (n.indexOf('result') >= 0) S.raw.results = j; else if (n.indexOf('odds') >= 0) S.raw.odds = j; else if (n.indexOf('hist') >= 0) S.raw.history = j; else if (n.indexOf('meta') >= 0) S.raw.meta = j; } catch (err) { showError(f.name + ' is not valid JSON'); return; }
+      try { const j = JSON.parse(await f.text()), n = f.name.toLowerCase(); if (n.indexOf('result') >= 0) raw.results = j; else if (n.indexOf('odds') >= 0) raw.odds = j; else if (n.indexOf('hist') >= 0) raw.history = j; else if (n.indexOf('meta') >= 0) raw.meta = j; } catch (err) { showError(f.name + ' is not valid JSON'); return; }
     }
-    if (S.raw.results && S.raw.odds) start();
+    if (raw.results && raw.odds) {
+      const info = LEAGUES.find(l => l.id === lid) || { id: lid, name: lid };
+      S.lg[lid] = { id: lid, name: info.name, raw, rows: [], model: null, unpriced: 0 };
+      if (S.order.indexOf(lid) < 0) S.order.push(lid);
+      start();
+    }
   }
   window.__multilab = { S, E };   // handy for debugging in the browser console
   boot();
