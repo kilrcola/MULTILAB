@@ -1,0 +1,34 @@
+name: Fetch Serie A data
+
+on:
+  schedule:
+    # Times are UTC. 22:30 Mon & Thu UTC = 9:00am Tue & Fri in Adelaide (daylight time).
+    - cron: "30 22 * * 1,4"
+  workflow_dispatch:   # adds a "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch results and odds
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          SEASON_CODE: "2627"
+        run: python scripts/fetch_data.py
+
+      - name: Save data to the repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "Data update $(date -u +'%Y-%m-%d %H:%M')"
+          git push
