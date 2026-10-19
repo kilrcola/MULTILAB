@@ -1,6 +1,10 @@
 # Serie A data fetcher – setup
 
-Twice a week (Tue and Fri, 9am Adelaide), GitHub runs a script that grabs Serie A results and Sportsbet odds and saves them as JSON files in your repo. Your app reads those files.
+GitHub runs a script that grabs Serie A results and Sportsbet odds and saves them as JSON files in your repo. Your app reads those files.
+
+- **Tuesday 9am Adelaide:** results + standard odds (about 2 credits).
+- **Friday 9am Adelaide:** the same, plus extra markets for Sportsbet (BTTS, double chance, draw no bet, alternate totals, team totals, correct score, handicaps).
+- **Any time:** Actions tab, **Fetch Serie A data**, **Run workflow**. Leave "Also fetch extra markets" ticked for fresh extras before you bet.
 
 ## One-time setup (about 10 minutes)
 
@@ -22,6 +26,14 @@ Twice a week (Tue and Fri, 9am Adelaide), GitHub runs a script that grabs Serie 
 - **Yellow warning on a run:** the script found something to check, usually a team name it couldn't match. Click the run to read it, or open `meta.json` and look for `needs_attention`.
 - **Team names don't match:** most are matched automatically ("AC Milan" becomes "Milan"). Anything left over is listed under `unknown_team_names` in `meta.json`. Add it to `team_names.json` under the right league, like `"Name from odds site": "Name in results"`, then rerun.
 - **Runs stopped happening:** GitHub can pause schedules on quiet repos. Press **Run workflow** to wake it up.
+
+## Credits
+
+The free Odds API plan gives 500 credits **per month** and resets on the 1st. Each extra market costs about 1 credit per game, so one extras run is roughly 70 to 140 credits depending on how many games Sportsbet has priced. One extras run a week fits the free plan; two a week won't. The script stops fetching extras when 10 credits are left, and `meta.json` shows what's remaining.
+
+## What's in `odds.json`
+
+One entry per game: `books` holds each bookmaker's head-to-head and totals prices (Sportsbet, plus PlayUp and TABtouch as reference prices for totals), and `extras.sportsbet` holds the extra markets. `meta.json` has an `extras` section showing, for each market, how many games had prices. Markets that error or come back empty show as blue notes on the run.
 
 ## Bookmaker check (run once, or whenever you add a league)
 
