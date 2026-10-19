@@ -678,9 +678,76 @@ const E = (function () {
     return n ? { n, llModel: llM / n, llMarket: llK / n, brierModel: brM / n, brierMarket: brK / n, betterShare: better / n } : null;
   }
 
+
+  // ---------- look back: what would we have bet, and how would it have gone? ----------
+  // Each round is replayed using only matches played before that round started. Bets are priced at the
+  // market's closing odds (football-data average), which stands in for Sportsbet. Flat $1 per bet here.
+  function paperTrade(rows, opt, season, cfg) {
+    cfg = Object.assign({ rounds: 1, minEdge: 0.025, skipLow: true, multiLegs: 4, multiMinP: 0.45 }, cfg || {});
+    const cur = rows.filter(r => r.season === season && r.odds && r.odds.avg_home && r.odds.avg_draw && r.odds.avg_away);
+    if (!cur.length) return null;
+    const dates = Array.from(new Set(cur.map(r => r.date))).sort((a, b) => a - b);
+    const groups = []; let grp = [dates[0]];
+    for (let i = 1; i < dates.length; i++) { if (dates[i] - dates[i - 1] > 3 * DAY) { groups.push(grp); grp = []; } grp.push(dates[i]); }
+    groups.push(grp);
+    const chosen = cfg.rounds > 0 ? groups.slice(-cfg.rounds) : groups;
+    const matches = [], bets = [], rounds = [];
+    let prev = null;
+    for (const ds of chosen) {
+      const start = ds[0], end = ds[ds.length - 1];
+      const model = fit(rows, Object.assign({}, opt, { asOf: start, init: prev }));
+      if (model.nRows < 60) continue;
+      prev = model;
+      const roundLegs = [];
+      let n = 0;
+      for (const r of cur) {
+        if (r.date < start || r.date > end) continue;
+        const l = lambdas(model, r.home, r.away), g = scoreGrid(l.lh, l.la, model.rho);
+        let ph = 0, pd = 0, pa = 0, po = 0;
+        for (let i = 0; i < G; i++) for (let j = 0; j < G; j++) { const v = g[i * G + j]; if (i > j) ph += v; else if (i === j) pd += v; else pa += v; if (i + j > 2) po += v; }
+        const th = model.teams[r.home], ta = model.teams[r.away];
+        const low = Math.min(th ? th.recent : 0, ta ? ta.recent : 0) < 12;
+        const o = r.odds, res = r.hg > r.ag ? 'H' : r.hg === r.ag ? 'D' : 'A';
+        const p3 = { H: ph, D: pd, A: pa }, o3 = { H: o.avg_home, D: o.avg_draw, A: o.avg_away };
+        const likeliest = ['H', 'D', 'A'].reduce((a, b) => (p3[b] > p3[a] ? b : a)), fav = ['H', 'D', 'A'].reduce((a, b) => (o3[b] < o3[a] ? b : a));
+        const legs = ['H', 'D', 'A'].map(k => ({ market: 'Result', sel: k === 'H' ? r.home + ' to win' : k === 'D' ? 'Draw' : r.away + ' to win', p: p3[k], price: o3[k], won: res === k }));
+        if (o.avg_over25 && o.avg_under25) {
+          legs.push({ market: '2.5 goals', sel: 'Over 2.5 goals', p: po, price: o.avg_over25, won: r.hg + r.ag > 2 });
+          legs.push({ market: '2.5 goals', sel: 'Under 2.5 goals', p: 1 - po, price: o.avg_under25, won: r.hg + r.ag < 3 });
+        }
+        legs.forEach(x => { x.edge = x.p * x.price - 1; });
+        const m = { date: r.date, home: r.home, away: r.away, hg: r.hg, ag: r.ag, low, likeliest, fav, res, likelyRight: likeliest === res, favRight: fav === res, legs, label: r.home + ' v ' + r.away };
+        matches.push(m); n++;
+        ['Result', '2.5 goals'].forEach(mk => {
+          const L = legs.filter(x => x.market === mk); if (!L.length) return;
+          const best = L.reduce((a, b) => (b.edge > a.edge ? b : a));
+          if (best.edge >= cfg.minEdge && !(cfg.skipLow && low)) bets.push({ date: r.date, match: m.label, score: r.hg + '-' + r.ag, market: mk, sel: best.sel, price: best.price, p: best.p, edge: best.edge, won: best.won, profit: best.won ? best.price - 1 : -1 });
+        });
+        if (!low) roundLegs.push({ match: m.label, legs });
+      }
+      // the balanced multi: best-value leg per game, at least 45% likely, top four
+      const picks = [];
+      roundLegs.forEach(rl => {
+        const c = rl.legs.filter(x => x.p >= cfg.multiMinP && x.price >= 1.12).reduce((a, b) => (!a || b.edge > a.edge ? b : a), null);
+        if (c) picks.push(Object.assign({ match: rl.match }, c));
+      });
+      picks.sort((a, b) => b.edge - a.edge);
+      const top = picks.slice(0, cfg.multiLegs);
+      const multi = top.length >= 2 ? { legs: top, price: top.reduce((t, x) => t * x.price, 1), modelP: top.reduce((t, x) => t * x.p, 1), won: top.every(x => x.won) } : null;
+      rounds.push({ start, end, n, modelRows: model.nRows, multi });
+    }
+    bets.sort((a, b) => a.date - b.date || b.edge - a.edge);
+    const nb = bets.length, wins = bets.filter(b => b.won).length, returned = bets.reduce((t, b) => t + (b.won ? b.price : 0), 0);
+    const by = {}; bets.forEach(b => { const x = by[b.market] = by[b.market] || { bets: 0, wins: 0, profit: 0 }; x.bets++; if (b.won) x.wins++; x.profit += b.profit; });
+    const summary = { matches: matches.length, bets: nb, wins, staked: nb, returned, profit: returned - nb, roi: nb ? (returned - nb) / nb : null,
+      expectedRoi: nb ? bets.reduce((t, b) => t + b.edge, 0) / nb : null,
+      likelyRight: matches.filter(m => m.likelyRight).length, favRight: matches.filter(m => m.favRight).length, byMarket: by };
+    return { rounds, matches, bets, summary, cfg };
+  }
+
   return { G, CELLS, tokens, nameScore, resolveOne, resolveTwo, scoreGrid, mask, dot, prepRows, fitShots, fit, lambdas,
     buildLegs, annotate, analyseGame, evalSlip, suggestSlip, eligibleLegs, rng32, cdfOf, pick, simGame, summariseSim, moe,
-    simSlip, simYears, currentTable, seasonSetup, seasonRun, seasonSummary, backtest };
+    simSlip, simYears, currentTable, seasonSetup, seasonRun, seasonSummary, backtest, paperTrade };
 })();
 // ==== ENGINE END
 
@@ -713,7 +780,7 @@ const E = (function () {
     slip: store.get('slip', []), sims: store.get('sims', 20000), stake: store.get('stake', 2), quoted: '',
     set: Object.assign({ halfLife: 300, ridge: 3, shotBlend: 35 }, store.get('set', {})),
     vf: { market: 'All', min: 0, low: false, long: false, limit: 30 }, sug: { k: 4, min: 0.45 },
-    tab: 'games', dirty: new Set(TABS), season: null, seasonBusy: false, backtest: null, simPay: null, simOut: '', yearsOut: ''
+    pt: { rounds: 1, min: 0.025, skipLow: true, res: null }, tab: 'games', dirty: new Set(TABS), season: null, seasonBusy: false, backtest: null, simPay: null, simOut: '', yearsOut: ''
   };
 
   // ---------- loading ----------
@@ -772,7 +839,7 @@ const E = (function () {
     S.games.sort((a, b) => Date.parse(a.game.kickoff_utc) - Date.parse(b.game.kickoff_utc));
     S.legByKey = {}; S.games.forEach(an => an.legs.forEach(l => { S.legByKey[l.key] = l; }));
     S.slip = S.slip.filter(k => S.legByKey[k]);
-    S.season = null; S.backtest = null; S.simPay = null; S.simOut = ''; S.yearsOut = '';
+    S.season = null; S.backtest = null; S.pt.res = null; S.simPay = null; S.simOut = ''; S.yearsOut = '';
     S.dirty = new Set(TABS);
   }
   function refit() {
@@ -1042,10 +1109,46 @@ const E = (function () {
       sl('s-rg', 'Pull towards average', 0, 12, 0.5, S.set.ridge, 'Higher stops one hot or cold run from swinging a rating, which matters most early in the season.') +
       sl('s-sb', 'Weight on shots, per cent', 0, 100, 5, S.set.shotBlend, shots ? 'Blends a shots-based expected goals measure with real goals, since goals are lucky.' : 'Shots are not in your data yet. Update the fetcher and run it to switch this on.', !shots) + '</div>' +
       '<div class="card"><h3>Is it any good?</h3><p class="small">Replays this season one matchday at a time using only what was known beforehand, and scores the model against the market\u2019s closing odds. Lower is better.</p><div class="row"><button type="button" class="btn" data-act="backtest">Run the scorecard</button></div><div id="bt" aria-live="polite">' + btHtml() + '</div></div>' +
+      '<div class="card"><h3>Look back: what would we have bet?</h3><p class="small">Goes back to a past round and uses only what was known before it started. It makes the Best value bets, then settles them against the real scores. Prices are the market\u2019s closing odds (football-data\u2019s bookmaker average), standing in for Sportsbet.</p>' +
+      '<div class="row"><label class="field">Look back<select id="pt-rounds">' + [[1, 'The last round'], [3, 'The last 3 rounds'], [0, 'The whole season so far']].map(o => '<option value="' + o[0] + '"' + (o[0] === S.pt.rounds ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
+      '<label class="field">Bet when value is<select id="pt-min">' + [[0.025, '3% or more'], [0.05, '5% or more'], [0.1, '10% or more']].map(o => '<option value="' + o[0] + '"' + (o[0] === S.pt.min ? ' selected' : '') + '>' + o[1] + '</option>').join('') + '</select></label>' +
+      '<label class="field" style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="pt-low"' + (S.pt.skipLow ? ' checked' : '') + ' style="min-width:0"> Skip low-confidence games</label></div>' +
+      '<div class="row"><button type="button" class="btn" data-act="paper">Run it</button></div><div id="pt" aria-live="polite">' + ptHtml() + '</div></div>' +
       '<div class="card"><h3>Team ratings</h3><p class="small">Goals per game against an average side on a neutral pitch.</p><div class="scroll"><table><thead><tr><th>Team</th><th>Scores</th><th>Concedes</th><th>Net</th><th>Last 12 months</th></tr></thead><tbody>' +
       rows.map(r => '<tr><td><b>' + esc(r.t) + '</b></td><td>' + r.gf.toFixed(2) + '</td><td>' + r.ga.toFixed(2) + '</td><td>' + (r.net >= 0 ? '+' : MINUS) + Math.abs(r.net).toFixed(2) + '</td><td>' + r.recent + ' matches' + '</td></tr>').join('') + '</tbody></table></div></div>' +
       '<div class="card"><h3>Data in use</h3><p>' + nCur + ' matches this season' + (hist.length ? ', plus ' + fmtN(nHist) + ' from ' + hist.length + ' earlier season' + (hist.length > 1 ? 's' : '') + ' (' + hist.map(h => h.slice(0, 2) + '/' + h.slice(2)).join(', ') + ')' : ', and no earlier seasons yet (run the updated fetcher to add them)') + '.</p>' +
       '<p>Home advantage is worth about ' + ((Math.exp(m.h) - 1) * 100).toFixed(0) + '% more goals. The low-score correction (rho) is ' + (m.rho < 0 ? MINUS : '') + Math.abs(m.rho).toFixed(3) + (m.rho < -0.02 ? ', so 0-0 and 1-1 get a small lift.' : '.') + (shots ? ' Shots data is on.' : ' Shots data is not in use.') + '</p></div>';
+  }
+  const dShort = ms => new Date(ms).toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+  function ptHtml() {
+    const r = S.pt.res; if (!r) return '';
+    if (r === 'none') return '<p>Not enough earlier matches to build the ratings for that round.</p>';
+    const sm = r.summary, st = Math.max(0.5, parseFloat(S.stake) || 2), tick = ok => (ok ? '<b class="e e-pos">Right</b>' : '<span class="e e-neg">Wrong</span>');
+    const span = r.rounds.length ? dShort(r.rounds[0].start) + ' to ' + dShort(r.rounds[r.rounds.length - 1].end) : '';
+    let h = '<h3 style="margin-top:14px">' + r.rounds.length + (r.rounds.length === 1 ? ' round' : ' rounds') + ', ' + span + ', ' + sm.matches + ' matches</h3>';
+    if (!sm.bets) h += '<p>No bets cleared the bar. That is a real answer: on those games the model found nothing it liked.</p>';
+    else {
+      const prof = sm.profit * st;
+      h += '<div class="stats"><div class="stat"><b>' + sm.bets + '</b><span>Bets the model would make</span></div><div class="stat"><b>' + sm.wins + '</b><span>Won, ' + (sm.bets - sm.wins) + ' lost</span></div>' +
+        '<div class="stat ' + (prof >= 0 ? 'pos' : 'neg') + '"><b>' + money(prof) + '</b><span>Profit at ' + money(st) + ' a bet</span></div>' +
+        '<div class="stat"><b>' + sgn(sm.roi) + '</b><span>Return on stake. The model expected ' + sgn(sm.expectedRoi) + '</span></div></div>';
+      h += '<p>' + (sm.bets < 30 ? 'This is a small sample, so luck decides most of it. ' : '') + 'The gap between what it expected and what happened is the useful bit, and it only becomes meaningful over dozens of bets.</p>';
+      const mk = Object.keys(sm.byMarket).map(k => k + ': ' + sm.byMarket[k].wins + ' of ' + sm.byMarket[k].bets + ' won, ' + money(sm.byMarket[k].profit * st)).join('. ');
+      h += '<p class="small">' + esc(mk) + '.</p>';
+      h += '<div class="scroll"><table><thead><tr><th>Bet</th><th>Price</th><th>Value</th><th>Result</th></tr></thead><tbody>' +
+        r.bets.map(b => '<tr><td><b>' + esc(b.sel) + '</b><br><span class="small">' + esc(b.match) + ', ' + esc(dShort(b.date)) + '. Model ' + pct(b.p) + '</span></td><td>' + price(b.price) + '</td><td>' + sgn(b.edge) + '</td><td>' + (b.won ? '<b class="e e-pos">Won ' + money((b.price - 1) * st) + '</b>' : '<span class="e e-neg">Lost ' + money(st) + '</span>') + '<br><span class="small">Final ' + esc(b.score) + '</span></td></tr>').join('') + '</tbody></table></div>';
+    }
+    h += '<h3 style="margin-top:16px">Likeliest result</h3><p>The model\u2019s likeliest result was right in <b>' + sm.likelyRight + ' of ' + sm.matches + '</b> matches. The market favourite was right in <b>' + sm.favRight + ' of ' + sm.matches + '</b>.</p>';
+    const ms = r.rounds.filter(x => x.multi);
+    if (ms.length) {
+      h += '<h3 style="margin-top:16px">The suggested multi</h3><p class="small">The balanced pick for each round: the best-value leg from different games, 45% or more likely, top four.</p>' +
+        ms.map(x => { const m = x.multi; return '<div class="card" style="margin:8px 0"><p><b>' + dShort(x.start) + (x.end !== x.start ? ' to ' + dShort(x.end) : '') + ':</b> ' + (m.won ? '<b class="e e-pos">Landed</b>' : '<span class="e e-neg">Missed</span>') + ' at ' + m.price.toFixed(2) + 'x (the model gave it ' + pct(m.modelP) + ')</p>' +
+          m.legs.map(l => '<div class="small">' + (l.won ? 'Won' : 'Lost') + ': ' + esc(l.sel) + ', ' + esc(l.match) + ', ' + price(l.price) + '</div>').join('') + '</div>'; }).join('');
+    }
+    h += '<details class="how" style="margin-top:12px"><summary>Every match in the period</summary><div class="scroll"><table><thead><tr><th>Match</th><th>Score</th><th>Model\u2019s pick</th><th>Market favourite</th></tr></thead><tbody>' +
+      r.matches.map(m => '<tr><td>' + esc(m.label) + (m.low ? ' <span class="small">(low confidence)</span>' : '') + '</td><td>' + m.hg + '-' + m.ag + '</td><td>' + tick(m.likelyRight) + '</td><td>' + tick(m.favRight) + '</td></tr>').join('') + '</tbody></table></div></details>' +
+      '<p class="small" style="margin-top:8px">Closing odds already include late team news, so they are a tough yardstick. The real Sportsbet prices a few days out will have been a little different, and their margin is a little bigger.</p>';
+    return h;
   }
   function btHtml() {
     const b = S.backtest; if (!b) return '';
@@ -1073,6 +1176,7 @@ const E = (function () {
         if (!picks.length) { S.simOut = ''; S.yearsOut = ''; return alert('Nothing fits that style right now. Try Balanced or Spicy.'); }
         S.slip = picks.map(l => l.key); store.set('slip', S.slip); S.simOut = ''; S.yearsOut = ''; S.simPay = null; S.dirty.add('multi'); S.dirty.add('games'); S.dirty.add('value'); updateSlipUI(true); return renderMulti(); }
       case 'season': return runSeason();
+      case 'paper': { t.disabled = true; t.textContent = 'Running'; return setTimeout(() => { S.pt.res = E.paperTrade(S.rows, fitOpts(false), 'cur', { rounds: S.pt.rounds, minEdge: S.pt.min, skipLow: S.pt.skipLow }) || 'none'; $('#pt').innerHTML = ptHtml(); t.disabled = false; t.textContent = 'Run it again'; }, 30); }
       case 'backtest': { t.disabled = true; t.textContent = 'Running'; return setTimeout(() => { S.backtest = E.backtest(S.rows, fitOpts(false), 'cur') || 'none'; $('#bt').innerHTML = btHtml(); t.disabled = false; t.textContent = 'Run the scorecard again'; }, 30); }
     }
   });
@@ -1083,6 +1187,9 @@ const E = (function () {
     else if (id === 'vf-min') { S.vf.min = Number(e.target.value); S.vf.limit = 30; renderVTable(); }
     else if (id === 'vf-low') { S.vf.low = e.target.checked; S.vf.limit = 30; renderVTable(); }
     else if (id === 'vf-long') { S.vf.long = e.target.checked; S.vf.limit = 30; renderVTable(); }
+    else if (id === 'pt-rounds') S.pt.rounds = Number(e.target.value);
+    else if (id === 'pt-min') S.pt.min = Number(e.target.value);
+    else if (id === 'pt-low') S.pt.skipLow = e.target.checked;
     else if (id === 'sg-k') S.sug.k = Number(e.target.value);
     else if (id === 'sg-min') S.sug.min = Number(e.target.value);
     else if (id === 'stake') { S.stake = e.target.value; store.set('stake', S.stake); }
