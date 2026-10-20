@@ -1,10 +1,10 @@
 {
- "fetched_at_utc": "2026-10-19T11:10:18+00:00",
+ "fetched_at_utc": "2026-10-20T01:10:19+00:00",
  "season": "2627",
  "sources": {
   "results": {
-   "ok": false,
-   "error": "The read operation timed out"
+   "ok": true,
+   "matches": 60
   },
   "history": {
    "ok": true,
@@ -21,54 +21,20 @@
   },
   "odds": {
    "ok": true,
-   "games": 22,
-   "priced_by_sportsbet": 12,
-   "api_credits_left": 240
+   "games": 20,
+   "priced_by_sportsbet": 10,
+   "api_credits_left": 181
   }
  },
  "extras": {
-  "games_considered": 12,
-  "stopped": null,
-  "markets": {
-   "btts": {
-    "games_tried": 12,
-    "games_with_data": 12,
-    "error": null
-   },
-   "double_chance": {
-    "games_tried": 12,
-    "games_with_data": 12,
-    "error": null
-   },
-   "draw_no_bet": {
-    "games_tried": 12,
-    "games_with_data": 12,
-    "error": null
-   },
-   "alternate_totals": {
-    "games_tried": 12,
-    "games_with_data": 12,
-    "error": null
-   },
-   "team_totals": {
-    "games_tried": 12,
-    "games_with_data": 0,
-    "error": null
-   },
-   "correct_score": {
-    "games_tried": 12,
-    "games_with_data": 12,
-    "error": null
-   },
-   "alternate_spreads": {
-    "games_tried": 12,
-    "games_with_data": 0,
-    "error": null
-   }
-  }
+  "skipped": "FETCH_EXTRAS is off for this run"
  },
  "name_problems": [],
  "unknown_team_names": [],
- "auto_matched_names": {},
- "needs_attention": true
+ "auto_matched_names": {
+  "AS Roma": "Roma",
+  "Atalanta BC": "Atalanta",
+  "AC Milan": "Milan"
+ },
+ "needs_attention": false
 }

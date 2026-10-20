@@ -1,5 +1,5 @@
 {
- "fetched_at_utc": "2026-10-19T11:10:58+00:00",
+ "fetched_at_utc": "2026-10-20T01:10:22+00:00",
  "season": "2627",
  "sources": {
   "results": {
@@ -21,68 +21,24 @@
   },
   "odds": {
    "ok": true,
-   "games": 21,
-   "priced_by_sportsbet": 21,
-   "api_credits_left": 183
+   "games": 20,
+   "priced_by_sportsbet": 20,
+   "api_credits_left": 179
   }
  },
  "extras": {
-  "games_considered": 11,
-  "stopped": null,
-  "markets": {
-   "btts": {
-    "games_tried": 11,
-    "games_with_data": 11,
-    "error": null
-   },
-   "double_chance": {
-    "games_tried": 11,
-    "games_with_data": 11,
-    "error": null
-   },
-   "draw_no_bet": {
-    "games_tried": 11,
-    "games_with_data": 11,
-    "error": null
-   },
-   "alternate_totals": {
-    "games_tried": 11,
-    "games_with_data": 11,
-    "error": null
-   },
-   "team_totals": {
-    "games_tried": 11,
-    "games_with_data": 0,
-    "error": null
-   },
-   "correct_score": {
-    "games_tried": 11,
-    "games_with_data": 11,
-    "error": null
-   },
-   "alternate_spreads": {
-    "games_tried": 11,
-    "games_with_data": 0,
-    "error": null
-   }
-  }
+  "skipped": "FETCH_EXTRAS is off for this run"
  },
- "name_problems": [
-  "odds names not matched: Manchester City, Manchester United, Nottingham Forest"
- ],
- "unknown_team_names": [
-  "Manchester City",
-  "Manchester United",
-  "Nottingham Forest"
- ],
+ "name_problems": [],
+ "unknown_team_names": [],
  "auto_matched_names": {
-  "Tottenham Hotspur": "Tottenham",
-  "Coventry City": "Coventry",
   "Ipswich Town": "Ipswich",
+  "Coventry City": "Coventry",
+  "Tottenham Hotspur": "Tottenham",
   "Hull City": "Hull",
   "Brighton and Hove Albion": "Brighton",
   "Newcastle United": "Newcastle",
   "Leeds United": "Leeds"
  },
- "needs_attention": true
+ "needs_attention": false
 }
