@@ -1,10 +1,10 @@
 {
- "fetched_at_utc": "2026-10-27T01:35:18+00:00",
+ "fetched_at_utc": "2026-10-30T02:04:01+00:00",
  "season": "2627",
  "sources": {
   "results": {
    "ok": true,
-   "matches": 80
+   "matches": 90
   },
   "history": {
    "ok": true,
@@ -21,13 +21,51 @@
   },
   "odds": {
    "ok": true,
-   "games": 20,
+   "games": 10,
    "priced_by_sportsbet": 10,
-   "api_credits_left": 73
+   "api_credits_left": 55
   }
  },
  "extras": {
-  "skipped": "FETCH_EXTRAS is off for this run"
+  "games_considered": 10,
+  "stopped": "stopped early: HTTP 429: {\"message\":\"Requests are too frequent\",\"error_code\":\"EXCEEDED_FREQ_LIMIT\",\"details_url\":\"https://the-odds-api.com/liveapi/guides/v4/api-error-codes.html#exceeded-freq-limit\"}\n",
+  "markets": {
+   "btts": {
+    "games_tried": 3,
+    "games_with_data": 3,
+    "error": null
+   },
+   "double_chance": {
+    "games_tried": 3,
+    "games_with_data": 3,
+    "error": null
+   },
+   "draw_no_bet": {
+    "games_tried": 3,
+    "games_with_data": 3,
+    "error": null
+   },
+   "alternate_totals": {
+    "games_tried": 3,
+    "games_with_data": 3,
+    "error": null
+   },
+   "team_totals": {
+    "games_tried": 3,
+    "games_with_data": 0,
+    "error": null
+   },
+   "correct_score": {
+    "games_tried": 2,
+    "games_with_data": 2,
+    "error": "HTTP 429: {\"message\":\"Requests are too frequent\",\"error_code\":\"EXCEEDED_FREQ_LIMIT\",\"details_url\":\"https://the-odds-api.com/liveapi/guides/v4/api-error-codes.html#exceeded-freq-limit\"}\n"
+   },
+   "alternate_spreads": {
+    "games_tried": 2,
+    "games_with_data": 0,
+    "error": null
+   }
+  }
  },
  "name_problems": [],
  "unknown_team_names": [],

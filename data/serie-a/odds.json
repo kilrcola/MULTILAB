@@ -1,605 +1,5 @@
 [
  {
-  "id": "c7445242bf16a8f37afef7863af45a78",
-  "kickoff_utc": "2026-10-27T17:30:00Z",
-  "home": "Sassuolo",
-  "away": "Lazio",
-  "home_api": "Sassuolo",
-  "away_api": "Lazio",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 2.05,
-     "home": 3.25,
-     "draw": 3.5
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.63
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.2
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 2.05,
-     "home": 3.2,
-     "draw": 3.45
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.68
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.12
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 2.2,
-     "home": 3.3,
-     "draw": 3.45
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "7eecf109ae6a5f87441a79b0e4111982",
-  "kickoff_utc": "2026-10-27T19:45:00Z",
-  "home": "Roma",
-  "away": "Cagliari",
-  "home_api": "AS Roma",
-  "away_api": "Cagliari",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.3,
-     "away": 8.5,
-     "draw": 5.25
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.6
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.28
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.29,
-     "away": 9.0,
-     "draw": 5.0
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.63
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.2
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.31,
-     "away": 10.0,
-     "draw": 5.1
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "7d989a0a7bae47eb957731e97c5bd9c1",
-  "kickoff_utc": "2026-10-27T19:45:00Z",
-  "home": "Torino",
-  "away": "Como",
-  "home_api": "Torino",
-  "away_api": "Como",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 1.68,
-     "home": 4.5,
-     "draw": 3.75
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.63
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.2
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 1.65,
-     "home": 4.7,
-     "draw": 3.75
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.66
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.17
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 1.71,
-     "home": 5.0,
-     "draw": 3.8
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "3d0b0fbec194258530882514714c74be",
-  "kickoff_utc": "2026-10-28T17:30:00Z",
-  "home": "Milan",
-  "away": "Bologna",
-  "home_api": "AC Milan",
-  "away_api": "Bologna",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.58,
-     "away": 5.25,
-     "draw": 3.85
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.77
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.98
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.56,
-     "away": 5.4,
-     "draw": 3.85
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.78
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.97
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.62,
-     "away": 5.6,
-     "draw": 3.9
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "33320ad169692216a91dec030e7ef6a6",
-  "kickoff_utc": "2026-10-28T17:30:00Z",
-  "home": "Venezia",
-  "away": "Inter",
-  "home_api": "Venezia",
-  "away_api": "Inter Milan",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 1.33,
-     "home": 7.0,
-     "draw": 5.25
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 1.88
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.85
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 1.3,
-     "home": 7.5,
-     "draw": 5.2
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 1.83
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.93
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 1.33,
-     "home": 8.0,
-     "draw": 5.6
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "482c18a8081afdfa310324fa8f37e95a",
-  "kickoff_utc": "2026-10-28T17:30:00Z",
-  "home": "Parma",
-  "away": "Udinese",
-  "home_api": "Parma",
-  "away_api": "Udinese",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 2.9,
-     "away": 2.45,
-     "draw": 3.0
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 2.15
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.65
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 2.85,
-     "away": 2.43,
-     "draw": 3.1
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 2.12
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.7
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 2.95,
-     "away": 2.55,
-     "draw": 3.05
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "34848497b90b1392f6a767fc183d3ac1",
-  "kickoff_utc": "2026-10-28T19:45:00Z",
-  "home": "Genoa",
-  "away": "Juventus",
-  "home_api": "Genoa",
-  "away_api": "Juventus",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 5.0,
-     "away": 1.63,
-     "draw": 3.65
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 2.05
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.72
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 5.3,
-     "away": 1.62,
-     "draw": 3.55
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 2.04
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.75
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 5.3,
-     "away": 1.69,
-     "draw": 3.75
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "abec89862e33762414fcb8b2232aba08",
-  "kickoff_utc": "2026-10-28T19:45:00Z",
-  "home": "Monza",
-  "away": "Napoli",
-  "home_api": "Monza",
-  "away_api": "Napoli",
-  "books": {
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 4.1,
-     "away": 1.72,
-     "draw": 3.85
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.68
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.12
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 4.2,
-     "away": 1.72,
-     "draw": 3.75
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.72
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.07
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 4.5,
-     "away": 1.75,
-     "draw": 3.9
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "667cf69986b200753742c90cb9c5126c",
-  "kickoff_utc": "2026-10-29T17:30:00Z",
-  "home": "Frosinone",
-  "away": "Lecce",
-  "home_api": "Frosinone",
-  "away_api": "Lecce",
-  "books": {
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.64,
-     "away": 4.5,
-     "draw": 3.95
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 2.17
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.66
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.65,
-     "away": 4.35,
-     "draw": 4.0
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 2.08
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.7
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.66,
-     "away": 4.9,
-     "draw": 4.1
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "da159a6b84dbb548b4d7b94c722caac5",
-  "kickoff_utc": "2026-10-29T19:45:00Z",
-  "home": "Fiorentina",
-  "away": "Atalanta",
-  "home_api": "Fiorentina",
-  "away_api": "Atalanta BC",
-  "books": {
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 3.05,
-     "home": 2.12,
-     "draw": 3.45
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.66
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.17
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 3.0,
-     "home": 2.12,
-     "draw": 3.55
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.58
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.3
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 3.15,
-     "home": 2.2,
-     "draw": 3.5
-    },
-    "totals": []
-   }
-  },
-  "extras": {}
- },
- {
   "id": "04aa939b89001eedf55668e66c74836e",
   "kickoff_utc": "2026-10-31T14:00:00Z",
   "home": "Bologna",
@@ -610,45 +10,502 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.72,
-     "away": 4.25,
+     "home": 1.68,
+     "away": 4.5,
      "draw": 3.7
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.82
+      "price": 1.8
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.93
+      "price": 1.95
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.72,
-     "away": 4.4,
+     "home": 1.7,
+     "away": 4.5,
      "draw": 3.6
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.83
+      "price": 1.85
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.93
+      "price": 1.91
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 1.68,
+     "away": 4.9,
+     "draw": 3.9
+    },
+    "totals": []
    }
   },
-  "extras": {}
+  "extras": {
+   "sportsbet": {
+    "btts": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "Yes",
+       "price": 1.8
+      },
+      {
+       "name": "No",
+       "price": 2.0
+      }
+     ]
+    },
+    "double_chance": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "Bologna or Draw",
+       "price": 1.14
+      },
+      {
+       "name": "Monza or Draw",
+       "price": 2.1
+      },
+      {
+       "name": "Bologna or Monza",
+       "price": 1.22
+      }
+     ]
+    },
+    "draw_no_bet": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "Bologna",
+       "price": 1.24
+      },
+      {
+       "name": "Monza",
+       "price": 3.5
+      }
+     ]
+    },
+    "alternate_totals": {
+     "last_update": "2026-10-30T02:04:01Z",
+     "outcomes": [
+      {
+       "name": "Over",
+       "price": 1.03,
+       "point": 0.5
+      },
+      {
+       "name": "Over",
+       "price": 1.23,
+       "point": 1.5
+      },
+      {
+       "name": "Over",
+       "price": 3.13,
+       "point": 3.5
+      },
+      {
+       "name": "Over",
+       "price": 1.79,
+       "point": 2.5
+      },
+      {
+       "name": "Over",
+       "price": 5.7,
+       "point": 4.5
+      },
+      {
+       "name": "Over",
+       "price": 10.0,
+       "point": 5.5
+      },
+      {
+       "name": "Over",
+       "price": 17.0,
+       "point": 6.5
+      },
+      {
+       "name": "Over",
+       "price": 81.0,
+       "point": 7.5
+      },
+      {
+       "name": "Under",
+       "price": 11.9,
+       "point": 0.5
+      },
+      {
+       "name": "Under",
+       "price": 3.92,
+       "point": 1.5
+      },
+      {
+       "name": "Under",
+       "price": 1.33,
+       "point": 3.5
+      },
+      {
+       "name": "Under",
+       "price": 1.94,
+       "point": 2.5
+      },
+      {
+       "name": "Under",
+       "price": 1.12,
+       "point": 4.5
+      },
+      {
+       "name": "Under",
+       "price": 1.03,
+       "point": 5.5
+      },
+      {
+       "name": "Under",
+       "price": 1.0,
+       "point": 6.5
+      },
+      {
+       "name": "Under",
+       "price": 1.0,
+       "point": 7.5
+      }
+     ]
+    },
+    "correct_score": {
+     "last_update": "2026-10-30T02:04:01Z",
+     "outcomes": [
+      {
+       "name": "Bologna:1|Monza:0",
+       "price": 7.0
+      },
+      {
+       "name": "Bologna:2|Monza:0",
+       "price": 7.5
+      },
+      {
+       "name": "Bologna:2|Monza:1",
+       "price": 7.5
+      },
+      {
+       "name": "Bologna:3|Monza:0",
+       "price": 13.0
+      },
+      {
+       "name": "Bologna:3|Monza:1",
+       "price": 12.0
+      },
+      {
+       "name": "Bologna:3|Monza:2",
+       "price": 20.0
+      },
+      {
+       "name": "Bologna:4|Monza:0",
+       "price": 21.0
+      },
+      {
+       "name": "Bologna:4|Monza:1",
+       "price": 21.0
+      },
+      {
+       "name": "Bologna:4|Monza:2",
+       "price": 41.0
+      },
+      {
+       "name": "Bologna:4|Monza:3",
+       "price": 101.0
+      },
+      {
+       "name": "Bologna:5|Monza:0",
+       "price": 56.0
+      },
+      {
+       "name": "Bologna:5|Monza:1",
+       "price": 61.0
+      },
+      {
+       "name": "Bologna:5|Monza:2",
+       "price": 91.0
+      },
+      {
+       "name": "Bologna:5|Monza:3",
+       "price": 251.0
+      },
+      {
+       "name": "Bologna:5|Monza:4",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:6|Monza:0",
+       "price": 126.0
+      },
+      {
+       "name": "Bologna:6|Monza:1",
+       "price": 176.0
+      },
+      {
+       "name": "Bologna:6|Monza:2",
+       "price": 226.0
+      },
+      {
+       "name": "Bologna:6|Monza:3",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:6|Monza:4",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:6|Monza:5",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:7|Monza:0",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:7|Monza:1",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:7|Monza:2",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:7|Monza:3",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:7|Monza:4",
+       "price": 376.0
+      },
+      {
+       "name": "Bologna:8|Monza:0",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:8|Monza:1",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:8|Monza:2",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:8|Monza:3",
+       "price": 376.0
+      },
+      {
+       "name": "Bologna:9|Monza:0",
+       "price": 401.0
+      },
+      {
+       "name": "Bologna:9|Monza:1",
+       "price": 376.0
+      },
+      {
+       "name": "Bologna:9|Monza:2",
+       "price": 376.0
+      },
+      {
+       "name": "Bologna:10|Monza:0",
+       "price": 376.0
+      },
+      {
+       "name": "Bologna:10|Monza:1",
+       "price": 376.0
+      },
+      {
+       "name": "Bologna:11|Monza:0",
+       "price": 376.0
+      },
+      {
+       "name": "Bologna:0|Monza:0",
+       "price": 11.0
+      },
+      {
+       "name": "Bologna:1|Monza:1",
+       "price": 7.0
+      },
+      {
+       "name": "Bologna:2|Monza:2",
+       "price": 13.0
+      },
+      {
+       "name": "Bologna:3|Monza:3",
+       "price": 56.0
+      },
+      {
+       "name": "Bologna:4|Monza:4",
+       "price": 326.0
+      },
+      {
+       "name": "Bologna:5|Monza:5",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:1|Bologna:0",
+       "price": 13.0
+      },
+      {
+       "name": "Monza:2|Bologna:0",
+       "price": 21.0
+      },
+      {
+       "name": "Monza:2|Bologna:1",
+       "price": 12.0
+      },
+      {
+       "name": "Monza:3|Bologna:0",
+       "price": 67.0
+      },
+      {
+       "name": "Monza:3|Bologna:1",
+       "price": 36.0
+      },
+      {
+       "name": "Monza:3|Bologna:2",
+       "price": 36.0
+      },
+      {
+       "name": "Monza:4|Bologna:0",
+       "price": 226.0
+      },
+      {
+       "name": "Monza:4|Bologna:1",
+       "price": 101.0
+      },
+      {
+       "name": "Monza:4|Bologna:2",
+       "price": 101.0
+      },
+      {
+       "name": "Monza:4|Bologna:3",
+       "price": 151.0
+      },
+      {
+       "name": "Monza:5|Bologna:0",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:5|Bologna:1",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:5|Bologna:2",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:5|Bologna:3",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:5|Bologna:4",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:6|Bologna:0",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:6|Bologna:1",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:6|Bologna:2",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:6|Bologna:3",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:6|Bologna:4",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:6|Bologna:5",
+       "price": 401.0
+      },
+      {
+       "name": "Monza:7|Bologna:0",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:7|Bologna:1",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:7|Bologna:2",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:7|Bologna:3",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:7|Bologna:4",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:8|Bologna:0",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:8|Bologna:1",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:8|Bologna:2",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:8|Bologna:3",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:9|Bologna:0",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:9|Bologna:1",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:9|Bologna:2",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:10|Bologna:0",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:10|Bologna:1",
+       "price": 376.0
+      },
+      {
+       "name": "Monza:11|Bologna:0",
+       "price": 376.0
+      }
+     ]
+    }
+   }
+  }
  },
  {
   "id": "34cd26b96f78bd7aa3dbff3d1daca7a7",
@@ -663,6 +520,26 @@
     "h2h": {
      "away": 1.52,
      "home": 5.25,
+     "draw": 4.2
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.58
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.28
+     }
+    ]
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 1.53,
+     "home": 5.25,
      "draw": 4.1
     },
     "totals": [
@@ -674,32 +551,469 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.2
+      "price": 2.23
      }
     ]
    },
-   "tabtouch": {
-    "title": "TABtouch",
+   "sportsbet": {
+    "title": "SportsBet",
     "h2h": {
-     "away": 1.55,
-     "home": 5.1,
-     "draw": 4.0
+     "away": 1.52,
+     "home": 5.8,
+     "draw": 4.4
     },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.65
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.2
-     }
-    ]
+    "totals": []
    }
   },
-  "extras": {}
+  "extras": {
+   "sportsbet": {
+    "btts": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "Yes",
+       "price": 1.67
+      },
+      {
+       "name": "No",
+       "price": 2.1
+      }
+     ]
+    },
+    "double_chance": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "AS Roma or Draw",
+       "price": 1.11
+      },
+      {
+       "name": "Udinese or Draw",
+       "price": 2.4
+      },
+      {
+       "name": "AS Roma or Udinese",
+       "price": 1.17
+      }
+     ]
+    },
+    "draw_no_bet": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "AS Roma",
+       "price": 1.16
+      },
+      {
+       "name": "Udinese",
+       "price": 4.5
+      }
+     ]
+    },
+    "alternate_totals": {
+     "last_update": "2026-10-30T02:04:00Z",
+     "outcomes": [
+      {
+       "name": "Over",
+       "price": 1.02,
+       "point": 0.5
+      },
+      {
+       "name": "Over",
+       "price": 1.17,
+       "point": 1.5
+      },
+      {
+       "name": "Over",
+       "price": 2.5,
+       "point": 3.5
+      },
+      {
+       "name": "Over",
+       "price": 1.57,
+       "point": 2.5
+      },
+      {
+       "name": "Over",
+       "price": 4.6,
+       "point": 4.5
+      },
+      {
+       "name": "Over",
+       "price": 8.5,
+       "point": 5.5
+      },
+      {
+       "name": "Over",
+       "price": 13.0,
+       "point": 6.5
+      },
+      {
+       "name": "Over",
+       "price": 41.0,
+       "point": 7.5
+      },
+      {
+       "name": "Under",
+       "price": 16.25,
+       "point": 0.5
+      },
+      {
+       "name": "Under",
+       "price": 4.65,
+       "point": 1.5
+      },
+      {
+       "name": "Under",
+       "price": 1.49,
+       "point": 3.5
+      },
+      {
+       "name": "Under",
+       "price": 2.3,
+       "point": 2.5
+      },
+      {
+       "name": "Under",
+       "price": 1.17,
+       "point": 4.5
+      },
+      {
+       "name": "Under",
+       "price": 1.05,
+       "point": 5.5
+      },
+      {
+       "name": "Under",
+       "price": 1.01,
+       "point": 6.5
+      },
+      {
+       "name": "Under",
+       "price": 1.0,
+       "point": 7.5
+      }
+     ]
+    },
+    "correct_score": {
+     "last_update": "2026-10-30T02:04:00Z",
+     "outcomes": [
+      {
+       "name": "Udinese:1|AS Roma:0",
+       "price": 14.0
+      },
+      {
+       "name": "Udinese:2|AS Roma:0",
+       "price": 26.0
+      },
+      {
+       "name": "Udinese:2|AS Roma:1",
+       "price": 14.0
+      },
+      {
+       "name": "Udinese:3|AS Roma:0",
+       "price": 91.0
+      },
+      {
+       "name": "Udinese:3|AS Roma:1",
+       "price": 36.0
+      },
+      {
+       "name": "Udinese:3|AS Roma:2",
+       "price": 36.0
+      },
+      {
+       "name": "Udinese:4|AS Roma:0",
+       "price": 201.0
+      },
+      {
+       "name": "Udinese:4|AS Roma:1",
+       "price": 101.0
+      },
+      {
+       "name": "Udinese:4|AS Roma:2",
+       "price": 101.0
+      },
+      {
+       "name": "Udinese:4|AS Roma:3",
+       "price": 126.0
+      },
+      {
+       "name": "Udinese:5|AS Roma:0",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:5|AS Roma:1",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:5|AS Roma:2",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:5|AS Roma:3",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:5|AS Roma:4",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:6|AS Roma:0",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:6|AS Roma:1",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:6|AS Roma:2",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:6|AS Roma:3",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:6|AS Roma:4",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:6|AS Roma:5",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:7|AS Roma:0",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:7|AS Roma:1",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:7|AS Roma:2",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:7|AS Roma:3",
+       "price": 401.0
+      },
+      {
+       "name": "Udinese:7|AS Roma:4",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:8|AS Roma:0",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:8|AS Roma:1",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:8|AS Roma:2",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:8|AS Roma:3",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:9|AS Roma:0",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:9|AS Roma:1",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:9|AS Roma:2",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:10|AS Roma:0",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:10|AS Roma:1",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:11|AS Roma:0",
+       "price": 376.0
+      },
+      {
+       "name": "Udinese:0|AS Roma:0",
+       "price": 14.0
+      },
+      {
+       "name": "Udinese:1|AS Roma:1",
+       "price": 8.0
+      },
+      {
+       "name": "Udinese:2|AS Roma:2",
+       "price": 13.0
+      },
+      {
+       "name": "Udinese:3|AS Roma:3",
+       "price": 46.0
+      },
+      {
+       "name": "Udinese:4|AS Roma:4",
+       "price": 251.0
+      },
+      {
+       "name": "Udinese:5|AS Roma:5",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:1|Udinese:0",
+       "price": 8.0
+      },
+      {
+       "name": "AS Roma:2|Udinese:0",
+       "price": 7.5
+      },
+      {
+       "name": "AS Roma:2|Udinese:1",
+       "price": 7.5
+      },
+      {
+       "name": "AS Roma:3|Udinese:0",
+       "price": 11.0
+      },
+      {
+       "name": "AS Roma:3|Udinese:1",
+       "price": 10.0
+      },
+      {
+       "name": "AS Roma:3|Udinese:2",
+       "price": 15.0
+      },
+      {
+       "name": "AS Roma:4|Udinese:0",
+       "price": 15.0
+      },
+      {
+       "name": "AS Roma:4|Udinese:1",
+       "price": 15.0
+      },
+      {
+       "name": "AS Roma:4|Udinese:2",
+       "price": 26.0
+      },
+      {
+       "name": "AS Roma:4|Udinese:3",
+       "price": 76.0
+      },
+      {
+       "name": "AS Roma:5|Udinese:0",
+       "price": 41.0
+      },
+      {
+       "name": "AS Roma:5|Udinese:1",
+       "price": 41.0
+      },
+      {
+       "name": "AS Roma:5|Udinese:2",
+       "price": 81.0
+      },
+      {
+       "name": "AS Roma:5|Udinese:3",
+       "price": 126.0
+      },
+      {
+       "name": "AS Roma:5|Udinese:4",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:6|Udinese:0",
+       "price": 101.0
+      },
+      {
+       "name": "AS Roma:6|Udinese:1",
+       "price": 101.0
+      },
+      {
+       "name": "AS Roma:6|Udinese:2",
+       "price": 176.0
+      },
+      {
+       "name": "AS Roma:6|Udinese:3",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:6|Udinese:4",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:6|Udinese:5",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:7|Udinese:0",
+       "price": 226.0
+      },
+      {
+       "name": "AS Roma:7|Udinese:1",
+       "price": 301.0
+      },
+      {
+       "name": "AS Roma:7|Udinese:2",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:7|Udinese:3",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:7|Udinese:4",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:8|Udinese:0",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:8|Udinese:1",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:8|Udinese:2",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:8|Udinese:3",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:9|Udinese:0",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:9|Udinese:1",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:9|Udinese:2",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:10|Udinese:0",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:10|Udinese:1",
+       "price": 401.0
+      },
+      {
+       "name": "AS Roma:11|Udinese:0",
+       "price": 376.0
+      }
+     ]
+    }
+   }
+  }
  },
  {
   "id": "e82f25e981f2ebc731cfaf5716231af5",
@@ -712,28 +1026,28 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 3.15,
-     "away": 2.05,
+     "home": 3.4,
+     "away": 1.95,
      "draw": 3.55
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.63
+      "price": 1.6
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.2
+      "price": 2.25
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 3.1,
-     "away": 2.07,
+     "home": 3.35,
+     "away": 1.96,
      "draw": 3.5
     },
     "totals": [
@@ -748,9 +1062,149 @@
       "price": 2.23
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 3.6,
+     "away": 2.02,
+     "draw": 3.6
+    },
+    "totals": []
    }
   },
-  "extras": {}
+  "extras": {
+   "sportsbet": {
+    "btts": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "Yes",
+       "price": 1.5
+      },
+      {
+       "name": "No",
+       "price": 2.5
+      }
+     ]
+    },
+    "double_chance": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "AC Milan or Draw",
+       "price": 1.72
+      },
+      {
+       "name": "Inter Milan or Draw",
+       "price": 1.25
+      },
+      {
+       "name": "AC Milan or Inter Milan",
+       "price": 1.25
+      }
+     ]
+    },
+    "draw_no_bet": {
+     "last_update": "2026-10-30T02:03:52Z",
+     "outcomes": [
+      {
+       "name": "AC Milan",
+       "price": 2.6
+      },
+      {
+       "name": "Inter Milan",
+       "price": 1.44
+      }
+     ]
+    },
+    "alternate_totals": {
+     "last_update": "2026-10-30T02:03:21Z",
+     "outcomes": [
+      {
+       "name": "Over",
+       "price": 1.02,
+       "point": 0.5
+      },
+      {
+       "name": "Over",
+       "price": 1.17,
+       "point": 1.5
+      },
+      {
+       "name": "Over",
+       "price": 2.56,
+       "point": 3.5
+      },
+      {
+       "name": "Over",
+       "price": 1.58,
+       "point": 2.5
+      },
+      {
+       "name": "Over",
+       "price": 4.65,
+       "point": 4.5
+      },
+      {
+       "name": "Over",
+       "price": 8.5,
+       "point": 5.5
+      },
+      {
+       "name": "Over",
+       "price": 13.0,
+       "point": 6.5
+      },
+      {
+       "name": "Over",
+       "price": 41.0,
+       "point": 7.5
+      },
+      {
+       "name": "Under",
+       "price": 15.75,
+       "point": 0.5
+      },
+      {
+       "name": "Under",
+       "price": 4.65,
+       "point": 1.5
+      },
+      {
+       "name": "Under",
+       "price": 1.47,
+       "point": 3.5
+      },
+      {
+       "name": "Under",
+       "price": 2.27,
+       "point": 2.5
+      },
+      {
+       "name": "Under",
+       "price": 1.17,
+       "point": 4.5
+      },
+      {
+       "name": "Under",
+       "price": 1.05,
+       "point": 5.5
+      },
+      {
+       "name": "Under",
+       "price": 1.01,
+       "point": 6.5
+      },
+      {
+       "name": "Under",
+       "price": 1.0,
+       "point": 7.5
+      }
+     ]
+    }
+   }
+  }
  },
  {
   "id": "9507f4bcbcfd4e4953720628a2b86a17",
@@ -763,9 +1217,9 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.3,
-     "away": 7.5,
-     "draw": 5.25
+     "home": 1.25,
+     "away": 8.5,
+     "draw": 5.75
     },
     "totals": [
      {
@@ -783,22 +1237,31 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.35,
-     "away": 7.0,
-     "draw": 5.0
+     "home": 1.29,
+     "away": 8.0,
+     "draw": 5.4
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 1.96
+      "price": 1.89
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.8
+      "price": 1.85
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 1.28,
+     "away": 9.0,
+     "draw": 6.0
+    },
+    "totals": []
    }
   },
   "extras": {}
@@ -814,42 +1277,51 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 5.75,
-     "home": 1.52,
-     "draw": 3.85
+     "away": 6.75,
+     "home": 1.42,
+     "draw": 4.35
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.95
+      "price": 1.8
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.8
+      "price": 1.95
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 5.5,
-     "home": 1.54,
-     "draw": 3.85
+     "away": 6.5,
+     "home": 1.43,
+     "draw": 4.1
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.91
+      "price": 1.85
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.85
+      "price": 1.92
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 7.5,
+     "home": 1.45,
+     "draw": 4.4
+    },
+    "totals": []
    }
   },
   "extras": {}
@@ -865,42 +1337,51 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 2.15,
+     "home": 2.1,
      "away": 2.9,
-     "draw": 3.6
+     "draw": 3.75
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.28
+      "price": 1.98
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.58
+      "price": 1.77
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 2.12,
-     "away": 2.95,
-     "draw": 3.6
+     "home": 2.08,
+     "away": 3.05,
+     "draw": 3.65
     },
     "totals": [
      {
       "side": "over",
-      "line": 3.5,
-      "price": 2.4
+      "line": 2.5,
+      "price": 1.43
      },
      {
       "side": "under",
-      "line": 3.5,
-      "price": 1.55
+      "line": 2.5,
+      "price": 2.7
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 2.15,
+     "away": 3.1,
+     "draw": 3.8
+    },
+    "totals": []
    }
   },
   "extras": {}
@@ -916,8 +1397,8 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 2.65,
-     "home": 2.65,
+     "away": 2.3,
+     "home": 3.15,
      "draw": 3.0
     },
     "totals": [
@@ -936,22 +1417,31 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 2.6,
-     "home": 2.7,
+     "away": 2.45,
+     "home": 2.88,
      "draw": 3.0
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 2.28
+      "price": 2.32
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.6
+      "price": 1.57
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 2.4,
+     "home": 3.2,
+     "draw": 3.1
+    },
+    "totals": []
    }
   },
   "extras": {}
@@ -967,42 +1457,51 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.75,
-     "away": 4.25,
-     "draw": 3.55
+     "home": 2.2,
+     "away": 3.1,
+     "draw": 3.2
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.92
+      "price": 1.95
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.82
+      "price": 1.8
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.78,
-     "away": 4.2,
-     "draw": 3.5
+     "home": 2.15,
+     "away": 3.25,
+     "draw": 3.2
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.92
+      "price": 2.02
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.85
+      "price": 1.76
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 2.25,
+     "away": 3.35,
+     "draw": 3.2
+    },
+    "totals": []
    }
   },
   "extras": {}
@@ -1018,42 +1517,51 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 2.6,
-     "home": 2.45,
-     "draw": 3.4
+     "away": 2.25,
+     "home": 2.75,
+     "draw": 3.55
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.65
+      "price": 1.55
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.15
+      "price": 2.35
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 2.55,
-     "home": 2.48,
+     "away": 2.4,
+     "home": 2.63,
      "draw": 3.45
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.63
+      "price": 1.6
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.23
+      "price": 2.28
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 2.35,
+     "home": 2.8,
+     "draw": 3.75
+    },
+    "totals": []
    }
   },
   "extras": {}
@@ -1069,9 +1577,29 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.42,
-     "away": 6.25,
-     "draw": 4.3
+     "home": 1.45,
+     "away": 6.0,
+     "draw": 4.4
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.63
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.2
+     }
+    ]
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.43,
+     "away": 6.4,
+     "draw": 4.25
     },
     "totals": [
      {
@@ -1082,29 +1610,18 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.0
+      "price": 2.08
      }
     ]
    },
-   "tabtouch": {
-    "title": "TABtouch",
+   "sportsbet": {
+    "title": "SportsBet",
     "h2h": {
-     "home": 1.43,
-     "away": 6.5,
-     "draw": 4.25
+     "home": 1.48,
+     "away": 6.25,
+     "draw": 4.6
     },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.71
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.1
-     }
-    ]
+    "totals": []
    }
   },
   "extras": {}
