@@ -1,1517 +1,5 @@
 [
  {
-  "id": "6601f69175a02f03fb7065aacb538e01",
-  "kickoff_utc": "2026-10-31T12:30:00Z",
-  "home": "Chelsea",
-  "away": "Man United",
-  "home_api": "Chelsea",
-  "away_api": "Manchester United",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.82,
-     "away": 4.0,
-     "draw": 3.9
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.8,
-     "away": 3.85,
-     "draw": 3.85
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.58
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.35
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.76,
-     "away": 4.1,
-     "draw": 3.7
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.57
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.33
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-10-30T02:02:55Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.5
-      },
-      {
-       "name": "No",
-       "price": 2.5
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-10-30T02:02:55Z",
-     "outcomes": [
-      {
-       "name": "Chelsea or Draw",
-       "price": 1.2
-      },
-      {
-       "name": "Manchester United or Draw",
-       "price": 1.91
-      },
-      {
-       "name": "Chelsea or Manchester United",
-       "price": 1.22
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-10-30T02:03:56Z",
-     "outcomes": [
-      {
-       "name": "Chelsea",
-       "price": 1.32
-      },
-      {
-       "name": "Manchester United",
-       "price": 3.0
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-10-30T02:03:56Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.01,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.14,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 2.39,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.53,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 4.25,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 7.75,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 13.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 41.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 17.25,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 5.2,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.53,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 2.39,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.2,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.06,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.01,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-10-30T02:03:56Z",
-     "outcomes": [
-      {
-       "name": "Chelsea:1|Manchester United:0",
-       "price": 9.0
-      },
-      {
-       "name": "Chelsea:2|Manchester United:0",
-       "price": 10.0
-      },
-      {
-       "name": "Chelsea:2|Manchester United:1",
-       "price": 7.5
-      },
-      {
-       "name": "Chelsea:3|Manchester United:0",
-       "price": 14.0
-      },
-      {
-       "name": "Chelsea:3|Manchester United:1",
-       "price": 12.0
-      },
-      {
-       "name": "Chelsea:3|Manchester United:2",
-       "price": 14.0
-      },
-      {
-       "name": "Chelsea:4|Manchester United:0",
-       "price": 23.0
-      },
-      {
-       "name": "Chelsea:4|Manchester United:1",
-       "price": 20.0
-      },
-      {
-       "name": "Chelsea:4|Manchester United:2",
-       "price": 26.0
-      },
-      {
-       "name": "Chelsea:4|Manchester United:3",
-       "price": 61.0
-      },
-      {
-       "name": "Chelsea:5|Manchester United:0",
-       "price": 61.0
-      },
-      {
-       "name": "Chelsea:5|Manchester United:1",
-       "price": 51.0
-      },
-      {
-       "name": "Chelsea:5|Manchester United:2",
-       "price": 81.0
-      },
-      {
-       "name": "Chelsea:5|Manchester United:3",
-       "price": 151.0
-      },
-      {
-       "name": "Chelsea:5|Manchester United:4",
-       "price": 326.0
-      },
-      {
-       "name": "Chelsea:6|Manchester United:0",
-       "price": 126.0
-      },
-      {
-       "name": "Chelsea:6|Manchester United:1",
-       "price": 151.0
-      },
-      {
-       "name": "Chelsea:6|Manchester United:2",
-       "price": 226.0
-      },
-      {
-       "name": "Chelsea:6|Manchester United:3",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:6|Manchester United:4",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:6|Manchester United:5",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:7|Manchester United:0",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:7|Manchester United:1",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:7|Manchester United:2",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:7|Manchester United:3",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:7|Manchester United:4",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:8|Manchester United:0",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:8|Manchester United:1",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:8|Manchester United:2",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:8|Manchester United:3",
-       "price": 376.0
-      },
-      {
-       "name": "Chelsea:9|Manchester United:0",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:9|Manchester United:1",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:9|Manchester United:2",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:10|Manchester United:0",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:10|Manchester United:1",
-       "price": 401.0
-      },
-      {
-       "name": "Chelsea:11|Manchester United:0",
-       "price": 376.0
-      },
-      {
-       "name": "Chelsea:0|Manchester United:0",
-       "price": 14.0
-      },
-      {
-       "name": "Chelsea:1|Manchester United:1",
-       "price": 7.0
-      },
-      {
-       "name": "Chelsea:2|Manchester United:2",
-       "price": 11.0
-      },
-      {
-       "name": "Chelsea:3|Manchester United:3",
-       "price": 26.0
-      },
-      {
-       "name": "Chelsea:4|Manchester United:4",
-       "price": 126.0
-      },
-      {
-       "name": "Chelsea:5|Manchester United:5",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:1|Chelsea:0",
-       "price": 13.0
-      },
-      {
-       "name": "Manchester United:2|Chelsea:0",
-       "price": 20.0
-      },
-      {
-       "name": "Manchester United:2|Chelsea:1",
-       "price": 12.0
-      },
-      {
-       "name": "Manchester United:3|Chelsea:0",
-       "price": 46.0
-      },
-      {
-       "name": "Manchester United:3|Chelsea:1",
-       "price": 23.0
-      },
-      {
-       "name": "Manchester United:3|Chelsea:2",
-       "price": 20.0
-      },
-      {
-       "name": "Manchester United:4|Chelsea:0",
-       "price": 126.0
-      },
-      {
-       "name": "Manchester United:4|Chelsea:1",
-       "price": 76.0
-      },
-      {
-       "name": "Manchester United:4|Chelsea:2",
-       "price": 67.0
-      },
-      {
-       "name": "Manchester United:4|Chelsea:3",
-       "price": 101.0
-      },
-      {
-       "name": "Manchester United:5|Chelsea:0",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:5|Chelsea:1",
-       "price": 176.0
-      },
-      {
-       "name": "Manchester United:5|Chelsea:2",
-       "price": 226.0
-      },
-      {
-       "name": "Manchester United:5|Chelsea:3",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:5|Chelsea:4",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:6|Chelsea:0",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:6|Chelsea:1",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:6|Chelsea:2",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:6|Chelsea:3",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:6|Chelsea:4",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:6|Chelsea:5",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:7|Chelsea:0",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:7|Chelsea:1",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:7|Chelsea:2",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:7|Chelsea:3",
-       "price": 401.0
-      },
-      {
-       "name": "Manchester United:7|Chelsea:4",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:8|Chelsea:0",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:8|Chelsea:1",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:8|Chelsea:2",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:8|Chelsea:3",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:9|Chelsea:0",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:9|Chelsea:1",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:9|Chelsea:2",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:10|Chelsea:0",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:10|Chelsea:1",
-       "price": 376.0
-      },
-      {
-       "name": "Manchester United:11|Chelsea:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "a6c06eabdf4e6710354b6098d39449e7",
-  "kickoff_utc": "2026-10-31T15:00:00Z",
-  "home": "Bournemouth",
-  "away": "Leeds",
-  "home_api": "Bournemouth",
-  "away_api": "Leeds United",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 2.15,
-     "away": 3.45,
-     "draw": 3.4
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 2.12,
-     "away": 3.35,
-     "draw": 3.3
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.85
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.91
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 2.04,
-     "away": 3.35,
-     "draw": 3.35
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.83
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.93
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-10-30T02:02:55Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.62
-      },
-      {
-       "name": "No",
-       "price": 2.2
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-10-30T02:02:55Z",
-     "outcomes": [
-      {
-       "name": "Bournemouth or Draw",
-       "price": 1.25
-      },
-      {
-       "name": "Leeds United or Draw",
-       "price": 1.67
-      },
-      {
-       "name": "Bournemouth or Leeds United",
-       "price": 1.28
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-10-30T02:03:55Z",
-     "outcomes": [
-      {
-       "name": "Bournemouth",
-       "price": 1.5
-      },
-      {
-       "name": "Leeds United",
-       "price": 2.4
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-10-30T02:03:55Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.03,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.25,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 3.18,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.83,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 6.0,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 10.0,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 34.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 81.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 11.8,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 3.78,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.33,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 1.9,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.11,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.03,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-10-30T02:03:55Z",
-     "outcomes": [
-      {
-       "name": "Bournemouth:1|Leeds United:0",
-       "price": 8.0
-      },
-      {
-       "name": "Bournemouth:2|Leeds United:0",
-       "price": 10.0
-      },
-      {
-       "name": "Bournemouth:2|Leeds United:1",
-       "price": 7.5
-      },
-      {
-       "name": "Bournemouth:3|Leeds United:0",
-       "price": 15.0
-      },
-      {
-       "name": "Bournemouth:3|Leeds United:1",
-       "price": 14.0
-      },
-      {
-       "name": "Bournemouth:3|Leeds United:2",
-       "price": 18.0
-      },
-      {
-       "name": "Bournemouth:4|Leeds United:0",
-       "price": 41.0
-      },
-      {
-       "name": "Bournemouth:4|Leeds United:1",
-       "price": 36.0
-      },
-      {
-       "name": "Bournemouth:4|Leeds United:2",
-       "price": 46.0
-      },
-      {
-       "name": "Bournemouth:4|Leeds United:3",
-       "price": 91.0
-      },
-      {
-       "name": "Bournemouth:5|Leeds United:0",
-       "price": 101.0
-      },
-      {
-       "name": "Bournemouth:5|Leeds United:1",
-       "price": 91.0
-      },
-      {
-       "name": "Bournemouth:5|Leeds United:2",
-       "price": 151.0
-      },
-      {
-       "name": "Bournemouth:5|Leeds United:3",
-       "price": 276.0
-      },
-      {
-       "name": "Bournemouth:5|Leeds United:4",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:6|Leeds United:0",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:6|Leeds United:1",
-       "price": 326.0
-      },
-      {
-       "name": "Bournemouth:6|Leeds United:2",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:6|Leeds United:3",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:6|Leeds United:4",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:6|Leeds United:5",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:7|Leeds United:0",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:7|Leeds United:1",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:7|Leeds United:2",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:7|Leeds United:3",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:7|Leeds United:4",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:8|Leeds United:0",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:8|Leeds United:1",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:8|Leeds United:2",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:8|Leeds United:3",
-       "price": 401.0
-      },
-      {
-       "name": "Bournemouth:9|Leeds United:0",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:9|Leeds United:1",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:9|Leeds United:2",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:10|Leeds United:0",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:10|Leeds United:1",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:11|Leeds United:0",
-       "price": 376.0
-      },
-      {
-       "name": "Bournemouth:0|Leeds United:0",
-       "price": 11.0
-      },
-      {
-       "name": "Bournemouth:1|Leeds United:1",
-       "price": 6.0
-      },
-      {
-       "name": "Bournemouth:2|Leeds United:2",
-       "price": 11.0
-      },
-      {
-       "name": "Bournemouth:3|Leeds United:3",
-       "price": 36.0
-      },
-      {
-       "name": "Bournemouth:4|Leeds United:4",
-       "price": 301.0
-      },
-      {
-       "name": "Bournemouth:5|Leeds United:5",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:1|Bournemouth:0",
-       "price": 10.0
-      },
-      {
-       "name": "Leeds United:2|Bournemouth:0",
-       "price": 15.0
-      },
-      {
-       "name": "Leeds United:2|Bournemouth:1",
-       "price": 10.0
-      },
-      {
-       "name": "Leeds United:3|Bournemouth:0",
-       "price": 41.0
-      },
-      {
-       "name": "Leeds United:3|Bournemouth:1",
-       "price": 23.0
-      },
-      {
-       "name": "Leeds United:3|Bournemouth:2",
-       "price": 23.0
-      },
-      {
-       "name": "Leeds United:4|Bournemouth:0",
-       "price": 101.0
-      },
-      {
-       "name": "Leeds United:4|Bournemouth:1",
-       "price": 76.0
-      },
-      {
-       "name": "Leeds United:4|Bournemouth:2",
-       "price": 91.0
-      },
-      {
-       "name": "Leeds United:4|Bournemouth:3",
-       "price": 101.0
-      },
-      {
-       "name": "Leeds United:5|Bournemouth:0",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:5|Bournemouth:1",
-       "price": 301.0
-      },
-      {
-       "name": "Leeds United:5|Bournemouth:2",
-       "price": 301.0
-      },
-      {
-       "name": "Leeds United:5|Bournemouth:3",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:5|Bournemouth:4",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:6|Bournemouth:0",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:6|Bournemouth:1",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:6|Bournemouth:2",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:6|Bournemouth:3",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:6|Bournemouth:4",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:6|Bournemouth:5",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:7|Bournemouth:0",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:7|Bournemouth:1",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:7|Bournemouth:2",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:7|Bournemouth:3",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:7|Bournemouth:4",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:8|Bournemouth:0",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:8|Bournemouth:1",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:8|Bournemouth:2",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:8|Bournemouth:3",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:9|Bournemouth:0",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:9|Bournemouth:1",
-       "price": 401.0
-      },
-      {
-       "name": "Leeds United:9|Bournemouth:2",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:10|Bournemouth:0",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:10|Bournemouth:1",
-       "price": 376.0
-      },
-      {
-       "name": "Leeds United:11|Bournemouth:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "b9254b648ca25ce7831988b53ed17c3c",
-  "kickoff_utc": "2026-10-31T15:00:00Z",
-  "home": "Brentford",
-  "away": "Nott'm Forest",
-  "home_api": "Brentford",
-  "away_api": "Nottingham Forest",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 2.05,
-     "away": 3.45,
-     "draw": 3.6
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 2.02,
-     "away": 3.3,
-     "draw": 3.6
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.72
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.08
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.95,
-     "away": 3.3,
-     "draw": 3.6
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.71
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.12
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-10-30T02:02:55Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.57
-      },
-      {
-       "name": "No",
-       "price": 2.3
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "7df53f9af95d5a4e13b504882078dab8",
-  "kickoff_utc": "2026-10-31T15:00:00Z",
-  "home": "Man City",
-  "away": "Brighton",
-  "home_api": "Manchester City",
-  "away_api": "Brighton and Hove Albion",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 4.8,
-     "home": 1.62,
-     "draw": 4.3
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 4.6,
-     "home": 1.58,
-     "draw": 4.5
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 2.02
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.77
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 4.6,
-     "home": 1.56,
-     "draw": 4.35
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 2.06
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.75
-     }
-    ]
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "d20fbb0cd5ad9369b8ed6f2c4a198619",
-  "kickoff_utc": "2026-10-31T15:00:00Z",
-  "home": "Coventry",
-  "away": "Sunderland",
-  "home_api": "Coventry City",
-  "away_api": "Sunderland",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 3.15,
-     "away": 2.3,
-     "draw": 3.3
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 3.0,
-     "away": 2.3,
-     "draw": 3.25
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.93
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.83
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 3.0,
-     "away": 2.25,
-     "draw": 3.2
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.88
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.88
-     }
-    ]
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "1ec76c009147b63859f68c6b5a1dd77b",
-  "kickoff_utc": "2026-10-31T15:00:00Z",
-  "home": "Hull",
-  "away": "Ipswich",
-  "home_api": "Hull City",
-  "away_api": "Ipswich Town",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 2.6,
-     "away": 2.7,
-     "draw": 3.35
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 2.55,
-     "away": 2.65,
-     "draw": 3.3
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.83
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.93
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 2.6,
-     "away": 2.63,
-     "draw": 3.15
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.88
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.89
-     }
-    ]
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "01b17432a283eb27af86ae45602eb6dd",
-  "kickoff_utc": "2026-10-31T17:30:00Z",
-  "home": "Tottenham",
-  "away": "Crystal Palace",
-  "home_api": "Tottenham Hotspur",
-  "away_api": "Crystal Palace",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 5.7,
-     "home": 1.54,
-     "draw": 4.4
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 5.25,
-     "home": 1.52,
-     "draw": 4.35
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.6
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.3
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 5.3,
-     "home": 1.51,
-     "draw": 4.2
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.56
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.38
-     }
-    ]
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "640c52a86289f35698261b41987dd71e",
-  "kickoff_utc": "2026-10-31T20:00:00Z",
-  "home": "Aston Villa",
-  "away": "Fulham",
-  "home_api": "Aston Villa",
-  "away_api": "Fulham",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.93,
-     "away": 3.8,
-     "draw": 3.6
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.93,
-     "away": 3.55,
-     "draw": 3.65
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.65
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.2
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.92,
-     "away": 3.5,
-     "draw": 3.55
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.71
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.12
-     }
-    ]
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "6a3819cdbe2ba2fe5a3d8f9b4b459965",
-  "kickoff_utc": "2026-11-01T16:30:00Z",
-  "home": "Liverpool",
-  "away": "Arsenal",
-  "home_api": "Liverpool",
-  "away_api": "Arsenal",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 2.35,
-     "home": 2.95,
-     "draw": 3.45
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 2.3,
-     "home": 2.9,
-     "draw": 3.4
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.82
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.95
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 2.3,
-     "home": 2.85,
-     "draw": 3.3
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.85
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.93
-     }
-    ]
-   }
-  },
-  "extras": {}
- },
- {
-  "id": "0f552d9c6990c69474f50ff2fb54e9a3",
-  "kickoff_utc": "2026-11-02T20:00:00Z",
-  "home": "Newcastle",
-  "away": "Everton",
-  "home_api": "Newcastle United",
-  "away_api": "Everton",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 2.95,
-     "home": 2.35,
-     "draw": 3.45
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 2.85,
-     "home": 2.3,
-     "draw": 3.5
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.7
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.1
-     }
-    ]
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 2.9,
-     "home": 2.2,
-     "draw": 3.5
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.7
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.12
-     }
-    ]
-   }
-  },
-  "extras": {}
- },
- {
   "id": "586bec023ee8ac2f0645d963bd2c9d25",
   "kickoff_utc": "2026-11-06T20:00:00Z",
   "home": "Everton",
@@ -1522,29 +10,29 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 4.7,
-     "home": 1.68,
-     "draw": 4.0
+     "away": 4.75,
+     "home": 1.73,
+     "draw": 3.8
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 4.4,
+     "away": 4.5,
      "home": 1.68,
-     "draw": 3.75
+     "draw": 3.85
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.72
+      "price": 1.68
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.05
+      "price": 2.15
      }
     ]
    },
@@ -1559,7 +47,7 @@
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.71
+      "price": 1.73
      },
      {
       "side": "under",
@@ -1582,9 +70,9 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 2.5,
+     "home": 2.6,
      "away": 2.7,
-     "draw": 3.5
+     "draw": 3.3
     },
     "totals": []
    },
@@ -1592,39 +80,39 @@
     "title": "PlayUp",
     "h2h": {
      "home": 2.55,
-     "away": 2.55,
+     "away": 2.65,
      "draw": 3.25
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.88
+      "price": 1.93
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.85
+      "price": 1.83
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 2.55,
-     "away": 2.55,
+     "home": 2.48,
+     "away": 2.63,
      "draw": 3.3
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.83
+      "price": 1.85
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.94
+      "price": 1.93
      }
     ]
    }
@@ -1642,49 +130,49 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 1.18,
+     "home": 1.15,
      "away": 16.0,
-     "draw": 7.25
+     "draw": 8.25
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.15,
-     "away": 15.0,
-     "draw": 7.0
+     "home": 1.14,
+     "away": 17.0,
+     "draw": 7.75
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.3
+      "price": 2.25
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.58
+      "price": 1.63
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.16,
-     "away": 14.0,
-     "draw": 6.75
+     "home": 1.13,
+     "away": 16.0,
+     "draw": 7.5
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.3
+      "price": 2.17
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.6
+      "price": 1.67
      }
     ]
    }
@@ -1702,49 +190,49 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 2.2,
-     "away": 3.0,
-     "draw": 3.8
+     "home": 2.0,
+     "away": 3.6,
+     "draw": 3.6
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 2.2,
-     "away": 2.9,
-     "draw": 3.4
+     "home": 2.02,
+     "away": 3.35,
+     "draw": 3.55
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.68
+      "price": 1.65
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.12
+      "price": 2.2
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 2.2,
-     "away": 2.9,
+     "home": 2.05,
+     "away": 3.2,
      "draw": 3.4
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.63
+      "price": 1.7
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.23
+      "price": 2.14
      }
     ]
    }
@@ -1762,17 +250,17 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 1.64,
-     "home": 4.9,
-     "draw": 4.25
+     "away": 1.72,
+     "home": 4.6,
+     "draw": 4.0
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 1.6,
-     "home": 4.75,
+     "away": 1.7,
+     "home": 4.4,
      "draw": 3.85
     },
     "totals": [
@@ -1784,27 +272,27 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.25
+      "price": 2.28
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.56,
-     "home": 4.8,
-     "draw": 4.2
+     "away": 1.64,
+     "home": 4.4,
+     "draw": 3.95
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.57
+      "price": 1.6
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.33
+      "price": 2.3
      }
     ]
    }
@@ -1822,8 +310,8 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 1.96,
-     "home": 3.6,
+     "away": 1.92,
+     "home": 3.8,
      "draw": 3.8
     },
     "totals": []
@@ -1831,8 +319,8 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 1.88,
-     "home": 3.55,
+     "away": 1.93,
+     "home": 3.6,
      "draw": 3.6
     },
     "totals": [
@@ -1844,27 +332,27 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.12
+      "price": 2.15
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.89,
+     "away": 1.91,
      "home": 3.5,
-     "draw": 3.6
+     "draw": 3.55
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.67
+      "price": 1.66
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.17
+      "price": 2.2
      }
     ]
    }
@@ -1891,15 +379,15 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 3.6,
-     "home": 1.85,
-     "draw": 3.7
+     "away": 3.65,
+     "home": 1.87,
+     "draw": 3.75
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.55
+      "price": 1.58
      },
      {
       "side": "under",
@@ -1912,7 +400,7 @@
     "title": "TABtouch",
     "h2h": {
      "away": 3.5,
-     "home": 1.87,
+     "home": 1.88,
      "draw": 3.7
     },
     "totals": [
@@ -1924,7 +412,7 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.33
+      "price": 2.35
      }
     ]
    }
@@ -1942,8 +430,8 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 2.1,
-     "home": 3.4,
+     "away": 2.02,
+     "home": 3.5,
      "draw": 3.6
     },
     "totals": []
@@ -1951,40 +439,40 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 2.05,
-     "home": 3.25,
-     "draw": 3.4
+     "away": 1.95,
+     "home": 3.55,
+     "draw": 3.55
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.82
+      "price": 1.77
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.93
+      "price": 2.02
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 2.14,
-     "home": 3.1,
-     "draw": 3.35
+     "away": 1.96,
+     "home": 3.4,
+     "draw": 3.5
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.87
+      "price": 1.81
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.89
+      "price": 1.96
      }
     ]
    }
@@ -2002,49 +490,49 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 4.3,
-     "away": 1.73,
-     "draw": 4.1
+     "home": 4.9,
+     "away": 1.64,
+     "draw": 4.25
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 4.3,
-     "away": 1.68,
-     "draw": 3.85
+     "home": 4.85,
+     "away": 1.6,
+     "draw": 4.1
     },
     "totals": [
      {
       "side": "over",
-      "line": 2.5,
-      "price": 1.58
+      "line": 3.5,
+      "price": 2.4
      },
      {
       "side": "under",
-      "line": 2.5,
-      "price": 2.3
+      "line": 3.5,
+      "price": 1.55
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 4.4,
-     "away": 1.66,
-     "draw": 3.9
+     "home": 4.7,
+     "away": 1.6,
+     "draw": 4.0
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.35
+      "price": 2.28
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.56
+      "price": 1.61
      }
     ]
    }
@@ -2062,24 +550,24 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 2.9,
+     "away": 2.95,
      "home": 2.25,
-     "draw": 3.8
+     "draw": 3.6
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 2.85,
-     "home": 2.2,
+     "away": 2.9,
+     "home": 2.25,
      "draw": 3.55
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.58
+      "price": 1.6
      },
      {
       "side": "under",
@@ -2091,20 +579,268 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 2.9,
-     "home": 2.12,
+     "away": 2.85,
+     "home": 2.23,
+     "draw": 3.5
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.62
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.28
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "6ef39b0fd8839f6e93a3de32523e9807",
+  "kickoff_utc": "2026-11-21T12:30:00Z",
+  "home": "Man City",
+  "away": "Fulham",
+  "home_api": "Manchester City",
+  "away_api": "Fulham",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 6.0,
+     "home": 1.43,
+     "draw": 4.5
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 3.5,
+      "price": 2.18
+     },
+     {
+      "side": "under",
+      "line": 3.5,
+      "price": 1.66
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "b8d6ab6ecc8bb356c6335d3f417d0ecf",
+  "kickoff_utc": "2026-11-21T15:00:00Z",
+  "home": "Aston Villa",
+  "away": "Sunderland",
+  "home_api": "Aston Villa",
+  "away_api": "Sunderland",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.88,
+     "away": 3.75,
+     "draw": 3.4
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.8
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 1.97
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "cf68da11fa604c13fc9ef3219fad0314",
+  "kickoff_utc": "2026-11-21T15:00:00Z",
+  "home": "Bournemouth",
+  "away": "Nott'm Forest",
+  "home_api": "Bournemouth",
+  "away_api": "Nottingham Forest",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.78,
+     "away": 4.0,
+     "draw": 3.55
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.79
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 1.97
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "ac6cf70520a83c0949b4003bde53c709",
+  "kickoff_utc": "2026-11-21T15:00:00Z",
+  "home": "Chelsea",
+  "away": "Leeds",
+  "home_api": "Chelsea",
+  "away_api": "Leeds United",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.73,
+     "away": 4.1,
      "draw": 3.65
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.56
+      "price": 1.72
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.35
+      "price": 2.08
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "9f38413bdad666e2d2dfcc574dd12e66",
+  "kickoff_utc": "2026-11-21T15:00:00Z",
+  "home": "Coventry",
+  "away": "Crystal Palace",
+  "home_api": "Coventry City",
+  "away_api": "Crystal Palace",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 2.2,
+     "away": 2.95,
+     "draw": 3.4
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.68
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.12
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "e67ee3a6f93bb90b8aefcf3dd204477c",
+  "kickoff_utc": "2026-11-21T15:00:00Z",
+  "home": "Tottenham",
+  "away": "Ipswich",
+  "home_api": "Tottenham Hotspur",
+  "away_api": "Ipswich Town",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 5.2,
+     "home": 1.54,
+     "draw": 4.0
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 3.5,
+      "price": 2.48
+     },
+     {
+      "side": "under",
+      "line": 3.5,
+      "price": 1.51
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "71bf9fe98c3e3be39cd1d059f8d71ae8",
+  "kickoff_utc": "2026-11-21T17:30:00Z",
+  "home": "Newcastle",
+  "away": "Arsenal",
+  "home_api": "Newcastle United",
+  "away_api": "Arsenal",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 1.54,
+     "home": 5.3,
+     "draw": 4.0
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.66
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.17
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "230a356290e1a358e9dd2f7fa23de3b9",
+  "kickoff_utc": "2026-11-22T14:00:00Z",
+  "home": "Hull",
+  "away": "Brighton",
+  "home_api": "Hull City",
+  "away_api": "Brighton and Hove Albion",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 1.45,
+     "home": 6.0,
+     "draw": 4.25
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 3.5,
+      "price": 2.55
+     },
+     {
+      "side": "under",
+      "line": 3.5,
+      "price": 1.5
      }
     ]
    }
@@ -2127,6 +863,57 @@
      "draw": 4.0
     },
     "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.72,
+     "away": 4.1,
+     "draw": 3.75
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.67
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.15
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "aa77e2a08a1a003b0bbb62a5f8e8ae42",
+  "kickoff_utc": "2026-11-23T20:00:00Z",
+  "home": "Brentford",
+  "away": "Everton",
+  "home_api": "Brentford",
+  "away_api": "Everton",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.78,
+     "away": 3.9,
+     "draw": 3.65
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.66
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.18
+     }
+    ]
    }
   },
   "extras": {}
