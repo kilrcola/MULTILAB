@@ -2546,5 +2546,57 @@
    "avg_over25": 1.79,
    "avg_under25": 1.96
   }
+ },
+ {
+  "date": "2026-11-02",
+  "home": "Sassuolo",
+  "away": "Fiorentina",
+  "hg": 2,
+  "ag": 4,
+  "ht_hg": 1,
+  "ht_ag": 1,
+  "hs": 7,
+  "as": 15,
+  "hst": 2,
+  "ast": 6,
+  "hc": 5,
+  "ac": 3,
+  "hy": 2,
+  "ay": 3,
+  "hr": 0,
+  "ar": 0,
+  "closing_odds": {
+   "avg_home": 2.98,
+   "avg_draw": 3.61,
+   "avg_away": 2.23,
+   "avg_over25": 1.57,
+   "avg_under25": 2.33
+  }
+ },
+ {
+  "date": "2026-11-02",
+  "home": "Atalanta",
+  "away": "Parma",
+  "hg": 0,
+  "ag": 3,
+  "ht_hg": 0,
+  "ht_ag": 1,
+  "hs": 20,
+  "as": 6,
+  "hst": 6,
+  "ast": 3,
+  "hc": 8,
+  "ac": 4,
+  "hy": 0,
+  "ay": 0,
+  "hr": 0,
+  "ar": 0,
+  "closing_odds": {
+   "avg_home": 1.38,
+   "avg_draw": 5.03,
+   "avg_away": 7.33,
+   "avg_over25": 1.48,
+   "avg_under25": 2.56
+  }
  }
 ]

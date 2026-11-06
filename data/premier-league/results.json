@@ -2312,5 +2312,31 @@
    "avg_over25": 1.63,
    "avg_under25": 2.2
   }
+ },
+ {
+  "date": "2026-11-02",
+  "home": "Newcastle",
+  "away": "Everton",
+  "hg": 0,
+  "ag": 1,
+  "ht_hg": 0,
+  "ht_ag": 0,
+  "hs": 17,
+  "as": 16,
+  "hst": 2,
+  "ast": 5,
+  "hc": 4,
+  "ac": 5,
+  "hy": 4,
+  "ay": 2,
+  "hr": 1,
+  "ar": 0,
+  "closing_odds": {
+   "avg_home": 2.14,
+   "avg_draw": 3.47,
+   "avg_away": 3.25,
+   "avg_over25": 1.75,
+   "avg_under25": 2.03
+  }
  }
 ]
