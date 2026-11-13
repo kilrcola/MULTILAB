@@ -31,28 +31,28 @@
     "title": "PlayUp",
     "h2h": {
      "away": 6.25,
-     "home": 1.4,
-     "draw": 4.6
+     "home": 1.38,
+     "draw": 4.85
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.2
+      "price": 2.25
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.63
+      "price": 1.6
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 6.25,
-     "home": 1.45,
-     "draw": 4.9
+     "away": 6.5,
+     "home": 1.43,
+     "draw": 5.0
     },
     "totals": []
    }
@@ -70,15 +70,15 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.7,
+     "home": 1.71,
      "away": 4.25,
-     "draw": 3.8
+     "draw": 3.75
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.71
+      "price": 1.7
      },
      {
       "side": "under",
@@ -90,20 +90,20 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.7,
-     "away": 4.3,
+     "home": 1.72,
+     "away": 4.2,
      "draw": 3.7
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.72
+      "price": 1.75
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.05
+      "price": 2.0
      }
     ]
    },
@@ -170,8 +170,8 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 2.05,
-     "away": 3.5,
+     "home": 2.0,
+     "away": 3.6,
      "draw": 3.6
     },
     "totals": []
@@ -278,21 +278,21 @@
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.68
+      "price": 1.65
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.12
+      "price": 2.15
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 2.35,
-     "away": 2.8,
-     "draw": 3.6
+     "home": 2.45,
+     "away": 2.75,
+     "draw": 3.5
     },
     "totals": []
    }
@@ -311,8 +311,8 @@
     "title": "TABtouch",
     "h2h": {
      "away": 5.25,
-     "home": 1.51,
-     "draw": 4.2
+     "home": 1.53,
+     "draw": 4.1
     },
     "totals": [
      {
@@ -390,9 +390,9 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 1.52,
+     "away": 1.55,
      "home": 5.25,
-     "draw": 4.1
+     "draw": 4.0
     },
     "totals": [
      {
@@ -430,20 +430,20 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.45,
-     "home": 6.0,
+     "away": 1.47,
+     "home": 5.8,
      "draw": 4.25
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.6
+      "price": 1.61
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.3
+      "price": 2.28
      }
     ]
    },
@@ -470,9 +470,9 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 1.54,
-     "home": 5.75,
-     "draw": 4.4
+     "away": 1.51,
+     "home": 6.0,
+     "draw": 4.5
     },
     "totals": []
    }
@@ -490,7 +490,7 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 1.73,
+     "home": 1.74,
      "away": 4.3,
      "draw": 4.1
     },
@@ -499,28 +499,28 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.7,
-     "away": 4.1,
-     "draw": 3.9
+     "home": 1.71,
+     "away": 4.0,
+     "draw": 3.95
     },
     "totals": [
      {
       "side": "over",
-      "line": 3.5,
-      "price": 2.38
+      "line": 2.5,
+      "price": 1.54
      },
      {
       "side": "under",
-      "line": 3.5,
-      "price": 1.56
+      "line": 2.5,
+      "price": 2.45
      }
     ]
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.65,
-     "away": 4.25,
+     "home": 1.68,
+     "away": 4.1,
      "draw": 4.0
     },
     "totals": [
@@ -550,20 +550,20 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.87,
-     "away": 3.6,
-     "draw": 3.65
+     "home": 1.93,
+     "away": 3.45,
+     "draw": 3.55
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.67
+      "price": 1.7
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.17
+      "price": 2.14
      }
     ]
    },
@@ -606,7 +606,28 @@
   "away": "Chelsea",
   "home_api": "Nottingham Forest",
   "away_api": "Chelsea",
-  "books": {},
+  "books": {
+   "playup": {
+    "title": "PlayUp",
+    "h2h": {
+     "away": 2.5,
+     "home": 2.6,
+     "draw": 3.3
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.72
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.05
+     }
+    ]
+   }
+  },
   "extras": {}
  },
  {
