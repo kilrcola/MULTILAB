@@ -1,5 +1,5 @@
 {
- "fetched_at_utc": "2026-11-17T04:42:58+00:00",
+ "fetched_at_utc": "2026-11-20T03:37:41+00:00",
  "season": "2627",
  "sources": {
   "results": {
@@ -22,12 +22,50 @@
   "odds": {
    "ok": true,
    "games": 20,
-   "priced_by_sportsbet": 19,
-   "api_credits_left": 380
+   "priced_by_sportsbet": 20,
+   "api_credits_left": 276
   }
  },
  "extras": {
-  "skipped": "FETCH_EXTRAS is off for this run"
+  "games_considered": 10,
+  "stopped": null,
+  "markets": {
+   "btts": {
+    "games_tried": 10,
+    "games_with_data": 10,
+    "error": null
+   },
+   "double_chance": {
+    "games_tried": 10,
+    "games_with_data": 10,
+    "error": null
+   },
+   "draw_no_bet": {
+    "games_tried": 10,
+    "games_with_data": 10,
+    "error": null
+   },
+   "alternate_totals": {
+    "games_tried": 10,
+    "games_with_data": 10,
+    "error": null
+   },
+   "team_totals": {
+    "games_tried": 10,
+    "games_with_data": 0,
+    "error": null
+   },
+   "correct_score": {
+    "games_tried": 10,
+    "games_with_data": 10,
+    "error": null
+   },
+   "alternate_spreads": {
+    "games_tried": 10,
+    "games_with_data": 0,
+    "error": null
+   }
+  }
  },
  "name_problems": [],
  "unknown_team_names": [],
