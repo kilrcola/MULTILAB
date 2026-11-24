@@ -1,5085 +1,5 @@
 [
  {
-  "id": "9e8d72c6c27c1667be7b88416a36ca80",
-  "kickoff_utc": "2026-11-21T14:00:00Z",
-  "home": "Como",
-  "away": "Cagliari",
-  "home_api": "Como",
-  "away_api": "Cagliari",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 10.0,
-     "home": 1.28,
-     "draw": 5.8
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 9.5,
-     "home": 1.27,
-     "draw": 5.2
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.54
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.43
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 9.0,
-     "home": 1.28,
-     "draw": 5.25
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 2.3
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.58
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.91
-      },
-      {
-       "name": "No",
-       "price": 1.83
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Cagliari or Draw",
-       "price": 3.6
-      },
-      {
-       "name": "Como or Draw",
-       "price": 1.04
-      },
-      {
-       "name": "Cagliari or Como",
-       "price": 1.11
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Cagliari",
-       "price": 8.0
-      },
-      {
-       "name": "Como",
-       "price": 1.04
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:37:02Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.01,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.14,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 2.29,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.48,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 4.0,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 6.5,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 12.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 34.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 19.0,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 5.2,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.58,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 2.53,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.22,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.08,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.02,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:37:02Z",
-     "outcomes": [
-      {
-       "name": "Como:1|Cagliari:0",
-       "price": 8.0
-      },
-      {
-       "name": "Como:2|Cagliari:0",
-       "price": 6.5
-      },
-      {
-       "name": "Como:2|Cagliari:1",
-       "price": 8.0
-      },
-      {
-       "name": "Como:3|Cagliari:0",
-       "price": 8.0
-      },
-      {
-       "name": "Como:3|Cagliari:1",
-       "price": 10.0
-      },
-      {
-       "name": "Como:3|Cagliari:2",
-       "price": 19.0
-      },
-      {
-       "name": "Como:4|Cagliari:0",
-       "price": 12.0
-      },
-      {
-       "name": "Como:4|Cagliari:1",
-       "price": 13.0
-      },
-      {
-       "name": "Como:4|Cagliari:2",
-       "price": 26.0
-      },
-      {
-       "name": "Como:4|Cagliari:3",
-       "price": 101.0
-      },
-      {
-       "name": "Como:5|Cagliari:0",
-       "price": 19.0
-      },
-      {
-       "name": "Como:5|Cagliari:1",
-       "price": 23.0
-      },
-      {
-       "name": "Como:5|Cagliari:2",
-       "price": 61.0
-      },
-      {
-       "name": "Como:5|Cagliari:3",
-       "price": 151.0
-      },
-      {
-       "name": "Como:5|Cagliari:4",
-       "price": 401.0
-      },
-      {
-       "name": "Como:6|Cagliari:0",
-       "price": 46.0
-      },
-      {
-       "name": "Como:6|Cagliari:1",
-       "price": 56.0
-      },
-      {
-       "name": "Como:6|Cagliari:2",
-       "price": 101.0
-      },
-      {
-       "name": "Como:6|Cagliari:3",
-       "price": 401.0
-      },
-      {
-       "name": "Como:6|Cagliari:4",
-       "price": 401.0
-      },
-      {
-       "name": "Como:6|Cagliari:5",
-       "price": 401.0
-      },
-      {
-       "name": "Como:7|Cagliari:0",
-       "price": 91.0
-      },
-      {
-       "name": "Como:7|Cagliari:1",
-       "price": 101.0
-      },
-      {
-       "name": "Como:7|Cagliari:2",
-       "price": 301.0
-      },
-      {
-       "name": "Como:7|Cagliari:3",
-       "price": 401.0
-      },
-      {
-       "name": "Como:7|Cagliari:4",
-       "price": 401.0
-      },
-      {
-       "name": "Como:8|Cagliari:0",
-       "price": 251.0
-      },
-      {
-       "name": "Como:8|Cagliari:1",
-       "price": 376.0
-      },
-      {
-       "name": "Como:8|Cagliari:2",
-       "price": 401.0
-      },
-      {
-       "name": "Como:8|Cagliari:3",
-       "price": 401.0
-      },
-      {
-       "name": "Como:9|Cagliari:0",
-       "price": 401.0
-      },
-      {
-       "name": "Como:9|Cagliari:1",
-       "price": 401.0
-      },
-      {
-       "name": "Como:9|Cagliari:2",
-       "price": 401.0
-      },
-      {
-       "name": "Como:10|Cagliari:0",
-       "price": 401.0
-      },
-      {
-       "name": "Como:10|Cagliari:1",
-       "price": 401.0
-      },
-      {
-       "name": "Como:11|Cagliari:0",
-       "price": 401.0
-      },
-      {
-       "name": "Como:0|Cagliari:0",
-       "price": 15.0
-      },
-      {
-       "name": "Como:1|Cagliari:1",
-       "price": 10.0
-      },
-      {
-       "name": "Como:2|Cagliari:2",
-       "price": 15.0
-      },
-      {
-       "name": "Como:3|Cagliari:3",
-       "price": 61.0
-      },
-      {
-       "name": "Como:4|Cagliari:4",
-       "price": 401.0
-      },
-      {
-       "name": "Como:5|Cagliari:5",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:1|Como:0",
-       "price": 20.0
-      },
-      {
-       "name": "Cagliari:2|Como:0",
-       "price": 51.0
-      },
-      {
-       "name": "Cagliari:2|Como:1",
-       "price": 21.0
-      },
-      {
-       "name": "Cagliari:3|Como:0",
-       "price": 151.0
-      },
-      {
-       "name": "Cagliari:3|Como:1",
-       "price": 76.0
-      },
-      {
-       "name": "Cagliari:3|Como:2",
-       "price": 56.0
-      },
-      {
-       "name": "Cagliari:4|Como:0",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:4|Como:1",
-       "price": 326.0
-      },
-      {
-       "name": "Cagliari:4|Como:2",
-       "price": 226.0
-      },
-      {
-       "name": "Cagliari:4|Como:3",
-       "price": 301.0
-      },
-      {
-       "name": "Cagliari:5|Como:0",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:5|Como:1",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:5|Como:2",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:5|Como:3",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:5|Como:4",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:6|Como:0",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:6|Como:1",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:6|Como:2",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:6|Como:3",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:6|Como:4",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:6|Como:5",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:7|Como:0",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:7|Como:1",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:7|Como:2",
-       "price": 401.0
-      },
-      {
-       "name": "Cagliari:7|Como:3",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:7|Como:4",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:8|Como:0",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:8|Como:1",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:8|Como:2",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:8|Como:3",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:9|Como:0",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:9|Como:1",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:9|Como:2",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:10|Como:0",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:10|Como:1",
-       "price": 376.0
-      },
-      {
-       "name": "Cagliari:11|Como:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "bf921a2780e2a25201da8a3bfece84c4",
-  "kickoff_utc": "2026-11-21T14:00:00Z",
-  "home": "Lazio",
-  "away": "Lecce",
-  "home_api": "Lazio",
-  "away_api": "Lecce",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.37,
-     "away": 8.5,
-     "draw": 4.9
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.34,
-     "away": 7.5,
-     "draw": 4.8
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.56
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.35
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.35,
-     "away": 7.25,
-     "draw": 4.75
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.55
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.35
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.72
-      },
-      {
-       "name": "No",
-       "price": 2.0
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Lazio or Draw",
-       "price": 1.06
-      },
-      {
-       "name": "Lecce or Draw",
-       "price": 3.0
-      },
-      {
-       "name": "Lazio or Lecce",
-       "price": 1.14
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Lazio",
-       "price": 1.1
-      },
-      {
-       "name": "Lecce",
-       "price": 5.6
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:36:58Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.01,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.15,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 1.54,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 2.47,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 4.6,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 7.75,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 13.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 41.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 17.5,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 5.0,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 2.37,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.5,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 1.17,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.06,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.01,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:36:58Z",
-     "outcomes": [
-      {
-       "name": "Lazio:1|Lecce:0",
-       "price": 7.5
-      },
-      {
-       "name": "Lazio:2|Lecce:0",
-       "price": 7.0
-      },
-      {
-       "name": "Lazio:2|Lecce:1",
-       "price": 7.5
-      },
-      {
-       "name": "Lazio:3|Lecce:0",
-       "price": 9.0
-      },
-      {
-       "name": "Lazio:3|Lecce:1",
-       "price": 10.0
-      },
-      {
-       "name": "Lazio:3|Lecce:2",
-       "price": 17.0
-      },
-      {
-       "name": "Lazio:4|Lecce:0",
-       "price": 14.0
-      },
-      {
-       "name": "Lazio:4|Lecce:1",
-       "price": 15.0
-      },
-      {
-       "name": "Lazio:4|Lecce:2",
-       "price": 26.0
-      },
-      {
-       "name": "Lazio:4|Lecce:3",
-       "price": 81.0
-      },
-      {
-       "name": "Lazio:5|Lecce:0",
-       "price": 26.0
-      },
-      {
-       "name": "Lazio:5|Lecce:1",
-       "price": 31.0
-      },
-      {
-       "name": "Lazio:5|Lecce:2",
-       "price": 61.0
-      },
-      {
-       "name": "Lazio:5|Lecce:3",
-       "price": 226.0
-      },
-      {
-       "name": "Lazio:5|Lecce:4",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:6|Lecce:0",
-       "price": 71.0
-      },
-      {
-       "name": "Lazio:6|Lecce:1",
-       "price": 81.0
-      },
-      {
-       "name": "Lazio:6|Lecce:2",
-       "price": 151.0
-      },
-      {
-       "name": "Lazio:6|Lecce:3",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:6|Lecce:4",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:6|Lecce:5",
-       "price": 376.0
-      },
-      {
-       "name": "Lazio:7|Lecce:0",
-       "price": 151.0
-      },
-      {
-       "name": "Lazio:7|Lecce:1",
-       "price": 176.0
-      },
-      {
-       "name": "Lazio:7|Lecce:2",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:7|Lecce:3",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:7|Lecce:4",
-       "price": 376.0
-      },
-      {
-       "name": "Lazio:8|Lecce:0",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:8|Lecce:1",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:8|Lecce:2",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:8|Lecce:3",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:9|Lecce:0",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:9|Lecce:1",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:9|Lecce:2",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:10|Lecce:0",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:10|Lecce:1",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:11|Lecce:0",
-       "price": 401.0
-      },
-      {
-       "name": "Lazio:0|Lecce:0",
-       "price": 15.0
-      },
-      {
-       "name": "Lazio:1|Lecce:1",
-       "price": 8.5
-      },
-      {
-       "name": "Lazio:2|Lecce:2",
-       "price": 13.0
-      },
-      {
-       "name": "Lazio:3|Lecce:3",
-       "price": 51.0
-      },
-      {
-       "name": "Lazio:4|Lecce:4",
-       "price": 326.0
-      },
-      {
-       "name": "Lazio:5|Lecce:5",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:1|Lazio:0",
-       "price": 18.0
-      },
-      {
-       "name": "Lecce:2|Lazio:0",
-       "price": 41.0
-      },
-      {
-       "name": "Lecce:2|Lazio:1",
-       "price": 15.0
-      },
-      {
-       "name": "Lecce:3|Lazio:0",
-       "price": 101.0
-      },
-      {
-       "name": "Lecce:3|Lazio:1",
-       "price": 56.0
-      },
-      {
-       "name": "Lecce:3|Lazio:2",
-       "price": 46.0
-      },
-      {
-       "name": "Lecce:4|Lazio:0",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:4|Lazio:1",
-       "price": 176.0
-      },
-      {
-       "name": "Lecce:4|Lazio:2",
-       "price": 151.0
-      },
-      {
-       "name": "Lecce:4|Lazio:3",
-       "price": 201.0
-      },
-      {
-       "name": "Lecce:5|Lazio:0",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:5|Lazio:1",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:5|Lazio:2",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:5|Lazio:3",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:5|Lazio:4",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:6|Lazio:0",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:6|Lazio:1",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:6|Lazio:2",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:6|Lazio:3",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:6|Lazio:4",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:6|Lazio:5",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:7|Lazio:0",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:7|Lazio:1",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:7|Lazio:2",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:7|Lazio:3",
-       "price": 401.0
-      },
-      {
-       "name": "Lecce:7|Lazio:4",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:8|Lazio:0",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:8|Lazio:1",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:8|Lazio:2",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:8|Lazio:3",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:9|Lazio:0",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:9|Lazio:1",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:9|Lazio:2",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:10|Lazio:0",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:10|Lazio:1",
-       "price": 376.0
-      },
-      {
-       "name": "Lecce:11|Lazio:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "cb513fd9869c9aa6ce506bb499bcd48b",
-  "kickoff_utc": "2026-11-21T17:00:00Z",
-  "home": "Parma",
-  "away": "Roma",
-  "home_api": "Parma",
-  "away_api": "AS Roma",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 1.27,
-     "home": 10.0,
-     "draw": 6.0
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 1.28,
-     "home": 9.5,
-     "draw": 5.1
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.53
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.43
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 1.25,
-     "home": 9.5,
-     "draw": 5.5
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 2.3
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.58
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.91
-      },
-      {
-       "name": "No",
-       "price": 1.83
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "AS Roma or Draw",
-       "price": 1.04
-      },
-      {
-       "name": "Parma or Draw",
-       "price": 3.6
-      },
-      {
-       "name": "AS Roma or Parma",
-       "price": 1.11
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "AS Roma",
-       "price": 1.05
-      },
-      {
-       "name": "Parma",
-       "price": 7.0
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:36:19Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.01,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.14,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 2.29,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.49,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 4.0,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 7.0,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 12.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 34.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 19.25,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 5.2,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.58,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 2.5,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.22,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.08,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.02,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:36:19Z",
-     "outcomes": [
-      {
-       "name": "Parma:1|AS Roma:0",
-       "price": 21.0
-      },
-      {
-       "name": "Parma:2|AS Roma:0",
-       "price": 46.0
-      },
-      {
-       "name": "Parma:2|AS Roma:1",
-       "price": 21.0
-      },
-      {
-       "name": "Parma:3|AS Roma:0",
-       "price": 126.0
-      },
-      {
-       "name": "Parma:3|AS Roma:1",
-       "price": 67.0
-      },
-      {
-       "name": "Parma:3|AS Roma:2",
-       "price": 61.0
-      },
-      {
-       "name": "Parma:4|AS Roma:0",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:4|AS Roma:1",
-       "price": 276.0
-      },
-      {
-       "name": "Parma:4|AS Roma:2",
-       "price": 251.0
-      },
-      {
-       "name": "Parma:4|AS Roma:3",
-       "price": 326.0
-      },
-      {
-       "name": "Parma:5|AS Roma:0",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:5|AS Roma:1",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:5|AS Roma:2",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:5|AS Roma:3",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:5|AS Roma:4",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:6|AS Roma:0",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:6|AS Roma:1",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:6|AS Roma:2",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:6|AS Roma:3",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:6|AS Roma:4",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:6|AS Roma:5",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:7|AS Roma:0",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:7|AS Roma:1",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:7|AS Roma:2",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:7|AS Roma:3",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:7|AS Roma:4",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:8|AS Roma:0",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:8|AS Roma:1",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:8|AS Roma:2",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:8|AS Roma:3",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:9|AS Roma:0",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:9|AS Roma:1",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:9|AS Roma:2",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:10|AS Roma:0",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:10|AS Roma:1",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:11|AS Roma:0",
-       "price": 376.0
-      },
-      {
-       "name": "Parma:0|AS Roma:0",
-       "price": 15.0
-      },
-      {
-       "name": "Parma:1|AS Roma:1",
-       "price": 10.0
-      },
-      {
-       "name": "Parma:2|AS Roma:2",
-       "price": 15.0
-      },
-      {
-       "name": "Parma:3|AS Roma:3",
-       "price": 67.0
-      },
-      {
-       "name": "Parma:4|AS Roma:4",
-       "price": 401.0
-      },
-      {
-       "name": "Parma:5|AS Roma:5",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:1|Parma:0",
-       "price": 8.0
-      },
-      {
-       "name": "AS Roma:2|Parma:0",
-       "price": 6.5
-      },
-      {
-       "name": "AS Roma:2|Parma:1",
-       "price": 8.5
-      },
-      {
-       "name": "AS Roma:3|Parma:0",
-       "price": 8.0
-      },
-      {
-       "name": "AS Roma:3|Parma:1",
-       "price": 10.0
-      },
-      {
-       "name": "AS Roma:3|Parma:2",
-       "price": 20.0
-      },
-      {
-       "name": "AS Roma:4|Parma:0",
-       "price": 12.0
-      },
-      {
-       "name": "AS Roma:4|Parma:1",
-       "price": 13.0
-      },
-      {
-       "name": "AS Roma:4|Parma:2",
-       "price": 26.0
-      },
-      {
-       "name": "AS Roma:4|Parma:3",
-       "price": 101.0
-      },
-      {
-       "name": "AS Roma:5|Parma:0",
-       "price": 19.0
-      },
-      {
-       "name": "AS Roma:5|Parma:1",
-       "price": 23.0
-      },
-      {
-       "name": "AS Roma:5|Parma:2",
-       "price": 61.0
-      },
-      {
-       "name": "AS Roma:5|Parma:3",
-       "price": 176.0
-      },
-      {
-       "name": "AS Roma:5|Parma:4",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:6|Parma:0",
-       "price": 46.0
-      },
-      {
-       "name": "AS Roma:6|Parma:1",
-       "price": 56.0
-      },
-      {
-       "name": "AS Roma:6|Parma:2",
-       "price": 101.0
-      },
-      {
-       "name": "AS Roma:6|Parma:3",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:6|Parma:4",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:6|Parma:5",
-       "price": 376.0
-      },
-      {
-       "name": "AS Roma:7|Parma:0",
-       "price": 101.0
-      },
-      {
-       "name": "AS Roma:7|Parma:1",
-       "price": 101.0
-      },
-      {
-       "name": "AS Roma:7|Parma:2",
-       "price": 251.0
-      },
-      {
-       "name": "AS Roma:7|Parma:3",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:7|Parma:4",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:8|Parma:0",
-       "price": 226.0
-      },
-      {
-       "name": "AS Roma:8|Parma:1",
-       "price": 326.0
-      },
-      {
-       "name": "AS Roma:8|Parma:2",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:8|Parma:3",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:9|Parma:0",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:9|Parma:1",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:9|Parma:2",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:10|Parma:0",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:10|Parma:1",
-       "price": 401.0
-      },
-      {
-       "name": "AS Roma:11|Parma:0",
-       "price": 401.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "e59809eb38340e3bca323cef070dfd34",
-  "kickoff_utc": "2026-11-21T19:45:00Z",
-  "home": "Napoli",
-  "away": "Torino",
-  "home_api": "Napoli",
-  "away_api": "Torino",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.47,
-     "away": 6.5,
-     "draw": 4.6
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.43,
-     "away": 6.25,
-     "draw": 4.35
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.62
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.25
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.45,
-     "away": 6.0,
-     "draw": 4.35
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.65
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.15
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.83
-      },
-      {
-       "name": "No",
-       "price": 1.91
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Napoli or Draw",
-       "price": 1.08
-      },
-      {
-       "name": "Torino or Draw",
-       "price": 2.6
-      },
-      {
-       "name": "Napoli or Torino",
-       "price": 1.17
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:36:20Z",
-     "outcomes": [
-      {
-       "name": "Napoli",
-       "price": 1.14
-      },
-      {
-       "name": "Torino",
-       "price": 4.5
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:37:34Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.02,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.2,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 2.72,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.65,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 5.2,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 9.5,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 14.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 51.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 14.0,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 4.3,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.42,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 2.15,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.14,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.04,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.01,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:37:34Z",
-     "outcomes": [
-      {
-       "name": "Napoli:1|Torino:0",
-       "price": 7.5
-      },
-      {
-       "name": "Napoli:2|Torino:0",
-       "price": 7.0
-      },
-      {
-       "name": "Napoli:2|Torino:1",
-       "price": 8.0
-      },
-      {
-       "name": "Napoli:3|Torino:0",
-       "price": 10.0
-      },
-      {
-       "name": "Napoli:3|Torino:1",
-       "price": 11.0
-      },
-      {
-       "name": "Napoli:3|Torino:2",
-       "price": 18.0
-      },
-      {
-       "name": "Napoli:4|Torino:0",
-       "price": 15.0
-      },
-      {
-       "name": "Napoli:4|Torino:1",
-       "price": 15.0
-      },
-      {
-       "name": "Napoli:4|Torino:2",
-       "price": 36.0
-      },
-      {
-       "name": "Napoli:4|Torino:3",
-       "price": 101.0
-      },
-      {
-       "name": "Napoli:5|Torino:0",
-       "price": 34.0
-      },
-      {
-       "name": "Napoli:5|Torino:1",
-       "price": 36.0
-      },
-      {
-       "name": "Napoli:5|Torino:2",
-       "price": 81.0
-      },
-      {
-       "name": "Napoli:5|Torino:3",
-       "price": 226.0
-      },
-      {
-       "name": "Napoli:5|Torino:4",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:6|Torino:0",
-       "price": 81.0
-      },
-      {
-       "name": "Napoli:6|Torino:1",
-       "price": 91.0
-      },
-      {
-       "name": "Napoli:6|Torino:2",
-       "price": 201.0
-      },
-      {
-       "name": "Napoli:6|Torino:3",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:6|Torino:4",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:6|Torino:5",
-       "price": 376.0
-      },
-      {
-       "name": "Napoli:7|Torino:0",
-       "price": 226.0
-      },
-      {
-       "name": "Napoli:7|Torino:1",
-       "price": 301.0
-      },
-      {
-       "name": "Napoli:7|Torino:2",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:7|Torino:3",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:7|Torino:4",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:8|Torino:0",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:8|Torino:1",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:8|Torino:2",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:8|Torino:3",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:9|Torino:0",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:9|Torino:1",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:9|Torino:2",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:10|Torino:0",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:10|Torino:1",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:11|Torino:0",
-       "price": 401.0
-      },
-      {
-       "name": "Napoli:0|Torino:0",
-       "price": 12.0
-      },
-      {
-       "name": "Napoli:1|Torino:1",
-       "price": 8.0
-      },
-      {
-       "name": "Napoli:2|Torino:2",
-       "price": 14.0
-      },
-      {
-       "name": "Napoli:3|Torino:3",
-       "price": 61.0
-      },
-      {
-       "name": "Napoli:4|Torino:4",
-       "price": 301.0
-      },
-      {
-       "name": "Napoli:5|Torino:5",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:1|Napoli:0",
-       "price": 14.0
-      },
-      {
-       "name": "Torino:2|Napoli:0",
-       "price": 26.0
-      },
-      {
-       "name": "Torino:2|Napoli:1",
-       "price": 15.0
-      },
-      {
-       "name": "Torino:3|Napoli:0",
-       "price": 91.0
-      },
-      {
-       "name": "Torino:3|Napoli:1",
-       "price": 46.0
-      },
-      {
-       "name": "Torino:3|Napoli:2",
-       "price": 41.0
-      },
-      {
-       "name": "Torino:4|Napoli:0",
-       "price": 326.0
-      },
-      {
-       "name": "Torino:4|Napoli:1",
-       "price": 151.0
-      },
-      {
-       "name": "Torino:4|Napoli:2",
-       "price": 151.0
-      },
-      {
-       "name": "Torino:4|Napoli:3",
-       "price": 226.0
-      },
-      {
-       "name": "Torino:5|Napoli:0",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:5|Napoli:1",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:5|Napoli:2",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:5|Napoli:3",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:5|Napoli:4",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:6|Napoli:0",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:6|Napoli:1",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:6|Napoli:2",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:6|Napoli:3",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:6|Napoli:4",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:6|Napoli:5",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:7|Napoli:0",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:7|Napoli:1",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:7|Napoli:2",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:7|Napoli:3",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:7|Napoli:4",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:8|Napoli:0",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:8|Napoli:1",
-       "price": 401.0
-      },
-      {
-       "name": "Torino:8|Napoli:2",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:8|Napoli:3",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:9|Napoli:0",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:9|Napoli:1",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:9|Napoli:2",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:10|Napoli:0",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:10|Napoli:1",
-       "price": 376.0
-      },
-      {
-       "name": "Torino:11|Napoli:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "be2fcabc408be29ca01ce92ab266f8b7",
-  "kickoff_utc": "2026-11-22T11:30:00Z",
-  "home": "Juventus",
-  "away": "Venezia",
-  "home_api": "Juventus",
-  "away_api": "Venezia",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.35,
-     "away": 8.25,
-     "draw": 5.3
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.33,
-     "away": 8.0,
-     "draw": 4.8
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.57
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.33
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.33,
-     "away": 7.5,
-     "draw": 5.0
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.58
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.28
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.91
-      },
-      {
-       "name": "No",
-       "price": 1.83
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Juventus or Draw",
-       "price": 1.06
-      },
-      {
-       "name": "Venezia or Draw",
-       "price": 3.1
-      },
-      {
-       "name": "Juventus or Venezia",
-       "price": 1.12
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Juventus",
-       "price": 1.09
-      },
-      {
-       "name": "Venezia",
-       "price": 5.8
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:36:57Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.02,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.17,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 2.54,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.58,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 4.65,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 8.5,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 13.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 41.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 16.25,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 4.65,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.48,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 2.27,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.17,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.05,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.01,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:36:57Z",
-     "outcomes": [
-      {
-       "name": "Juventus:1|Venezia:0",
-       "price": 7.5
-      },
-      {
-       "name": "Juventus:2|Venezia:0",
-       "price": 6.5
-      },
-      {
-       "name": "Juventus:2|Venezia:1",
-       "price": 8.0
-      },
-      {
-       "name": "Juventus:3|Venezia:0",
-       "price": 8.5
-      },
-      {
-       "name": "Juventus:3|Venezia:1",
-       "price": 10.0
-      },
-      {
-       "name": "Juventus:3|Venezia:2",
-       "price": 20.0
-      },
-      {
-       "name": "Juventus:4|Venezia:0",
-       "price": 13.0
-      },
-      {
-       "name": "Juventus:4|Venezia:1",
-       "price": 15.0
-      },
-      {
-       "name": "Juventus:4|Venezia:2",
-       "price": 34.0
-      },
-      {
-       "name": "Juventus:4|Venezia:3",
-       "price": 101.0
-      },
-      {
-       "name": "Juventus:5|Venezia:0",
-       "price": 23.0
-      },
-      {
-       "name": "Juventus:5|Venezia:1",
-       "price": 26.0
-      },
-      {
-       "name": "Juventus:5|Venezia:2",
-       "price": 71.0
-      },
-      {
-       "name": "Juventus:5|Venezia:3",
-       "price": 201.0
-      },
-      {
-       "name": "Juventus:5|Venezia:4",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:6|Venezia:0",
-       "price": 56.0
-      },
-      {
-       "name": "Juventus:6|Venezia:1",
-       "price": 71.0
-      },
-      {
-       "name": "Juventus:6|Venezia:2",
-       "price": 151.0
-      },
-      {
-       "name": "Juventus:6|Venezia:3",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:6|Venezia:4",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:6|Venezia:5",
-       "price": 376.0
-      },
-      {
-       "name": "Juventus:7|Venezia:0",
-       "price": 101.0
-      },
-      {
-       "name": "Juventus:7|Venezia:1",
-       "price": 201.0
-      },
-      {
-       "name": "Juventus:7|Venezia:2",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:7|Venezia:3",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:7|Venezia:4",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:8|Venezia:0",
-       "price": 376.0
-      },
-      {
-       "name": "Juventus:8|Venezia:1",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:8|Venezia:2",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:8|Venezia:3",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:9|Venezia:0",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:9|Venezia:1",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:9|Venezia:2",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:10|Venezia:0",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:10|Venezia:1",
-       "price": 401.0
-      },
-      {
-       "name": "Juventus:11|Venezia:0",
-       "price": 376.0
-      },
-      {
-       "name": "Juventus:0|Venezia:0",
-       "price": 14.0
-      },
-      {
-       "name": "Juventus:1|Venezia:1",
-       "price": 9.5
-      },
-      {
-       "name": "Juventus:2|Venezia:2",
-       "price": 15.0
-      },
-      {
-       "name": "Juventus:3|Venezia:3",
-       "price": 61.0
-      },
-      {
-       "name": "Juventus:4|Venezia:4",
-       "price": 326.0
-      },
-      {
-       "name": "Juventus:5|Venezia:5",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:1|Juventus:0",
-       "price": 17.0
-      },
-      {
-       "name": "Venezia:2|Juventus:0",
-       "price": 36.0
-      },
-      {
-       "name": "Venezia:2|Juventus:1",
-       "price": 18.0
-      },
-      {
-       "name": "Venezia:3|Juventus:0",
-       "price": 101.0
-      },
-      {
-       "name": "Venezia:3|Juventus:1",
-       "price": 61.0
-      },
-      {
-       "name": "Venezia:3|Juventus:2",
-       "price": 56.0
-      },
-      {
-       "name": "Venezia:4|Juventus:0",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:4|Juventus:1",
-       "price": 226.0
-      },
-      {
-       "name": "Venezia:4|Juventus:2",
-       "price": 226.0
-      },
-      {
-       "name": "Venezia:4|Juventus:3",
-       "price": 251.0
-      },
-      {
-       "name": "Venezia:5|Juventus:0",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:5|Juventus:1",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:5|Juventus:2",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:5|Juventus:3",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:5|Juventus:4",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:6|Juventus:0",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:6|Juventus:1",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:6|Juventus:2",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:6|Juventus:3",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:6|Juventus:4",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:6|Juventus:5",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:7|Juventus:0",
-       "price": 401.0
-      },
-      {
-       "name": "Venezia:7|Juventus:1",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:7|Juventus:2",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:7|Juventus:3",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:7|Juventus:4",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:8|Juventus:0",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:8|Juventus:1",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:8|Juventus:2",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:8|Juventus:3",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:9|Juventus:0",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:9|Juventus:1",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:9|Juventus:2",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:10|Juventus:0",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:10|Juventus:1",
-       "price": 376.0
-      },
-      {
-       "name": "Venezia:11|Juventus:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "5bc13c44b33981f3185400163388267e",
-  "kickoff_utc": "2026-11-22T14:00:00Z",
-  "home": "Bologna",
-  "away": "Udinese",
-  "home_api": "Bologna",
-  "away_api": "Udinese",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.72,
-     "away": 5.0,
-     "draw": 3.7
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.71,
-     "away": 4.5,
-     "draw": 3.6
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.87
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.88
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.7,
-     "away": 4.5,
-     "draw": 3.65
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.85
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.88
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.8
-      },
-      {
-       "name": "No",
-       "price": 1.91
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Bologna or Draw",
-       "price": 1.14
-      },
-      {
-       "name": "Udinese or Draw",
-       "price": 2.0
-      },
-      {
-       "name": "Bologna or Udinese",
-       "price": 1.25
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Bologna",
-       "price": 1.24
-      },
-      {
-       "name": "Udinese",
-       "price": 3.5
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:36:56Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.03,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.25,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 3.32,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.86,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 6.0,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 11.0,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 34.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 81.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 11.2,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 3.7,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.3,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 1.87,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.11,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.02,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:36:56Z",
-     "outcomes": [
-      {
-       "name": "Bologna:1|Udinese:0",
-       "price": 6.5
-      },
-      {
-       "name": "Bologna:2|Udinese:0",
-       "price": 8.0
-      },
-      {
-       "name": "Bologna:2|Udinese:1",
-       "price": 7.0
-      },
-      {
-       "name": "Bologna:3|Udinese:0",
-       "price": 13.0
-      },
-      {
-       "name": "Bologna:3|Udinese:1",
-       "price": 12.0
-      },
-      {
-       "name": "Bologna:3|Udinese:2",
-       "price": 19.0
-      },
-      {
-       "name": "Bologna:4|Udinese:0",
-       "price": 23.0
-      },
-      {
-       "name": "Bologna:4|Udinese:1",
-       "price": 23.0
-      },
-      {
-       "name": "Bologna:4|Udinese:2",
-       "price": 46.0
-      },
-      {
-       "name": "Bologna:4|Udinese:3",
-       "price": 101.0
-      },
-      {
-       "name": "Bologna:5|Udinese:0",
-       "price": 61.0
-      },
-      {
-       "name": "Bologna:5|Udinese:1",
-       "price": 71.0
-      },
-      {
-       "name": "Bologna:5|Udinese:2",
-       "price": 101.0
-      },
-      {
-       "name": "Bologna:5|Udinese:3",
-       "price": 251.0
-      },
-      {
-       "name": "Bologna:5|Udinese:4",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:6|Udinese:0",
-       "price": 176.0
-      },
-      {
-       "name": "Bologna:6|Udinese:1",
-       "price": 251.0
-      },
-      {
-       "name": "Bologna:6|Udinese:2",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:6|Udinese:3",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:6|Udinese:4",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:6|Udinese:5",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:7|Udinese:0",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:7|Udinese:1",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:7|Udinese:2",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:7|Udinese:3",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:7|Udinese:4",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:8|Udinese:0",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:8|Udinese:1",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:8|Udinese:2",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:8|Udinese:3",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:9|Udinese:0",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:9|Udinese:1",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:9|Udinese:2",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:10|Udinese:0",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:10|Udinese:1",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:11|Udinese:0",
-       "price": 376.0
-      },
-      {
-       "name": "Bologna:0|Udinese:0",
-       "price": 11.0
-      },
-      {
-       "name": "Bologna:1|Udinese:1",
-       "price": 6.5
-      },
-      {
-       "name": "Bologna:2|Udinese:2",
-       "price": 13.0
-      },
-      {
-       "name": "Bologna:3|Udinese:3",
-       "price": 56.0
-      },
-      {
-       "name": "Bologna:4|Udinese:4",
-       "price": 401.0
-      },
-      {
-       "name": "Bologna:5|Udinese:5",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:1|Bologna:0",
-       "price": 12.0
-      },
-      {
-       "name": "Udinese:2|Bologna:0",
-       "price": 21.0
-      },
-      {
-       "name": "Udinese:2|Bologna:1",
-       "price": 13.0
-      },
-      {
-       "name": "Udinese:3|Bologna:0",
-       "price": 61.0
-      },
-      {
-       "name": "Udinese:3|Bologna:1",
-       "price": 36.0
-      },
-      {
-       "name": "Udinese:3|Bologna:2",
-       "price": 36.0
-      },
-      {
-       "name": "Udinese:4|Bologna:0",
-       "price": 251.0
-      },
-      {
-       "name": "Udinese:4|Bologna:1",
-       "price": 151.0
-      },
-      {
-       "name": "Udinese:4|Bologna:2",
-       "price": 126.0
-      },
-      {
-       "name": "Udinese:4|Bologna:3",
-       "price": 176.0
-      },
-      {
-       "name": "Udinese:5|Bologna:0",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:5|Bologna:1",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:5|Bologna:2",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:5|Bologna:3",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:5|Bologna:4",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:6|Bologna:0",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:6|Bologna:1",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:6|Bologna:2",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:6|Bologna:3",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:6|Bologna:4",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:6|Bologna:5",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:7|Bologna:0",
-       "price": 401.0
-      },
-      {
-       "name": "Udinese:7|Bologna:1",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:7|Bologna:2",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:7|Bologna:3",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:7|Bologna:4",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:8|Bologna:0",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:8|Bologna:1",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:8|Bologna:2",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:8|Bologna:3",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:9|Bologna:0",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:9|Bologna:1",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:9|Bologna:2",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:10|Bologna:0",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:10|Bologna:1",
-       "price": 376.0
-      },
-      {
-       "name": "Udinese:11|Bologna:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "76d4698a8417f32cb059f14a469939f3",
-  "kickoff_utc": "2026-11-22T14:00:00Z",
-  "home": "Sassuolo",
-  "away": "Genoa",
-  "home_api": "Sassuolo",
-  "away_api": "Genoa",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 2.5,
-     "home": 2.8,
-     "draw": 3.4
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 2.55,
-     "home": 2.55,
-     "draw": 3.25
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.88
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.88
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 2.45,
-     "home": 2.7,
-     "draw": 3.25
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.88
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 1.85
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.67
-      },
-      {
-       "name": "No",
-       "price": 2.1
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Genoa or Draw",
-       "price": 1.4
-      },
-      {
-       "name": "Sassuolo or Draw",
-       "price": 1.45
-      },
-      {
-       "name": "Genoa or Sassuolo",
-       "price": 1.28
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Genoa",
-       "price": 1.72
-      },
-      {
-       "name": "Sassuolo",
-       "price": 2.0
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:36:56Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.03,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.25,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 3.32,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.86,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 6.0,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 11.0,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 34.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 81.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 11.4,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 3.7,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.3,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 1.87,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.1,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.03,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:36:56Z",
-     "outcomes": [
-      {
-       "name": "Sassuolo:1|Genoa:0",
-       "price": 9.0
-      },
-      {
-       "name": "Sassuolo:2|Genoa:0",
-       "price": 13.0
-      },
-      {
-       "name": "Sassuolo:2|Genoa:1",
-       "price": 9.5
-      },
-      {
-       "name": "Sassuolo:3|Genoa:0",
-       "price": 23.0
-      },
-      {
-       "name": "Sassuolo:3|Genoa:1",
-       "price": 18.0
-      },
-      {
-       "name": "Sassuolo:3|Genoa:2",
-       "price": 21.0
-      },
-      {
-       "name": "Sassuolo:4|Genoa:0",
-       "price": 71.0
-      },
-      {
-       "name": "Sassuolo:4|Genoa:1",
-       "price": 51.0
-      },
-      {
-       "name": "Sassuolo:4|Genoa:2",
-       "price": 56.0
-      },
-      {
-       "name": "Sassuolo:4|Genoa:3",
-       "price": 101.0
-      },
-      {
-       "name": "Sassuolo:5|Genoa:0",
-       "price": 176.0
-      },
-      {
-       "name": "Sassuolo:5|Genoa:1",
-       "price": 151.0
-      },
-      {
-       "name": "Sassuolo:5|Genoa:2",
-       "price": 251.0
-      },
-      {
-       "name": "Sassuolo:5|Genoa:3",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:5|Genoa:4",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:6|Genoa:0",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:6|Genoa:1",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:6|Genoa:2",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:6|Genoa:3",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:6|Genoa:4",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:6|Genoa:5",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:7|Genoa:0",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:7|Genoa:1",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:7|Genoa:2",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:7|Genoa:3",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:7|Genoa:4",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:8|Genoa:0",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:8|Genoa:1",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:8|Genoa:2",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:8|Genoa:3",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:9|Genoa:0",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:9|Genoa:1",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:9|Genoa:2",
-       "price": 401.0
-      },
-      {
-       "name": "Sassuolo:10|Genoa:0",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:10|Genoa:1",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:11|Genoa:0",
-       "price": 376.0
-      },
-      {
-       "name": "Sassuolo:0|Genoa:0",
-       "price": 11.0
-      },
-      {
-       "name": "Sassuolo:1|Genoa:1",
-       "price": 6.0
-      },
-      {
-       "name": "Sassuolo:2|Genoa:2",
-       "price": 11.0
-      },
-      {
-       "name": "Sassuolo:3|Genoa:3",
-       "price": 46.0
-      },
-      {
-       "name": "Sassuolo:4|Genoa:4",
-       "price": 301.0
-      },
-      {
-       "name": "Sassuolo:5|Genoa:5",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:1|Sassuolo:0",
-       "price": 8.5
-      },
-      {
-       "name": "Genoa:2|Sassuolo:0",
-       "price": 12.0
-      },
-      {
-       "name": "Genoa:2|Sassuolo:1",
-       "price": 8.5
-      },
-      {
-       "name": "Genoa:3|Sassuolo:0",
-       "price": 21.0
-      },
-      {
-       "name": "Genoa:3|Sassuolo:1",
-       "price": 15.0
-      },
-      {
-       "name": "Genoa:3|Sassuolo:2",
-       "price": 21.0
-      },
-      {
-       "name": "Genoa:4|Sassuolo:0",
-       "price": 56.0
-      },
-      {
-       "name": "Genoa:4|Sassuolo:1",
-       "price": 46.0
-      },
-      {
-       "name": "Genoa:4|Sassuolo:2",
-       "price": 56.0
-      },
-      {
-       "name": "Genoa:4|Sassuolo:3",
-       "price": 101.0
-      },
-      {
-       "name": "Genoa:5|Sassuolo:0",
-       "price": 151.0
-      },
-      {
-       "name": "Genoa:5|Sassuolo:1",
-       "price": 126.0
-      },
-      {
-       "name": "Genoa:5|Sassuolo:2",
-       "price": 151.0
-      },
-      {
-       "name": "Genoa:5|Sassuolo:3",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:5|Sassuolo:4",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:6|Sassuolo:0",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:6|Sassuolo:1",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:6|Sassuolo:2",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:6|Sassuolo:3",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:6|Sassuolo:4",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:6|Sassuolo:5",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:7|Sassuolo:0",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:7|Sassuolo:1",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:7|Sassuolo:2",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:7|Sassuolo:3",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:7|Sassuolo:4",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:8|Sassuolo:0",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:8|Sassuolo:1",
-       "price": 401.0
-      },
-      {
-       "name": "Genoa:8|Sassuolo:2",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:8|Sassuolo:3",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:9|Sassuolo:0",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:9|Sassuolo:1",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:9|Sassuolo:2",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:10|Sassuolo:0",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:10|Sassuolo:1",
-       "price": 376.0
-      },
-      {
-       "name": "Genoa:11|Sassuolo:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "5faf836ce6c0fd72af5d1fe258c63bc6",
-  "kickoff_utc": "2026-11-22T17:00:00Z",
-  "home": "Milan",
-  "away": "Frosinone",
-  "home_api": "AC Milan",
-  "away_api": "Frosinone",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 1.54,
-     "away": 5.4,
-     "draw": 4.75
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 1.5,
-     "away": 5.1,
-     "draw": 4.5
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 1.88
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.88
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 1.52,
-     "away": 5.0,
-     "draw": 4.4
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 1.88
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.85
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.4
-      },
-      {
-       "name": "No",
-       "price": 2.75
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "AC Milan or Draw",
-       "price": 1.12
-      },
-      {
-       "name": "Frosinone or Draw",
-       "price": 2.4
-      },
-      {
-       "name": "AC Milan or Frosinone",
-       "price": 1.14
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "AC Milan",
-       "price": 1.19
-      },
-      {
-       "name": "Frosinone",
-       "price": 4.0
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.01,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.09,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 1.87,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.33,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 3.1,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 5.4,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 9.5,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 14.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 27.0,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 6.5,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.86,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 3.14,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.34,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.13,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.04,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.01,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "AC Milan:1|Frosinone:0",
-       "price": 11.0
-      },
-      {
-       "name": "AC Milan:2|Frosinone:0",
-       "price": 10.0
-      },
-      {
-       "name": "AC Milan:2|Frosinone:1",
-       "price": 8.0
-      },
-      {
-       "name": "AC Milan:3|Frosinone:0",
-       "price": 13.0
-      },
-      {
-       "name": "AC Milan:3|Frosinone:1",
-       "price": 10.0
-      },
-      {
-       "name": "AC Milan:3|Frosinone:2",
-       "price": 13.0
-      },
-      {
-       "name": "AC Milan:4|Frosinone:0",
-       "price": 15.0
-      },
-      {
-       "name": "AC Milan:4|Frosinone:1",
-       "price": 14.0
-      },
-      {
-       "name": "AC Milan:4|Frosinone:2",
-       "price": 20.0
-      },
-      {
-       "name": "AC Milan:4|Frosinone:3",
-       "price": 46.0
-      },
-      {
-       "name": "AC Milan:5|Frosinone:0",
-       "price": 31.0
-      },
-      {
-       "name": "AC Milan:5|Frosinone:1",
-       "price": 26.0
-      },
-      {
-       "name": "AC Milan:5|Frosinone:2",
-       "price": 41.0
-      },
-      {
-       "name": "AC Milan:5|Frosinone:3",
-       "price": 91.0
-      },
-      {
-       "name": "AC Milan:5|Frosinone:4",
-       "price": 176.0
-      },
-      {
-       "name": "AC Milan:6|Frosinone:0",
-       "price": 76.0
-      },
-      {
-       "name": "AC Milan:6|Frosinone:1",
-       "price": 71.0
-      },
-      {
-       "name": "AC Milan:6|Frosinone:2",
-       "price": 91.0
-      },
-      {
-       "name": "AC Milan:6|Frosinone:3",
-       "price": 176.0
-      },
-      {
-       "name": "AC Milan:6|Frosinone:4",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:6|Frosinone:5",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:7|Frosinone:0",
-       "price": 226.0
-      },
-      {
-       "name": "AC Milan:7|Frosinone:1",
-       "price": 126.0
-      },
-      {
-       "name": "AC Milan:7|Frosinone:2",
-       "price": 251.0
-      },
-      {
-       "name": "AC Milan:7|Frosinone:3",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:7|Frosinone:4",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:8|Frosinone:0",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:8|Frosinone:1",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:8|Frosinone:2",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:8|Frosinone:3",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:9|Frosinone:0",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:9|Frosinone:1",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:9|Frosinone:2",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:10|Frosinone:0",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:10|Frosinone:1",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:11|Frosinone:0",
-       "price": 401.0
-      },
-      {
-       "name": "AC Milan:0|Frosinone:0",
-       "price": 21.0
-      },
-      {
-       "name": "AC Milan:1|Frosinone:1",
-       "price": 9.5
-      },
-      {
-       "name": "AC Milan:2|Frosinone:2",
-       "price": 11.0
-      },
-      {
-       "name": "AC Milan:3|Frosinone:3",
-       "price": 23.0
-      },
-      {
-       "name": "AC Milan:4|Frosinone:4",
-       "price": 101.0
-      },
-      {
-       "name": "AC Milan:5|Frosinone:5",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:1|AC Milan:0",
-       "price": 20.0
-      },
-      {
-       "name": "Frosinone:2|AC Milan:0",
-       "price": 26.0
-      },
-      {
-       "name": "Frosinone:2|AC Milan:1",
-       "price": 14.0
-      },
-      {
-       "name": "Frosinone:3|AC Milan:0",
-       "price": 67.0
-      },
-      {
-       "name": "Frosinone:3|AC Milan:1",
-       "price": 26.0
-      },
-      {
-       "name": "Frosinone:3|AC Milan:2",
-       "price": 21.0
-      },
-      {
-       "name": "Frosinone:4|AC Milan:0",
-       "price": 176.0
-      },
-      {
-       "name": "Frosinone:4|AC Milan:1",
-       "price": 81.0
-      },
-      {
-       "name": "Frosinone:4|AC Milan:2",
-       "price": 61.0
-      },
-      {
-       "name": "Frosinone:4|AC Milan:3",
-       "price": 76.0
-      },
-      {
-       "name": "Frosinone:5|AC Milan:0",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:5|AC Milan:1",
-       "price": 251.0
-      },
-      {
-       "name": "Frosinone:5|AC Milan:2",
-       "price": 201.0
-      },
-      {
-       "name": "Frosinone:5|AC Milan:3",
-       "price": 301.0
-      },
-      {
-       "name": "Frosinone:5|AC Milan:4",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:6|AC Milan:0",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:6|AC Milan:1",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:6|AC Milan:2",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:6|AC Milan:3",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:6|AC Milan:4",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:6|AC Milan:5",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:7|AC Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:7|AC Milan:1",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:7|AC Milan:2",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:7|AC Milan:3",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:7|AC Milan:4",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:8|AC Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:8|AC Milan:1",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:8|AC Milan:2",
-       "price": 401.0
-      },
-      {
-       "name": "Frosinone:8|AC Milan:3",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:9|AC Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:9|AC Milan:1",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:9|AC Milan:2",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:10|AC Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:10|AC Milan:1",
-       "price": 376.0
-      },
-      {
-       "name": "Frosinone:11|AC Milan:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "e22f82b10fe71d230248b88fef87e58f",
-  "kickoff_utc": "2026-11-22T19:45:00Z",
-  "home": "Atalanta",
-  "away": "Inter",
-  "home_api": "Atalanta BC",
-  "away_api": "Inter Milan",
-  "books": {
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "home": 5.1,
-     "away": 1.55,
-     "draw": 4.6
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "home": 4.8,
-     "away": 1.56,
-     "draw": 4.2
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 1.97
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.78
-     }
-    ]
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "home": 4.6,
-     "away": 1.55,
-     "draw": 4.4
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 1.98
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.77
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.45
-      },
-      {
-       "name": "No",
-       "price": 2.6
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Atalanta BC or Draw",
-       "price": 2.4
-      },
-      {
-       "name": "Inter Milan or Draw",
-       "price": 1.14
-      },
-      {
-       "name": "Atalanta BC or Inter Milan",
-       "price": 1.14
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Atalanta BC",
-       "price": 3.8
-      },
-      {
-       "name": "Inter Milan",
-       "price": 1.2
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:36:59Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.01,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.1,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 1.36,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 1.99,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 3.32,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 6.0,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 10.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 15.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 24.0,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 6.0,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 2.97,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.76,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 1.3,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.11,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.03,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.01,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:36:59Z",
-     "outcomes": [
-      {
-       "name": "Atalanta BC:1|Inter Milan:0",
-       "price": 18.0
-      },
-      {
-       "name": "Atalanta BC:2|Inter Milan:0",
-       "price": 26.0
-      },
-      {
-       "name": "Atalanta BC:2|Inter Milan:1",
-       "price": 13.0
-      },
-      {
-       "name": "Atalanta BC:3|Inter Milan:0",
-       "price": 61.0
-      },
-      {
-       "name": "Atalanta BC:3|Inter Milan:1",
-       "price": 26.0
-      },
-      {
-       "name": "Atalanta BC:3|Inter Milan:2",
-       "price": 23.0
-      },
-      {
-       "name": "Atalanta BC:4|Inter Milan:0",
-       "price": 151.0
-      },
-      {
-       "name": "Atalanta BC:4|Inter Milan:1",
-       "price": 81.0
-      },
-      {
-       "name": "Atalanta BC:4|Inter Milan:2",
-       "price": 71.0
-      },
-      {
-       "name": "Atalanta BC:4|Inter Milan:3",
-       "price": 91.0
-      },
-      {
-       "name": "Atalanta BC:5|Inter Milan:0",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:5|Inter Milan:1",
-       "price": 251.0
-      },
-      {
-       "name": "Atalanta BC:5|Inter Milan:2",
-       "price": 251.0
-      },
-      {
-       "name": "Atalanta BC:5|Inter Milan:3",
-       "price": 276.0
-      },
-      {
-       "name": "Atalanta BC:5|Inter Milan:4",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:6|Inter Milan:0",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:6|Inter Milan:1",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:6|Inter Milan:2",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:6|Inter Milan:3",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:6|Inter Milan:4",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:6|Inter Milan:5",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:7|Inter Milan:0",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:7|Inter Milan:1",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:7|Inter Milan:2",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:7|Inter Milan:3",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:7|Inter Milan:4",
-       "price": 401.0
-      },
-      {
-       "name": "Atalanta BC:8|Inter Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:8|Inter Milan:1",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:8|Inter Milan:2",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:8|Inter Milan:3",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:9|Inter Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:9|Inter Milan:1",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:9|Inter Milan:2",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:10|Inter Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:10|Inter Milan:1",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:11|Inter Milan:0",
-       "price": 376.0
-      },
-      {
-       "name": "Atalanta BC:0|Inter Milan:0",
-       "price": 20.0
-      },
-      {
-       "name": "Atalanta BC:1|Inter Milan:1",
-       "price": 9.0
-      },
-      {
-       "name": "Atalanta BC:2|Inter Milan:2",
-       "price": 11.0
-      },
-      {
-       "name": "Atalanta BC:3|Inter Milan:3",
-       "price": 26.0
-      },
-      {
-       "name": "Atalanta BC:4|Inter Milan:4",
-       "price": 101.0
-      },
-      {
-       "name": "Atalanta BC:5|Inter Milan:5",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:1|Atalanta BC:0",
-       "price": 11.0
-      },
-      {
-       "name": "Inter Milan:2|Atalanta BC:0",
-       "price": 9.5
-      },
-      {
-       "name": "Inter Milan:2|Atalanta BC:1",
-       "price": 8.0
-      },
-      {
-       "name": "Inter Milan:3|Atalanta BC:0",
-       "price": 12.0
-      },
-      {
-       "name": "Inter Milan:3|Atalanta BC:1",
-       "price": 10.0
-      },
-      {
-       "name": "Inter Milan:3|Atalanta BC:2",
-       "price": 13.0
-      },
-      {
-       "name": "Inter Milan:4|Atalanta BC:0",
-       "price": 17.0
-      },
-      {
-       "name": "Inter Milan:4|Atalanta BC:1",
-       "price": 14.0
-      },
-      {
-       "name": "Inter Milan:4|Atalanta BC:2",
-       "price": 21.0
-      },
-      {
-       "name": "Inter Milan:4|Atalanta BC:3",
-       "price": 51.0
-      },
-      {
-       "name": "Inter Milan:5|Atalanta BC:0",
-       "price": 36.0
-      },
-      {
-       "name": "Inter Milan:5|Atalanta BC:1",
-       "price": 26.0
-      },
-      {
-       "name": "Inter Milan:5|Atalanta BC:2",
-       "price": 51.0
-      },
-      {
-       "name": "Inter Milan:5|Atalanta BC:3",
-       "price": 91.0
-      },
-      {
-       "name": "Inter Milan:5|Atalanta BC:4",
-       "price": 226.0
-      },
-      {
-       "name": "Inter Milan:6|Atalanta BC:0",
-       "price": 91.0
-      },
-      {
-       "name": "Inter Milan:6|Atalanta BC:1",
-       "price": 76.0
-      },
-      {
-       "name": "Inter Milan:6|Atalanta BC:2",
-       "price": 101.0
-      },
-      {
-       "name": "Inter Milan:6|Atalanta BC:3",
-       "price": 226.0
-      },
-      {
-       "name": "Inter Milan:6|Atalanta BC:4",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:6|Atalanta BC:5",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:7|Atalanta BC:0",
-       "price": 201.0
-      },
-      {
-       "name": "Inter Milan:7|Atalanta BC:1",
-       "price": 176.0
-      },
-      {
-       "name": "Inter Milan:7|Atalanta BC:2",
-       "price": 276.0
-      },
-      {
-       "name": "Inter Milan:7|Atalanta BC:3",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:7|Atalanta BC:4",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:8|Atalanta BC:0",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:8|Atalanta BC:1",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:8|Atalanta BC:2",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:8|Atalanta BC:3",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:9|Atalanta BC:0",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:9|Atalanta BC:1",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:9|Atalanta BC:2",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:10|Atalanta BC:0",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:10|Atalanta BC:1",
-       "price": 401.0
-      },
-      {
-       "name": "Inter Milan:11|Atalanta BC:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
-  "id": "99776445d5a5f4ed008f9a6d6a1495b7",
-  "kickoff_utc": "2026-11-23T19:45:00Z",
-  "home": "Monza",
-  "away": "Fiorentina",
-  "home_api": "Monza",
-  "away_api": "Fiorentina",
-  "books": {
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 1.89,
-     "home": 3.45,
-     "draw": 3.65
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.56
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.33
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 1.94,
-     "home": 3.6,
-     "draw": 3.9
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 1.88,
-     "home": 3.5,
-     "draw": 3.7
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.58
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.3
-     }
-    ]
-   }
-  },
-  "extras": {
-   "sportsbet": {
-    "btts": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Yes",
-       "price": 1.5
-      },
-      {
-       "name": "No",
-       "price": 2.5
-      }
-     ]
-    },
-    "double_chance": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Fiorentina or Draw",
-       "price": 1.25
-      },
-      {
-       "name": "Monza or Draw",
-       "price": 1.8
-      },
-      {
-       "name": "Fiorentina or Monza",
-       "price": 1.22
-      }
-     ]
-    },
-    "draw_no_bet": {
-     "last_update": "2026-11-20T03:37:36Z",
-     "outcomes": [
-      {
-       "name": "Fiorentina",
-       "price": 1.44
-      },
-      {
-       "name": "Monza",
-       "price": 2.6
-      }
-     ]
-    },
-    "alternate_totals": {
-     "last_update": "2026-11-20T03:36:57Z",
-     "outcomes": [
-      {
-       "name": "Over",
-       "price": 1.01,
-       "point": 0.5
-      },
-      {
-       "name": "Over",
-       "price": 1.15,
-       "point": 1.5
-      },
-      {
-       "name": "Over",
-       "price": 2.47,
-       "point": 3.5
-      },
-      {
-       "name": "Over",
-       "price": 1.56,
-       "point": 2.5
-      },
-      {
-       "name": "Over",
-       "price": 4.6,
-       "point": 4.5
-      },
-      {
-       "name": "Over",
-       "price": 7.75,
-       "point": 5.5
-      },
-      {
-       "name": "Over",
-       "price": 13.0,
-       "point": 6.5
-      },
-      {
-       "name": "Over",
-       "price": 41.0,
-       "point": 7.5
-      },
-      {
-       "name": "Under",
-       "price": 16.5,
-       "point": 0.5
-      },
-      {
-       "name": "Under",
-       "price": 5.0,
-       "point": 1.5
-      },
-      {
-       "name": "Under",
-       "price": 1.5,
-       "point": 3.5
-      },
-      {
-       "name": "Under",
-       "price": 2.33,
-       "point": 2.5
-      },
-      {
-       "name": "Under",
-       "price": 1.17,
-       "point": 4.5
-      },
-      {
-       "name": "Under",
-       "price": 1.06,
-       "point": 5.5
-      },
-      {
-       "name": "Under",
-       "price": 1.01,
-       "point": 6.5
-      },
-      {
-       "name": "Under",
-       "price": 1.0,
-       "point": 7.5
-      }
-     ]
-    },
-    "correct_score": {
-     "last_update": "2026-11-20T03:36:57Z",
-     "outcomes": [
-      {
-       "name": "Monza:1|Fiorentina:0",
-       "price": 13.0
-      },
-      {
-       "name": "Monza:2|Fiorentina:0",
-       "price": 15.0
-      },
-      {
-       "name": "Monza:2|Fiorentina:1",
-       "price": 10.0
-      },
-      {
-       "name": "Monza:3|Fiorentina:0",
-       "price": 36.0
-      },
-      {
-       "name": "Monza:3|Fiorentina:1",
-       "price": 20.0
-      },
-      {
-       "name": "Monza:3|Fiorentina:2",
-       "price": 20.0
-      },
-      {
-       "name": "Monza:4|Fiorentina:0",
-       "price": 91.0
-      },
-      {
-       "name": "Monza:4|Fiorentina:1",
-       "price": 56.0
-      },
-      {
-       "name": "Monza:4|Fiorentina:2",
-       "price": 56.0
-      },
-      {
-       "name": "Monza:4|Fiorentina:3",
-       "price": 101.0
-      },
-      {
-       "name": "Monza:5|Fiorentina:0",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:5|Fiorentina:1",
-       "price": 201.0
-      },
-      {
-       "name": "Monza:5|Fiorentina:2",
-       "price": 276.0
-      },
-      {
-       "name": "Monza:5|Fiorentina:3",
-       "price": 251.0
-      },
-      {
-       "name": "Monza:5|Fiorentina:4",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:6|Fiorentina:0",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:6|Fiorentina:1",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:6|Fiorentina:2",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:6|Fiorentina:3",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:6|Fiorentina:4",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:6|Fiorentina:5",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:7|Fiorentina:0",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:7|Fiorentina:1",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:7|Fiorentina:2",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:7|Fiorentina:3",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:7|Fiorentina:4",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:8|Fiorentina:0",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:8|Fiorentina:1",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:8|Fiorentina:2",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:8|Fiorentina:3",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:9|Fiorentina:0",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:9|Fiorentina:1",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:9|Fiorentina:2",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:10|Fiorentina:0",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:10|Fiorentina:1",
-       "price": 401.0
-      },
-      {
-       "name": "Monza:11|Fiorentina:0",
-       "price": 376.0
-      },
-      {
-       "name": "Monza:0|Fiorentina:0",
-       "price": 14.0
-      },
-      {
-       "name": "Monza:1|Fiorentina:1",
-       "price": 7.0
-      },
-      {
-       "name": "Monza:2|Fiorentina:2",
-       "price": 11.0
-      },
-      {
-       "name": "Monza:3|Fiorentina:3",
-       "price": 26.0
-      },
-      {
-       "name": "Monza:4|Fiorentina:4",
-       "price": 176.0
-      },
-      {
-       "name": "Monza:5|Fiorentina:5",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:1|Monza:0",
-       "price": 9.5
-      },
-      {
-       "name": "Fiorentina:2|Monza:0",
-       "price": 10.0
-      },
-      {
-       "name": "Fiorentina:2|Monza:1",
-       "price": 8.0
-      },
-      {
-       "name": "Fiorentina:3|Monza:0",
-       "price": 15.0
-      },
-      {
-       "name": "Fiorentina:3|Monza:1",
-       "price": 12.0
-      },
-      {
-       "name": "Fiorentina:3|Monza:2",
-       "price": 15.0
-      },
-      {
-       "name": "Fiorentina:4|Monza:0",
-       "price": 26.0
-      },
-      {
-       "name": "Fiorentina:4|Monza:1",
-       "price": 21.0
-      },
-      {
-       "name": "Fiorentina:4|Monza:2",
-       "price": 31.0
-      },
-      {
-       "name": "Fiorentina:4|Monza:3",
-       "price": 67.0
-      },
-      {
-       "name": "Fiorentina:5|Monza:0",
-       "price": 71.0
-      },
-      {
-       "name": "Fiorentina:5|Monza:1",
-       "price": 61.0
-      },
-      {
-       "name": "Fiorentina:5|Monza:2",
-       "price": 81.0
-      },
-      {
-       "name": "Fiorentina:5|Monza:3",
-       "price": 176.0
-      },
-      {
-       "name": "Fiorentina:5|Monza:4",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:6|Monza:0",
-       "price": 151.0
-      },
-      {
-       "name": "Fiorentina:6|Monza:1",
-       "price": 126.0
-      },
-      {
-       "name": "Fiorentina:6|Monza:2",
-       "price": 251.0
-      },
-      {
-       "name": "Fiorentina:6|Monza:3",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:6|Monza:4",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:6|Monza:5",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:7|Monza:0",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:7|Monza:1",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:7|Monza:2",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:7|Monza:3",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:7|Monza:4",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:8|Monza:0",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:8|Monza:1",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:8|Monza:2",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:8|Monza:3",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:9|Monza:0",
-       "price": 376.0
-      },
-      {
-       "name": "Fiorentina:9|Monza:1",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:9|Monza:2",
-       "price": 401.0
-      },
-      {
-       "name": "Fiorentina:10|Monza:0",
-       "price": 376.0
-      },
-      {
-       "name": "Fiorentina:10|Monza:1",
-       "price": 376.0
-      },
-      {
-       "name": "Fiorentina:11|Monza:0",
-       "price": 376.0
-      }
-     ]
-    }
-   }
-  }
- },
- {
   "id": "e9a663f13e7503c0ac20a54804338b60",
   "kickoff_utc": "2026-11-27T19:45:00Z",
   "home": "Venezia",
@@ -5090,49 +10,49 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.88,
-     "home": 3.65,
-     "draw": 3.5
+     "away": 2.1,
+     "home": 3.3,
+     "draw": 3.25
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.78
+      "price": 1.95
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.0
+      "price": 1.8
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 2.03,
-     "home": 3.5,
-     "draw": 3.6
+     "away": 2.2,
+     "home": 3.4,
+     "draw": 3.25
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 1.98,
-     "home": 3.4,
-     "draw": 3.35
+     "away": 2.15,
+     "home": 3.25,
+     "draw": 3.2
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.77
+      "price": 2.0
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.95
+      "price": 1.75
      }
     ]
    }
@@ -5150,7 +70,7 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.48,
+     "home": 1.47,
      "away": 5.4,
      "draw": 4.4
     },
@@ -5158,41 +78,41 @@
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.1
+      "price": 2.06
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.71
+      "price": 1.73
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 1.49,
-     "away": 5.75,
-     "draw": 4.9
+     "home": 1.52,
+     "away": 5.6,
+     "draw": 4.8
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.45,
+     "home": 1.48,
      "away": 5.25,
-     "draw": 4.6
+     "draw": 4.5
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.1
+      "price": 1.98
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.65
+      "price": 1.77
      }
     ]
    }
@@ -5211,37 +131,37 @@
     "title": "TABtouch",
     "h2h": {
      "away": 2.02,
-     "home": 3.4,
-     "draw": 3.3
+     "home": 3.35,
+     "draw": 3.4
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.88
+      "price": 1.85
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.88
+      "price": 1.91
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 2.1,
+     "away": 2.12,
      "home": 3.45,
-     "draw": 3.5
+     "draw": 3.45
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 2.02,
-     "home": 3.3,
-     "draw": 3.3
+     "away": 2.05,
+     "home": 3.35,
+     "draw": 3.35
     },
     "totals": [
      {
@@ -5252,7 +172,7 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.85
+      "price": 1.88
      }
     ]
    }
@@ -5270,9 +190,29 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 10.5,
-     "home": 1.24,
-     "draw": 5.5
+     "away": 8.5,
+     "home": 1.32,
+     "draw": 4.9
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.62
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.23
+     }
+    ]
+   },
+   "playup": {
+    "title": "PlayUp",
+    "h2h": {
+     "away": 8.5,
+     "home": 1.28,
+     "draw": 5.25
     },
     "totals": [
      {
@@ -5283,29 +223,18 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.4
+      "price": 2.35
      }
     ]
    },
-   "playup": {
-    "title": "PlayUp",
+   "sportsbet": {
+    "title": "SportsBet",
     "h2h": {
-     "away": 10.0,
-     "home": 1.22,
-     "draw": 5.75
+     "away": 9.0,
+     "home": 1.31,
+     "draw": 5.7
     },
-    "totals": [
-     {
-      "side": "over",
-      "line": 3.5,
-      "price": 2.35
-     },
-     {
-      "side": "under",
-      "line": 3.5,
-      "price": 1.52
-     }
-    ]
+    "totals": []
    }
   },
   "extras": {}
@@ -5322,37 +251,8 @@
     "title": "TABtouch",
     "h2h": {
      "away": 2.08,
-     "home": 3.2,
-     "draw": 3.4
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.73
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.07
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 2.12,
-     "home": 3.25,
-     "draw": 3.7
-    },
-    "totals": []
-   },
-   "playup": {
-    "title": "PlayUp",
-    "h2h": {
-     "away": 2.05,
      "home": 3.15,
-     "draw": 3.4
+     "draw": 3.45
     },
     "totals": [
      {
@@ -5363,7 +263,36 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.02
+      "price": 2.1
+     }
+    ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 2.25,
+     "home": 3.05,
+     "draw": 3.6
+    },
+    "totals": []
+   },
+   "playup": {
+    "title": "PlayUp",
+    "h2h": {
+     "away": 2.2,
+     "home": 3.0,
+     "draw": 3.4
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.68
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.12
      }
     ]
    }
@@ -5381,29 +310,29 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.67,
-     "home": 4.3,
-     "draw": 3.9
+     "away": 1.64,
+     "home": 4.4,
+     "draw": 3.95
     },
     "totals": [
      {
       "side": "over",
-      "line": 2.5,
-      "price": 1.55
+      "line": 3.5,
+      "price": 2.32
      },
      {
       "side": "under",
-      "line": 2.5,
-      "price": 2.4
+      "line": 3.5,
+      "price": 1.57
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 1.67,
-     "home": 4.5,
-     "draw": 4.3
+     "away": 1.65,
+     "home": 4.6,
+     "draw": 4.4
     },
     "totals": []
    },
@@ -5411,14 +340,14 @@
     "title": "PlayUp",
     "h2h": {
      "away": 1.63,
-     "home": 4.35,
-     "draw": 4.0
+     "home": 4.4,
+     "draw": 4.1
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.3
+      "price": 2.35
      },
      {
       "side": "under",
@@ -5441,49 +370,49 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.21,
-     "away": 10.5,
-     "draw": 6.1
+     "home": 1.18,
+     "away": 11.5,
+     "draw": 6.5
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 1.95
+      "price": 1.88
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.8
+      "price": 1.88
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 1.24,
-     "away": 10.0,
-     "draw": 6.5
+     "home": 1.19,
+     "away": 12.0,
+     "draw": 7.5
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.22,
-     "away": 9.5,
-     "draw": 6.0
+     "home": 1.17,
+     "away": 12.0,
+     "draw": 7.0
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 1.98
+      "price": 1.87
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.75
+      "price": 1.87
      }
     ]
    }
@@ -5501,49 +430,49 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 2.2,
-     "away": 2.95,
+     "home": 2.05,
+     "away": 3.25,
      "draw": 3.35
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.74
+      "price": 1.75
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.05
+      "price": 2.04
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 2.25,
-     "away": 3.05,
-     "draw": 3.6
+     "home": 2.08,
+     "away": 3.5,
+     "draw": 3.45
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 2.15,
-     "away": 3.0,
-     "draw": 3.35
+     "home": 2.02,
+     "away": 3.35,
+     "draw": 3.4
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.72
+      "price": 1.77
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.0
+      "price": 1.98
      }
     ]
    }
@@ -5562,30 +491,50 @@
     "title": "TABtouch",
     "h2h": {
      "away": 1.85,
-     "home": 3.65,
+     "home": 3.7,
      "draw": 3.6
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.63
+      "price": 1.6
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.23
+      "price": 2.3
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 1.98,
-     "home": 3.5,
+     "away": 1.93,
+     "home": 3.6,
      "draw": 3.8
     },
     "totals": []
+   },
+   "playup": {
+    "title": "PlayUp",
+    "h2h": {
+     "away": 1.88,
+     "home": 3.5,
+     "draw": 3.7
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.58
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.28
+     }
+    ]
    }
   },
   "extras": {}
@@ -5601,20 +550,20 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.65,
-     "home": 4.8,
-     "draw": 3.65
+     "away": 1.66,
+     "home": 4.6,
+     "draw": 3.7
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.8
+      "price": 1.82
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.95
+      "price": 1.94
      }
     ]
    },
@@ -5624,6 +573,417 @@
      "away": 1.72,
      "home": 4.7,
      "draw": 3.9
+    },
+    "totals": []
+   },
+   "playup": {
+    "title": "PlayUp",
+    "h2h": {
+     "away": 1.68,
+     "home": 4.5,
+     "draw": 3.75
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.82
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 1.92
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "7a3763ed676aa657abff78f841bb851c",
+  "kickoff_utc": "2026-12-04T19:45:00Z",
+  "home": "Bologna",
+  "away": "Roma",
+  "home_api": "Bologna",
+  "away_api": "AS Roma",
+  "books": {
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 1.88,
+     "home": 3.9,
+     "draw": 3.75
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 1.8,
+     "home": 4.0,
+     "draw": 3.55
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.76
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.02
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "a57d8cacc423d2a63545b240790dcdba",
+  "kickoff_utc": "2026-12-05T14:00:00Z",
+  "home": "Monza",
+  "away": "Como",
+  "home_api": "Monza",
+  "away_api": "Como",
+  "books": {
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 1.5,
+     "home": 6.25,
+     "draw": 4.4
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 1.43,
+     "home": 6.1,
+     "draw": 4.4
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 3.5,
+      "price": 2.25
+     },
+     {
+      "side": "under",
+      "line": 3.5,
+      "price": 1.61
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "11e1b8546651036ec5c70eb8e91bb622",
+  "kickoff_utc": "2026-12-05T17:00:00Z",
+  "home": "Frosinone",
+  "away": "Inter",
+  "home_api": "Frosinone",
+  "away_api": "Inter Milan",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 5.6,
+     "away": 1.42,
+     "draw": 4.9
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 3.5,
+      "price": 1.65
+     },
+     {
+      "side": "under",
+      "line": 3.5,
+      "price": 2.18
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "7d32e6e9bbd769e7d505467971c4d7ca",
+  "kickoff_utc": "2026-12-05T19:45:00Z",
+  "home": "Napoli",
+  "away": "Lecce",
+  "home_api": "Napoli",
+  "away_api": "Lecce",
+  "books": {
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 7.75,
+     "home": 1.36,
+     "draw": 5.3
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 8.0,
+     "home": 1.33,
+     "draw": 4.8
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 3.5,
+      "price": 2.48
+     },
+     {
+      "side": "under",
+      "line": 3.5,
+      "price": 1.51
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "388c70bbc3bc49af4a2245b4caebd730",
+  "kickoff_utc": "2026-12-06T11:30:00Z",
+  "home": "Genoa",
+  "away": "Torino",
+  "home_api": "Genoa",
+  "away_api": "Torino",
+  "books": {
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 2.3,
+     "away": 3.25,
+     "draw": 3.2
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 2.2,
+     "away": 3.15,
+     "draw": 3.15
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 2.2
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 1.65
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "7b643abf36a551631acaae1f1a8e01f6",
+  "kickoff_utc": "2026-12-06T14:00:00Z",
+  "home": "Lazio",
+  "away": "Atalanta",
+  "home_api": "Lazio",
+  "away_api": "Atalanta BC",
+  "books": {
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 3.6,
+     "home": 1.94,
+     "draw": 3.9
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 3.35,
+     "home": 1.93,
+     "draw": 3.65
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 3.5,
+      "price": 2.35
+     },
+     {
+      "side": "under",
+      "line": 3.5,
+      "price": 1.56
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "7c5bfc26c8bcf7406d9ef8aa7dda19f1",
+  "kickoff_utc": "2026-12-06T17:00:00Z",
+  "home": "Juventus",
+  "away": "Udinese",
+  "home_api": "Juventus",
+  "away_api": "Udinese",
+  "books": {
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 1.35,
+     "away": 8.25,
+     "draw": 5.25
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.36,
+     "away": 7.5,
+     "draw": 4.6
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.68
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.12
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "c392b1fa1b32963c5daf3a415a0dfc2a",
+  "kickoff_utc": "2026-12-06T19:45:00Z",
+  "home": "Milan",
+  "away": "Parma",
+  "home_api": "AC Milan",
+  "away_api": "Parma",
+  "books": {
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "home": 1.22,
+     "away": 12.0,
+     "draw": 6.5
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "home": 1.23,
+     "away": 11.0,
+     "draw": 5.5
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.63
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.23
+     }
+    ]
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "b179b898dfd55412a2e75dfe42752adc",
+  "kickoff_utc": "2026-12-07T17:30:00Z",
+  "home": "Venezia",
+  "away": "Sassuolo",
+  "home_api": "Venezia",
+  "away_api": "Sassuolo",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 2.75,
+     "home": 2.28,
+     "draw": 3.45
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.66
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.18
+     }
+    ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 3.05,
+     "home": 2.25,
+     "draw": 3.5
+    },
+    "totals": []
+   }
+  },
+  "extras": {}
+ },
+ {
+  "id": "e14f8c52d44db0f33abb0c108145fb09",
+  "kickoff_utc": "2026-12-07T19:45:00Z",
+  "home": "Fiorentina",
+  "away": "Cagliari",
+  "home_api": "Fiorentina",
+  "away_api": "Cagliari",
+  "books": {
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 5.1,
+     "home": 1.56,
+     "draw": 3.95
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.68
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.12
+     }
+    ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 5.0,
+     "home": 1.64,
+     "draw": 4.1
     },
     "totals": []
    }
