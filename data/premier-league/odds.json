@@ -10,38 +10,38 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 2.6,
-     "home": 2.6,
+     "away": 2.75,
+     "home": 2.5,
      "draw": 3.3
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.75
+      "price": 1.83
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.05
+      "price": 1.95
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 2.65,
-     "home": 2.6,
-     "draw": 3.4
+     "away": 2.8,
+     "home": 2.5,
+     "draw": 3.35
     },
     "totals": []
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 2.45,
-     "home": 2.63,
-     "draw": 3.35
+     "away": 2.7,
+     "home": 2.45,
+     "draw": 3.2
     },
     "totals": [
      {
@@ -57,7 +57,455 @@
     ]
    }
   },
-  "extras": {}
+  "extras": {
+   "sportsbet": {
+    "btts": {
+     "last_update": "2026-11-27T04:22:41Z",
+     "outcomes": [
+      {
+       "name": "Yes",
+       "price": 1.62
+      },
+      {
+       "name": "No",
+       "price": 2.2
+      }
+     ]
+    },
+    "double_chance": {
+     "last_update": "2026-11-27T04:22:41Z",
+     "outcomes": [
+      {
+       "name": "Chelsea or Draw",
+       "price": 1.45
+      },
+      {
+       "name": "Nottingham Forest or Draw",
+       "price": 1.4
+      },
+      {
+       "name": "Chelsea or Nottingham Forest",
+       "price": 1.28
+      }
+     ]
+    },
+    "draw_no_bet": {
+     "last_update": "2026-11-27T04:23:33Z",
+     "outcomes": [
+      {
+       "name": "Chelsea",
+       "price": 2.0
+      },
+      {
+       "name": "Nottingham Forest",
+       "price": 1.72
+      }
+     ]
+    },
+    "alternate_totals": {
+     "last_update": "2026-11-27T04:23:33Z",
+     "outcomes": [
+      {
+       "name": "Over",
+       "price": 1.03,
+       "point": 0.5
+      },
+      {
+       "name": "Over",
+       "price": 1.25,
+       "point": 1.5
+      },
+      {
+       "name": "Over",
+       "price": 3.16,
+       "point": 3.5
+      },
+      {
+       "name": "Over",
+       "price": 1.82,
+       "point": 2.5
+      },
+      {
+       "name": "Over",
+       "price": 6.0,
+       "point": 4.5
+      },
+      {
+       "name": "Over",
+       "price": 10.0,
+       "point": 5.5
+      },
+      {
+       "name": "Over",
+       "price": 34.0,
+       "point": 6.5
+      },
+      {
+       "name": "Over",
+       "price": 81.0,
+       "point": 7.5
+      },
+      {
+       "name": "Under",
+       "price": 11.6,
+       "point": 0.5
+      },
+      {
+       "name": "Under",
+       "price": 3.7,
+       "point": 1.5
+      },
+      {
+       "name": "Under",
+       "price": 1.33,
+       "point": 3.5
+      },
+      {
+       "name": "Under",
+       "price": 1.91,
+       "point": 2.5
+      },
+      {
+       "name": "Under",
+       "price": 1.11,
+       "point": 4.5
+      },
+      {
+       "name": "Under",
+       "price": 1.03,
+       "point": 5.5
+      },
+      {
+       "name": "Under",
+       "price": 1.0,
+       "point": 6.5
+      },
+      {
+       "name": "Under",
+       "price": 1.0,
+       "point": 7.5
+      }
+     ]
+    },
+    "correct_score": {
+     "last_update": "2026-11-27T04:23:33Z",
+     "outcomes": [
+      {
+       "name": "Nottingham Forest:1|Chelsea:0",
+       "price": 8.5
+      },
+      {
+       "name": "Nottingham Forest:2|Chelsea:0",
+       "price": 12.0
+      },
+      {
+       "name": "Nottingham Forest:2|Chelsea:1",
+       "price": 9.0
+      },
+      {
+       "name": "Nottingham Forest:3|Chelsea:0",
+       "price": 21.0
+      },
+      {
+       "name": "Nottingham Forest:3|Chelsea:1",
+       "price": 15.0
+      },
+      {
+       "name": "Nottingham Forest:3|Chelsea:2",
+       "price": 20.0
+      },
+      {
+       "name": "Nottingham Forest:4|Chelsea:0",
+       "price": 61.0
+      },
+      {
+       "name": "Nottingham Forest:4|Chelsea:1",
+       "price": 46.0
+      },
+      {
+       "name": "Nottingham Forest:4|Chelsea:2",
+       "price": 61.0
+      },
+      {
+       "name": "Nottingham Forest:4|Chelsea:3",
+       "price": 101.0
+      },
+      {
+       "name": "Nottingham Forest:5|Chelsea:0",
+       "price": 201.0
+      },
+      {
+       "name": "Nottingham Forest:5|Chelsea:1",
+       "price": 101.0
+      },
+      {
+       "name": "Nottingham Forest:5|Chelsea:2",
+       "price": 201.0
+      },
+      {
+       "name": "Nottingham Forest:5|Chelsea:3",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:5|Chelsea:4",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:6|Chelsea:0",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:6|Chelsea:1",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:6|Chelsea:2",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:6|Chelsea:3",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:6|Chelsea:4",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:6|Chelsea:5",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:7|Chelsea:0",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:7|Chelsea:1",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:7|Chelsea:2",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:7|Chelsea:3",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:7|Chelsea:4",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:8|Chelsea:0",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:8|Chelsea:1",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:8|Chelsea:2",
+       "price": 376.0
+      },
+      {
+       "name": "Nottingham Forest:8|Chelsea:3",
+       "price": 376.0
+      },
+      {
+       "name": "Nottingham Forest:9|Chelsea:0",
+       "price": 376.0
+      },
+      {
+       "name": "Nottingham Forest:9|Chelsea:1",
+       "price": 401.0
+      },
+      {
+       "name": "Nottingham Forest:9|Chelsea:2",
+       "price": 376.0
+      },
+      {
+       "name": "Nottingham Forest:10|Chelsea:0",
+       "price": 376.0
+      },
+      {
+       "name": "Nottingham Forest:10|Chelsea:1",
+       "price": 376.0
+      },
+      {
+       "name": "Nottingham Forest:11|Chelsea:0",
+       "price": 376.0
+      },
+      {
+       "name": "Nottingham Forest:0|Chelsea:0",
+       "price": 11.0
+      },
+      {
+       "name": "Nottingham Forest:1|Chelsea:1",
+       "price": 6.0
+      },
+      {
+       "name": "Nottingham Forest:2|Chelsea:2",
+       "price": 11.0
+      },
+      {
+       "name": "Nottingham Forest:3|Chelsea:3",
+       "price": 41.0
+      },
+      {
+       "name": "Nottingham Forest:4|Chelsea:4",
+       "price": 301.0
+      },
+      {
+       "name": "Nottingham Forest:5|Chelsea:5",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:1|Nottingham Forest:0",
+       "price": 9.0
+      },
+      {
+       "name": "Chelsea:2|Nottingham Forest:0",
+       "price": 12.0
+      },
+      {
+       "name": "Chelsea:2|Nottingham Forest:1",
+       "price": 9.0
+      },
+      {
+       "name": "Chelsea:3|Nottingham Forest:0",
+       "price": 23.0
+      },
+      {
+       "name": "Chelsea:3|Nottingham Forest:1",
+       "price": 17.0
+      },
+      {
+       "name": "Chelsea:3|Nottingham Forest:2",
+       "price": 20.0
+      },
+      {
+       "name": "Chelsea:4|Nottingham Forest:0",
+       "price": 71.0
+      },
+      {
+       "name": "Chelsea:4|Nottingham Forest:1",
+       "price": 61.0
+      },
+      {
+       "name": "Chelsea:4|Nottingham Forest:2",
+       "price": 61.0
+      },
+      {
+       "name": "Chelsea:4|Nottingham Forest:3",
+       "price": 101.0
+      },
+      {
+       "name": "Chelsea:5|Nottingham Forest:0",
+       "price": 226.0
+      },
+      {
+       "name": "Chelsea:5|Nottingham Forest:1",
+       "price": 151.0
+      },
+      {
+       "name": "Chelsea:5|Nottingham Forest:2",
+       "price": 176.0
+      },
+      {
+       "name": "Chelsea:5|Nottingham Forest:3",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:5|Nottingham Forest:4",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:6|Nottingham Forest:0",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:6|Nottingham Forest:1",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:6|Nottingham Forest:2",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:6|Nottingham Forest:3",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:6|Nottingham Forest:4",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:6|Nottingham Forest:5",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:7|Nottingham Forest:0",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:7|Nottingham Forest:1",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:7|Nottingham Forest:2",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:7|Nottingham Forest:3",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:7|Nottingham Forest:4",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:8|Nottingham Forest:0",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:8|Nottingham Forest:1",
+       "price": 401.0
+      },
+      {
+       "name": "Chelsea:8|Nottingham Forest:2",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:8|Nottingham Forest:3",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:9|Nottingham Forest:0",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:9|Nottingham Forest:1",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:9|Nottingham Forest:2",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:10|Nottingham Forest:0",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:10|Nottingham Forest:1",
+       "price": 376.0
+      },
+      {
+       "name": "Chelsea:11|Nottingham Forest:0",
+       "price": 376.0
+      }
+     ]
+    }
+   }
+  }
  },
  {
   "id": "ab87184803a63f7b679f1d12b01c3271",
@@ -70,29 +518,29 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 3.3,
-     "home": 2.0,
+     "away": 3.25,
+     "home": 2.02,
      "draw": 3.7
     },
     "totals": [
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.4
+      "price": 2.35
      },
      {
       "side": "under",
       "line": 3.5,
-      "price": 1.55
+      "price": 1.58
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 3.3,
-     "home": 1.93,
-     "draw": 3.7
+     "away": 3.1,
+     "home": 2.06,
+     "draw": 3.6
     },
     "totals": [
      {
@@ -117,7 +565,455 @@
     "totals": []
    }
   },
-  "extras": {}
+  "extras": {
+   "sportsbet": {
+    "btts": {
+     "last_update": "2026-11-27T04:22:42Z",
+     "outcomes": [
+      {
+       "name": "Yes",
+       "price": 1.45
+      },
+      {
+       "name": "No",
+       "price": 2.6
+      }
+     ]
+    },
+    "double_chance": {
+     "last_update": "2026-11-27T04:22:42Z",
+     "outcomes": [
+      {
+       "name": "Brentford or Draw",
+       "price": 1.67
+      },
+      {
+       "name": "Manchester United or Draw",
+       "price": 1.3
+      },
+      {
+       "name": "Brentford or Manchester United",
+       "price": 1.22
+      }
+     ]
+    },
+    "draw_no_bet": {
+     "last_update": "2026-11-27T04:23:32Z",
+     "outcomes": [
+      {
+       "name": "Brentford",
+       "price": 2.3
+      },
+      {
+       "name": "Manchester United",
+       "price": 1.52
+      }
+     ]
+    },
+    "alternate_totals": {
+     "last_update": "2026-11-27T04:23:32Z",
+     "outcomes": [
+      {
+       "name": "Over",
+       "price": 1.01,
+       "point": 0.5
+      },
+      {
+       "name": "Over",
+       "price": 1.14,
+       "point": 1.5
+      },
+      {
+       "name": "Over",
+       "price": 2.37,
+       "point": 3.5
+      },
+      {
+       "name": "Over",
+       "price": 1.53,
+       "point": 2.5
+      },
+      {
+       "name": "Over",
+       "price": 4.25,
+       "point": 4.5
+      },
+      {
+       "name": "Over",
+       "price": 7.5,
+       "point": 5.5
+      },
+      {
+       "name": "Over",
+       "price": 12.0,
+       "point": 6.5
+      },
+      {
+       "name": "Over",
+       "price": 41.0,
+       "point": 7.5
+      },
+      {
+       "name": "Under",
+       "price": 16.75,
+       "point": 0.5
+      },
+      {
+       "name": "Under",
+       "price": 5.2,
+       "point": 1.5
+      },
+      {
+       "name": "Under",
+       "price": 1.54,
+       "point": 3.5
+      },
+      {
+       "name": "Under",
+       "price": 2.4,
+       "point": 2.5
+      },
+      {
+       "name": "Under",
+       "price": 1.2,
+       "point": 4.5
+      },
+      {
+       "name": "Under",
+       "price": 1.06,
+       "point": 5.5
+      },
+      {
+       "name": "Under",
+       "price": 1.02,
+       "point": 6.5
+      },
+      {
+       "name": "Under",
+       "price": 1.0,
+       "point": 7.5
+      }
+     ]
+    },
+    "correct_score": {
+     "last_update": "2026-11-27T04:23:32Z",
+     "outcomes": [
+      {
+       "name": "Manchester United:1|Brentford:0",
+       "price": 10.0
+      },
+      {
+       "name": "Manchester United:2|Brentford:0",
+       "price": 11.0
+      },
+      {
+       "name": "Manchester United:2|Brentford:1",
+       "price": 8.0
+      },
+      {
+       "name": "Manchester United:3|Brentford:0",
+       "price": 15.0
+      },
+      {
+       "name": "Manchester United:3|Brentford:1",
+       "price": 13.0
+      },
+      {
+       "name": "Manchester United:3|Brentford:2",
+       "price": 15.0
+      },
+      {
+       "name": "Manchester United:4|Brentford:0",
+       "price": 34.0
+      },
+      {
+       "name": "Manchester United:4|Brentford:1",
+       "price": 23.0
+      },
+      {
+       "name": "Manchester United:4|Brentford:2",
+       "price": 31.0
+      },
+      {
+       "name": "Manchester United:4|Brentford:3",
+       "price": 56.0
+      },
+      {
+       "name": "Manchester United:5|Brentford:0",
+       "price": 91.0
+      },
+      {
+       "name": "Manchester United:5|Brentford:1",
+       "price": 61.0
+      },
+      {
+       "name": "Manchester United:5|Brentford:2",
+       "price": 81.0
+      },
+      {
+       "name": "Manchester United:5|Brentford:3",
+       "price": 151.0
+      },
+      {
+       "name": "Manchester United:5|Brentford:4",
+       "price": 376.0
+      },
+      {
+       "name": "Manchester United:6|Brentford:0",
+       "price": 226.0
+      },
+      {
+       "name": "Manchester United:6|Brentford:1",
+       "price": 201.0
+      },
+      {
+       "name": "Manchester United:6|Brentford:2",
+       "price": 251.0
+      },
+      {
+       "name": "Manchester United:6|Brentford:3",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:6|Brentford:4",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:6|Brentford:5",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:7|Brentford:0",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:7|Brentford:1",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:7|Brentford:2",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:7|Brentford:3",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:7|Brentford:4",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:8|Brentford:0",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:8|Brentford:1",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:8|Brentford:2",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:8|Brentford:3",
+       "price": 376.0
+      },
+      {
+       "name": "Manchester United:9|Brentford:0",
+       "price": 376.0
+      },
+      {
+       "name": "Manchester United:9|Brentford:1",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:9|Brentford:2",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:10|Brentford:0",
+       "price": 376.0
+      },
+      {
+       "name": "Manchester United:10|Brentford:1",
+       "price": 401.0
+      },
+      {
+       "name": "Manchester United:11|Brentford:0",
+       "price": 376.0
+      },
+      {
+       "name": "Manchester United:0|Brentford:0",
+       "price": 14.0
+      },
+      {
+       "name": "Manchester United:1|Brentford:1",
+       "price": 7.0
+      },
+      {
+       "name": "Manchester United:2|Brentford:2",
+       "price": 10.0
+      },
+      {
+       "name": "Manchester United:3|Brentford:3",
+       "price": 26.0
+      },
+      {
+       "name": "Manchester United:4|Brentford:4",
+       "price": 126.0
+      },
+      {
+       "name": "Manchester United:5|Brentford:5",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:1|Manchester United:0",
+       "price": 13.0
+      },
+      {
+       "name": "Brentford:2|Manchester United:0",
+       "price": 15.0
+      },
+      {
+       "name": "Brentford:2|Manchester United:1",
+       "price": 10.0
+      },
+      {
+       "name": "Brentford:3|Manchester United:0",
+       "price": 26.0
+      },
+      {
+       "name": "Brentford:3|Manchester United:1",
+       "price": 18.0
+      },
+      {
+       "name": "Brentford:3|Manchester United:2",
+       "price": 18.0
+      },
+      {
+       "name": "Brentford:4|Manchester United:0",
+       "price": 81.0
+      },
+      {
+       "name": "Brentford:4|Manchester United:1",
+       "price": 51.0
+      },
+      {
+       "name": "Brentford:4|Manchester United:2",
+       "price": 51.0
+      },
+      {
+       "name": "Brentford:4|Manchester United:3",
+       "price": 71.0
+      },
+      {
+       "name": "Brentford:5|Manchester United:0",
+       "price": 201.0
+      },
+      {
+       "name": "Brentford:5|Manchester United:1",
+       "price": 126.0
+      },
+      {
+       "name": "Brentford:5|Manchester United:2",
+       "price": 176.0
+      },
+      {
+       "name": "Brentford:5|Manchester United:3",
+       "price": 251.0
+      },
+      {
+       "name": "Brentford:5|Manchester United:4",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:6|Manchester United:0",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:6|Manchester United:1",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:6|Manchester United:2",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:6|Manchester United:3",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:6|Manchester United:4",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:6|Manchester United:5",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:7|Manchester United:0",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:7|Manchester United:1",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:7|Manchester United:2",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:7|Manchester United:3",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:7|Manchester United:4",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:8|Manchester United:0",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:8|Manchester United:1",
+       "price": 401.0
+      },
+      {
+       "name": "Brentford:8|Manchester United:2",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:8|Manchester United:3",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:9|Manchester United:0",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:9|Manchester United:1",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:9|Manchester United:2",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:10|Manchester United:0",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:10|Manchester United:1",
+       "price": 376.0
+      },
+      {
+       "name": "Brentford:11|Manchester United:0",
+       "price": 376.0
+      }
+     ]
+    }
+   }
+  }
  },
  {
   "id": "0bc17a3c7d8153e72b94688960cc603a",
@@ -130,38 +1026,9 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 6.0,
-     "home": 1.48,
-     "draw": 4.3
-    },
-    "totals": [
-     {
-      "side": "over",
-      "line": 2.5,
-      "price": 1.68
-     },
-     {
-      "side": "under",
-      "line": 2.5,
-      "price": 2.15
-     }
-    ]
-   },
-   "sportsbet": {
-    "title": "SportsBet",
-    "h2h": {
-     "away": 6.0,
-     "home": 1.5,
-     "draw": 4.5
-    },
-    "totals": []
-   },
-   "tabtouch": {
-    "title": "TABtouch",
-    "h2h": {
-     "away": 5.8,
-     "home": 1.48,
-     "draw": 4.1
+     "away": 6.25,
+     "home": 1.45,
+     "draw": 4.4
     },
     "totals": [
      {
@@ -175,9 +1042,54 @@
       "price": 2.12
      }
     ]
+   },
+   "sportsbet": {
+    "title": "SportsBet",
+    "h2h": {
+     "away": 6.25,
+     "home": 1.47,
+     "draw": 4.6
+    },
+    "totals": []
+   },
+   "tabtouch": {
+    "title": "TABtouch",
+    "h2h": {
+     "away": 6.25,
+     "home": 1.45,
+     "draw": 4.2
+    },
+    "totals": [
+     {
+      "side": "over",
+      "line": 2.5,
+      "price": 1.7
+     },
+     {
+      "side": "under",
+      "line": 2.5,
+      "price": 2.14
+     }
+    ]
    }
   },
-  "extras": {}
+  "extras": {
+   "sportsbet": {
+    "btts": {
+     "last_update": "2026-11-27T04:22:42Z",
+     "outcomes": [
+      {
+       "name": "Yes",
+       "price": 1.83
+      },
+      {
+       "name": "No",
+       "price": 1.83
+      }
+     ]
+    }
+   }
+  }
  },
  {
   "id": "9d23f6ad21946dd258869ebc22236cf0",
@@ -190,8 +1102,8 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 1.9,
-     "home": 3.55,
+     "away": 1.95,
+     "home": 3.4,
      "draw": 3.75
     },
     "totals": [
@@ -210,17 +1122,17 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 1.95,
-     "home": 3.6,
-     "draw": 3.9
+     "away": 1.99,
+     "home": 3.5,
+     "draw": 3.75
     },
     "totals": []
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.89,
-     "home": 3.4,
+     "away": 1.92,
+     "home": 3.35,
      "draw": 3.75
     },
     "totals": [
@@ -250,49 +1162,49 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 3.75,
-     "away": 1.88,
-     "draw": 3.6
+     "home": 4.25,
+     "away": 1.75,
+     "draw": 3.7
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.68
+      "price": 1.65
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.15
+      "price": 2.2
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 3.75,
-     "away": 1.88,
-     "draw": 3.5
+     "home": 4.25,
+     "away": 1.74,
+     "draw": 3.65
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.67
+      "price": 1.65
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.18
+      "price": 2.2
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 4.1,
-     "away": 1.86,
-     "draw": 3.7
+     "home": 4.6,
+     "away": 1.76,
+     "draw": 3.8
     },
     "totals": []
    }
@@ -310,49 +1222,49 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "away": 2.55,
-     "home": 2.55,
-     "draw": 3.4
+     "away": 2.4,
+     "home": 2.8,
+     "draw": 3.35
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.75
+      "price": 1.77
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.05
+      "price": 2.02
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 2.5,
-     "home": 2.5,
+     "away": 2.43,
+     "home": 2.6,
      "draw": 3.4
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.71
+      "price": 1.73
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.12
+      "price": 2.08
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 2.55,
-     "home": 2.65,
-     "draw": 3.5
+     "away": 2.45,
+     "home": 2.75,
+     "draw": 3.45
     },
     "totals": []
    }
@@ -391,8 +1303,8 @@
     "title": "TABtouch",
     "h2h": {
      "home": 1.51,
-     "away": 5.1,
-     "draw": 4.3
+     "away": 5.2,
+     "draw": 4.25
     },
     "totals": [
      {
@@ -410,8 +1322,8 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 1.54,
-     "away": 5.5,
+     "home": 1.56,
+     "away": 5.3,
      "draw": 4.5
     },
     "totals": []
@@ -430,37 +1342,37 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.8,
-     "away": 4.0,
-     "draw": 3.75
+     "home": 1.85,
+     "away": 3.75,
+     "draw": 3.7
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.75
+      "price": 1.72
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.05
+      "price": 2.08
      }
     ]
    },
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 1.83,
-     "away": 4.0,
-     "draw": 3.9
+     "home": 1.9,
+     "away": 3.8,
+     "draw": 3.75
     },
     "totals": []
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.82,
-     "away": 3.85,
+     "home": 1.8,
+     "away": 3.9,
      "draw": 3.6
     },
     "totals": [
@@ -490,9 +1402,9 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 3.4,
-     "away": 2.05,
-     "draw": 3.4
+     "home": 3.6,
+     "away": 2.02,
+     "draw": 3.3
     },
     "totals": [
      {
@@ -510,8 +1422,8 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 3.6,
-     "away": 2.1,
+     "home": 3.8,
+     "away": 2.02,
      "draw": 3.35
     },
     "totals": []
@@ -519,20 +1431,20 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 3.25,
-     "away": 2.1,
-     "draw": 3.3
+     "home": 3.55,
+     "away": 1.95,
+     "draw": 3.35
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.89
+      "price": 1.91
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.88
+      "price": 1.87
      }
     ]
    }
@@ -570,20 +1482,20 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.91,
-     "away": 3.5,
-     "draw": 3.6
+     "home": 1.87,
+     "away": 3.55,
+     "draw": 3.65
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.72
+      "price": 1.68
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.1
+      "price": 2.15
      }
     ]
    },
@@ -591,8 +1503,8 @@
     "title": "SportsBet",
     "h2h": {
      "home": 1.99,
-     "away": 3.6,
-     "draw": 3.7
+     "away": 3.5,
+     "draw": 3.75
     },
     "totals": []
    }
@@ -611,14 +1523,14 @@
     "title": "PlayUp",
     "h2h": {
      "home": 2.2,
-     "away": 2.85,
+     "away": 3.0,
      "draw": 3.5
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.65
+      "price": 1.68
      },
      {
       "side": "under",
@@ -639,9 +1551,9 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 2.2,
-     "away": 2.88,
-     "draw": 3.5
+     "home": 2.17,
+     "away": 2.9,
+     "draw": 3.55
     },
     "totals": [
      {
@@ -652,7 +1564,7 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.14
+      "price": 2.12
      }
     ]
    }
@@ -707,7 +1619,7 @@
      {
       "side": "over",
       "line": 3.5,
-      "price": 2.28
+      "price": 2.3
      },
      {
       "side": "under",
@@ -730,8 +1642,8 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 4.0,
-     "away": 1.91,
+     "home": 4.1,
+     "away": 1.87,
      "draw": 3.6
     },
     "totals": []
@@ -740,7 +1652,7 @@
     "title": "PlayUp",
     "h2h": {
      "home": 3.85,
-     "away": 1.83,
+     "away": 1.85,
      "draw": 3.5
     },
     "totals": [
@@ -759,15 +1671,15 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 3.75,
-     "away": 1.88,
-     "draw": 3.45
+     "home": 3.9,
+     "away": 1.85,
+     "draw": 3.35
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.91
+      "price": 1.92
      },
      {
       "side": "under",
@@ -790,9 +1702,9 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 5.4,
-     "home": 1.55,
-     "draw": 4.5
+     "away": 5.2,
+     "home": 1.58,
+     "draw": 4.4
     },
     "totals": []
    },
@@ -807,12 +1719,12 @@
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.55
+      "price": 1.58
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.35
+      "price": 2.3
      }
     ]
    },
@@ -826,13 +1738,13 @@
     "totals": [
      {
       "side": "over",
-      "line": 3.5,
-      "price": 2.48
+      "line": 2.5,
+      "price": 1.57
      },
      {
       "side": "under",
-      "line": 3.5,
-      "price": 1.51
+      "line": 2.5,
+      "price": 2.3
      }
     ]
    }
@@ -850,49 +1762,49 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "home": 1.46,
+     "home": 1.45,
      "away": 6.25,
-     "draw": 4.75
+     "draw": 4.8
     },
     "totals": []
    },
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 1.45,
-     "away": 6.0,
-     "draw": 4.4
+     "home": 1.42,
+     "away": 6.25,
+     "draw": 4.6
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.6
+      "price": 1.58
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.25
+      "price": 2.35
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "home": 1.47,
-     "away": 5.6,
-     "draw": 4.3
+     "home": 1.4,
+     "away": 6.5,
+     "draw": 4.6
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.62
+      "price": 1.56
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.25
+      "price": 2.35
      }
     ]
    }
@@ -910,8 +1822,8 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 1.79,
-     "home": 4.3,
+     "away": 1.83,
+     "home": 4.1,
      "draw": 3.8
     },
     "totals": []
@@ -921,25 +1833,25 @@
     "h2h": {
      "away": 1.77,
      "home": 4.0,
-     "draw": 3.6
+     "draw": 3.65
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.75
+      "price": 1.77
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.0
+      "price": 1.98
      }
     ]
    },
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 1.74,
+     "away": 1.73,
      "home": 4.3,
      "draw": 3.6
     },
@@ -947,12 +1859,12 @@
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.79
+      "price": 1.78
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 1.97
+      "price": 2.0
      }
     ]
    }
@@ -980,8 +1892,8 @@
     "title": "PlayUp",
     "h2h": {
      "home": 1.95,
-     "away": 3.4,
-     "draw": 3.5
+     "away": 3.5,
+     "draw": 3.6
     },
     "totals": [
      {
@@ -992,7 +1904,7 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.08
+      "price": 2.1
      }
     ]
    },
@@ -1039,8 +1951,8 @@
    "playup": {
     "title": "PlayUp",
     "h2h": {
-     "home": 2.4,
-     "away": 2.6,
+     "home": 2.45,
+     "away": 2.65,
      "draw": 3.5
     },
     "totals": [
@@ -1052,7 +1964,7 @@
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.12
+      "price": 2.15
      }
     ]
    },
@@ -1060,8 +1972,8 @@
     "title": "TABtouch",
     "h2h": {
      "home": 2.35,
-     "away": 2.65,
-     "draw": 3.5
+     "away": 2.7,
+     "draw": 3.45
     },
     "totals": [
      {
@@ -1090,7 +2002,7 @@
    "sportsbet": {
     "title": "SportsBet",
     "h2h": {
-     "away": 2.45,
+     "away": 2.5,
      "home": 2.55,
      "draw": 3.8
     },
@@ -1151,8 +2063,8 @@
     "title": "SportsBet",
     "h2h": {
      "away": 4.1,
-     "home": 1.84,
-     "draw": 3.8
+     "home": 1.85,
+     "draw": 3.75
     },
     "totals": []
    },
@@ -1179,20 +2091,20 @@
    "tabtouch": {
     "title": "TABtouch",
     "h2h": {
-     "away": 3.95,
+     "away": 4.0,
      "home": 1.78,
-     "draw": 3.65
+     "draw": 3.6
     },
     "totals": [
      {
       "side": "over",
       "line": 2.5,
-      "price": 1.73
+      "price": 1.74
      },
      {
       "side": "under",
       "line": 2.5,
-      "price": 2.06
+      "price": 2.05
      }
     ]
    }
